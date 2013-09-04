@@ -6,12 +6,80 @@
 	<link type="text/css" rel="stylesheet" href="./css/bootstrap-responsive.css"/>
 </head>
 <body>
+
 <h3 id="restapi-documentation">RestApi - Documentation</h3>
+
+<p>The Dog RestAPI allows developers to easily integrate home and building automation into their applications, be they web applications, smartphone (Android, iOS) apps or standalone programs.</p>
+
+<p>APIs allow to:</p>
+
+<ul>
+<li>manage connected devices
+
+<ul>
+<li>query the gateway about installed devices, their location, functionalities and configurations;</li>
+<li>require execution of commands to existing devices;</li>
+<li>monitor device statuses and measures in real-time;</li>
+<li>add, modify or update the set of devices controlled through the gateway;</li>
+</ul></li>
+<li>manage rules and automation scenarios
+
+<ul>
+<li>insert, update, modify or delete automation rules;</li>
+<li>insert, update, modify or delete scenarios.</li>
+</ul></li>
+<li>monitor the home/building performance
+
+<ul>
+<li>historical information on consumptions;</li>
+<li>historical information on activations;</li>
+<li>related statistics.</li>
+</ul></li>
+<li>manage Dog
+
+<ul>
+<li>manage system performance</li>
+<li>manage system updates</li>
+<li>troubleshoot problems</li>
+</ul></li>
+</ul>
+
+<h2 id="">&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;</h2>
+
+<h4 id="queryingdevices">Querying devices</h4>
+
+<hr />
+
+<h5 id="gettingthelistofavailabledevices">Getting the list of available devices</h5>
+
+<p><em>URL:</em> /devices</p>
+
+<table>
+<colgroup>
+<col style="text-align:left;"/>
+<col style="text-align:left;"/>
+</colgroup>
+
+<thead>
+<tr>
+	<th style="text-align:left;">Method</th>
+	<th style="text-align:left;">Description</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+	<td style="text-align:left;">GET</td>
+	<td style="text-align:left;">List all devices registered within the Dog gateway, be they active or not</td>
+</tr>
+</tbody>
+</table>
 
 <script src="./js/jquery.js"></script>
 
 <script src="./js/bootstrap.js"></script>
 
 <script src="./js/ajax.js"></script>
+
 </body>
 </html>
