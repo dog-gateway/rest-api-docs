@@ -7,10 +7,31 @@
 	<link type="text/css" rel="stylesheet" href="./css/custom.css"/>
 </head>
 <body>
-
 <div class="container-fluid" >
+<div class="navbar navbar-fixed-top span3" >
 
-<h3 id="restapi-documentation">RestApi - Documentation</h3>
+<h3 id="summary">Summary</h3>
+
+<hr />
+<div class="well" >
+
+<ul>
+<li><a href="#devicequery">Querying Devices</a>
+
+<ul>
+<li><a href="#status">Status</a>
+</div>
+</div></li>
+</ul></li>
+</ul>
+<div class="row-fluid" >
+<div class="span3"></div>
+<div class="span9" >
+<div class="page-header" >
+
+<h2 id="dogrestapi-documentation">Dog RestAPI - Documentation</h2>
+
+<p></div></p>
 
 <p>The Dog RestAPI allows developers to easily integrate home and building automation into their applications, be they web applications, smartphone (Android, iOS) apps or standalone programs.</p>
 
@@ -22,7 +43,7 @@
 <ul>
 <li>query the gateway about installed devices, their location, functionalities and configurations;</li>
 <li>require execution of commands to existing devices;</li>
-<li>monitor device statuses and measures in real-time;</li>
+<li><a href="#status">monitor device statuses and measures in real-time</a>;</li>
 <li>add, modify or update the set of devices controlled through the gateway;</li>
 </ul></li>
 <li>manage rules and automation scenarios
@@ -49,11 +70,11 @@
 
 <hr />
 
-<h4 id="queryingdevices">Querying devices</h4>
+<h3 id="devicequery">Querying devices</h3>
 
 <hr />
 
-<h5 id="gettingthelistofregistereddevices">Getting the list of registered devices</h5>
+<h5 id="status">Getting the current status of registered devices</h5>
 
 <p><em>URL:</em> /devices/status</p>
 
@@ -77,37 +98,32 @@
 </tr>
 </tbody>
 </table>
+<p><strong>Request</strong></p>
 
-<p>** Request **</p>
-<div class="wells" >
-<pre>
-GET http://{gateway-ip or dns name}/devices/status
-</pre>
-</div>
+<pre><code>GET http://{gateway-ip or dns name}/devices/status
+</code></pre>
 
-<p>** response **</p>
-<div class="wells" >
-<pre>
-{
- &#8220;devices&#8221;:[
- {
- &#8220;uri&#8221; : &#8220;Lamp1&#8221;,
- &#8220;description&#8221; : &#8220; The lamp over the closet near to the livingroom armchair&#8221;,
- &#8220;active&#8221; : true,
- &#8220;status&#8221;:[
- {
- &#8220;OnOffstate&#8221; : &#8220;on&#8221;
- }
- ]
- }
- ,
- {
- &#8220;uri&#8221; : &#8220;Plug_h725&#8221;,
- }
- ]
+<p><strong>Response</strong></p>
+
+<pre><code>{
+&quot;devices&quot;:[
+    {
+        &quot;uri&quot; : &quot;Lamp1&quot;,
+        &quot;description&quot; : &quot; The lamp over the closet near to the livingroom armchair&quot;,
+        &quot;active&quot; : true,
+        &quot;status&quot;:[
+            {
+                &quot;OnOffstate&quot; : &quot;on&quot;
+            }
+        ]
+    }
+    ,
+    {
+        &quot;uri&quot; : &quot;Plug_h725&quot;,
+    }
+]
 }
-</pre>
-</div>
+</code></pre>
 
 <h5 id="gettingthelistofconfigureddevices">Getting the list of configured devices</h5>
 
@@ -137,13 +153,11 @@ GET http://{gateway-ip or dns name}/devices/status
 </tr>
 </tbody>
 </table>
+<p></div>
 </div>
-
+</div>
 <script src="./js/jquery.js"></script>
-
 <script src="./js/bootstrap.js"></script>
-
-<script src="./js/ajax.js"></script>
-
+<script src="./js/ajax.js"></script></p>
 </body>
 </html>
