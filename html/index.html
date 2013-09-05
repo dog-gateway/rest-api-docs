@@ -4,8 +4,11 @@
 	<meta charset="utf-8"/>
 	<link type="text/css" rel="stylesheet" href="./css/bootstrap.css"/>
 	<link type="text/css" rel="stylesheet" href="./css/bootstrap-responsive.css"/>
+	<link type="text/css" rel="stylesheet" href="./css/custom.css"/>
 </head>
 <body>
+
+<div class="container-fluid" >
 
 <h3 id="restapi-documentation">RestApi - Documentation</h3>
 
@@ -44,15 +47,15 @@
 </ul></li>
 </ul>
 
-<h2 id="">&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;</h2>
+<hr />
 
 <h4 id="queryingdevices">Querying devices</h4>
 
 <hr />
 
-<h5 id="gettingthelistofavailabledevices">Getting the list of available devices</h5>
+<h5 id="gettingthelistofregistereddevices">Getting the list of registered devices</h5>
 
-<p><em>URL:</em> /devices</p>
+<p><em>URL:</em> /devices/status</p>
 
 <table>
 <colgroup>
@@ -70,10 +73,71 @@
 <tbody>
 <tr>
 	<td style="text-align:left;">GET</td>
-	<td style="text-align:left;">List all devices registered within the Dog gateway, be they active or not</td>
+	<td style="text-align:left;">List the current status of all devices actually managed by the Dog gateway, i.e. defined in the Dog configuration and registered within the gateway runtime,be they active or not</td>
 </tr>
 </tbody>
 </table>
+
+<p>** Request **</p>
+<div class="wells" >
+<pre>
+GET http://{gateway-ip or dns name}/devices/status
+</pre>
+</div>
+
+<p>** response **</p>
+<div class="wells" >
+<pre>
+{
+ &#8220;devices&#8221;:[
+ {
+ &#8220;uri&#8221; : &#8220;Lamp1&#8221;,
+ &#8220;description&#8221; : &#8220; The lamp over the closet near to the livingroom armchair&#8221;,
+ &#8220;active&#8221; : true,
+ &#8220;status&#8221;:[
+ {
+ &#8220;OnOffstate&#8221; : &#8220;on&#8221;
+ }
+ ]
+ }
+ ,
+ {
+ &#8220;uri&#8221; : &#8220;Plug_h725&#8221;,
+ }
+ ]
+}
+</pre>
+</div>
+
+<h5 id="gettingthelistofconfigureddevices">Getting the list of configured devices</h5>
+
+<p><em>URL:</em> /devices/configuration</p>
+
+<table>
+<colgroup>
+<col style="text-align:left;"/>
+<col style="text-align:left;"/>
+</colgroup>
+
+<thead>
+<tr>
+	<th style="text-align:left;">Method</th>
+	<th style="text-align:left;">Description</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+	<td style="text-align:left;">GET</td>
+	<td style="text-align:left;">List all device configurations used by the Dog gateway</td>
+</tr>
+<tr>
+	<td style="text-align:left;">PUT</td>
+	<td style="text-align:left;">Create / Update the set of device configurations that Dog should manage. Any device configuration matching an already configured device replaces the existing configuration, whereas devices not being mentioned in the current Dog configurations are added, and deployed at runtime, i.e., made available to calling applications.</td>
+</tr>
+</tbody>
+</table>
+</div>
 
 <script src="./js/jquery.js"></script>
 
