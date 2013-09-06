@@ -57,8 +57,8 @@ APIs allow to:
 |----|----|
 |[Resource /devices](#devices)|Represents domotic devices handled by Dog and "controllable" by applications using this API. |
 |[Resource /devices/{device-id} ](#singleDevice)|Represents a single domotic device handled by Dog, identified by a unique device-id (currently encoded in the *name* attribute fo the XML response to the [GET /devices](#devices) request, and "controllable" by applications using this API. |
-|[Resource /devices/status](#status)||
-|[Resource /devices/{device-id}/commands/{command-name} ](#command)||
+|[Resource /devices/status](#status)|Represents the status of devices registered in the Dog gateway runtime, i.e., defined in the Dog [configuration][devicesConfiguration] and successfully registered within the gateway runtime.|
+|[Resource /devices/{device-id}/commands/{command-name} ](#command)|Represents a command, identified by a *command-name*, to be sent to the device identified by the given *device-id*. Commands are idempotent: the same command always results in the same behavior of the selected device. If the command brings the device in same state in which the device is, no differences will be appreciable.|
 |[Resource /dog/configuration](#dogConfiguration)||
 
 
