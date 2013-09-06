@@ -8,8 +8,8 @@
 </head>
 <body>
 
-<div class="container-fluid" >
-<div class="navbar navbar-fixed-top span3" >
+<p><div class="container-fluid" >
+<div class="navbar navbar-fixed-top span3" ></p>
 
 <h4 id="summary">Summary</h4>
 
@@ -20,8 +20,13 @@
 <li><a href="#deviceAPI">Device API</a>
 
 <ul>
+<li><a href="#devices">Devices</a>
+
+<ul>
+<li><a href="#singleDevice">Single Device</a></li>
+</ul></li>
 <li><a href="#status">Status</a></li>
-<li><a href="#devices">Devices</a></li>
+<li><a href="#dogConfiguration">Configuration</a></li>
 </ul></li>
 </ul>
 </div>
@@ -70,9 +75,408 @@
 </ul></li>
 </ul>
 
+<h4 id="functionsummary">Function summary</h4>
+
+<table>
+<colgroup>
+<col style="text-align:left;"/>
+<col style="text-align:left;"/>
+</colgroup>
+
+<thead>
+<tr>
+	<th style="text-align:left;"></th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+	<td style="text-align:left;"><a href="#devices">Resource /devices</a></td>
+	<td style="text-align:left;">Represents domotic devices handled by Dog and &#8220;controllable&#8221; by applications using this API.</td>
+</tr>
+<tr>
+	<td style="text-align:left;"><a href="#singleDevice">Resource /devices/{device-id} </a></td>
+	<td style="text-align:left;">Represents a single domotic device handled by Dog, identified by a unique device-id (currently encoded in the <em>name</em> attribute fo the XML response to the <a href="#devices">GET /devices</a> request, and &#8220;controllable&#8221; by applications using this API.</td>
+</tr>
+<tr>
+	<td style="text-align:left;" colspan="2"><a href="#status">Resource /devices/status</a></td>
+</tr>
+<tr>
+	<td style="text-align:left;" colspan="2"><a href="#command">Resource /devices/{device-id}/commands/{command-name} </a></td>
+</tr>
+<tr>
+	<td style="text-align:left;" colspan="2"><a href="#dogConfiguration">Resource /dog/configuration</a></td>
+</tr>
+</tbody>
+</table>
+
 <hr />
 
 <h3 id="deviceAPI">Device API</h3>
+
+<hr />
+</div>
+</div>
+<div class="row-fluid" >
+<div class="span3" ></div>
+<div class="span6" >
+
+<h4 id="devices">Resource /devices</h4>
+
+<p><em>Updated on Thu, 2013&#8211;09&#8211;05</em> <span class="label label-info pull-right">API version 1.0</span></p>
+
+<p>Represents domotic devices handled by Dog and &#8220;controllable&#8221; by applications using this API. </p>
+
+<p><strong>URL:</strong> /devices</p>
+
+<table>
+<colgroup>
+<col style="text-align:left;"/>
+<col style="text-align:left;"/>
+</colgroup>
+
+<thead>
+<tr>
+	<th style="text-align:left;">Method</th>
+	<th style="text-align:left;">Description</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+	<td style="text-align:left;">GET</td>
+	<td style="text-align:left;">List all devices (with their details) used by the Dog gateway</td>
+</tr>
+</tbody>
+</table>
+
+<p><strong>Example Request</strong></p>
+
+<pre><code>GET http://www.mydog.com/devices
+</code></pre>
+
+<p><strong>Example Response (JSON)</strong></p>
+
+<p><strong>Example Response (XML)</strong></p>
+
+<pre><code>&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot; standalone=&quot;yes&quot;?&gt;
+    &lt;dhc:dogHomeConfiguration&gt;
+        &lt;dhc:buildingEnvironment&gt;
+            &lt;dhc:building name=&quot;SimpleHome&quot;&gt;
+                &lt;dhc:flat class=&quot;Flat&quot; svgfootprint=&quot;simple_home.svg&quot; name=&quot;Flat&quot;&gt;
+                    &lt;dhc:room class=&quot;Kitchen&quot; name=&quot;kitchen&quot;&gt;
+                        &lt;dhc:ceiling class=&quot;Ceiling&quot; name=&quot;Ceiling_kitchen&quot;/&gt;
+                        &lt;dhc:floor class=&quot;Floor&quot; name=&quot;Floor_kitchen&quot;/&gt;
+                        &lt;dhc:wall class=&quot;Wall&quot; name=&quot;Wall_kitchen_south&quot;/&gt;
+                        &lt;dhc:wall class=&quot;Wall&quot; name=&quot;Wall_kicthen_west&quot;&gt;
+                            &lt;dhc:hasWallOpening class=&quot;Window&quot; name=&quot;Window_w4_kitchen&quot;/&gt;
+                        &lt;/dhc:wall&gt;
+                        &lt;dhc:wall class=&quot;Wall&quot; name=&quot;Wall_kitchen_storage_lobby&quot;/&gt;
+                        &lt;dhc:wall class=&quot;Wall&quot; name=&quot;Wall_kitchen_lobby&quot;&gt;
+                            &lt;dhc:hasWallOpening class=&quot;Door&quot; name=&quot;Door_kitchen_lobby&quot;/&gt;
+                        &lt;/dhc:wall&gt;
+                        &lt;dhc:wall class=&quot;Wall&quot; name=&quot;Wall_kitchen_livingroom&quot;&gt;
+                            &lt;dhc:hasWallOpening class=&quot;Door&quot; name=&quot;Door_kitchen_living&quot;/&gt;
+                        &lt;/dhc:wall&gt;
+                    &lt;/dhc:room&gt;
+                &lt;/dhc:flat&gt;
+            &lt;/dhc:building&gt;
+    &lt;/dhc:buildingEnvironment&gt;
+    &lt;dhc:controllables&gt;
+        &lt;dhc:device domoticSystem=&quot;ELITE&quot; name=&quot;oven1&quot; class=&quot;ElectricalOven&quot;&gt;
+            &lt;dhc:description&gt;A ElectricalOven instance named oven1&lt;/dhc:description&gt;
+            &lt;dhc:isIn&gt;kitchen&lt;/dhc:isIn&gt;
+            &lt;dhc:pluggedIn&gt;MainsPowerOutlet_p12_kitchen&lt;/dhc:pluggedIn&gt;
+            &lt;dhc:controlFunctionality class=&quot;OnOffFunctionality&quot;&gt;
+                &lt;dhc:commands&gt;
+                    &lt;dhc:command name=&quot;on&quot; class=&quot;OnCommand&quot;/&gt;
+                    &lt;dhc:command name=&quot;off&quot; class=&quot;OffCommand&quot;/&gt;
+                &lt;/dhc:commands&gt;
+            &lt;/dhc:controlFunctionality&gt;
+            &lt;dhc:controlFunctionality class=&quot;QueryFunctionality&quot;&gt;
+                &lt;dhc:commands&gt;
+                    &lt;dhc:command name=&quot;getState&quot; class=&quot;GetCommand&quot;/&gt;
+                &lt;/dhc:commands&gt;
+            &lt;/dhc:controlFunctionality&gt;
+            &lt;dhc:notificationFunctionality class=&quot;StateChangeNotificationFunctionality&quot;&gt;
+                &lt;dhc:notifications&gt;
+                    &lt;dhc:notification name=&quot;stateChanged&quot; class=&quot;StateChangeNotification&quot;&gt;
+                        &lt;dhc:param type=&quot;State&quot; name=&quot;notificationParamName&quot;/&gt;
+                    &lt;/dhc:notification&gt;
+                        &lt;/dhc:notifications&gt;
+                    &lt;/dhc:notificationFunctionality&gt;
+                    &lt;dhc:state class=&quot;OnOffState&quot;&gt;
+                        &lt;dhc:statevalues&gt;
+                            &lt;dhc:statevalue name=&quot;off&quot; class=&quot;OffStateValue&quot;/&gt;
+                            &lt;dhc:statevalue name=&quot;on&quot; class=&quot;OnStateValue&quot;/&gt;
+                        &lt;/dhc:statevalues&gt;
+                    &lt;/dhc:state&gt;
+                &lt;/dhc:device&gt;
+                &lt;dhc:device domoticSystem=&quot;KONNEX&quot; name=&quot;MainsPowerOutlet_p12_kitchen&quot; class=&quot;MainsPowerOutlet&quot;&gt;
+                    &lt;dhc:description&gt;A MainsPowerOutlet instance named MainsPowerOutlet_p12_kitchen&lt;/dhc:description&gt;
+                    &lt;dhc:isIn&gt;kitchen&lt;/dhc:isIn&gt;
+                    &lt;dhc:hasMeter&gt;energy_meter_1&lt;/dhc:hasMeter&gt;
+                    &lt;dhc:controlFunctionality class=&quot;OnOffFunctionality&quot;&gt;
+                        &lt;dhc:commands&gt;
+                            &lt;dhc:command name=&quot;on&quot; class=&quot;OnCommand&quot;/&gt;
+                            &lt;dhc:command name=&quot;off&quot; class=&quot;OffCommand&quot;/&gt;
+                        &lt;/dhc:commands&gt;
+                    &lt;/dhc:controlFunctionality&gt;
+                    &lt;dhc:notificationFunctionality class=&quot;StateChangeNotificationFunctionality&quot;&gt;
+                        &lt;dhc:notifications&gt;
+                            &lt;dhc:notification name=&quot;stateChanged&quot; class=&quot;StateChangeNotification&quot;&gt;
+                                &lt;dhc:param type=&quot;State&quot; name=&quot;notificationParamName&quot;/&gt;
+                            &lt;/dhc:notification&gt;
+                        &lt;/dhc:notifications&gt;
+                    &lt;/dhc:notificationFunctionality&gt;
+                    &lt;dhc:state class=&quot;OnOffState&quot;&gt;
+                        &lt;dhc:statevalues&gt;
+                            &lt;dhc:statevalue name=&quot;on&quot; class=&quot;OnStateValue&quot;/&gt;
+                            &lt;dhc:statevalue name=&quot;off&quot; class=&quot;OffStateValue&quot;/&gt;
+                        &lt;/dhc:statevalues&gt;
+                    &lt;/dhc:state&gt;
+                &lt;/dhc:device&gt;
+            &lt;/dhc:controllables&gt;
+    &lt;/dhc:dogHomeConfiguration&gt;
+</code></pre>
+
+<p></div>
+<div class="span3" >
+<div class="well" ></p>
+
+<h4 id="resourceinformation">Resource Information</h4>
+
+<table>
+<colgroup>
+<col style="text-align:left;"/>
+<col style="text-align:left;"/>
+</colgroup>
+
+<thead>
+<tr>
+	<th style="text-align:left;"></th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+	<td style="text-align:left;">Authentication</td>
+	<td style="text-align:left;"><strong>Requires app key</strong></td>
+</tr>
+<tr>
+	<td style="text-align:left;">Response Format</td>
+	<td style="text-align:left;"><strong>json</strong> or <strong>xml</strong></td>
+</tr>
+<tr>
+	<td style="text-align:left;">HTTP Methods</td>
+	<td style="text-align:left;"><strong>GET</strong></td>
+</tr>
+<tr>
+	<td style="text-align:left;">Resource family</td>
+	<td style="text-align:left;"><strong>device</strong></td>
+</tr>
+<tr>
+	<td style="text-align:left;">Response Object</td>
+	<td style="text-align:left;"><strong>Array [ Device ]</strong></td>
+</tr>
+<tr>
+	<td style="text-align:left;">API Version</td>
+	<td style="text-align:left;"><strong>v1.0</strong></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+<div class="row-fluid" >
+<div class="span3" ></div>
+<div class="span9" >
+
+<hr />
+</div>
+</div>
+
+<p><div class="row-fluid" >
+<div class="span3" ></div>
+<div class="span6" ></p>
+
+<h4 id="singleDevice">Resource /devices/{device-id}</h4>
+
+<p><em>Updated on Fri, 2013&#8211;09&#8211;06</em> <span class="label label-info pull-right">API version 1.0</span></p>
+
+<p>Represents a single domotic device handled by Dog, identified by a unique device-id (currently encoded in the <em>name</em> attribute fo the XML response to the <a href="#devices">GET /devices</a> request,
+and &#8220;controllable&#8221; by applications using this API. </p>
+
+<p><em>URL:</em> /devices/{device-id}</p>
+
+<table>
+<colgroup>
+<col style="text-align:left;"/>
+<col style="text-align:left;"/>
+</colgroup>
+
+<thead>
+<tr>
+	<th style="text-align:left;">Method</th>
+	<th style="text-align:left;">Description</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+	<td style="text-align:left;">GET</td>
+	<td style="text-align:left;">Returns the details of the device identified by the given {device-id}</td>
+</tr>
+</tbody>
+</table>
+
+<p><strong>Example Request</strong></p>
+
+<p>GET http://www.mydog.com/devices/MainsPowerOutlet_p12_kitchen</p>
+
+<p><strong>Example Response (JSON)</strong></p>
+
+<pre><code>{
+    &quot;id&quot; : &quot;MainsPowerOutlet_p12_kitchen&quot;,
+    &quot;name&quot; : &quot;Lavastoviglie&quot;,
+    &quot;class&quot; : &quot;MainsPowerOutlet&quot;,
+    &quot;description&quot; : &quot;The smart plug to which the dishwasher is connected&quot;,
+    &quot;isIn&quot; : &quot;kitchen&quot;,
+    &quot;hasMeter&quot; : &quot;energy_meter_1&quot;,
+    &quot;controlFunctionalities&quot;:[
+        {
+            &quot;class&quot;:&quot;OnOffFunctionality&quot;,
+            &quot;commands&quot;:[
+                {
+                    &quot;name&quot;:&quot;on&quot;,
+                    &quot;class&quot;:&quot;OnCommand&quot;
+                }
+                ,
+                {
+                    &quot;name&quot; : &quot;off&quot;,
+                    &quot;class&quot; : &quot;OffCommand&quot;
+                }
+            ]
+        }
+    ]
+    ,
+    &quot;notificationFunctionalities&quot; : [
+        {
+            &quot;class&quot; : &quot;StateChangeNotificationFunctionality&quot;,
+            &quot;notifications&quot;: [
+                {
+                    &quot;name&quot; : &quot;stateChanged&quot;,
+                    &quot;class&quot; : &quot;StateChangeNotification&quot;,
+                    &quot;parameters&quot; : [
+                        {
+                            &quot;name&quot; : &quot;notificationParamName&quot;,
+                            &quot;type&quot; : &quot;State&quot;
+                        }
+                    ]
+                }
+            ]
+        }
+    ]
+    ,
+    &quot;states&quot; : [
+        {
+            &quot;class&quot; : &quot;OnOffState&quot;,
+            &quot;values&quot; : [
+                {
+                    &quot;name&quot; : &quot;on&quot;,
+                    &quot;class&quot; : &quot;OnStateValue&quot;
+                }
+                ,
+                {
+                    &quot;name&quot; : &quot;off&quot;,
+                    &quot;class&quot; : &quot;OffStateValue&quot;
+                }
+            ]
+        }
+    ]   
+}
+</code></pre>
+
+<p><strong>Example Response (XML)</strong></p>
+
+<pre><code>&lt;dhc:device domoticSystem=&quot;KONNEX&quot; name=&quot;MainsPowerOutlet_p12_kitchen&quot; class=&quot;MainsPowerOutlet&quot;&gt;
+    &lt;dhc:description&gt;A MainsPowerOutlet instance named MainsPowerOutlet_p12_kitchen&lt;/dhc:description&gt;
+    &lt;dhc:isIn&gt;kitchen&lt;/dhc:isIn&gt;
+    &lt;dhc:hasMeter&gt;energy_meter_1&lt;/dhc:hasMeter&gt;
+    &lt;dhc:controlFunctionality class=&quot;OnOffFunctionality&quot;&gt;
+        &lt;dhc:commands&gt;
+            &lt;dhc:command name=&quot;on&quot; class=&quot;OnCommand&quot;/&gt;
+            &lt;dhc:command name=&quot;off&quot; class=&quot;OffCommand&quot;/&gt;
+        &lt;/dhc:commands&gt;
+    &lt;/dhc:controlFunctionality&gt;
+    &lt;dhc:notificationFunctionality class=&quot;StateChangeNotificationFunctionality&quot;&gt;
+        &lt;dhc:notifications&gt;
+            &lt;dhc:notification name=&quot;stateChanged&quot; class=&quot;StateChangeNotification&quot;&gt;
+                &lt;dhc:param type=&quot;State&quot; name=&quot;notificationParamName&quot;/&gt;
+            &lt;/dhc:notification&gt;
+        &lt;/dhc:notifications&gt;
+    &lt;/dhc:notificationFunctionality&gt;
+    &lt;dhc:state class=&quot;OnOffState&quot;&gt;
+        &lt;dhc:statevalues&gt;
+            &lt;dhc:statevalue name=&quot;on&quot; class=&quot;OnStateValue&quot;/&gt;
+            &lt;dhc:statevalue name=&quot;off&quot; class=&quot;OffStateValue&quot;/&gt;
+        &lt;/dhc:statevalues&gt;
+    &lt;/dhc:state&gt;
+&lt;/dhc:device&gt;
+</code></pre>
+
+<p></div>
+<div class="span3" >
+<div class="well" ></p>
+
+<h4 id="resourceinformation">Resource Information</h4>
+
+<table>
+<colgroup>
+<col style="text-align:left;"/>
+<col style="text-align:left;"/>
+</colgroup>
+
+<thead>
+<tr>
+	<th style="text-align:left;"></th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+	<td style="text-align:left;">Authentication</td>
+	<td style="text-align:left;"><strong>Requires app key</strong></td>
+</tr>
+<tr>
+	<td style="text-align:left;">Response Format</td>
+	<td style="text-align:left;"><strong>json</strong> or <strong>xml</strong></td>
+</tr>
+<tr>
+	<td style="text-align:left;">HTTP Methods</td>
+	<td style="text-align:left;"><strong>GET</strong></td>
+</tr>
+<tr>
+	<td style="text-align:left;">Resource family</td>
+	<td style="text-align:left;"><strong>device</strong></td>
+</tr>
+<tr>
+	<td style="text-align:left;">Response Object</td>
+	<td style="text-align:left;"><strong>Device</strong></td>
+</tr>
+<tr>
+	<td style="text-align:left;">API Version</td>
+	<td style="text-align:left;"><strong>v1.0</strong></td>
+</tr>
+</tbody>
+</table>
+
+<p></div>
+</div></p>
+<div class="row-fluid" >
+<div class="span3" >
+</div>
+<div class="span9" >
 
 <hr />
 </div>
@@ -346,7 +750,7 @@
 </tr>
 <tr>
 	<td style="text-align:left;">Resource family</td>
-	<td style="text-align:left;"><strong>statuses</strong></td>
+	<td style="text-align:left;"><strong>status</strong></td>
 </tr>
 <tr>
 	<td style="text-align:left;">Response Object</td>
@@ -362,8 +766,7 @@
 </div>
 </div>
 <div class="row-fluid" >
-<div class="span3" >
-</div>
+<div class="span3" ></div>
 <div class="span9" >
 
 <hr />
@@ -373,13 +776,15 @@
 <div class="span3" ></div>
 <div class="span6" >
 
-<h4 id="devices">Resource /devices</h4>
+<h4 id="command">Resource /devices/{device-id}/commands/{command-name}</h4>
 
-<p><em>Updated on Thu, 2013&#8211;09&#8211;05</em> <span class="label label-info pull-right">API version 1.0</span></p>
+<p><em>Updated on Fri, 2013&#8211;09&#8211;06</em> <span class="label label-info pull-right">API version 1.0</span></p>
 
-<p>Represents domotic devices handled by Dog and &#8220;controllable&#8221; by applications using this API. </p>
+<p>Represents a command, identified by a <em>command-name</em>, to be sent to the device identified by the given <em>device-id</em>.
+Commands are idempotent: the same command always results in the same behavior of the selected device.
+If the command brings the device in same state in which the device is, no differences will be appreciable. </p>
 
-<p><strong>URL:</strong> /devices</p>
+<p><em>URL:</em> /devices/{device-id}/commands/{command-name}</p>
 
 <table>
 <colgroup>
@@ -396,100 +801,37 @@
 
 <tbody>
 <tr>
-	<td style="text-align:left;">GET</td>
-	<td style="text-align:left;">List all devices (with their details) used by the Dog gateway</td>
+	<td style="text-align:left;">PUT</td>
+	<td style="text-align:left;">sends the command identified by the given <em>command-name</em></td>
+</tr>
+<tr>
+	<td style="text-align:left;">POST</td>
+	<td style="text-align:left;">sends the command identified by the given <em>command-name</em> (deprecated)</td>
 </tr>
 </tbody>
 </table>
 
-<p><strong>Example Request</strong></p>
+<p><strong>Example Requests</strong></p>
 
-<pre><code>GET http://www.mydog.com/devices/status
+<p>(simple command)</p>
+
+<pre><code>PUT http://www.mydog.com/devices/MainsPowerOutlet_p12_kitchen/commands/on
 </code></pre>
 
-<p><strong>Example Response (JSON)</strong></p>
+<p>(command with parameters)</p>
 
-<p><strong>Example Response (XML)</strong></p>
+<pre><code>PUT http://www.mydog.com/devices/DimmerLamp_l4_livingroom/commands/set
 
-<pre><code>&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot; standalone=&quot;yes&quot;?&gt;
-    &lt;dhc:dogHomeConfiguration&gt;
-        &lt;dhc:buildingEnvironment&gt;
-            &lt;dhc:building name=&quot;SimpleHome&quot;&gt;
-                &lt;dhc:flat class=&quot;Flat&quot; svgfootprint=&quot;simple_home.svg&quot; name=&quot;Flat&quot;&gt;
-                    &lt;dhc:room class=&quot;Kitchen&quot; name=&quot;kitchen&quot;&gt;
-                        &lt;dhc:ceiling class=&quot;Ceiling&quot; name=&quot;Ceiling_kitchen&quot;/&gt;
-                        &lt;dhc:floor class=&quot;Floor&quot; name=&quot;Floor_kitchen&quot;/&gt;
-                        &lt;dhc:wall class=&quot;Wall&quot; name=&quot;Wall_kitchen_south&quot;/&gt;
-                        &lt;dhc:wall class=&quot;Wall&quot; name=&quot;Wall_kicthen_west&quot;&gt;
-                            &lt;dhc:hasWallOpening class=&quot;Window&quot; name=&quot;Window_w4_kitchen&quot;/&gt;
-                        &lt;/dhc:wall&gt;
-                        &lt;dhc:wall class=&quot;Wall&quot; name=&quot;Wall_kitchen_storage_lobby&quot;/&gt;
-                        &lt;dhc:wall class=&quot;Wall&quot; name=&quot;Wall_kitchen_lobby&quot;&gt;
-                            &lt;dhc:hasWallOpening class=&quot;Door&quot; name=&quot;Door_kitchen_lobby&quot;/&gt;
-                        &lt;/dhc:wall&gt;
-                        &lt;dhc:wall class=&quot;Wall&quot; name=&quot;Wall_kitchen_livingroom&quot;&gt;
-                            &lt;dhc:hasWallOpening class=&quot;Door&quot; name=&quot;Door_kitchen_living&quot;/&gt;
-                        &lt;/dhc:wall&gt;
-                    &lt;/dhc:room&gt;
-                &lt;/dhc:flat&gt;
-            &lt;/dhc:building&gt;
-    &lt;/dhc:buildingEnvironment&gt;
-    &lt;dhc:controllables&gt;
-        &lt;dhc:device domoticSystem=&quot;ELITE&quot; name=&quot;oven1&quot; class=&quot;ElectricalOven&quot;&gt;
-            &lt;dhc:description&gt;A ElectricalOven instance named oven1&lt;/dhc:description&gt;
-            &lt;dhc:isIn&gt;kitchen&lt;/dhc:isIn&gt;
-            &lt;dhc:pluggedIn&gt;MainsPowerOutlet_p12_kitchen&lt;/dhc:pluggedIn&gt;
-            &lt;dhc:controlFunctionality class=&quot;OnOffFunctionality&quot;&gt;
-                &lt;dhc:commands&gt;
-                    &lt;dhc:command name=&quot;on&quot; class=&quot;OnCommand&quot;/&gt;
-                    &lt;dhc:command name=&quot;off&quot; class=&quot;OffCommand&quot;/&gt;
-                &lt;/dhc:commands&gt;
-            &lt;/dhc:controlFunctionality&gt;
-            &lt;dhc:controlFunctionality class=&quot;QueryFunctionality&quot;&gt;
-                &lt;dhc:commands&gt;
-                    &lt;dhc:command name=&quot;getState&quot; class=&quot;GetCommand&quot;/&gt;
-                &lt;/dhc:commands&gt;
-            &lt;/dhc:controlFunctionality&gt;
-            &lt;dhc:notificationFunctionality class=&quot;StateChangeNotificationFunctionality&quot;&gt;
-                &lt;dhc:notifications&gt;
-                    &lt;dhc:notification name=&quot;stateChanged&quot; class=&quot;StateChangeNotification&quot;&gt;
-                        &lt;dhc:param type=&quot;State&quot; name=&quot;notificationParamName&quot;/&gt;
-                    &lt;/dhc:notification&gt;
-                        &lt;/dhc:notifications&gt;
-                    &lt;/dhc:notificationFunctionality&gt;
-                    &lt;dhc:state class=&quot;OnOffState&quot;&gt;
-                        &lt;dhc:statevalues&gt;
-                            &lt;dhc:statevalue name=&quot;off&quot; class=&quot;OffStateValue&quot;/&gt;
-                            &lt;dhc:statevalue name=&quot;on&quot; class=&quot;OnStateValue&quot;/&gt;
-                        &lt;/dhc:statevalues&gt;
-                    &lt;/dhc:state&gt;
-                &lt;/dhc:device&gt;
-                &lt;dhc:device domoticSystem=&quot;KONNEX&quot; name=&quot;MainsPowerOutlet_p12_kitchen&quot; class=&quot;MainsPowerOutlet&quot;&gt;
-                    &lt;dhc:description&gt;A MainsPowerOutlet instance named MainsPowerOutlet_p12_kitchen&lt;/dhc:description&gt;
-                    &lt;dhc:isIn&gt;kitchen&lt;/dhc:isIn&gt;
-                    &lt;dhc:hasMeter&gt;energy_meter_1&lt;/dhc:hasMeter&gt;
-                    &lt;dhc:controlFunctionality class=&quot;OnOffFunctionality&quot;&gt;
-                        &lt;dhc:commands&gt;
-                            &lt;dhc:command name=&quot;on&quot; class=&quot;OnCommand&quot;/&gt;
-                            &lt;dhc:command name=&quot;off&quot; class=&quot;OffCommand&quot;/&gt;
-                        &lt;/dhc:commands&gt;
-                    &lt;/dhc:controlFunctionality&gt;
-                    &lt;dhc:notificationFunctionality class=&quot;StateChangeNotificationFunctionality&quot;&gt;
-                        &lt;dhc:notifications&gt;
-                            &lt;dhc:notification name=&quot;stateChanged&quot; class=&quot;StateChangeNotification&quot;&gt;
-                                &lt;dhc:param type=&quot;State&quot; name=&quot;notificationParamName&quot;/&gt;
-                            &lt;/dhc:notification&gt;
-                        &lt;/dhc:notifications&gt;
-                    &lt;/dhc:notificationFunctionality&gt;
-                    &lt;dhc:state class=&quot;OnOffState&quot;&gt;
-                        &lt;dhc:statevalues&gt;
-                            &lt;dhc:statevalue name=&quot;on&quot; class=&quot;OnStateValue&quot;/&gt;
-                            &lt;dhc:statevalue name=&quot;off&quot; class=&quot;OffStateValue&quot;/&gt;
-                        &lt;/dhc:statevalues&gt;
-                    &lt;/dhc:state&gt;
-                &lt;/dhc:device&gt;
-            &lt;/dhc:controllables&gt;
-    &lt;/dhc:dogHomeConfiguration&gt;
+-- REQUEST-BODY: --
+
+{
+    &quot;value&quot; : &quot;63&quot;
+}
+</code></pre>
+
+<p>(deprecated) </p>
+
+<pre><code>POST http://www.mydog.com/devices/MainsPowerOutlet_p12_kitchen/commands/off
 </code></pre>
 
 <p></div>
@@ -517,19 +859,19 @@
 </tr>
 <tr>
 	<td style="text-align:left;">Response Format</td>
-	<td style="text-align:left;"><strong>json</strong> or <strong>xml</strong></td>
+	<td style="text-align:left;"><strong>json</strong></td>
 </tr>
 <tr>
 	<td style="text-align:left;">HTTP Methods</td>
-	<td style="text-align:left;"><strong>GET</strong></td>
+	<td style="text-align:left;"><strong>PUT</strong> or <strong>POST</strong></td>
 </tr>
 <tr>
 	<td style="text-align:left;">Resource family</td>
-	<td style="text-align:left;"><strong>devices</strong></td>
+	<td style="text-align:left;"><strong>device</strong></td>
 </tr>
 <tr>
 	<td style="text-align:left;">Response Object</td>
-	<td style="text-align:left;"><strong>Array [ Device ]</strong></td>
+	<td style="text-align:left;"><strong>none</strong></td>
 </tr>
 <tr>
 	<td style="text-align:left;">API Version</td>
@@ -537,9 +879,9 @@
 </tr>
 </tbody>
 </table>
-</div>
-</div>
-</div>
+
+<p></div>
+</div></p>
 <div class="row-fluid" >
 <div class="span3" ></div>
 <div class="span9" >
@@ -551,7 +893,7 @@
 <div class="span3" ></div>
 <div class="span6" >
 
-<h5 id="devicesConfiguration">Handling the gateway configuration</h5>
+<h4 id="dogConfiguration">Resource /dog/configuration</h4>
 
 <p><em>URL:</em> /dog/configuration</p>
 
@@ -613,11 +955,11 @@
 </tr>
 <tr>
 	<td style="text-align:left;">Resource family</td>
-	<td style="text-align:left;"><strong>statuses</strong></td>
+	<td style="text-align:left;"><strong>configuration</strong></td>
 </tr>
 <tr>
 	<td style="text-align:left;">Response Object</td>
-	<td style="text-align:left;"><strong>DeviceStates</strong></td>
+	<td style="text-align:left;"><strong>DeviceConfigurations</strong></td>
 </tr>
 <tr>
 	<td style="text-align:left;">API Version</td>
