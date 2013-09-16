@@ -53,7 +53,7 @@ APIs allow to:
 
 #### Function summary ####
 
-||
+|||
 |----|----|
 |[Resource /devices](#devices)|Represents domotic devices handled by Dog and "controllable" by applications using this API. |
 |[Resource /devices/{device-id} ](#singleDevice)|Represents a single domotic device handled by Dog, identified by a unique device-id (currently encoded in the *name* attribute fo the XML response to the [GET /devices](#devices) request, and "controllable" by applications using this API. |
@@ -74,7 +74,7 @@ APIs allow to:
 <div class="span3" markdown="1"></div>
 <div class="span6" markdown="1">
 
-#### Resource /devices [devices] ####
+#### Resource /devices <a id="devices"></a> ####
 
 *Updated on Thu, 2013-09-05* <span class="label label-info pull-right">API version 1.0</span>
 
@@ -181,7 +181,7 @@ Represents domotic devices handled by Dog and "controllable" by applications usi
 
 #### Resource Information ####
 
-||
+|||
 |----------------|------------------|
 |Authentication |**Requires app key**|
 |Response Format|**json** or **xml**|
@@ -206,7 +206,7 @@ Represents domotic devices handled by Dog and "controllable" by applications usi
 <div class="span3" markdown="1"></div>
 <div class="span6" markdown="1">
 
-#### Resource /devices/{device-id}[singleDevice]####
+#### Resource /devices/{device-id} <a id="singleDevice"></a>####
 
 *Updated on Fri, 2013-09-06* <span class="label label-info pull-right">API version 1.0</span>
 
@@ -317,7 +317,7 @@ and "controllable" by applications using this API.
 
 #### Resource Information ####
 
-||
+|||
 |----------------|------------------|
 |Authentication |**Requires app key**|
 |Response Format|**json** or **xml**|
@@ -343,11 +343,11 @@ and "controllable" by applications using this API.
 <div class="span3" markdown="1"></div>
 <div class="span6" markdown="1">
 
-#### Resource /devices/status [status]####
+#### Resource /devices/status <a id="status"></a>####
 
 *Updated on Thu, 2013-09-05* <span class="label label-info pull-right">API version 1.0</span>
 
-Represents the status of devices registered in the Dog gateway runtime, i.e., defined in the Dog [configuration][devicesConfiguration] and successfully registered within the gateway runtime.
+Represents the status of devices registered in the Dog gateway runtime, i.e., defined in the Dog [configuration](#devicesConfiguration) and successfully registered within the gateway runtime.
 
 **URL:** /devices/status
 
@@ -560,7 +560,7 @@ Represents the status of devices registered in the Dog gateway runtime, i.e., de
 <div class="well" markdown="1">
 
 #### Resource Information ####
-||
+|||
 |----------------|------------------|
 |Authentication |**Requires app key**|
 |Response Format|**json**|
@@ -586,7 +586,7 @@ Represents the status of devices registered in the Dog gateway runtime, i.e., de
 <div class="span3" markdown="1"></div>
 <div class="span6" markdown="1">
 
-#### Resource /devices/{device-id}/commands/{command-name} [command]####
+#### Resource /devices/{device-id}/commands/{command-name} <a id="command"></a>####
 
 *Updated on Fri, 2013-09-06* <span class="label label-info pull-right">API version 1.0</span>
 
@@ -627,7 +627,7 @@ If the command brings the device in same state in which the device is, no differ
 
 #### Resource Information ####
 
-||
+|||
 |----------------|------------------|
 |Authentication |**Requires app key**|
 |Response Format|**json**|
@@ -652,7 +652,7 @@ If the command brings the device in same state in which the device is, no differ
 <div class="span6" markdown="1">
 
 
-#### Resource /dog/configuration [dogConfiguration]####
+#### Resource /dog/configuration <a id="dogConfiguration"></a>####
 
 *URL:* /dog/configuration
 
@@ -667,7 +667,7 @@ If the command brings the device in same state in which the device is, no differ
 
 #### Resource Information ####
 
-||
+|||
 |----------------|------------------|
 |Authentication |**Requires app key**|
 |Response Format|**json**|
