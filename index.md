@@ -10,16 +10,39 @@ CSS: ./css/custom.css
 
 --------------------
 
-<div class="well" markdown="1">
+<div class="accordion" id="menu" markdown="1">
+<div class="accordion-group" markdown="1">
+<div class="accordion-heading" markdown="1">
+<a class="accordion-toggle" data-toggle="collapse" data-parent="#menu" href="#collapseOne" markdown="1">
+Device API
+</a>
+</div>
+<div id="collapseOne" class="accordion-body collapse in" markdown="1">
+<div class="accordion-inner" markdown="1">
 
-* [Device API](#deviceAPI)
-	* [Devices](#devices)
-		* [Single Device](#singleDevice)
-	* [Status](#status)
-	* [Configuration](#dogConfiguration)
-	
+* [Devices](#devices)
+	* [Single Device](#singleDevice)
+* [Status](#status)
+* [Commands] (#command)
+* [Configuration](#dogConfiguration)
 
 </div>
+</div>
+</div>
+<div class="accordion-group" markdown="1">
+<div class="accordion-heading" markdown="1">
+<a class="accordion-toggle" data-toggle="collapse" data-parent="#menu" href="#collapseTwo" markdown="1">
+Rules API
+</a>
+</div>
+<div id="collapseTwo" class="accordion-body collapse" markdown="1">
+<div class="accordion-inner" markdown="1">
+* Definition
+</div>
+</div>
+</div>
+</div>
+
 </div>
 
 <div class="row-fluid" markdown="1">
@@ -90,9 +113,29 @@ Represents domotic devices handled by Dog and "controllable" by applications usi
 
 	GET http://www.mydog.com/devices
 
+<div class="accordion" id="devices-example" markdown="1">
+<div class="accordion-group" markdown="1">
+<div class="accordion-heading" markdown="1">
+<a class="accordion-toggle" data-toggle="collapse" data-parent="#devices-example" href="#devices-example-json" markdown="1">
 **Example Response (JSON)**
-
+</a>
+</div>
+<div id="devices-example-json" class="accordion-body collapse" markdown="1">
+<div class="accordion-inner" markdown="1">
+</div>
+</div>
+</div>
+<div class="accordion-group" markdown="1">
+<div class="accordion-heading" markdown="1">
+<a class="accordion-toggle" data-toggle="collapse" data-parent="#devices-example" href="#devices-example-xml" markdown="1">
 **Example Response (XML)**
+</a>
+</div>
+<div id="devices-example-xml" class="accordion-body collapse" markdown="1">
+<div class="accordion-inner" markdown="1">
+
+
+
 
     <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
  	  	<dhc:dogHomeConfiguration>
@@ -174,7 +217,10 @@ Represents domotic devices handled by Dog and "controllable" by applications usi
                 </dhc:controllables>
 		</dhc:dogHomeConfiguration>
 
-
+</div>
+</div>
+</div>
+</div>
 </div>
 <div class="span3" markdown="1">
 <div class="well" markdown="1">
@@ -222,8 +268,16 @@ and "controllable" by applications using this API.
 **Example Request**
 
    GET http://www.mydog.com/devices/MainsPowerOutlet_p12_kitchen
-   
+
+<div class="accordion" id="devices-single-example" markdown="1">
+<div class="accordion-group" markdown="1">
+<div class="accordion-heading" markdown="1">
+<a class="accordion-toggle" data-toggle="collapse" data-parent="#devices-single-example" href="#devices-single-example-json" markdown="1">
 **Example Response (JSON)**
+</a>
+</div>
+<div id="devices-single-example-json" class="accordion-body collapse" markdown="1">
+<div class="accordion-inner" markdown="1">
 
    	{
    		"id" : "MainsPowerOutlet_p12_kitchen",
@@ -285,7 +339,17 @@ and "controllable" by applications using this API.
    		]	
    	}
 
+</div>
+</div>
+</div>
+<div class="accordion-group" markdown="1">
+<div class="accordion-heading" markdown="1">
+<a class="accordion-toggle" data-toggle="collapse" data-parent="#devices-single-example" href="#devices-single-example-xml" markdown="1">
 **Example Response (XML)**
+</a>
+</div>
+<div id="devices-single-example-xml" class="accordion-body collapse" markdown="1">
+<div class="accordion-inner" markdown="1">
 
     <dhc:device domoticSystem="KONNEX" name="MainsPowerOutlet_p12_kitchen" class="MainsPowerOutlet">
 		<dhc:description>A MainsPowerOutlet instance named MainsPowerOutlet_p12_kitchen</dhc:description>
@@ -311,6 +375,10 @@ and "controllable" by applications using this API.
 			</dhc:statevalues>
 		</dhc:state>
 	</dhc:device>
+</div>
+</div>
+</div>
+</div>
 </div>
 <div class="span3" markdown="1">
 <div class="well" markdown="1">
@@ -359,7 +427,15 @@ Represents the status of devices registered in the Dog gateway runtime, i.e., de
 
 	GET http://www.mydog.com/devices/status
 
-**Example Response**
+<div class="accordion" id="devices-status-example" markdown="1">
+<div class="accordion-group" markdown="1">
+<div class="accordion-heading" markdown="1">
+<a class="accordion-toggle" data-toggle="collapse" data-parent="#devices-status-example" href="#devices-status-example-json" markdown="1">
+**Example Response (JSON)**
+</a>
+</div>
+<div id="devices-status-example-json" class="accordion-body collapse" markdown="1">
+<div class="accordion-inner" markdown="1">
 
 	{
 	"devices":[
@@ -556,6 +632,21 @@ Represents the status of devices registered in the Dog gateway runtime, i.e., de
 	]
 	}
 </div>
+</div>
+</div>
+<div class="accordion-group" markdown="1">
+<div class="accordion-heading" markdown="1">
+<a class="accordion-toggle" data-toggle="collapse" data-parent="#devices-status-example" href="#devices-status-example-xml" markdown="1">
+**Example Response (XML)**
+</a>
+</div>
+<div id="devices-status-example-xml" class="accordion-body collapse" markdown="1">
+<div class="accordion-inner" markdown="1">
+</div>
+</div>
+</div>
+</div>
+</div>
 <div class="span3" markdown="1">
 <div class="well" markdown="1">
 
@@ -601,8 +692,15 @@ If the command brings the device in same state in which the device is, no differ
 | PUT | sends the command identified by the given *command-name*|
 | POST | sends the command identified by the given *command-name* (deprecated)|
 
+<div class="accordion" id="devices-command-example" markdown="1">
+<div class="accordion-group" markdown="1">
+<div class="accordion-heading" markdown="1">
+<a class="accordion-toggle" data-toggle="collapse" data-parent="#devices-command-example" href="#devices-command-example-json" markdown="1">
 **Example Requests**
-
+</a>
+</div>
+<div id="devices-command-example-json" class="accordion-body collapse" markdown="1">
+<div class="accordion-inner" markdown="1">
 (simple command)
 
     PUT http://www.mydog.com/devices/MainsPowerOutlet_p12_kitchen/commands/on
@@ -620,7 +718,10 @@ If the command brings the device in same state in which the device is, no differ
 (deprecated)    
    
     POST http://www.mydog.com/devices/MainsPowerOutlet_p12_kitchen/commands/off
-
+</div>
+</div>
+</div>
+</div>
 </div>
 <div class="span3" markdown="1">
 <div class="well" markdown="1">

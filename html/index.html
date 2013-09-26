@@ -7,17 +7,21 @@
 	<link type="text/css" rel="stylesheet" href="./css/custom.css"/>
 </head>
 <body>
-
-<p><div class="container-fluid" >
-<div class="navbar navbar-fixed-top span3" ></p>
+<div class="container-fluid" >
+<div class="navbar navbar-fixed-top span3" >
 
 <h4 id="summary">Summary</h4>
 
 <hr />
-<div class="well" >
-
-<ul>
-<li><a href="#deviceAPI">Device API</a>
+<div class="accordion"  id="menu" >
+<div class="accordion-group" >
+<div class="accordion-heading" >
+<a class="accordion-toggle" data-toggle="collapse" data-parent="#menu" href="#collapseOne" markdown="1">
+Device API
+</a>
+</div>
+<div id="collapseOne"  class="accordion-body collapse in" >
+<div class="accordion-inner" >
 
 <ul>
 <li><a href="#devices">Devices</a>
@@ -26,10 +30,26 @@
 <li><a href="#singleDevice">Single Device</a></li>
 </ul></li>
 <li><a href="#status">Status</a></li>
+<li><a href="#command">Commands</a></li>
 <li><a href="#dogConfiguration">Configuration</a></li>
-</ul></li>
 </ul>
+
+<p></div>
 </div>
+</div>
+<div class="accordion-group" >
+<div class="accordion-heading" >
+<a class="accordion-toggle" data-toggle="collapse" data-parent="#menu" href="#collapseTwo" markdown="1">
+Rules API
+</a>
+</div>
+<div id="collapseTwo"  class="accordion-body collapse" >
+<div class="accordion-inner" >
+* Definition
+</div>
+</div>
+</div>
+</div></p>
 
 <p></div></p>
 <div class="row-fluid" >
@@ -38,7 +58,8 @@
 <div class="page-header" >
 
 <h2 id="dogrestapi-documentation">Dog RestAPI - Documentation</h2>
-</div>
+
+<p></div></p>
 
 <p>The Dog RestAPI allows developers to easily integrate home and building automation into their applications, be they web applications, smartphone (Android, iOS) apps or standalone programs.</p>
 
@@ -111,17 +132,17 @@
 </tr>
 </tbody>
 </table>
+<hr />
+
+<h3 id="deviceapi">Device API</h3>
 
 <hr />
 
-<h3 id="deviceAPI">Device API</h3>
-
-<hr />
-</div>
+<p></div>
 </div>
 <div class="row-fluid" >
 <div class="span3" ></div>
-<div class="span6" >
+<div class="span6" ></p>
 
 <h4 id="resourcedevicesaiddevicesa">Resource /devices <a id="devices"></a></h4>
 
@@ -151,15 +172,30 @@
 </tr>
 </tbody>
 </table>
-
 <p><strong>Example Request</strong></p>
 
 <pre><code>GET http://www.mydog.com/devices
 </code></pre>
-
-<p><strong>Example Response (JSON)</strong></p>
-
-<p><strong>Example Response (XML)</strong></p>
+<div class="accordion"  id="devices-example" >
+<div class="accordion-group" >
+<div class="accordion-heading" >
+<a class="accordion-toggle" data-toggle="collapse" data-parent="#devices-example" href="#devices-example-json" markdown="1">
+<strong>Example Response (JSON)</strong>
+</a>
+</div>
+<div id="devices-example-json"  class="accordion-body collapse" >
+<div class="accordion-inner" >
+</div>
+</div>
+</div>
+<div class="accordion-group" >
+<div class="accordion-heading" >
+<a class="accordion-toggle" data-toggle="collapse" data-parent="#devices-example" href="#devices-example-xml" markdown="1">
+<strong>Example Response (XML)</strong>
+</a>
+</div>
+<div id="devices-example-xml"  class="accordion-body collapse" >
+<div class="accordion-inner" >
 
 <pre><code>&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot; standalone=&quot;yes&quot;?&gt;
     &lt;dhc:dogHomeConfiguration&gt;
@@ -243,6 +279,10 @@
 </code></pre>
 
 <p></div>
+</div>
+</div>
+</div>
+</div>
 <div class="span3" >
 <div class="well" ></p>
 
@@ -287,18 +327,18 @@
 </tr>
 </tbody>
 </table>
+<p></div>
 </div>
-</div>
-</div>
+</div></p>
 <div class="row-fluid" >
 <div class="span3" ></div>
 <div class="span9" >
 
 <hr />
-</div>
-</div>
 
-<p><div class="row-fluid" >
+<p></div>
+</div>
+<div class="row-fluid" >
 <div class="span3" ></div>
 <div class="span6" ></p>
 
@@ -331,12 +371,18 @@ and &#8220;controllable&#8221; by applications using this API. </p>
 </tr>
 </tbody>
 </table>
-
 <p><strong>Example Request</strong></p>
 
 <p>GET http://www.mydog.com/devices/MainsPowerOutlet_p12_kitchen</p>
-
-<p><strong>Example Response (JSON)</strong></p>
+<div class="accordion"  id="devices-single-example" >
+<div class="accordion-group" >
+<div class="accordion-heading" >
+<a class="accordion-toggle" data-toggle="collapse" data-parent="#devices-single-example" href="#devices-single-example-json" markdown="1">
+<strong>Example Response (JSON)</strong>
+</a>
+</div>
+<div id="devices-single-example-json"  class="accordion-body collapse" >
+<div class="accordion-inner" >
 
 <pre><code>{
     &quot;id&quot; : &quot;MainsPowerOutlet_p12_kitchen&quot;,
@@ -399,7 +445,17 @@ and &#8220;controllable&#8221; by applications using this API. </p>
 }
 </code></pre>
 
-<p><strong>Example Response (XML)</strong></p>
+<p></div>
+</div>
+</div>
+<div class="accordion-group" >
+<div class="accordion-heading" >
+<a class="accordion-toggle" data-toggle="collapse" data-parent="#devices-single-example" href="#devices-single-example-xml" markdown="1">
+<strong>Example Response (XML)</strong>
+</a>
+</div>
+<div id="devices-single-example-xml"  class="accordion-body collapse" >
+<div class="accordion-inner" ></p>
 
 <pre><code>&lt;dhc:device domoticSystem=&quot;KONNEX&quot; name=&quot;MainsPowerOutlet_p12_kitchen&quot; class=&quot;MainsPowerOutlet&quot;&gt;
     &lt;dhc:description&gt;A MainsPowerOutlet instance named MainsPowerOutlet_p12_kitchen&lt;/dhc:description&gt;
@@ -428,6 +484,10 @@ and &#8220;controllable&#8221; by applications using this API. </p>
 </code></pre>
 
 <p></div>
+</div>
+</div>
+</div>
+</div>
 <div class="span3" >
 <div class="well" ></p>
 
@@ -472,7 +532,6 @@ and &#8220;controllable&#8221; by applications using this API. </p>
 </tr>
 </tbody>
 </table>
-
 <p></div>
 </div></p>
 <div class="row-fluid" >
@@ -481,8 +540,9 @@ and &#8220;controllable&#8221; by applications using this API. </p>
 <div class="span9" >
 
 <hr />
-</div>
-</div>
+
+<p></div>
+</div></p>
 <div class="row-fluid" >
 <div class="span3" ></div>
 <div class="span6" >
@@ -515,13 +575,19 @@ and &#8220;controllable&#8221; by applications using this API. </p>
 </tr>
 </tbody>
 </table>
-
 <p><strong>Example Request</strong></p>
 
 <pre><code>GET http://www.mydog.com/devices/status
 </code></pre>
-
-<p><strong>Example Response</strong></p>
+<div class="accordion"  id="devices-status-example" >
+<div class="accordion-group" >
+<div class="accordion-heading" >
+<a class="accordion-toggle" data-toggle="collapse" data-parent="#devices-status-example" href="#devices-status-example-json" markdown="1">
+<strong>Example Response (JSON)</strong>
+</a>
+</div>
+<div id="devices-status-example-json"  class="accordion-body collapse" >
+<div class="accordion-inner" >
 
 <pre><code>{
 &quot;devices&quot;:[
@@ -720,6 +786,21 @@ and &#8220;controllable&#8221; by applications using this API. </p>
 </code></pre>
 
 <p></div>
+</div>
+</div>
+<div class="accordion-group" >
+<div class="accordion-heading" >
+<a class="accordion-toggle" data-toggle="collapse" data-parent="#devices-status-example" href="#devices-status-example-xml" markdown="1">
+<strong>Example Response (XML)</strong>
+</a>
+</div>
+<div id="devices-status-example-xml"  class="accordion-body collapse" >
+<div class="accordion-inner" >
+</div>
+</div>
+</div>
+</div>
+</div>
 <div class="span3" >
 <div class="well" ></p>
 
@@ -764,16 +845,17 @@ and &#8220;controllable&#8221; by applications using this API. </p>
 </tr>
 </tbody>
 </table>
+<p></div>
 </div>
-</div>
-</div>
+</div></p>
 <div class="row-fluid" >
 <div class="span3" ></div>
 <div class="span9" >
 
 <hr />
-</div>
-</div>
+
+<p></div>
+</div></p>
 <div class="row-fluid" >
 <div class="span3" ></div>
 <div class="span6" >
@@ -812,10 +894,16 @@ If the command brings the device in same state in which the device is, no differ
 </tr>
 </tbody>
 </table>
-
-<p><strong>Example Requests</strong></p>
-
-<p>(simple command)</p>
+<div class="accordion"  id="devices-command-example" >
+<div class="accordion-group" >
+<div class="accordion-heading" >
+<a class="accordion-toggle" data-toggle="collapse" data-parent="#devices-command-example" href="#devices-command-example-json" markdown="1">
+<strong>Example Requests</strong>
+</a>
+</div>
+<div id="devices-command-example-json"  class="accordion-body collapse" >
+<div class="accordion-inner" >
+(simple command)
 
 <pre><code>PUT http://www.mydog.com/devices/MainsPowerOutlet_p12_kitchen/commands/on
 </code></pre>
@@ -837,6 +925,10 @@ If the command brings the device in same state in which the device is, no differ
 </code></pre>
 
 <p></div>
+</div>
+</div>
+</div>
+</div>
 <div class="span3" >
 <div class="well" ></p>
 
@@ -881,7 +973,6 @@ If the command brings the device in same state in which the device is, no differ
 </tr>
 </tbody>
 </table>
-
 <p></div>
 </div></p>
 <div class="row-fluid" >
@@ -889,11 +980,12 @@ If the command brings the device in same state in which the device is, no differ
 <div class="span9" >
 
 <hr />
-</div>
+
+<p></div>
 </div>
 <div class="row-fluid" >
 <div class="span3" ></div>
-<div class="span6" >
+<div class="span6" ></p>
 
 <h4 id="resourcedogconfigurationaiddogconfigurationa">Resource /dog/configuration <a id="dogConfiguration"></a></h4>
 
@@ -923,7 +1015,6 @@ If the command brings the device in same state in which the device is, no differ
 </tr>
 </tbody>
 </table>
-
 <p></div>
 <div class="span3" >
 <div class="well" ></p>
@@ -969,16 +1060,12 @@ If the command brings the device in same state in which the device is, no differ
 </tr>
 </tbody>
 </table>
+<p></div>
 </div>
 </div>
 </div>
-</div>
-
 <script src="./js/jquery.js"></script>
-
 <script src="./js/bootstrap.js"></script>
-
-<script src="./js/ajax.js"></script>
-
+<script src="./js/ajax.js"></script></p>
 </body>
 </html>
