@@ -266,6 +266,7 @@ and "controllable" by applications using this API.
 |Method|Description|
 |:-----|:----------|
 | GET |Returns the details of the device identified by the given {device-id} |
+| PUT |Update some details of the device identified by the given {device-id} |
 
 **Example Request**
 
