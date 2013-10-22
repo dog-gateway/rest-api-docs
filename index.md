@@ -1189,7 +1189,7 @@ Represents the environment (i.e., the building) configured in Dog.
 <div class="span3" markdown="1"></div>
 <div class="span6" markdown="1">
 
-#### Resource /environment/flats <a id="single-flat"></a> ####
+#### Resource /environment/flats <a id="flats"></a> ####
 
 *Updated on Thu, 2013-10-22* <span class="label label-info pull-right">API version 1.0</span>
 
@@ -1206,14 +1206,14 @@ Represents all the flats present in the environment (i.e., the building).
 
 	GET http://www.mydog.com/environment/flats
 
-<div class="accordion" id="single-flat-example" markdown="1">
+<div class="accordion" id="flats-example" markdown="1">
 <div class="accordion-group" markdown="1">
 <div class="accordion-heading" markdown="1">
-<a class="accordion-toggle" data-toggle="collapse" data-parent="#single-flat-example" href="#single-flat-example-json" markdown="1">
+<a class="accordion-toggle" data-toggle="collapse" data-parent="#flats-example" href="#flats-example-json" markdown="1">
 **Example Response (JSON)**
 </a>
 </div>
-<div id="single-flat-example-json" class="accordion-body collapse" markdown="1">
+<div id="flats-example-json" class="accordion-body collapse" markdown="1">
 <div class="accordion-inner" markdown="1">
 
 	{
@@ -1234,8 +1234,26 @@ Represents all the flats present in the environment (i.e., the building).
 					"description" : "Sam's bedroom"
 				}
 			]
+		},
+		{
+			"id" : "milan-flat",
+			"class" : "Flat",
+			"description" : "The flat I own in Milan",
+			"rooms":[
+				{
+					"id" : "kitchen",
+					"class" : "Kitchen",
+					"description" : "The kitchen"
+				},
+				{
+					"id" : "bathroom",
+					"class": "Bathroom",
+					"description" : "The only bathroom"
+				}
+			]
 		}
 	]
+	}
 
 </div>
 </div>
@@ -1274,6 +1292,7 @@ Represents all the flats present in the environment (i.e., the building).
 			}
 		]
 	}
+	
 </div>
 </div>
 </div>
@@ -1292,6 +1311,309 @@ Represents all the flats present in the environment (i.e., the building).
 |HTTP Methods|**GET** or **POST**|
 |Resource family|**environment**|
 |Response Object|**Array [ Flat ]**|
+|API Version|**v1.0**|
+ 
+</div>
+</div>
+</div>
+
+<div class="row-fluid" markdown="1">
+<div class="span3" markdown="1"></div>
+<div class="span9" markdown="1">
+
+----------------------------------
+
+</div>
+</div>
+
+<div class="row-fluid" markdown="1">
+<div class="span3" markdown="1"></div>
+<div class="span6" markdown="1">
+
+#### Resource /environment/flats/{flat-id} <a id="single-flat"></a> ####
+
+*Updated on Thu, 2013-10-22* <span class="label label-info pull-right">API version 1.0</span>
+
+Represents a specific flat present in the environment (i.e., the building). 
+
+**URL:** /environment/flats
+
+|Method|Description|
+|:-----|:----------|
+| GET | Returns the details of the flat identified by the given *flat-id*. |
+| PUT | Update some properties of the flat identified by the given *flat-id*. |
+
+**GET: Example**
+
+	GET http://www.mydog.com/environment/flats/flat
+
+<div class="accordion" id="single-flat-example" markdown="1">
+<div class="accordion-group" markdown="1">
+<div class="accordion-heading" markdown="1">
+<a class="accordion-toggle" data-toggle="collapse" data-parent="#single-flat-example" href="#single-flat-example-json" markdown="1">
+**Example Response (JSON)**
+</a>
+</div>
+<div id="single-flat-example-json" class="accordion-body collapse" markdown="1">
+<div class="accordion-inner" markdown="1">
+
+	{
+		"id" : "flat",
+		"class" : "Flat",
+		"description" : "The flat I rent in Turin",
+		"rooms":[
+			{
+				"id" : "kitchen",
+				"class" : "Kitchen",
+				"description" : "The best room in the house"
+			},
+			{
+				"id" : "sam_bedroom",
+				"class": "Bedroom",
+				"description" : "Sam's bedroom"
+			}
+		]
+	}
+
+</div>
+</div>
+</div>
+</div>
+
+**PUT: Example**
+<div class="accordion" id="update-flat-example" markdown="1">
+<div class="accordion-group" markdown="1">
+<div class="accordion-heading" markdown="1">
+<a class="accordion-toggle" data-toggle="collapse" data-parent="#update-flat-example" href="#update-flat-example-json" markdown="1">
+**Example Request**
+</a>
+</div>
+<div id="update-flat-example-json" class="accordion-body collapse" markdown="1">
+<div class="accordion-inner" markdown="1">
+
+	PUT http://www.mydog.com/environment/flats/flat
+	
+	-- REQUEST-BODY: --
+	
+	{
+		"description" : "The flat where I grew"
+	}
+</div>
+</div>
+</div>
+</div>
+
+</div>
+<div class="span3" markdown="1">
+<div class="well" markdown="1">
+
+#### Resource Information ####
+
+|||
+|----------------|------------------|
+|Authentication |**Requires app key**|
+|Response Format|**json**|
+|HTTP Methods|**GET** or **PUT**|
+|Resource family|**environment**|
+|Response Object|**Flat**|
+|API Version|**v1.0**|
+ 
+</div>
+</div>
+</div>
+
+<div class="row-fluid" markdown="1">
+<div class="span3" markdown="1"></div>
+<div class="span9" markdown="1">
+
+----------------------------------
+
+</div>
+</div>
+
+<div class="row-fluid" markdown="1">
+<div class="span3" markdown="1"></div>
+<div class="span6" markdown="1">
+
+#### Resource /environment/flats/{flat-id}/rooms <a id="rooms-in-flat"></a> ####
+
+*Updated on Thu, 2013-10-22* <span class="label label-info pull-right">API version 1.0</span>
+
+Represents all the rooms present in a given flat. 
+
+**URL:** /environment/flats
+
+|Method|Description|
+|:-----|:----------|
+| GET | List all the rooms present in the flat identified by the given *flat-id*. |
+| POST | Add a new room to the flat identified by the given *flat-id*. |
+
+**GET: Example**
+
+	GET http://www.mydog.com/environment/flats/flat/rooms
+
+<div class="accordion" id="rooms-in-flat-example" markdown="1">
+<div class="accordion-group" markdown="1">
+<div class="accordion-heading" markdown="1">
+<a class="accordion-toggle" data-toggle="collapse" data-parent="#rooms-in-flat-example" href="#rooms-in-flat-example-json" markdown="1">
+**Example Response (JSON)**
+</a>
+</div>
+<div id="rooms-in-flat-example-json" class="accordion-body collapse" markdown="1">
+<div class="accordion-inner" markdown="1">
+
+	{
+	"rooms":[
+		{
+			"id" : "kitchen",
+			"class" : "Kitchen",
+			"description" : "The best room in the house"
+		},
+		{
+			"id" : "sam_bedroom",
+			"class": "Bedroom",
+			"description" : "Sam's bedroom"
+		}
+	]
+	}
+
+</div>
+</div>
+</div>
+</div>
+
+**POST: Example**
+<div class="accordion" id="add-room-in-flat-example" markdown="1">
+<div class="accordion-group" markdown="1">
+<div class="accordion-heading" markdown="1">
+<a class="accordion-toggle" data-toggle="collapse" data-parent="#add-room-in-flat-example" href="#add-room-in-flat-example-json" markdown="1">
+**Example Request**
+</a>
+</div>
+<div id="add-room-in-flat-example-json" class="accordion-body collapse" markdown="1">
+<div class="accordion-inner" markdown="1">
+
+	POST http://www.mydog.com/environment/flats/flat/rooms
+	
+	-- REQUEST-BODY: --
+	
+	{
+		"id" : "bedroom",
+		"class": "Bedroom",
+		"description" : "My bedroom"
+	}
+	
+</div>
+</div>
+</div>
+</div>
+
+</div>
+<div class="span3" markdown="1">
+<div class="well" markdown="1">
+
+#### Resource Information ####
+
+|||
+|----------------|------------------|
+|Authentication |**Requires app key**|
+|Response Format|**json**|
+|HTTP Methods|**GET** or **POST**|
+|Resource family|**environment**|
+|Response Object|**Array [ Rooms ]**|
+|API Version|**v1.0**|
+ 
+</div>
+</div>
+</div>
+
+<div class="row-fluid" markdown="1">
+<div class="span3" markdown="1"></div>
+<div class="span9" markdown="1">
+
+----------------------------------
+
+</div>
+</div>
+
+<div class="row-fluid" markdown="1">
+<div class="span3" markdown="1"></div>
+<div class="span6" markdown="1">
+
+#### Resource /environment/flats/{flat-id}/rooms/{room-id} <a id="single-room-in-flat"></a> ####
+
+*Updated on Thu, 2013-10-22* <span class="label label-info pull-right">API version 1.0</span>
+
+Represents a specific room in the flat identified by the given *flat-id*. 
+
+**URL:** /environment/flats/{flat-id}/rooms/{room-id}
+
+|Method|Description|
+|:-----|:----------|
+| GET | Returns the details of the room identified by the given *room-id* and located in the given flat. |
+| PUT | Update some properties of the room identified by the given *room-id* and located in the given flat. |
+
+**GET: Example**
+
+	GET http://www.mydog.com/environment/flats/flat/rooms/kitchen
+
+<div class="accordion" id="single-room-in-flat-example" markdown="1">
+<div class="accordion-group" markdown="1">
+<div class="accordion-heading" markdown="1">
+<a class="accordion-toggle" data-toggle="collapse" data-parent="#single-room-in-flat-example" href="#single-room-in-flat-example-json" markdown="1">
+**Example Response (JSON)**
+</a>
+</div>
+<div id="single-room-in-flat-example-json" class="accordion-body collapse" markdown="1">
+<div class="accordion-inner" markdown="1">
+
+	{
+		"id" : "kitchen",
+		"class" : "Kitchen",
+		"description" : "The best room in the house"
+	}
+
+</div>
+</div>
+</div>
+</div>
+
+**PUT: Example**
+<div class="accordion" id="update-single-room-in-flat-example" markdown="1">
+<div class="accordion-group" markdown="1">
+<div class="accordion-heading" markdown="1">
+<a class="accordion-toggle" data-toggle="collapse" data-parent="#update-single-room-in-flat-example" href="#update-single-room-in-flat-example-json" markdown="1">
+**Example Request**
+</a>
+</div>
+<div id="update-single-room-in-flat-example-json" class="accordion-body collapse" markdown="1">
+<div class="accordion-inner" markdown="1">
+
+	PUT http://www.mydog.com/environment/flats/flat/rooms/kitchen
+	
+	-- REQUEST-BODY: --
+	
+	{
+		"description" : "The room I love: the kitchen"
+	}
+</div>
+</div>
+</div>
+</div>
+
+</div>
+<div class="span3" markdown="1">
+<div class="well" markdown="1">
+
+#### Resource Information ####
+
+|||
+|----------------|------------------|
+|Authentication |**Requires app key**|
+|Response Format|**json**|
+|HTTP Methods|**GET** or **PUT**|
+|Resource family|**environment**|
+|Response Object|**Room**|
 |API Version|**v1.0**|
  
 </div>

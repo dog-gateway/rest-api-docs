@@ -1594,7 +1594,7 @@ If the command brings the device in same state in which the device is, no differ
 <div class="span3" ></div>
 <div class="span6" >
 
-<h4 id="resourceenvironmentflatsaidsingle-flata">Resource /environment/flats <a id="single-flat"></a></h4>
+<h4 id="resourceenvironmentflatsaidflatsa">Resource /environment/flats <a id="flats"></a></h4>
 
 <p><em>Updated on Thu, 2013&#8211;10&#8211;22</em> <span class="label label-info pull-right">API version 1.0</span></p>
 
@@ -1631,14 +1631,14 @@ If the command brings the device in same state in which the device is, no differ
 
 <pre><code>GET http://www.mydog.com/environment/flats
 </code></pre>
-<div class="accordion"  id="single-flat-example" >
+<div class="accordion"  id="flats-example" >
 <div class="accordion-group" >
 <div class="accordion-heading" >
-<a class="accordion-toggle" data-toggle="collapse" data-parent="#single-flat-example" href="#single-flat-example-json" markdown="1">
+<a class="accordion-toggle" data-toggle="collapse" data-parent="#flats-example" href="#flats-example-json" markdown="1">
 <strong>Example Response (JSON)</strong>
 </a>
 </div>
-<div id="single-flat-example-json"  class="accordion-body collapse" >
+<div id="flats-example-json"  class="accordion-body collapse" >
 <div class="accordion-inner" >
 
 <pre><code>{
@@ -1659,8 +1659,26 @@ If the command brings the device in same state in which the device is, no differ
                 &quot;description&quot; : &quot;Sam's bedroom&quot;
             }
         ]
+    },
+    {
+        &quot;id&quot; : &quot;milan-flat&quot;,
+        &quot;class&quot; : &quot;Flat&quot;,
+        &quot;description&quot; : &quot;The flat I own in Milan&quot;,
+        &quot;rooms&quot;:[
+            {
+                &quot;id&quot; : &quot;kitchen&quot;,
+                &quot;class&quot; : &quot;Kitchen&quot;,
+                &quot;description&quot; : &quot;The kitchen&quot;
+            },
+            {
+                &quot;id&quot; : &quot;bathroom&quot;,
+                &quot;class&quot;: &quot;Bathroom&quot;,
+                &quot;description&quot; : &quot;The only bathroom&quot;
+            }
+        ]
     }
 ]
+}
 </code></pre>
 </div>
 </div>
@@ -1744,6 +1762,455 @@ If the command brings the device in same state in which the device is, no differ
 <tr>
 	<td style="text-align:left;">Response Object</td>
 	<td style="text-align:left;"><strong>Array [ Flat ]</strong></td>
+</tr>
+<tr>
+	<td style="text-align:left;">API Version</td>
+	<td style="text-align:left;"><strong>v1.0</strong></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+<div class="row-fluid" >
+<div class="span3" ></div>
+<div class="span9" >
+
+<hr />
+</div>
+</div>
+<div class="row-fluid" >
+<div class="span3" ></div>
+<div class="span6" >
+
+<h4 id="resourceenvironmentflatsflat-idaidsingle-flata">Resource /environment/flats/{flat-id} <a id="single-flat"></a></h4>
+
+<p><em>Updated on Thu, 2013&#8211;10&#8211;22</em> <span class="label label-info pull-right">API version 1.0</span></p>
+
+<p>Represents a specific flat present in the environment (i.e., the building). </p>
+
+<p><strong>URL:</strong> /environment/flats</p>
+
+<table>
+<colgroup>
+<col style="text-align:left;"/>
+<col style="text-align:left;"/>
+</colgroup>
+
+<thead>
+<tr>
+	<th style="text-align:left;">Method</th>
+	<th style="text-align:left;">Description</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+	<td style="text-align:left;">GET</td>
+	<td style="text-align:left;">Returns the details of the flat identified by the given <em>flat-id</em>.</td>
+</tr>
+<tr>
+	<td style="text-align:left;">PUT</td>
+	<td style="text-align:left;">Update some properties of the flat identified by the given <em>flat-id</em>.</td>
+</tr>
+</tbody>
+</table>
+
+<p><strong>GET: Example</strong></p>
+
+<pre><code>GET http://www.mydog.com/environment/flats/flat
+</code></pre>
+<div class="accordion"  id="single-flat-example" >
+<div class="accordion-group" >
+<div class="accordion-heading" >
+<a class="accordion-toggle" data-toggle="collapse" data-parent="#single-flat-example" href="#single-flat-example-json" markdown="1">
+<strong>Example Response (JSON)</strong>
+</a>
+</div>
+<div id="single-flat-example-json"  class="accordion-body collapse" >
+<div class="accordion-inner" >
+
+<pre><code>{
+    &quot;id&quot; : &quot;flat&quot;,
+    &quot;class&quot; : &quot;Flat&quot;,
+    &quot;description&quot; : &quot;The flat I rent in Turin&quot;,
+    &quot;rooms&quot;:[
+        {
+            &quot;id&quot; : &quot;kitchen&quot;,
+            &quot;class&quot; : &quot;Kitchen&quot;,
+            &quot;description&quot; : &quot;The best room in the house&quot;
+        },
+        {
+            &quot;id&quot; : &quot;sam_bedroom&quot;,
+            &quot;class&quot;: &quot;Bedroom&quot;,
+            &quot;description&quot; : &quot;Sam's bedroom&quot;
+        }
+    ]
+}
+</code></pre>
+</div>
+</div>
+</div>
+</div>
+
+<p><strong>PUT: Example</strong>
+<div class="accordion"  id="update-flat-example" >
+<div class="accordion-group" >
+<div class="accordion-heading" >
+<a class="accordion-toggle" data-toggle="collapse" data-parent="#update-flat-example" href="#update-flat-example-json" markdown="1">
+<strong>Example Request</strong>
+</a>
+</div>
+<div id="update-flat-example-json"  class="accordion-body collapse" >
+<div class="accordion-inner" ></p>
+
+<pre><code>PUT http://www.mydog.com/environment/flats/flat
+
+-- REQUEST-BODY: --
+
+{
+    &quot;description&quot; : &quot;The flat where I grew&quot;
+}
+</code></pre>
+
+<p></div>
+</div>
+</div>
+</div></p>
+
+<p></div>
+<div class="span3" >
+<div class="well" ></p>
+
+<h4 id="resourceinformation">Resource Information</h4>
+
+<table>
+<colgroup>
+<col style="text-align:left;"/>
+<col style="text-align:left;"/>
+</colgroup>
+
+<thead>
+<tr>
+	<th style="text-align:left;" colspan="2"></th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+	<td style="text-align:left;">Authentication</td>
+	<td style="text-align:left;"><strong>Requires app key</strong></td>
+</tr>
+<tr>
+	<td style="text-align:left;">Response Format</td>
+	<td style="text-align:left;"><strong>json</strong></td>
+</tr>
+<tr>
+	<td style="text-align:left;">HTTP Methods</td>
+	<td style="text-align:left;"><strong>GET</strong> or <strong>PUT</strong></td>
+</tr>
+<tr>
+	<td style="text-align:left;">Resource family</td>
+	<td style="text-align:left;"><strong>environment</strong></td>
+</tr>
+<tr>
+	<td style="text-align:left;">Response Object</td>
+	<td style="text-align:left;"><strong>Flat</strong></td>
+</tr>
+<tr>
+	<td style="text-align:left;">API Version</td>
+	<td style="text-align:left;"><strong>v1.0</strong></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+<div class="row-fluid" >
+<div class="span3" ></div>
+<div class="span9" >
+
+<hr />
+</div>
+</div>
+<div class="row-fluid" >
+<div class="span3" ></div>
+<div class="span6" >
+
+<h4 id="resourceenvironmentflatsflat-idroomsaidrooms-in-flata">Resource /environment/flats/{flat-id}/rooms <a id="rooms-in-flat"></a></h4>
+
+<p><em>Updated on Thu, 2013&#8211;10&#8211;22</em> <span class="label label-info pull-right">API version 1.0</span></p>
+
+<p>Represents all the rooms present in a given flat. </p>
+
+<p><strong>URL:</strong> /environment/flats</p>
+
+<table>
+<colgroup>
+<col style="text-align:left;"/>
+<col style="text-align:left;"/>
+</colgroup>
+
+<thead>
+<tr>
+	<th style="text-align:left;">Method</th>
+	<th style="text-align:left;">Description</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+	<td style="text-align:left;">GET</td>
+	<td style="text-align:left;">List all the rooms present in the flat identified by the given <em>flat-id</em>.</td>
+</tr>
+<tr>
+	<td style="text-align:left;">POST</td>
+	<td style="text-align:left;">Add a new room to the flat identified by the given <em>flat-id</em>.</td>
+</tr>
+</tbody>
+</table>
+
+<p><strong>GET: Example</strong></p>
+
+<pre><code>GET http://www.mydog.com/environment/flats/flat/rooms
+</code></pre>
+<div class="accordion"  id="rooms-in-flat-example" >
+<div class="accordion-group" >
+<div class="accordion-heading" >
+<a class="accordion-toggle" data-toggle="collapse" data-parent="#rooms-in-flat-example" href="#rooms-in-flat-example-json" markdown="1">
+<strong>Example Response (JSON)</strong>
+</a>
+</div>
+<div id="rooms-in-flat-example-json"  class="accordion-body collapse" >
+<div class="accordion-inner" >
+
+<pre><code>{
+&quot;rooms&quot;:[
+    {
+        &quot;id&quot; : &quot;kitchen&quot;,
+        &quot;class&quot; : &quot;Kitchen&quot;,
+        &quot;description&quot; : &quot;The best room in the house&quot;
+    },
+    {
+        &quot;id&quot; : &quot;sam_bedroom&quot;,
+        &quot;class&quot;: &quot;Bedroom&quot;,
+        &quot;description&quot; : &quot;Sam's bedroom&quot;
+    }
+]
+}
+</code></pre>
+</div>
+</div>
+</div>
+</div>
+
+<p><strong>POST: Example</strong>
+<div class="accordion"  id="add-room-in-flat-example" >
+<div class="accordion-group" >
+<div class="accordion-heading" >
+<a class="accordion-toggle" data-toggle="collapse" data-parent="#add-room-in-flat-example" href="#add-room-in-flat-example-json" markdown="1">
+<strong>Example Request</strong>
+</a>
+</div>
+<div id="add-room-in-flat-example-json"  class="accordion-body collapse" >
+<div class="accordion-inner" ></p>
+
+<pre><code>POST http://www.mydog.com/environment/flats/flat/rooms
+
+-- REQUEST-BODY: --
+
+{
+    &quot;id&quot; : &quot;bedroom&quot;,
+    &quot;class&quot;: &quot;Bedroom&quot;,
+    &quot;description&quot; : &quot;My bedroom&quot;
+}
+</code></pre>
+
+<p></div>
+</div>
+</div>
+</div></p>
+
+<p></div>
+<div class="span3" >
+<div class="well" ></p>
+
+<h4 id="resourceinformation">Resource Information</h4>
+
+<table>
+<colgroup>
+<col style="text-align:left;"/>
+<col style="text-align:left;"/>
+</colgroup>
+
+<thead>
+<tr>
+	<th style="text-align:left;" colspan="2"></th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+	<td style="text-align:left;">Authentication</td>
+	<td style="text-align:left;"><strong>Requires app key</strong></td>
+</tr>
+<tr>
+	<td style="text-align:left;">Response Format</td>
+	<td style="text-align:left;"><strong>json</strong></td>
+</tr>
+<tr>
+	<td style="text-align:left;">HTTP Methods</td>
+	<td style="text-align:left;"><strong>GET</strong> or <strong>POST</strong></td>
+</tr>
+<tr>
+	<td style="text-align:left;">Resource family</td>
+	<td style="text-align:left;"><strong>environment</strong></td>
+</tr>
+<tr>
+	<td style="text-align:left;">Response Object</td>
+	<td style="text-align:left;"><strong>Array [ Rooms ]</strong></td>
+</tr>
+<tr>
+	<td style="text-align:left;">API Version</td>
+	<td style="text-align:left;"><strong>v1.0</strong></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+<div class="row-fluid" >
+<div class="span3" ></div>
+<div class="span9" >
+
+<hr />
+</div>
+</div>
+<div class="row-fluid" >
+<div class="span3" ></div>
+<div class="span6" >
+
+<h4 id="resourceenvironmentflatsflat-idroomsroom-idaidsingle-room-in-flata">Resource /environment/flats/{flat-id}/rooms/{room-id} <a id="single-room-in-flat"></a></h4>
+
+<p><em>Updated on Thu, 2013&#8211;10&#8211;22</em> <span class="label label-info pull-right">API version 1.0</span></p>
+
+<p>Represents a specific room in the flat identified by the given <em>flat-id</em>. </p>
+
+<p><strong>URL:</strong> /environment/flats/{flat-id}/rooms/{room-id}</p>
+
+<table>
+<colgroup>
+<col style="text-align:left;"/>
+<col style="text-align:left;"/>
+</colgroup>
+
+<thead>
+<tr>
+	<th style="text-align:left;">Method</th>
+	<th style="text-align:left;">Description</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+	<td style="text-align:left;">GET</td>
+	<td style="text-align:left;">Returns the details of the room identified by the given <em>room-id</em> and located in the given flat.</td>
+</tr>
+<tr>
+	<td style="text-align:left;">PUT</td>
+	<td style="text-align:left;">Update some properties of the room identified by the given <em>room-id</em> and located in the given flat.</td>
+</tr>
+</tbody>
+</table>
+
+<p><strong>GET: Example</strong></p>
+
+<pre><code>GET http://www.mydog.com/environment/flats/flat/rooms/kitchen
+</code></pre>
+<div class="accordion"  id="single-room-in-flat-example" >
+<div class="accordion-group" >
+<div class="accordion-heading" >
+<a class="accordion-toggle" data-toggle="collapse" data-parent="#single-room-in-flat-example" href="#single-room-in-flat-example-json" markdown="1">
+<strong>Example Response (JSON)</strong>
+</a>
+</div>
+<div id="single-room-in-flat-example-json"  class="accordion-body collapse" >
+<div class="accordion-inner" >
+
+<pre><code>{
+    &quot;id&quot; : &quot;kitchen&quot;,
+    &quot;class&quot; : &quot;Kitchen&quot;,
+    &quot;description&quot; : &quot;The best room in the house&quot;
+}
+</code></pre>
+</div>
+</div>
+</div>
+</div>
+
+<p><strong>PUT: Example</strong>
+<div class="accordion"  id="update-single-room-in-flat-example" >
+<div class="accordion-group" >
+<div class="accordion-heading" >
+<a class="accordion-toggle" data-toggle="collapse" data-parent="#update-single-room-in-flat-example" href="#update-single-room-in-flat-example-json" markdown="1">
+<strong>Example Request</strong>
+</a>
+</div>
+<div id="update-single-room-in-flat-example-json"  class="accordion-body collapse" >
+<div class="accordion-inner" ></p>
+
+<pre><code>PUT http://www.mydog.com/environment/flats/flat/rooms/kitchen
+
+-- REQUEST-BODY: --
+
+{
+    &quot;description&quot; : &quot;The room I love: the kitchen&quot;
+}
+</code></pre>
+
+<p></div>
+</div>
+</div>
+</div></p>
+
+<p></div>
+<div class="span3" >
+<div class="well" ></p>
+
+<h4 id="resourceinformation">Resource Information</h4>
+
+<table>
+<colgroup>
+<col style="text-align:left;"/>
+<col style="text-align:left;"/>
+</colgroup>
+
+<thead>
+<tr>
+	<th style="text-align:left;" colspan="2"></th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+	<td style="text-align:left;">Authentication</td>
+	<td style="text-align:left;"><strong>Requires app key</strong></td>
+</tr>
+<tr>
+	<td style="text-align:left;">Response Format</td>
+	<td style="text-align:left;"><strong>json</strong></td>
+</tr>
+<tr>
+	<td style="text-align:left;">HTTP Methods</td>
+	<td style="text-align:left;"><strong>GET</strong> or <strong>PUT</strong></td>
+</tr>
+<tr>
+	<td style="text-align:left;">Resource family</td>
+	<td style="text-align:left;"><strong>environment</strong></td>
+</tr>
+<tr>
+	<td style="text-align:left;">Response Object</td>
+	<td style="text-align:left;"><strong>Room</strong></td>
 </tr>
 <tr>
 	<td style="text-align:left;">API Version</td>
