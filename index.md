@@ -39,7 +39,11 @@ Environment API
 <div id="collapseTwo" class="accordion-body collapse" markdown="1">
 <div class="accordion-inner" markdown="1">
 
-* Building
+* [Building](#environment)
+* [Flats](#flats)
+	* [Single Flat](#single-flat)
+* [Rooms](#rooms-in-flat)
+	*[Single Room](#single-room-in-flat)
 
 </div>
 </div>
@@ -82,7 +86,6 @@ APIs allow to:
 * manage information about the environment
 	* insert, update, modify or delete rooms;
 	* insert, update, modify or delete flats;
-	* insert, update, modify or delete storey;
 * manage rules and automation scenarios
 	* insert, update, modify or delete automation rules;
 	* insert, update, modify or delete scenarios;
@@ -106,8 +109,10 @@ APIs allow to:
 |[Resource /devices/{device-id}/status](#status-single)|Represents the status of the device identified by the given *device-id*, registered in the Dog gateway runtime, i.e., defined in the Dog [configuration][devicesConfiguration] and successfully registered within the gateway runtime.|
 |[Resource /devices/{device-id}/commands/{command-name} ](#command)|Represents a command, identified by a *command-name*, to be sent to the device identified by the given *device-id*. Commands are idempotent: the same command always results in the same behavior of the selected device. If the command brings the device in same state in which the device is, no differences will be appreciable.|
 |[Resource /dog/configuration](#dogConfiguration)| Unsupported, to be implemented in future... |
-|[Resource /environment](#environment)|Represents the environment (i.e., the building) configured or to be set in Dog.|
+|[Resource /environment](#environment)|Represents the environment (i.e., the building) configured in Dog.|
+|[Resource /environment/flats](#flats)|Represents all the flats present in the environment (i.e., the building).|
 |[Resource /environment/flats/{flat-id}](#single-flat)|Represents a specific flat present in the environment (i.e., the building).|
+|[Resource /environment/{flat-id}/rooms](#rooms-in-flat)|Represents all the rooms present in a given flat.|
 |[Resource /environment/{flat-id}/rooms/{room-id}](#single-room-in-flat)|Represents a specific room present in a given flat in the environment (i.e., the building).|
 
 
@@ -164,28 +169,7 @@ Represents domotic devices handled by Dog and "controllable" by applications usi
 
 
     <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
- 	  	<dhc:dogHomeConfiguration>
-        	<dhc:buildingEnvironment>
-            	<dhc:building name="SimpleHome">
-                	<dhc:flat class="Flat" svgfootprint="simple_home.svg" name="Flat">
-                    	<dhc:room class="Kitchen" name="kitchen">
-                        	<dhc:ceiling class="Ceiling" name="Ceiling_kitchen"/>
-                            <dhc:floor class="Floor" name="Floor_kitchen"/>
-                            <dhc:wall class="Wall" name="Wall_kitchen_south"/>
-                            <dhc:wall class="Wall" name="Wall_kicthen_west">
-                            	<dhc:hasWallOpening class="Window" name="Window_w4_kitchen"/>
-                            </dhc:wall>
-                            <dhc:wall class="Wall" name="Wall_kitchen_storage_lobby"/>
-                            <dhc:wall class="Wall" name="Wall_kitchen_lobby">
-                            	<dhc:hasWallOpening class="Door" name="Door_kitchen_lobby"/>
-                           	</dhc:wall>
-                            <dhc:wall class="Wall" name="Wall_kitchen_livingroom">
-                            	<dhc:hasWallOpening class="Door" name="Door_kitchen_living"/>
-                            </dhc:wall>
-                      	</dhc:room>
-                 	</dhc:flat>
-            	</dhc:building>
-      	</dhc:buildingEnvironment>
+ 	  <dhc:dogHomeConfiguration>
 		<dhc:controllables>
         	<dhc:device domoticSystem="ELITE" name="oven1" class="ElectricalOven">
             	<dhc:description>A ElectricalOven instance named oven1</dhc:description>
@@ -1079,6 +1063,187 @@ If the command brings the device in same state in which the device is, no differ
 ### Environment API [environmentAPI]###
 
 ---------------------------------
+
+</div>
+</div>
+
+<div class="row-fluid" markdown="1">
+<div class="span3" markdown="1"></div>
+<div class="span6" markdown="1">
+
+#### Resource /environment <a id="environment"></a> ####
+
+*Updated on Thu, 2013-10-22* <span class="label label-info pull-right">API version 1.0</span>
+
+Represents the environment (i.e., the building) configured in Dog. 
+
+**URL:** /environment
+
+|Method|Description|
+|:-----|:----------|
+| GET | List the building environments configured in the Dog gateway. |
+
+**Example Request**
+
+	GET http://www.mydog.com/environment
+
+<div class="accordion" id="environment-example" markdown="1">
+<div class="accordion-group" markdown="1">
+<div class="accordion-heading" markdown="1">
+<a class="accordion-toggle" data-toggle="collapse" data-parent="#environment-example" href="#environment-example-json" markdown="1">
+**Example Response (JSON)**
+</a>
+</div>
+<div id="environment-example-json" class="accordion-body collapse" markdown="1">
+<div class="accordion-inner" markdown="1">
+</div>
+</div>
+</div>
+<div class="accordion-group" markdown="1">
+<div class="accordion-heading" markdown="1">
+<a class="accordion-toggle" data-toggle="collapse" data-parent="#environment-example" href="#environment-example-xml" markdown="1">
+**Example Response (XML)**
+</a>
+</div>
+<div id="environment-example-xml" class="accordion-body collapse" markdown="1">
+<div class="accordion-inner" markdown="1">
+
+
+
+
+    <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+ 	  	<dhc:dogHomeConfiguration>
+        	<dhc:buildingEnvironment>
+            	<dhc:building name="SimpleHome">
+                	<dhc:flat class="Flat" svgfootprint="simple_home.svg" name="flat">
+                		<dhc:description>The flat I rent in Turin.</dhc:description>
+                    	<dhc:room class="Kitchen" name="kitchen">
+                    		<dhc:description>The best room in the house.</dhc:description>
+                        	<dhc:ceiling class="Ceiling" name="Ceiling_kitchen"/>
+                            <dhc:floor class="Floor" name="Floor_kitchen"/>
+                            <dhc:wall class="Wall" name="Wall_kitchen_south"/>
+                            <dhc:wall class="Wall" name="Wall_kicthen_west">
+                            	<dhc:hasWallOpening class="Window" name="Window_w4_kitchen"/>
+                            </dhc:wall>
+                            <dhc:wall class="Wall" name="Wall_kitchen_storage_lobby"/>
+                            <dhc:wall class="Wall" name="Wall_kitchen_lobby">
+                            	<dhc:hasWallOpening class="Door" name="Door_kitchen_lobby"/>
+                           	</dhc:wall>
+                            <dhc:wall class="Wall" name="Wall_kitchen_livingroom">
+                            	<dhc:hasWallOpening class="Door" name="Door_kitchen_living"/>
+                            </dhc:wall>
+                      	</dhc:room>
+                      	<dhc:room class="Bedroom" name="sam_bedroom">
+                    		<dhc:description>Sam's bedroom</dhc:description>
+                        	<dhc:ceiling class="Ceiling" name="Ceiling_sam_bedroom"/>
+                            <dhc:floor class="Floor" name="Floor_sam_bedroom"/>
+                            <dhc:wall class="Wall" name="Wall_sam_bedroom_south"/>
+                            <dhc:wall class="Wall" name="Wall_sam_bedroom_west">
+                            	<dhc:hasWallOpening class="Window" name="Window_w1_sam_bedroom"/>
+                            </dhc:wall>
+                            <dhc:wall class="Wall" name="Wall_sam_bedroom_main_bathroom_lobby"/>
+                            <dhc:wall class="Wall" name="Wall_sam_bedroom_lobby">
+                            	<dhc:hasWallOpening class="Door" name="Door_sam_bedroom_lobby"/>
+                           	</dhc:wall>
+                            <dhc:wall class="Wall" name="Wall_sam-bedroom_livingroom">
+                            	<dhc:hasWallOpening class="Door" name="Door_sam_bedroom_living"/>
+                            </dhc:wall>
+                      	</dhc:room>
+                 	</dhc:flat>
+            	</dhc:building>
+      		</dhc:buildingEnvironment>
+		</dhc:dogHomeConfiguration>
+
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="span3" markdown="1">
+<div class="well" markdown="1">
+
+#### Resource Information ####
+
+|||
+|----------------|------------------|
+|Authentication |**Requires app key**|
+|Response Format|**json** or **xml**|
+|HTTP Methods|**GET**|
+|Resource family|**environment**|
+|Response Object|**Array [ Buildings ]**|
+|API Version|**v1.0**|
+ 
+</div>
+</div>
+</div>
+
+<div class="row-fluid" markdown="1">
+<div class="span3" markdown="1"></div>
+<div class="span9" markdown="1">
+
+----------------------------------
+
+</div>
+</div>
+
+<div class="row-fluid" markdown="1">
+<div class="span3" markdown="1"></div>
+<div class="span6" markdown="1">
+
+#### Resource /environment/flats/{flat-id} <a id="single-flat"></a> ####
+
+*Updated on Thu, 2013-10-22* <span class="label label-info pull-right">API version 1.0</span>
+
+Represents a specific flat present in the environment (i.e., the building). 
+
+**URL:** /environment/flats/{flat-id}
+
+|Method|Description|
+|:-----|:----------|
+| GET | List the properties of the flat, identified by *flat-id*, and reports all the rooms included in it. |
+
+**Example Request**
+
+	GET http://www.mydog.com/environment/flats/flat
+
+<div class="accordion" id="single-flat-example" markdown="1">
+<div class="accordion-group" markdown="1">
+<div class="accordion-heading" markdown="1">
+<a class="accordion-toggle" data-toggle="collapse" data-parent="#single-flat-example" href="#single-flat-example-json" markdown="1">
+**Example Response (JSON)**
+</a>
+</div>
+<div id="single-flat-example-json" class="accordion-body collapse" markdown="1">
+<div class="accordion-inner" markdown="1">
+</div>
+</div>
+</div>
+
+</div>
+</div>
+<div class="span3" markdown="1">
+<div class="well" markdown="1">
+
+#### Resource Information ####
+
+|||
+|----------------|------------------|
+|Authentication |**Requires app key**|
+|Response Format|**json** or **xml**|
+|HTTP Methods|**GET**|
+|Resource family|**environment**|
+|Response Object|**Array [ Buildings ]**|
+|API Version|**v1.0**|
+ 
+</div>
+</div>
+</div>
+
+<div class="row-fluid" markdown="1">
+<div class="span3" markdown="1"></div>
+<div class="span9" markdown="1">
+
+----------------------------------
 
 </div>
 </div>

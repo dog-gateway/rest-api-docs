@@ -52,7 +52,14 @@ Environment API
 <div class="accordion-inner" ></p>
 
 <ul>
-<li>Building</li>
+<li><a href="#environment">Building</a></li>
+<li><a href="#flats">Flats</a>
+
+<ul>
+<li><a href="#single-flat">Single Flat</a></li>
+</ul></li>
+<li><a href="#rooms-in-flat">Rooms</a>
+*<a href="#single-room-in-flat">Single Room</a></li>
 </ul>
 
 <p></div>
@@ -102,7 +109,6 @@ Rules API
 <ul>
 <li>insert, update, modify or delete rooms;</li>
 <li>insert, update, modify or delete flats;</li>
-<li>insert, update, modify or delete storey;</li>
 </ul></li>
 <li>manage rules and automation scenarios
 
@@ -167,11 +173,19 @@ Rules API
 </tr>
 <tr>
 	<td style="text-align:left;"><a href="#environment">Resource /environment</a></td>
-	<td style="text-align:left;">Represents the environment (i.e., the building) configured or to be set in Dog.</td>
+	<td style="text-align:left;">Represents the environment (i.e., the building) configured in Dog.</td>
+</tr>
+<tr>
+	<td style="text-align:left;"><a href="#flats">Resource /environment/flats</a></td>
+	<td style="text-align:left;">Represents all the flats present in the environment (i.e., the building).</td>
 </tr>
 <tr>
 	<td style="text-align:left;"><a href="#single-flat">Resource /environment/flats/{flat-id}</a></td>
 	<td style="text-align:left;">Represents a specific flat present in the environment (i.e., the building).</td>
+</tr>
+<tr>
+	<td style="text-align:left;"><a href="#rooms-in-flat">Resource /environment/{flat-id}/rooms</a></td>
+	<td style="text-align:left;">Represents all the rooms present in a given flat.</td>
 </tr>
 <tr>
 	<td style="text-align:left;"><a href="#single-room-in-flat">Resource /environment/{flat-id}/rooms/{room-id}</a></td>
@@ -246,28 +260,7 @@ Rules API
 <div class="accordion-inner" >
 
 <pre><code>&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot; standalone=&quot;yes&quot;?&gt;
-    &lt;dhc:dogHomeConfiguration&gt;
-        &lt;dhc:buildingEnvironment&gt;
-            &lt;dhc:building name=&quot;SimpleHome&quot;&gt;
-                &lt;dhc:flat class=&quot;Flat&quot; svgfootprint=&quot;simple_home.svg&quot; name=&quot;Flat&quot;&gt;
-                    &lt;dhc:room class=&quot;Kitchen&quot; name=&quot;kitchen&quot;&gt;
-                        &lt;dhc:ceiling class=&quot;Ceiling&quot; name=&quot;Ceiling_kitchen&quot;/&gt;
-                        &lt;dhc:floor class=&quot;Floor&quot; name=&quot;Floor_kitchen&quot;/&gt;
-                        &lt;dhc:wall class=&quot;Wall&quot; name=&quot;Wall_kitchen_south&quot;/&gt;
-                        &lt;dhc:wall class=&quot;Wall&quot; name=&quot;Wall_kicthen_west&quot;&gt;
-                            &lt;dhc:hasWallOpening class=&quot;Window&quot; name=&quot;Window_w4_kitchen&quot;/&gt;
-                        &lt;/dhc:wall&gt;
-                        &lt;dhc:wall class=&quot;Wall&quot; name=&quot;Wall_kitchen_storage_lobby&quot;/&gt;
-                        &lt;dhc:wall class=&quot;Wall&quot; name=&quot;Wall_kitchen_lobby&quot;&gt;
-                            &lt;dhc:hasWallOpening class=&quot;Door&quot; name=&quot;Door_kitchen_lobby&quot;/&gt;
-                        &lt;/dhc:wall&gt;
-                        &lt;dhc:wall class=&quot;Wall&quot; name=&quot;Wall_kitchen_livingroom&quot;&gt;
-                            &lt;dhc:hasWallOpening class=&quot;Door&quot; name=&quot;Door_kitchen_living&quot;/&gt;
-                        &lt;/dhc:wall&gt;
-                    &lt;/dhc:room&gt;
-                &lt;/dhc:flat&gt;
-            &lt;/dhc:building&gt;
-    &lt;/dhc:buildingEnvironment&gt;
+  &lt;dhc:dogHomeConfiguration&gt;
     &lt;dhc:controllables&gt;
         &lt;dhc:device domoticSystem=&quot;ELITE&quot; name=&quot;oven1&quot; class=&quot;ElectricalOven&quot;&gt;
             &lt;dhc:description&gt;A ElectricalOven instance named oven1&lt;/dhc:description&gt;
@@ -1430,6 +1423,273 @@ If the command brings the device in same state in which the device is, no differ
 <hr />
 
 <h3 id="environmentapi">Environment API</h3>
+
+<hr />
+</div>
+</div>
+<div class="row-fluid" >
+<div class="span3" ></div>
+<div class="span6" >
+
+<h4 id="resourceenvironmentaidenvironmenta">Resource /environment <a id="environment"></a></h4>
+
+<p><em>Updated on Thu, 2013&#8211;10&#8211;22</em> <span class="label label-info pull-right">API version 1.0</span></p>
+
+<p>Represents the environment (i.e., the building) configured in Dog. </p>
+
+<p><strong>URL:</strong> /environment</p>
+
+<table>
+<colgroup>
+<col style="text-align:left;"/>
+<col style="text-align:left;"/>
+</colgroup>
+
+<thead>
+<tr>
+	<th style="text-align:left;">Method</th>
+	<th style="text-align:left;">Description</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+	<td style="text-align:left;">GET</td>
+	<td style="text-align:left;">List the building environments configured in the Dog gateway.</td>
+</tr>
+</tbody>
+</table>
+
+<p><strong>Example Request</strong></p>
+
+<pre><code>GET http://www.mydog.com/environment
+</code></pre>
+<div class="accordion"  id="environment-example" >
+<div class="accordion-group" >
+<div class="accordion-heading" >
+<a class="accordion-toggle" data-toggle="collapse" data-parent="#environment-example" href="#environment-example-json" markdown="1">
+<strong>Example Response (JSON)</strong>
+</a>
+</div>
+<div id="environment-example-json"  class="accordion-body collapse" >
+<div class="accordion-inner" >
+</div>
+</div>
+</div>
+<div class="accordion-group" >
+<div class="accordion-heading" >
+<a class="accordion-toggle" data-toggle="collapse" data-parent="#environment-example" href="#environment-example-xml" markdown="1">
+<strong>Example Response (XML)</strong>
+</a>
+</div>
+<div id="environment-example-xml"  class="accordion-body collapse" >
+<div class="accordion-inner" >
+
+<pre><code>&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot; standalone=&quot;yes&quot;?&gt;
+    &lt;dhc:dogHomeConfiguration&gt;
+        &lt;dhc:buildingEnvironment&gt;
+            &lt;dhc:building name=&quot;SimpleHome&quot;&gt;
+                &lt;dhc:flat class=&quot;Flat&quot; svgfootprint=&quot;simple_home.svg&quot; name=&quot;flat&quot;&gt;
+                    &lt;dhc:description&gt;The flat I rent in Turin.&lt;/dhc:description&gt;
+                    &lt;dhc:room class=&quot;Kitchen&quot; name=&quot;kitchen&quot;&gt;
+                        &lt;dhc:description&gt;The best room in the house.&lt;/dhc:description&gt;
+                        &lt;dhc:ceiling class=&quot;Ceiling&quot; name=&quot;Ceiling_kitchen&quot;/&gt;
+                        &lt;dhc:floor class=&quot;Floor&quot; name=&quot;Floor_kitchen&quot;/&gt;
+                        &lt;dhc:wall class=&quot;Wall&quot; name=&quot;Wall_kitchen_south&quot;/&gt;
+                        &lt;dhc:wall class=&quot;Wall&quot; name=&quot;Wall_kicthen_west&quot;&gt;
+                            &lt;dhc:hasWallOpening class=&quot;Window&quot; name=&quot;Window_w4_kitchen&quot;/&gt;
+                        &lt;/dhc:wall&gt;
+                        &lt;dhc:wall class=&quot;Wall&quot; name=&quot;Wall_kitchen_storage_lobby&quot;/&gt;
+                        &lt;dhc:wall class=&quot;Wall&quot; name=&quot;Wall_kitchen_lobby&quot;&gt;
+                            &lt;dhc:hasWallOpening class=&quot;Door&quot; name=&quot;Door_kitchen_lobby&quot;/&gt;
+                        &lt;/dhc:wall&gt;
+                        &lt;dhc:wall class=&quot;Wall&quot; name=&quot;Wall_kitchen_livingroom&quot;&gt;
+                            &lt;dhc:hasWallOpening class=&quot;Door&quot; name=&quot;Door_kitchen_living&quot;/&gt;
+                        &lt;/dhc:wall&gt;
+                    &lt;/dhc:room&gt;
+                    &lt;dhc:room class=&quot;Bedroom&quot; name=&quot;sam_bedroom&quot;&gt;
+                        &lt;dhc:description&gt;Sam's bedroom&lt;/dhc:description&gt;
+                        &lt;dhc:ceiling class=&quot;Ceiling&quot; name=&quot;Ceiling_sam_bedroom&quot;/&gt;
+                        &lt;dhc:floor class=&quot;Floor&quot; name=&quot;Floor_sam_bedroom&quot;/&gt;
+                        &lt;dhc:wall class=&quot;Wall&quot; name=&quot;Wall_sam_bedroom_south&quot;/&gt;
+                        &lt;dhc:wall class=&quot;Wall&quot; name=&quot;Wall_sam_bedroom_west&quot;&gt;
+                            &lt;dhc:hasWallOpening class=&quot;Window&quot; name=&quot;Window_w1_sam_bedroom&quot;/&gt;
+                        &lt;/dhc:wall&gt;
+                        &lt;dhc:wall class=&quot;Wall&quot; name=&quot;Wall_sam_bedroom_main_bathroom_lobby&quot;/&gt;
+                        &lt;dhc:wall class=&quot;Wall&quot; name=&quot;Wall_sam_bedroom_lobby&quot;&gt;
+                            &lt;dhc:hasWallOpening class=&quot;Door&quot; name=&quot;Door_sam_bedroom_lobby&quot;/&gt;
+                        &lt;/dhc:wall&gt;
+                        &lt;dhc:wall class=&quot;Wall&quot; name=&quot;Wall_sam-bedroom_livingroom&quot;&gt;
+                            &lt;dhc:hasWallOpening class=&quot;Door&quot; name=&quot;Door_sam_bedroom_living&quot;/&gt;
+                        &lt;/dhc:wall&gt;
+                    &lt;/dhc:room&gt;
+                &lt;/dhc:flat&gt;
+            &lt;/dhc:building&gt;
+        &lt;/dhc:buildingEnvironment&gt;
+    &lt;/dhc:dogHomeConfiguration&gt;
+</code></pre>
+</div>
+</div>
+</div>
+</div>
+
+<p></div>
+<div class="span3" >
+<div class="well" ></p>
+
+<h4 id="resourceinformation">Resource Information</h4>
+
+<table>
+<colgroup>
+<col style="text-align:left;"/>
+<col style="text-align:left;"/>
+</colgroup>
+
+<thead>
+<tr>
+	<th style="text-align:left;" colspan="2"></th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+	<td style="text-align:left;">Authentication</td>
+	<td style="text-align:left;"><strong>Requires app key</strong></td>
+</tr>
+<tr>
+	<td style="text-align:left;">Response Format</td>
+	<td style="text-align:left;"><strong>json</strong> or <strong>xml</strong></td>
+</tr>
+<tr>
+	<td style="text-align:left;">HTTP Methods</td>
+	<td style="text-align:left;"><strong>GET</strong></td>
+</tr>
+<tr>
+	<td style="text-align:left;">Resource family</td>
+	<td style="text-align:left;"><strong>environment</strong></td>
+</tr>
+<tr>
+	<td style="text-align:left;">Response Object</td>
+	<td style="text-align:left;"><strong>Array [ Buildings ]</strong></td>
+</tr>
+<tr>
+	<td style="text-align:left;">API Version</td>
+	<td style="text-align:left;"><strong>v1.0</strong></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+<div class="row-fluid" >
+<div class="span3" ></div>
+<div class="span9" >
+
+<hr />
+</div>
+</div>
+<div class="row-fluid" >
+<div class="span3" ></div>
+<div class="span6" >
+
+<h4 id="resourceenvironmentflatsflat-idaidsingle-flata">Resource /environment/flats/{flat-id} <a id="single-flat"></a></h4>
+
+<p><em>Updated on Thu, 2013&#8211;10&#8211;22</em> <span class="label label-info pull-right">API version 1.0</span></p>
+
+<p>Represents a specific flat present in the environment (i.e., the building). </p>
+
+<p><strong>URL:</strong> /environment/flats/{flat-id}</p>
+
+<table>
+<colgroup>
+<col style="text-align:left;"/>
+<col style="text-align:left;"/>
+</colgroup>
+
+<thead>
+<tr>
+	<th style="text-align:left;">Method</th>
+	<th style="text-align:left;">Description</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+	<td style="text-align:left;">GET</td>
+	<td style="text-align:left;">List the properties of the flat, identified by <em>flat-id</em>, and reports all the rooms included in it.</td>
+</tr>
+</tbody>
+</table>
+
+<p><strong>Example Request</strong></p>
+
+<pre><code>GET http://www.mydog.com/environment/flats/flat
+</code></pre>
+<div class="accordion"  id="single-flat-example" >
+<div class="accordion-group" >
+<div class="accordion-heading" >
+<a class="accordion-toggle" data-toggle="collapse" data-parent="#single-flat-example" href="#single-flat-example-json" markdown="1">
+<strong>Example Response (JSON)</strong>
+</a>
+</div>
+<div id="single-flat-example-json"  class="accordion-body collapse" >
+<div class="accordion-inner" >
+</div>
+</div>
+</div>
+</div>
+
+<p></div>
+<div class="span3" >
+<div class="well" ></p>
+
+<h4 id="resourceinformation">Resource Information</h4>
+
+<table>
+<colgroup>
+<col style="text-align:left;"/>
+<col style="text-align:left;"/>
+</colgroup>
+
+<thead>
+<tr>
+	<th style="text-align:left;" colspan="2"></th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+	<td style="text-align:left;">Authentication</td>
+	<td style="text-align:left;"><strong>Requires app key</strong></td>
+</tr>
+<tr>
+	<td style="text-align:left;">Response Format</td>
+	<td style="text-align:left;"><strong>json</strong> or <strong>xml</strong></td>
+</tr>
+<tr>
+	<td style="text-align:left;">HTTP Methods</td>
+	<td style="text-align:left;"><strong>GET</strong></td>
+</tr>
+<tr>
+	<td style="text-align:left;">Resource family</td>
+	<td style="text-align:left;"><strong>environment</strong></td>
+</tr>
+<tr>
+	<td style="text-align:left;">Response Object</td>
+	<td style="text-align:left;"><strong>Array [ Buildings ]</strong></td>
+</tr>
+<tr>
+	<td style="text-align:left;">API Version</td>
+	<td style="text-align:left;"><strong>v1.0</strong></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+<div class="row-fluid" >
+<div class="span3" ></div>
+<div class="span9" >
 
 <hr />
 </div>
