@@ -23,6 +23,7 @@ Device API
 * [Devices](#devices)
 	* [Single Device](#singleDevice)
 * [Status](#status)
+	* [Single Device](#status-single)
 * [Commands] (#command)
 * [Configuration](#dogConfiguration)
 
@@ -81,6 +82,7 @@ APIs allow to:
 |[Resource /devices](#devices)|Represents domotic devices handled by Dog and "controllable" by applications using this API. |
 |[Resource /devices/{device-id} ](#singleDevice)|Represents a single domotic device handled by Dog, identified by a unique *device-id* (currently encoded in the *name* attribute for the XML response to the [GET /devices](#devices) request), and "controllable" by applications using this API. |
 |[Resource /devices/status](#status)|Represents the status of devices registered in the Dog gateway runtime, i.e., defined in the Dog [configuration][devicesConfiguration] and successfully registered within the gateway runtime.|
+|[Resource /devices/{device-id}/status](#status-single)|Represents the status of the device identified by the given *device-id*, registered in the Dog gateway runtime, i.e., defined in the Dog [configuration][devicesConfiguration] and successfully registered within the gateway runtime.|
 |[Resource /devices/{device-id}/commands/{command-name} ](#command)|Represents a command, identified by a *command-name*, to be sent to the device identified by the given *device-id*. Commands are idempotent: the same command always results in the same behavior of the selected device. If the command brings the device in same state in which the device is, no differences will be appreciable.|
 |[Resource /dog/configuration](#dogConfiguration)||
 
@@ -658,6 +660,238 @@ Represents the status of devices registered in the Dog gateway runtime, i.e., de
 |HTTP Methods|**GET**|
 |Resource family|**status**|
 |Response Object|**Array [ DeviceState ]**|
+|API Version|**v1.0**|
+ 
+</div>
+</div>
+</div>
+
+<div class="row-fluid" markdown="1">
+<div class="span3" markdown="1"></div>
+<div class="span9" markdown="1">
+
+----------------------------------
+
+</div>
+</div>
+
+<div class="row-fluid" markdown="1">
+<div class="span3" markdown="1"></div>
+<div class="span6" markdown="1">
+
+#### Resource /devices/{device-id}/status <a id="status-single"></a>####
+
+*Updated on Thu, 2013-10-23* <span class="label label-info pull-right">API version 1.0</span>
+
+Represents the status of the device identified by the given *device-id* and registered in the Dog gateway runtime, i.e., defined in the Dog [configuration](#devicesConfiguration) and successfully registered within the gateway runtime.
+
+**URL:** /devices/{device-id}/status
+
+|Method|Description|
+|:-----|:----------|
+| GET | List the current status of the device identified by the given *device-id* and actually managed by the Dog gateway, i.e. defined in the Dog configuration and registered within the gateway runtime, be they active or not |
+
+**Example Request**
+
+	GET http://www.mydog.com/devices/Meter_1/status
+
+<div class="accordion" id="single-device-status-example" markdown="1">
+<div class="accordion-group" markdown="1">
+<div class="accordion-heading" markdown="1">
+<a class="accordion-toggle" data-toggle="collapse" data-parent="#single-device-status-example" href="#single-device-status-example-json" markdown="1">
+**Example Response (JSON)**
+</a>
+</div>
+<div id="single-device-status-example-json" class="accordion-body collapse" markdown="1">
+<div class="accordion-inner" markdown="1">
+
+		{
+			"uri" : "Meter_1",
+			"description":" The  utility meter",
+			"active": true,
+			"status": [
+				{
+					"ThreePhaseActiveEnergyState":[
+						{
+							"phaseID" : "L1",
+							"value" : "345.32 kWh"
+						}
+						,
+						{
+							"phaseID" : "L2",
+							"value" : "237.56 kWh"
+						}
+						,
+						{
+							"phaseID" : "L3",
+							"value" : "305.23 kWh"
+						}
+					]
+				}
+				,
+				{
+					"ThreePhaseActivePowerMeasurementState":[
+						{
+							"phaseID" : "L1",
+							"value" : "3000 W"
+						}
+						,
+						{
+							"phaseID" : "L2",
+							"value" : "2573.08 W"
+						}
+						,
+						{
+							"phaseID" : "L3",
+							"value" : "1000,40 W"
+						}
+					]
+				}
+				,
+				{
+					"ThreePhaseApparentPowerMeasurementState":[
+						{
+							"phaseID" : "L1",
+							"value" : "3000 Va"
+						}
+						,
+						{
+							"phaseID" : "L2",
+							"value" : "2573.08 Va"
+						}
+						,
+						{
+							"phaseID" : "L3",
+							"value" : "1000,40 Va"
+						}
+					]
+				}
+				,
+				{
+					"ThreePhaseCurrentState":[
+						{
+							"phaseID" : "L1",
+							"value" : "8,758 A"
+						}
+						,
+						{
+							"phaseID" : "L2",
+							"value" : "7.511 A"
+						}
+						,
+						{
+							"phaseID" : "L3",
+							"value" : "2.919 A"
+						}
+					]
+				}
+				,
+				{
+					"ThreePhaseReactivePowerMeasurementState":[
+						{
+							"phaseID" : "L1",
+							"value" : "333 Varh"
+						}
+						,
+						{
+							"phaseID" : "L2",
+							"value" : "257,3 Varh"
+						}
+						,
+						{
+							"phaseID" : "L3",
+							"value" : "98,57 Varh"
+						}
+					]
+				}
+				,
+				{
+					"ThreePhaseVoltageState":[
+						{
+							"phaseID" : "L12",
+							"value" : "380 V"
+						}
+						,
+						{
+							"phaseID" : "L23",
+							"value" : "380 V"
+						}
+						,
+						{
+							"phaseID" : "L31",
+							"value" : "380 V"
+						}
+					]
+				}
+				,
+				{
+					"ThreePhaseVoltageState":[
+						{
+							"phaseID" : "L1N",
+							"value" : "220 V"
+						}
+						,
+						{
+							"phaseID" : "L2N",
+							"value" : "220 V"
+						}
+						,
+						{
+							"phaseID" : "L3N",
+							"value" : "220 V"
+						}
+					]
+				}
+				,
+				{
+					"SinglePhaseActivePowerMeasurementState":"6873,48 W"
+				}
+				,
+				{
+					"SinglePhaseActiveEnergyState":"888.11 kWh"
+				}
+				,
+				{
+					"SinglePhaseReactiveEnergyState":"888.11 kWh"
+				}
+				,
+				{
+					"FrequencyMeasurementState":"888.11 kWh"
+				}
+				,
+				{
+					"PowerFactorMeasurementState" : "0.9"
+				}
+				
+			]
+		}
+</div>
+</div>
+</div>
+<div class="accordion-group" markdown="1">
+<div class="accordion-heading" markdown="1">
+<a class="accordion-toggle" data-toggle="collapse" data-parent="#single-device-status-example" href="#single-device-status-example-xml" markdown="1">
+**Example Response (XML)**
+</a>
+</div>
+<div id="single-device-status-example-xml" class="accordion-body collapse" markdown="1">
+<div class="accordion-inner" markdown="1">
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="span3" markdown="1">
+<div class="well" markdown="1">
+
+#### Resource Information ####
+|||
+|----------------|------------------|
+|Authentication |**Requires app key**|
+|Response Format|**json**|
+|HTTP Methods|**GET**|
+|Resource family|**status**|
+|Response Object|**DeviceState**|
 |API Version|**v1.0**|
  
 </div>
