@@ -79,7 +79,7 @@ APIs allow to:
 |||
 |----|----|
 |[Resource /devices](#devices)|Represents domotic devices handled by Dog and "controllable" by applications using this API. |
-|[Resource /devices/{device-id} ](#singleDevice)|Represents a single domotic device handled by Dog, identified by a unique device-id (currently encoded in the *name* attribute fo the XML response to the [GET /devices](#devices) request, and "controllable" by applications using this API. |
+|[Resource /devices/{device-id} ](#singleDevice)|Represents a single domotic device handled by Dog, identified by a unique *device-id* (currently encoded in the *name* attribute for the XML response to the [GET /devices](#devices) request), and "controllable" by applications using this API. |
 |[Resource /devices/status](#status)|Represents the status of devices registered in the Dog gateway runtime, i.e., defined in the Dog [configuration][devicesConfiguration] and successfully registered within the gateway runtime.|
 |[Resource /devices/{device-id}/commands/{command-name} ](#command)|Represents a command, identified by a *command-name*, to be sent to the device identified by the given *device-id*. Commands are idempotent: the same command always results in the same behavior of the selected device. If the command brings the device in same state in which the device is, no differences will be appreciable.|
 |[Resource /dog/configuration](#dogConfiguration)||
@@ -256,7 +256,7 @@ Represents domotic devices handled by Dog and "controllable" by applications usi
 
 *Updated on Fri, 2013-09-06* <span class="label label-info pull-right">API version 1.0</span>
 
-Represents a single domotic device handled by Dog, identified by a unique device-id (currently encoded in the *name* attribute fo the XML response to the [GET /devices](#devices) request,
+Represents a single domotic device handled by Dog, identified by a unique *device-id* (currently encoded in the *name* attribute for the XML response to the [GET /devices](#devices) request),
 and "controllable" by applications using this API. 
 
 *URL:* /devices/{device-id}
@@ -755,6 +755,8 @@ If the command brings the device in same state in which the device is, no differ
 
 #### Resource /dog/configuration <a id="dogConfiguration"></a>####
 
+*Updated on Tue, 2013-10-22* <span class="label label-important pull-right">Unavailable</span>
+
 *URL:* /dog/configuration
 
 |Method|Description|
@@ -775,7 +777,7 @@ If the command brings the device in same state in which the device is, no differ
 |HTTP Methods|**GET**|
 |Resource family|**configuration**|
 |Response Object|**DeviceConfigurations**|
-|API Version|**v1.0**|
+|API Version|**v1.1**|
  
 </div>
 </div>
