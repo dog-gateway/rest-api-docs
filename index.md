@@ -33,12 +33,28 @@ Device API
 <div class="accordion-group" markdown="1">
 <div class="accordion-heading" markdown="1">
 <a class="accordion-toggle" data-toggle="collapse" data-parent="#menu" href="#collapseTwo" markdown="1">
-Rules API
+Environment API
 </a>
 </div>
 <div id="collapseTwo" class="accordion-body collapse" markdown="1">
 <div class="accordion-inner" markdown="1">
+
+* Building
+
+</div>
+</div>
+</div>
+<div class="accordion-group" markdown="1">
+<div class="accordion-heading" markdown="1">
+<a class="accordion-toggle" data-toggle="collapse" data-parent="#menu" href="#collapseThree" markdown="1">
+Rules API
+</a>
+</div>
+<div id="collapseThree" class="accordion-body collapse" markdown="1">
+<div class="accordion-inner" markdown="1">
+
 * Definition
+
 </div>
 </div>
 </div>
@@ -51,10 +67,10 @@ Rules API
 <div class="span9" markdown="1">
 
 <div class="page-header" markdown="1">
-## Dog RestAPI - Documentation ##
+## Dog REST API - Documentation ##
 </div>
 
-The Dog RestAPI allows developers to easily integrate home and building automation into their applications, be they web applications, smartphone (Android, iOS) apps or standalone programs.
+The Dog REST API allows developers to easily integrate home and building automation into their applications, be they web applications, smartphone (Android, iOS, etc.) apps or computer programs.
 
 APIs allow to:
 
