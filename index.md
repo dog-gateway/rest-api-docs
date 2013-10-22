@@ -81,10 +81,10 @@ APIs allow to:
 |----|----|
 |[Resource /devices](#devices)|Represents domotic devices handled by Dog and "controllable" by applications using this API. |
 |[Resource /devices/{device-id} ](#singleDevice)|Represents a single domotic device handled by Dog, identified by a unique *device-id* (currently encoded in the *name* attribute for the XML response to the [GET /devices](#devices) request), and "controllable" by applications using this API. |
-|[Resource /devices/status](#status)|Represents the status of devices registered in the Dog gateway runtime, i.e., defined in the Dog [configuration][devicesConfiguration] and successfully registered within the gateway runtime.|
+|[Resource /devices/status](#status)|Represents the status of devices registered in the Dog gateway runtime, i.e., defined in the Dog [configuration](#devices) and successfully registered within the gateway runtime.|
 |[Resource /devices/{device-id}/status](#status-single)|Represents the status of the device identified by the given *device-id*, registered in the Dog gateway runtime, i.e., defined in the Dog [configuration][devicesConfiguration] and successfully registered within the gateway runtime.|
 |[Resource /devices/{device-id}/commands/{command-name} ](#command)|Represents a command, identified by a *command-name*, to be sent to the device identified by the given *device-id*. Commands are idempotent: the same command always results in the same behavior of the selected device. If the command brings the device in same state in which the device is, no differences will be appreciable.|
-|[Resource /dog/configuration](#dogConfiguration)||
+|[Resource /dog/configuration](#dogConfiguration)| Unsupported, to be implemented in future... |
 
 
 ---------------------------------
@@ -256,7 +256,7 @@ Represents domotic devices handled by Dog and "controllable" by applications usi
 
 #### Resource /devices/{device-id} <a id="singleDevice"></a>####
 
-*Updated on Fri, 2013-09-06* <span class="label label-info pull-right">API version 1.0</span>
+*Updated on Fri, 2013-10-22* <span class="label label-info pull-right">API version 1.0</span>
 
 Represents a single domotic device handled by Dog, identified by a unique *device-id* (currently encoded in the *name* attribute for the XML response to the [GET /devices](#devices) request),
 and "controllable" by applications using this API. 
@@ -265,8 +265,8 @@ and "controllable" by applications using this API.
 
 |Method|Description|
 |:-----|:----------|
-| GET |Returns the details of the device identified by the given {device-id} |
-| PUT |Update some details of the device identified by the given {device-id} |
+| GET |Returns the details of the device identified by the given *device-id* |
+| PUT |Update some details of the device identified by the given *device-id* |
 
 **GET: Example**
 
@@ -417,7 +417,7 @@ and "controllable" by applications using this API.
 |----------------|------------------|
 |Authentication |**Requires app key**|
 |Response Format|**json** or **xml**|
-|HTTP Methods|**GET**|
+|HTTP Methods|**GET** or **PUT**|
 |Resource family|**device**|
 |Response Object|**Device**|
 |API Version|**v1.0**|
