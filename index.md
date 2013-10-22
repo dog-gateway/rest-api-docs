@@ -43,7 +43,7 @@ Environment API
 * [Flats](#flats)
 	* [Single Flat](#single-flat)
 * [Rooms](#rooms-in-flat)
-	*[Single Room](#single-room-in-flat)
+	* [Single Room](#single-room-in-flat)
 
 </div>
 </div>
@@ -400,7 +400,6 @@ and "controllable" by applications using this API.
 </div>
 <div id="device-update-example-json" class="accordion-body collapse" markdown="1">
 <div class="accordion-inner" markdown="1">
-(command with parameters)
 
 	PUT http://www.mydog.com/devices/MainsPowerOutlet_p12_kitchen
 	
@@ -1190,21 +1189,22 @@ Represents the environment (i.e., the building) configured in Dog.
 <div class="span3" markdown="1"></div>
 <div class="span6" markdown="1">
 
-#### Resource /environment/flats/{flat-id} <a id="single-flat"></a> ####
+#### Resource /environment/flats <a id="single-flat"></a> ####
 
 *Updated on Thu, 2013-10-22* <span class="label label-info pull-right">API version 1.0</span>
 
-Represents a specific flat present in the environment (i.e., the building). 
+Represents all the flats present in the environment (i.e., the building). 
 
-**URL:** /environment/flats/{flat-id}
+**URL:** /environment/flats
 
 |Method|Description|
 |:-----|:----------|
-| GET | List the properties of the flat, identified by *flat-id*, and reports all the rooms included in it. |
+| GET | List all the flats present in the environment (i.e., in the building) configured in Dog. |
+| POST | Add a new flat to the environment configured in Dog. |
 
-**Example Request**
+**GET: Example**
 
-	GET http://www.mydog.com/environment/flats/flat
+	GET http://www.mydog.com/environment/flats
 
 <div class="accordion" id="single-flat-example" markdown="1">
 <div class="accordion-group" markdown="1">
@@ -1215,11 +1215,70 @@ Represents a specific flat present in the environment (i.e., the building).
 </div>
 <div id="single-flat-example-json" class="accordion-body collapse" markdown="1">
 <div class="accordion-inner" markdown="1">
+
+	{
+	"flats":[
+		{
+			"id" : "flat",
+			"class" : "Flat",
+			"description" : "The flat I rent in Turin",
+			"rooms":[
+				{
+					"id" : "kitchen",
+					"class" : "Kitchen",
+					"description" : "The best room in the house"
+				},
+				{
+					"id" : "sam_bedroom",
+					"class": "Bedroom",
+					"description" : "Sam's bedroom"
+				}
+			]
+		}
+	]
+
+</div>
 </div>
 </div>
 </div>
 
+**POST: Example**
+<div class="accordion" id="add-flat-example" markdown="1">
+<div class="accordion-group" markdown="1">
+<div class="accordion-heading" markdown="1">
+<a class="accordion-toggle" data-toggle="collapse" data-parent="#add-flat-example" href="#add-flat-example-json" markdown="1">
+**Example Request**
+</a>
 </div>
+<div id="add-flat-example-json" class="accordion-body collapse" markdown="1">
+<div class="accordion-inner" markdown="1">
+
+	POST http://www.mydog.com/environment/flats
+	
+	-- REQUEST-BODY: --
+	
+	{
+		"id" : "loft",
+		"class" : "Flat",
+		"description" : "The loft in the city center",
+		"rooms":[
+			{
+				"id" : "kitchen",
+				"class" : "Kitchen",
+				"description" : "The kitchen with a wonderful view"
+			},
+			{
+				"id" : "bedroom",
+				"class": "Bedroom",
+				"description" : "My bedroom"
+			}
+		]
+	}
+</div>
+</div>
+</div>
+</div>
+
 </div>
 <div class="span3" markdown="1">
 <div class="well" markdown="1">
@@ -1229,10 +1288,10 @@ Represents a specific flat present in the environment (i.e., the building).
 |||
 |----------------|------------------|
 |Authentication |**Requires app key**|
-|Response Format|**json** or **xml**|
-|HTTP Methods|**GET**|
+|Response Format|**json**|
+|HTTP Methods|**GET** or **POST**|
 |Resource family|**environment**|
-|Response Object|**Array [ Buildings ]**|
+|Response Object|**Array [ Flat ]**|
 |API Version|**v1.0**|
  
 </div>

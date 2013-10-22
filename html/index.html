@@ -59,7 +59,10 @@ Environment API
 <li><a href="#single-flat">Single Flat</a></li>
 </ul></li>
 <li><a href="#rooms-in-flat">Rooms</a>
-*<a href="#single-room-in-flat">Single Room</a></li>
+
+<ul>
+<li><a href="#single-room-in-flat">Single Room</a></li>
+</ul></li>
 </ul>
 
 <p></div>
@@ -540,8 +543,7 @@ and &#8220;controllable&#8221; by applications using this API. </p>
 </a>
 </div>
 <div id="device-update-example-json"  class="accordion-body collapse" >
-<div class="accordion-inner" >
-(command with parameters)</p>
+<div class="accordion-inner" ></p>
 
 <pre><code>PUT http://www.mydog.com/devices/MainsPowerOutlet_p12_kitchen
 
@@ -1592,13 +1594,13 @@ If the command brings the device in same state in which the device is, no differ
 <div class="span3" ></div>
 <div class="span6" >
 
-<h4 id="resourceenvironmentflatsflat-idaidsingle-flata">Resource /environment/flats/{flat-id} <a id="single-flat"></a></h4>
+<h4 id="resourceenvironmentflatsaidsingle-flata">Resource /environment/flats <a id="single-flat"></a></h4>
 
 <p><em>Updated on Thu, 2013&#8211;10&#8211;22</em> <span class="label label-info pull-right">API version 1.0</span></p>
 
-<p>Represents a specific flat present in the environment (i.e., the building). </p>
+<p>Represents all the flats present in the environment (i.e., the building). </p>
 
-<p><strong>URL:</strong> /environment/flats/{flat-id}</p>
+<p><strong>URL:</strong> /environment/flats</p>
 
 <table>
 <colgroup>
@@ -1616,14 +1618,18 @@ If the command brings the device in same state in which the device is, no differ
 <tbody>
 <tr>
 	<td style="text-align:left;">GET</td>
-	<td style="text-align:left;">List the properties of the flat, identified by <em>flat-id</em>, and reports all the rooms included in it.</td>
+	<td style="text-align:left;">List all the flats present in the environment (i.e., in the building) configured in Dog.</td>
+</tr>
+<tr>
+	<td style="text-align:left;">POST</td>
+	<td style="text-align:left;">Add a new flat to the environment configured in Dog.</td>
 </tr>
 </tbody>
 </table>
 
-<p><strong>Example Request</strong></p>
+<p><strong>GET: Example</strong></p>
 
-<pre><code>GET http://www.mydog.com/environment/flats/flat
+<pre><code>GET http://www.mydog.com/environment/flats
 </code></pre>
 <div class="accordion"  id="single-flat-example" >
 <div class="accordion-group" >
@@ -1634,10 +1640,71 @@ If the command brings the device in same state in which the device is, no differ
 </div>
 <div id="single-flat-example-json"  class="accordion-body collapse" >
 <div class="accordion-inner" >
+
+<pre><code>{
+&quot;flats&quot;:[
+    {
+        &quot;id&quot; : &quot;flat&quot;,
+        &quot;class&quot; : &quot;Flat&quot;,
+        &quot;description&quot; : &quot;The flat I rent in Turin&quot;,
+        &quot;rooms&quot;:[
+            {
+                &quot;id&quot; : &quot;kitchen&quot;,
+                &quot;class&quot; : &quot;Kitchen&quot;,
+                &quot;description&quot; : &quot;The best room in the house&quot;
+            },
+            {
+                &quot;id&quot; : &quot;sam_bedroom&quot;,
+                &quot;class&quot;: &quot;Bedroom&quot;,
+                &quot;description&quot; : &quot;Sam's bedroom&quot;
+            }
+        ]
+    }
+]
+</code></pre>
 </div>
 </div>
 </div>
 </div>
+
+<p><strong>POST: Example</strong>
+<div class="accordion"  id="add-flat-example" >
+<div class="accordion-group" >
+<div class="accordion-heading" >
+<a class="accordion-toggle" data-toggle="collapse" data-parent="#add-flat-example" href="#add-flat-example-json" markdown="1">
+<strong>Example Request</strong>
+</a>
+</div>
+<div id="add-flat-example-json"  class="accordion-body collapse" >
+<div class="accordion-inner" ></p>
+
+<pre><code>POST http://www.mydog.com/environment/flats
+
+-- REQUEST-BODY: --
+
+{
+    &quot;id&quot; : &quot;loft&quot;,
+    &quot;class&quot; : &quot;Flat&quot;,
+    &quot;description&quot; : &quot;The loft in the city center&quot;,
+    &quot;rooms&quot;:[
+        {
+            &quot;id&quot; : &quot;kitchen&quot;,
+            &quot;class&quot; : &quot;Kitchen&quot;,
+            &quot;description&quot; : &quot;The kitchen with a wonderful view&quot;
+        },
+        {
+            &quot;id&quot; : &quot;bedroom&quot;,
+            &quot;class&quot;: &quot;Bedroom&quot;,
+            &quot;description&quot; : &quot;My bedroom&quot;
+        }
+    ]
+}
+</code></pre>
+
+<p></div>
+</div>
+</div>
+</div></p>
 
 <p></div>
 <div class="span3" >
@@ -1664,11 +1731,11 @@ If the command brings the device in same state in which the device is, no differ
 </tr>
 <tr>
 	<td style="text-align:left;">Response Format</td>
-	<td style="text-align:left;"><strong>json</strong> or <strong>xml</strong></td>
+	<td style="text-align:left;"><strong>json</strong></td>
 </tr>
 <tr>
 	<td style="text-align:left;">HTTP Methods</td>
-	<td style="text-align:left;"><strong>GET</strong></td>
+	<td style="text-align:left;"><strong>GET</strong> or <strong>POST</strong></td>
 </tr>
 <tr>
 	<td style="text-align:left;">Resource family</td>
@@ -1676,7 +1743,7 @@ If the command brings the device in same state in which the device is, no differ
 </tr>
 <tr>
 	<td style="text-align:left;">Response Object</td>
-	<td style="text-align:left;"><strong>Array [ Buildings ]</strong></td>
+	<td style="text-align:left;"><strong>Array [ Flat ]</strong></td>
 </tr>
 <tr>
 	<td style="text-align:left;">API Version</td>
