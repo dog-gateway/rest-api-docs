@@ -8,8 +8,8 @@
 </head>
 <body>
 
-<p><div class="container-fluid" >
-<div class="navbar navbar-fixed-top span3" ></p>
+<div class="container-fluid" >
+<div class="navbar navbar-fixed-top span3" >
 
 <h4 id="summary">Summary</h4>
 
@@ -97,25 +97,32 @@ Rules API
 <li><a href="#status">monitor device statuses and measures in real-time</a>;</li>
 <li>add, modify or update the set of devices controlled through the gateway;</li>
 </ul></li>
+<li>manage information about the environment
+
+<ul>
+<li>insert, update, modify or delete rooms;</li>
+<li>insert, update, modify or delete flats;</li>
+<li>insert, update, modify or delete storey;</li>
+</ul></li>
 <li>manage rules and automation scenarios
 
 <ul>
 <li>insert, update, modify or delete automation rules;</li>
-<li>insert, update, modify or delete scenarios.</li>
+<li>insert, update, modify or delete scenarios;</li>
 </ul></li>
 <li>monitor the home/building performance
 
 <ul>
 <li>historical information on consumptions;</li>
 <li>historical information on activations;</li>
-<li>related statistics.</li>
+<li>related statistics;</li>
 </ul></li>
 <li>manage Dog
 
 <ul>
-<li>manage system performance</li>
-<li>manage system updates</li>
-<li>troubleshoot problems</li>
+<li>manage system performance;</li>
+<li>manage system updates;</li>
+<li>troubleshoot problems.</li>
 </ul></li>
 </ul>
 
@@ -157,6 +164,18 @@ Rules API
 <tr>
 	<td style="text-align:left;"><a href="#dogConfiguration">Resource /dog/configuration</a></td>
 	<td style="text-align:left;">Unsupported, to be implemented in future&#8230;</td>
+</tr>
+<tr>
+	<td style="text-align:left;"><a href="#environment">Resource /environment</a></td>
+	<td style="text-align:left;">Represents the environment (i.e., the building) configured or to be set in Dog.</td>
+</tr>
+<tr>
+	<td style="text-align:left;"><a href="#single-flat">Resource /environment/flats/{flat-id}</a></td>
+	<td style="text-align:left;">Represents a specific flat present in the environment (i.e., the building).</td>
+</tr>
+<tr>
+	<td style="text-align:left;"><a href="#single-room-in-flat">Resource /environment/{flat-id}/rooms/{room-id}</a></td>
+	<td style="text-align:left;">Represents a specific room present in a given flat in the environment (i.e., the building).</td>
 </tr>
 </tbody>
 </table>
@@ -1311,9 +1330,9 @@ If the command brings the device in same state in which the device is, no differ
 </tr>
 </tbody>
 </table>
-
-<p></div>
-</div></p>
+</div>
+</div>
+</div>
 <div class="row-fluid" >
 <div class="span3" ></div>
 <div class="span9" >
@@ -1404,13 +1423,23 @@ If the command brings the device in same state in which the device is, no differ
 </div>
 </div>
 </div>
+<div class="row-fluid" >
+<div class="span3" ></div>
+<div class="span9" >
+
+<hr />
+
+<h3 id="environmentapi">Environment API</h3>
+
+<hr />
+</div>
+</div>
 </div>
 
+<p></div>
 <script src="./js/jquery.js"></script>
-
 <script src="./js/bootstrap.js"></script>
-
-<script src="./js/ajax.js"></script>
+<script src="./js/ajax.js"></script></p>
 
 </body>
 </html>

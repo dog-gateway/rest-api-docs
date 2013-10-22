@@ -79,17 +79,22 @@ APIs allow to:
 	* require execution of commands to existing devices;
 	* [monitor device statuses and measures in real-time](#status);
 	* add, modify or update the set of devices controlled through the gateway;
+* manage information about the environment
+	* insert, update, modify or delete rooms;
+	* insert, update, modify or delete flats;
+	* insert, update, modify or delete storey;
 * manage rules and automation scenarios
 	* insert, update, modify or delete automation rules;
-	* insert, update, modify or delete scenarios.
+	* insert, update, modify or delete scenarios;
 * monitor the home/building performance
 	* historical information on consumptions;
 	* historical information on activations;
-	* related statistics.
+	* related statistics;
 * manage Dog 
-	* manage system performance
-	* manage system updates
-	* troubleshoot problems
+	* manage system performance;
+	* manage system updates;
+	* troubleshoot problems.
+
 
 #### Function summary ####
 
@@ -101,6 +106,9 @@ APIs allow to:
 |[Resource /devices/{device-id}/status](#status-single)|Represents the status of the device identified by the given *device-id*, registered in the Dog gateway runtime, i.e., defined in the Dog [configuration][devicesConfiguration] and successfully registered within the gateway runtime.|
 |[Resource /devices/{device-id}/commands/{command-name} ](#command)|Represents a command, identified by a *command-name*, to be sent to the device identified by the given *device-id*. Commands are idempotent: the same command always results in the same behavior of the selected device. If the command brings the device in same state in which the device is, no differences will be appreciable.|
 |[Resource /dog/configuration](#dogConfiguration)| Unsupported, to be implemented in future... |
+|[Resource /environment](#environment)|Represents the environment (i.e., the building) configured or to be set in Dog.|
+|[Resource /environment/flats/{flat-id}](#single-flat)|Represents a specific flat present in the environment (i.e., the building).|
+|[Resource /environment/{flat-id}/rooms/{room-id}](#single-room-in-flat)|Represents a specific room present in a given flat in the environment (i.e., the building).|
 
 
 ---------------------------------
@@ -1016,6 +1024,7 @@ If the command brings the device in same state in which the device is, no differ
  
 </div>
 </div>
+</div>
 
 <div class="row-fluid" markdown="1">
 <div class="span3" markdown="1"></div>
@@ -1025,6 +1034,7 @@ If the command brings the device in same state in which the device is, no differ
 
 </div>
 </div>
+
 <div class="row-fluid" markdown="1">
 <div class="span3" markdown="1"></div>
 <div class="span6" markdown="1">
@@ -1058,6 +1068,21 @@ If the command brings the device in same state in which the device is, no differ
  
 </div>
 </div>
+</div>
+
+<div class="row-fluid" markdown="1">
+<div class="span3" markdown="1"></div>
+<div class="span9" markdown="1">
+
+---------------------------------
+
+### Environment API [environmentAPI]###
+
+---------------------------------
+
+</div>
+</div>
+
 </div>
 </div>
 <script src="./js/jquery.js"></script>
