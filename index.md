@@ -268,7 +268,7 @@ and "controllable" by applications using this API.
 | GET |Returns the details of the device identified by the given {device-id} |
 | PUT |Update some details of the device identified by the given {device-id} |
 
-**Example Request**
+**GET: Example**
 
    GET http://www.mydog.com/devices/MainsPowerOutlet_p12_kitchen
 
@@ -284,7 +284,6 @@ and "controllable" by applications using this API.
 
    	{
    		"id" : "MainsPowerOutlet_p12_kitchen",
-   		"name" : "Lavastoviglie",
    		"class" : "MainsPowerOutlet",
    		"description" : "The smart plug to which the dishwasher is connected",
    		"isIn" : "kitchen",
@@ -382,6 +381,32 @@ and "controllable" by applications using this API.
 </div>
 </div>
 </div>
+
+**PUT: Example**
+<div class="accordion" id="device-update-example" markdown="1">
+<div class="accordion-group" markdown="1">
+<div class="accordion-heading" markdown="1">
+<a class="accordion-toggle" data-toggle="collapse" data-parent="#device-update-example" href="#device-update-example-json" markdown="1">
+**Example Request**
+</a>
+</div>
+<div id="device-update-example-json" class="accordion-body collapse" markdown="1">
+<div class="accordion-inner" markdown="1">
+(command with parameters)
+
+	PUT http://www.mydog.com/devices/MainsPowerOutlet_p12_kitchen
+	
+	-- REQUEST-BODY: --
+	
+	{
+		"isIn" : "lobby",
+		"description" : "Lavastoviglie"
+	}
+</div>
+</div>
+</div>
+</div>
+
 </div>
 <div class="span3" markdown="1">
 <div class="well" markdown="1">
@@ -397,6 +422,7 @@ and "controllable" by applications using this API.
 |Response Object|**Device**|
 |API Version|**v1.0**|
  
+</div>
 </div>
 </div>
 
