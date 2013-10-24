@@ -107,3 +107,7 @@ table colgroup + tbody tr:first-child td:last-child {
           border-top-right-radius: 4px;
   -moz-border-radius-topleft: 4px;
 }
+
+.label {
+	margin-left: 2px;
+}

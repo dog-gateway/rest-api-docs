@@ -130,7 +130,9 @@ APIs allow to:
 
 #### Resource /devices <a id="devices"></a> ####
 
-*Updated on Thu, 2013-09-05* <span class="label label-info pull-right">API version 1.0</span>
+*Updated on Thu, 2013-10-24*
+<span class="label label-info pull-right">API version 1.0</span>
+<span class="label label-warning pull-right">Not yet implemented</span>
 
 Represents domotic devices handled by Dog and "controllable" by applications using this API. 
 
@@ -264,7 +266,9 @@ Represents domotic devices handled by Dog and "controllable" by applications usi
 
 #### Resource /devices/{device-id} <a id="singleDevice"></a>####
 
-*Updated on Fri, 2013-10-22* <span class="label label-info pull-right">API version 1.0</span>
+*Updated on Thu, 2013-10-24*
+<span class="label label-info pull-right">API version 1.0</span>
+<span class="label label-warning pull-right">Not yet implemented</span>
 
 Represents a single domotic device handled by Dog, identified by a unique *device-id* (currently encoded in the *name* attribute for the XML response to the [GET /devices](#devices) request),
 and "controllable" by applications using this API. 
@@ -449,7 +453,7 @@ and "controllable" by applications using this API.
 
 #### Resource /devices/status <a id="status"></a>####
 
-*Updated on Thu, 2013-09-05* <span class="label label-info pull-right">API version 1.0</span>
+*Updated on Thu, 2013-10-24* <span class="label label-info pull-right">API version 1.0</span>
 
 Represents the status of devices registered in the Dog gateway runtime, i.e., defined in the Dog [configuration](#devicesConfiguration) and successfully registered within the gateway runtime.
 
@@ -715,7 +719,9 @@ Represents the status of devices registered in the Dog gateway runtime, i.e., de
 
 #### Resource /devices/{device-id}/status <a id="status-single"></a>####
 
-*Updated on Thu, 2013-10-23* <span class="label label-info pull-right">API version 1.0</span>
+*Updated on Thu, 2013-10-24*
+<span class="label label-info pull-right">API version 1.0</span>
+<span class="label label-warning pull-right">Not yet implemented</span>
 
 Represents the status of the device identified by the given *device-id* and registered in the Dog gateway runtime, i.e., defined in the Dog [configuration](#devicesConfiguration) and successfully registered within the gateway runtime.
 
@@ -1072,7 +1078,9 @@ If the command brings the device in same state in which the device is, no differ
 
 #### Resource /environment <a id="environment"></a> ####
 
-*Updated on Thu, 2013-10-22* <span class="label label-info pull-right">API version 1.0</span>
+*Updated on Thu, 2013-10-24*
+<span class="label label-info pull-right">API version 1.0</span>
+<span class="label label-warning pull-right">Not yet implemented</span>
 
 Represents the environment (i.e., the building) configured in Dog. 
 
@@ -1191,7 +1199,9 @@ Represents the environment (i.e., the building) configured in Dog.
 
 #### Resource /environment/flats <a id="flats"></a> ####
 
-*Updated on Thu, 2013-10-22* <span class="label label-info pull-right">API version 1.0</span>
+*Updated on Thu, 2013-10-24*
+<span class="label label-info pull-right">API version 1.0</span>
+<span class="label label-warning pull-right">Not yet implemented</span>
 
 Represents all the flats present in the environment (i.e., the building). 
 
@@ -1332,7 +1342,9 @@ Represents all the flats present in the environment (i.e., the building).
 
 #### Resource /environment/flats/{flat-id} <a id="single-flat"></a> ####
 
-*Updated on Thu, 2013-10-22* <span class="label label-info pull-right">API version 1.0</span>
+*Updated on Thu, 2013-10-24*
+<span class="label label-info pull-right">API version 1.0</span>
+<span class="label label-warning pull-right">Not yet implemented</span>
 
 Represents a specific flat present in the environment (i.e., the building). 
 
@@ -1437,7 +1449,9 @@ Represents a specific flat present in the environment (i.e., the building).
 
 #### Resource /environment/flats/{flat-id}/rooms <a id="rooms-in-flat"></a> ####
 
-*Updated on Thu, 2013-10-22* <span class="label label-info pull-right">API version 1.0</span>
+*Updated on Thu, 2013-10-24*
+<span class="label label-info pull-right">API version 1.0</span>
+<span class="label label-warning pull-right">Not yet implemented</span>
 
 Represents all the rooms present in a given flat. 
 
@@ -1542,7 +1556,9 @@ Represents all the rooms present in a given flat.
 
 #### Resource /environment/flats/{flat-id}/rooms/{room-id} <a id="single-room-in-flat"></a> ####
 
-*Updated on Thu, 2013-10-22* <span class="label label-info pull-right">API version 1.0</span>
+*Updated on Thu, 2013-10-24*
+<span class="label label-info pull-right">API version 1.0</span>
+<span class="label label-warning pull-right">Not yet implemented</span>
 
 Represents a specific room in the flat identified by the given *flat-id*. 
 
