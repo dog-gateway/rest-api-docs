@@ -433,7 +433,7 @@ and &#8220;controllable&#8221; by applications using this API. </p>
 <div class="accordion-inner" >
 
 <pre><code>{
-    &quot;id&quot; : &quot;MainsPowerOutlet_p12_kitchen&quot;,
+    &quot;name&quot; : &quot;MainsPowerOutlet_p12_kitchen&quot;,
     &quot;class&quot; : &quot;MainsPowerOutlet&quot;,
     &quot;description&quot; : &quot;The smart plug to which the dishwasher is connected&quot;,
     &quot;isIn&quot; : &quot;kitchen&quot;,
@@ -666,7 +666,7 @@ and &#8220;controllable&#8221; by applications using this API. </p>
 <pre><code>{
 &quot;devices&quot;:[
     {
-        &quot;uri&quot; : &quot;Lamp1&quot;,
+        &quot;name&quot; : &quot;Lamp1&quot;,
         &quot;description&quot; : &quot; The lamp over the closet near to the livingroom armchair&quot;,
         &quot;active&quot; : true,
         &quot;status&quot;:[
@@ -677,7 +677,7 @@ and &#8220;controllable&#8221; by applications using this API. </p>
     }
     ,
     {
-        &quot;uri&quot; : &quot;Plug_h725&quot;,
+        &quot;name&quot; : &quot;Plug_h725&quot;,
         &quot;description&quot;:&quot; The smart plug driving the dishwasher&quot;,
         &quot;active&quot;: true,
         &quot;status&quot;: [
@@ -696,7 +696,7 @@ and &#8220;controllable&#8221; by applications using this API. </p>
     }
     ,
     {
-        &quot;uri&quot; : &quot;Meter_1&quot;,
+        &quot;name&quot; : &quot;Meter_1&quot;,
         &quot;description&quot;:&quot; The  utility meter&quot;,
         &quot;active&quot;: true,
         &quot;status&quot;: [
@@ -977,7 +977,7 @@ and &#8220;controllable&#8221; by applications using this API. </p>
 <div class="accordion-inner" >
 
 <pre><code>    {
-        &quot;uri&quot; : &quot;Meter_1&quot;,
+        &quot;name&quot; : &quot;Meter_1&quot;,
         &quot;description&quot;:&quot; The  utility meter&quot;,
         &quot;active&quot;: true,
         &quot;status&quot;: [
@@ -1644,34 +1644,34 @@ If the command brings the device in same state in which the device is, no differ
 <pre><code>{
 &quot;flats&quot;:[
     {
-        &quot;id&quot; : &quot;flat&quot;,
+        &quot;name&quot; : &quot;flat&quot;,
         &quot;class&quot; : &quot;Flat&quot;,
         &quot;description&quot; : &quot;The flat I rent in Turin&quot;,
         &quot;rooms&quot;:[
             {
-                &quot;id&quot; : &quot;kitchen&quot;,
+                &quot;name&quot; : &quot;kitchen&quot;,
                 &quot;class&quot; : &quot;Kitchen&quot;,
                 &quot;description&quot; : &quot;The best room in the house&quot;
             },
             {
-                &quot;id&quot; : &quot;sam_bedroom&quot;,
+                &quot;name&quot; : &quot;sam_bedroom&quot;,
                 &quot;class&quot;: &quot;Bedroom&quot;,
                 &quot;description&quot; : &quot;Sam's bedroom&quot;
             }
         ]
     },
     {
-        &quot;id&quot; : &quot;milan-flat&quot;,
+        &quot;name&quot; : &quot;milan-flat&quot;,
         &quot;class&quot; : &quot;Flat&quot;,
         &quot;description&quot; : &quot;The flat I own in Milan&quot;,
         &quot;rooms&quot;:[
             {
-                &quot;id&quot; : &quot;kitchen&quot;,
+                &quot;name&quot; : &quot;kitchen&quot;,
                 &quot;class&quot; : &quot;Kitchen&quot;,
                 &quot;description&quot; : &quot;The kitchen&quot;
             },
             {
-                &quot;id&quot; : &quot;bathroom&quot;,
+                &quot;name&quot; : &quot;bathroom&quot;,
                 &quot;class&quot;: &quot;Bathroom&quot;,
                 &quot;description&quot; : &quot;The only bathroom&quot;
             }
@@ -1701,17 +1701,17 @@ If the command brings the device in same state in which the device is, no differ
 -- REQUEST-BODY: --
 
 {
-    &quot;id&quot; : &quot;loft&quot;,
+    &quot;name&quot; : &quot;loft&quot;,
     &quot;class&quot; : &quot;Flat&quot;,
     &quot;description&quot; : &quot;The loft in the city center&quot;,
     &quot;rooms&quot;:[
         {
-            &quot;id&quot; : &quot;kitchen&quot;,
+            &quot;name&quot; : &quot;kitchen&quot;,
             &quot;class&quot; : &quot;Kitchen&quot;,
             &quot;description&quot; : &quot;The kitchen with a wonderful view&quot;
         },
         {
-            &quot;id&quot; : &quot;bedroom&quot;,
+            &quot;name&quot; : &quot;bedroom&quot;,
             &quot;class&quot;: &quot;Bedroom&quot;,
             &quot;description&quot; : &quot;My bedroom&quot;
         }
@@ -1831,17 +1831,17 @@ If the command brings the device in same state in which the device is, no differ
 <div class="accordion-inner" >
 
 <pre><code>{
-    &quot;id&quot; : &quot;flat&quot;,
+    &quot;name&quot; : &quot;flat&quot;,
     &quot;class&quot; : &quot;Flat&quot;,
     &quot;description&quot; : &quot;The flat I rent in Turin&quot;,
     &quot;rooms&quot;:[
         {
-            &quot;id&quot; : &quot;kitchen&quot;,
+            &quot;name&quot; : &quot;kitchen&quot;,
             &quot;class&quot; : &quot;Kitchen&quot;,
             &quot;description&quot; : &quot;The best room in the house&quot;
         },
         {
-            &quot;id&quot; : &quot;sam_bedroom&quot;,
+            &quot;name&quot; : &quot;sam_bedroom&quot;,
             &quot;class&quot;: &quot;Bedroom&quot;,
             &quot;description&quot; : &quot;Sam's bedroom&quot;
         }
@@ -1987,12 +1987,12 @@ If the command brings the device in same state in which the device is, no differ
 <pre><code>{
 &quot;rooms&quot;:[
     {
-        &quot;id&quot; : &quot;kitchen&quot;,
+        &quot;name&quot; : &quot;kitchen&quot;,
         &quot;class&quot; : &quot;Kitchen&quot;,
         &quot;description&quot; : &quot;The best room in the house&quot;
     },
     {
-        &quot;id&quot; : &quot;sam_bedroom&quot;,
+        &quot;name&quot; : &quot;sam_bedroom&quot;,
         &quot;class&quot;: &quot;Bedroom&quot;,
         &quot;description&quot; : &quot;Sam's bedroom&quot;
     }
@@ -2020,7 +2020,7 @@ If the command brings the device in same state in which the device is, no differ
 -- REQUEST-BODY: --
 
 {
-    &quot;id&quot; : &quot;bedroom&quot;,
+    &quot;name&quot; : &quot;bedroom&quot;,
     &quot;class&quot;: &quot;Bedroom&quot;,
     &quot;description&quot; : &quot;My bedroom&quot;
 }
@@ -2138,7 +2138,7 @@ If the command brings the device in same state in which the device is, no differ
 <div class="accordion-inner" >
 
 <pre><code>{
-    &quot;id&quot; : &quot;kitchen&quot;,
+    &quot;name&quot; : &quot;kitchen&quot;,
     &quot;class&quot; : &quot;Kitchen&quot;,
     &quot;description&quot; : &quot;The best room in the house&quot;
 }

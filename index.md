@@ -291,7 +291,7 @@ and "controllable" by applications using this API.
 <div class="accordion-inner" markdown="1">
 
    	{
-   		"id" : "MainsPowerOutlet_p12_kitchen",
+   		"name" : "MainsPowerOutlet_p12_kitchen",
    		"class" : "MainsPowerOutlet",
    		"description" : "The smart plug to which the dishwasher is connected",
    		"isIn" : "kitchen",
@@ -476,7 +476,7 @@ Represents the status of devices registered in the Dog gateway runtime, i.e., de
 	{
 	"devices":[
 		{
-			"uri" : "Lamp1",
+			"name" : "Lamp1",
 			"description" : " The lamp over the closet near to the livingroom armchair",
 			"active" : true,
 			"status":[
@@ -487,7 +487,7 @@ Represents the status of devices registered in the Dog gateway runtime, i.e., de
 		}
 		,
 		{
-			"uri" : "Plug_h725",
+			"name" : "Plug_h725",
 			"description":" The smart plug driving the dishwasher",
 			"active": true,
 			"status": [
@@ -506,7 +506,7 @@ Represents the status of devices registered in the Dog gateway runtime, i.e., de
 		}
 		,
 		{
-			"uri" : "Meter_1",
+			"name" : "Meter_1",
 			"description":" The  utility meter",
 			"active": true,
 			"status": [
@@ -740,7 +740,7 @@ Represents the status of the device identified by the given *device-id* and regi
 <div class="accordion-inner" markdown="1">
 
 		{
-			"uri" : "Meter_1",
+			"name" : "Meter_1",
 			"description":" The  utility meter",
 			"active": true,
 			"status": [
@@ -1219,34 +1219,34 @@ Represents all the flats present in the environment (i.e., the building).
 	{
 	"flats":[
 		{
-			"id" : "flat",
+			"name" : "flat",
 			"class" : "Flat",
 			"description" : "The flat I rent in Turin",
 			"rooms":[
 				{
-					"id" : "kitchen",
+					"name" : "kitchen",
 					"class" : "Kitchen",
 					"description" : "The best room in the house"
 				},
 				{
-					"id" : "sam_bedroom",
+					"name" : "sam_bedroom",
 					"class": "Bedroom",
 					"description" : "Sam's bedroom"
 				}
 			]
 		},
 		{
-			"id" : "milan-flat",
+			"name" : "milan-flat",
 			"class" : "Flat",
 			"description" : "The flat I own in Milan",
 			"rooms":[
 				{
-					"id" : "kitchen",
+					"name" : "kitchen",
 					"class" : "Kitchen",
 					"description" : "The kitchen"
 				},
 				{
-					"id" : "bathroom",
+					"name" : "bathroom",
 					"class": "Bathroom",
 					"description" : "The only bathroom"
 				}
@@ -1276,17 +1276,17 @@ Represents all the flats present in the environment (i.e., the building).
 	-- REQUEST-BODY: --
 	
 	{
-		"id" : "loft",
+		"name" : "loft",
 		"class" : "Flat",
 		"description" : "The loft in the city center",
 		"rooms":[
 			{
-				"id" : "kitchen",
+				"name" : "kitchen",
 				"class" : "Kitchen",
 				"description" : "The kitchen with a wonderful view"
 			},
 			{
-				"id" : "bedroom",
+				"name" : "bedroom",
 				"class": "Bedroom",
 				"description" : "My bedroom"
 			}
@@ -1358,17 +1358,17 @@ Represents a specific flat present in the environment (i.e., the building).
 <div class="accordion-inner" markdown="1">
 
 	{
-		"id" : "flat",
+		"name" : "flat",
 		"class" : "Flat",
 		"description" : "The flat I rent in Turin",
 		"rooms":[
 			{
-				"id" : "kitchen",
+				"name" : "kitchen",
 				"class" : "Kitchen",
 				"description" : "The best room in the house"
 			},
 			{
-				"id" : "sam_bedroom",
+				"name" : "sam_bedroom",
 				"class": "Bedroom",
 				"description" : "Sam's bedroom"
 			}
@@ -1465,12 +1465,12 @@ Represents all the rooms present in a given flat.
 	{
 	"rooms":[
 		{
-			"id" : "kitchen",
+			"name" : "kitchen",
 			"class" : "Kitchen",
 			"description" : "The best room in the house"
 		},
 		{
-			"id" : "sam_bedroom",
+			"name" : "sam_bedroom",
 			"class": "Bedroom",
 			"description" : "Sam's bedroom"
 		}
@@ -1498,7 +1498,7 @@ Represents all the rooms present in a given flat.
 	-- REQUEST-BODY: --
 	
 	{
-		"id" : "bedroom",
+		"name" : "bedroom",
 		"class": "Bedroom",
 		"description" : "My bedroom"
 	}
@@ -1568,7 +1568,7 @@ Represents a specific room in the flat identified by the given *flat-id*.
 <div class="accordion-inner" markdown="1">
 
 	{
-		"id" : "kitchen",
+		"name" : "kitchen",
 		"class" : "Kitchen",
 		"description" : "The best room in the house"
 	}
