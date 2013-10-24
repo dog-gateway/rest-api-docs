@@ -171,7 +171,7 @@ Represents domotic devices handled by Dog and "controllable" by applications usi
     <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
  	  <dhc:dogHomeConfiguration>
 		<dhc:controllables>
-        	<dhc:device domoticSystem="ELITE" name="oven1" class="ElectricalOven">
+        	<dhc:device domoticSystem="ELITE" id="oven1" class="ElectricalOven">
             	<dhc:description>A ElectricalOven instance named oven1</dhc:description>
                 <dhc:isIn>kitchen</dhc:isIn>
                 <dhc:pluggedIn>MainsPowerOutlet_p12_kitchen</dhc:pluggedIn>
@@ -200,7 +200,7 @@ Represents domotic devices handled by Dog and "controllable" by applications usi
                             </dhc:statevalues>
                         </dhc:state>
                     </dhc:device>
-                    <dhc:device domoticSystem="KONNEX" name="MainsPowerOutlet_p12_kitchen" class="MainsPowerOutlet">
+                    <dhc:device domoticSystem="KONNEX" id="MainsPowerOutlet_p12_kitchen" class="MainsPowerOutlet">
                         <dhc:description>A MainsPowerOutlet instance named MainsPowerOutlet_p12_kitchen</dhc:description>
                         <dhc:isIn>kitchen</dhc:isIn>
                         <dhc:hasMeter>energy_meter_1</dhc:hasMeter>
@@ -291,7 +291,7 @@ and "controllable" by applications using this API.
 <div class="accordion-inner" markdown="1">
 
    	{
-   		"name" : "MainsPowerOutlet_p12_kitchen",
+   		"id" : "MainsPowerOutlet_p12_kitchen",
    		"class" : "MainsPowerOutlet",
    		"description" : "The smart plug to which the dishwasher is connected",
    		"isIn" : "kitchen",
@@ -361,7 +361,7 @@ and "controllable" by applications using this API.
 <div id="devices-single-example-xml" class="accordion-body collapse" markdown="1">
 <div class="accordion-inner" markdown="1">
 
-    <dhc:device domoticSystem="KONNEX" name="MainsPowerOutlet_p12_kitchen" class="MainsPowerOutlet">
+    <dhc:device domoticSystem="KONNEX" id="MainsPowerOutlet_p12_kitchen" class="MainsPowerOutlet">
 		<dhc:description>A MainsPowerOutlet instance named MainsPowerOutlet_p12_kitchen</dhc:description>
 		<dhc:isIn>kitchen</dhc:isIn>
 		<dhc:hasMeter>energy_meter_1</dhc:hasMeter>
@@ -476,7 +476,7 @@ Represents the status of devices registered in the Dog gateway runtime, i.e., de
 	{
 	"devices":[
 		{
-			"name" : "Lamp1",
+			"id" : "Lamp1",
 			"description" : " The lamp over the closet near to the livingroom armchair",
 			"active" : true,
 			"status":[
@@ -487,7 +487,7 @@ Represents the status of devices registered in the Dog gateway runtime, i.e., de
 		}
 		,
 		{
-			"name" : "Plug_h725",
+			"id" : "Plug_h725",
 			"description":" The smart plug driving the dishwasher",
 			"active": true,
 			"status": [
@@ -506,7 +506,7 @@ Represents the status of devices registered in the Dog gateway runtime, i.e., de
 		}
 		,
 		{
-			"name" : "Meter_1",
+			"id" : "Meter_1",
 			"description":" The  utility meter",
 			"active": true,
 			"status": [
@@ -740,7 +740,7 @@ Represents the status of the device identified by the given *device-id* and regi
 <div class="accordion-inner" markdown="1">
 
 		{
-			"name" : "Meter_1",
+			"id" : "Meter_1",
 			"description":" The  utility meter",
 			"active": true,
 			"status": [
@@ -1113,39 +1113,39 @@ Represents the environment (i.e., the building) configured in Dog.
     <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
  	  	<dhc:dogHomeConfiguration>
         	<dhc:buildingEnvironment>
-            	<dhc:building name="SimpleHome">
-                	<dhc:flat class="Flat" svgfootprint="simple_home.svg" name="flat">
+            	<dhc:building id="SimpleHome">
+                	<dhc:flat class="Flat" svgfootprint="simple_home.svg" id="flat">
                 		<dhc:description>The flat I rent in Turin.</dhc:description>
-                    	<dhc:room class="Kitchen" name="kitchen">
+                    	<dhc:room class="Kitchen" id="kitchen">
                     		<dhc:description>The best room in the house.</dhc:description>
-                        	<dhc:ceiling class="Ceiling" name="Ceiling_kitchen"/>
-                            <dhc:floor class="Floor" name="Floor_kitchen"/>
-                            <dhc:wall class="Wall" name="Wall_kitchen_south"/>
-                            <dhc:wall class="Wall" name="Wall_kicthen_west">
-                            	<dhc:hasWallOpening class="Window" name="Window_w4_kitchen"/>
+                        	<dhc:ceiling class="Ceiling" id="Ceiling_kitchen"/>
+                            <dhc:floor class="Floor" id="Floor_kitchen"/>
+                            <dhc:wall class="Wall" id="Wall_kitchen_south"/>
+                            <dhc:wall class="Wall" id="Wall_kicthen_west">
+                            	<dhc:hasWallOpening class="Window" id="Window_w4_kitchen"/>
                             </dhc:wall>
-                            <dhc:wall class="Wall" name="Wall_kitchen_storage_lobby"/>
-                            <dhc:wall class="Wall" name="Wall_kitchen_lobby">
-                            	<dhc:hasWallOpening class="Door" name="Door_kitchen_lobby"/>
+                            <dhc:wall class="Wall" id="Wall_kitchen_storage_lobby"/>
+                            <dhc:wall class="Wall" id="Wall_kitchen_lobby">
+                            	<dhc:hasWallOpening class="Door" id="Door_kitchen_lobby"/>
                            	</dhc:wall>
-                            <dhc:wall class="Wall" name="Wall_kitchen_livingroom">
-                            	<dhc:hasWallOpening class="Door" name="Door_kitchen_living"/>
+                            <dhc:wall class="Wall" id="Wall_kitchen_livingroom">
+                            	<dhc:hasWallOpening class="Door" id="Door_kitchen_living"/>
                             </dhc:wall>
                       	</dhc:room>
-                      	<dhc:room class="Bedroom" name="sam_bedroom">
+                      	<dhc:room class="Bedroom" id="sam_bedroom">
                     		<dhc:description>Sam's bedroom</dhc:description>
-                        	<dhc:ceiling class="Ceiling" name="Ceiling_sam_bedroom"/>
-                            <dhc:floor class="Floor" name="Floor_sam_bedroom"/>
-                            <dhc:wall class="Wall" name="Wall_sam_bedroom_south"/>
-                            <dhc:wall class="Wall" name="Wall_sam_bedroom_west">
-                            	<dhc:hasWallOpening class="Window" name="Window_w1_sam_bedroom"/>
+                        	<dhc:ceiling class="Ceiling" id="Ceiling_sam_bedroom"/>
+                            <dhc:floor class="Floor" id="Floor_sam_bedroom"/>
+                            <dhc:wall class="Wall" id="Wall_sam_bedroom_south"/>
+                            <dhc:wall class="Wall" id="Wall_sam_bedroom_west">
+                            	<dhc:hasWallOpening class="Window" id="Window_w1_sam_bedroom"/>
                             </dhc:wall>
-                            <dhc:wall class="Wall" name="Wall_sam_bedroom_main_bathroom_lobby"/>
-                            <dhc:wall class="Wall" name="Wall_sam_bedroom_lobby">
-                            	<dhc:hasWallOpening class="Door" name="Door_sam_bedroom_lobby"/>
+                            <dhc:wall class="Wall" id="Wall_sam_bedroom_main_bathroom_lobby"/>
+                            <dhc:wall class="Wall" id="Wall_sam_bedroom_lobby">
+                            	<dhc:hasWallOpening class="Door" id="Door_sam_bedroom_lobby"/>
                            	</dhc:wall>
-                            <dhc:wall class="Wall" name="Wall_sam-bedroom_livingroom">
-                            	<dhc:hasWallOpening class="Door" name="Door_sam_bedroom_living"/>
+                            <dhc:wall class="Wall" id="Wall_sam-bedroom_livingroom">
+                            	<dhc:hasWallOpening class="Door" id="Door_sam_bedroom_living"/>
                             </dhc:wall>
                       	</dhc:room>
                  	</dhc:flat>
@@ -1219,34 +1219,34 @@ Represents all the flats present in the environment (i.e., the building).
 	{
 	"flats":[
 		{
-			"name" : "flat",
+			"id" : "flat",
 			"class" : "Flat",
 			"description" : "The flat I rent in Turin",
 			"rooms":[
 				{
-					"name" : "kitchen",
+					"id" : "kitchen",
 					"class" : "Kitchen",
 					"description" : "The best room in the house"
 				},
 				{
-					"name" : "sam_bedroom",
+					"id" : "sam_bedroom",
 					"class": "Bedroom",
 					"description" : "Sam's bedroom"
 				}
 			]
 		},
 		{
-			"name" : "milan-flat",
+			"id" : "milan-flat",
 			"class" : "Flat",
 			"description" : "The flat I own in Milan",
 			"rooms":[
 				{
-					"name" : "kitchen",
+					"id" : "kitchen",
 					"class" : "Kitchen",
 					"description" : "The kitchen"
 				},
 				{
-					"name" : "bathroom",
+					"id" : "bathroom",
 					"class": "Bathroom",
 					"description" : "The only bathroom"
 				}
@@ -1276,17 +1276,17 @@ Represents all the flats present in the environment (i.e., the building).
 	-- REQUEST-BODY: --
 	
 	{
-		"name" : "loft",
+		"id" : "loft",
 		"class" : "Flat",
 		"description" : "The loft in the city center",
 		"rooms":[
 			{
-				"name" : "kitchen",
+				"id" : "kitchen",
 				"class" : "Kitchen",
 				"description" : "The kitchen with a wonderful view"
 			},
 			{
-				"name" : "bedroom",
+				"id" : "bedroom",
 				"class": "Bedroom",
 				"description" : "My bedroom"
 			}
@@ -1358,17 +1358,17 @@ Represents a specific flat present in the environment (i.e., the building).
 <div class="accordion-inner" markdown="1">
 
 	{
-		"name" : "flat",
+		"id" : "flat",
 		"class" : "Flat",
 		"description" : "The flat I rent in Turin",
 		"rooms":[
 			{
-				"name" : "kitchen",
+				"id" : "kitchen",
 				"class" : "Kitchen",
 				"description" : "The best room in the house"
 			},
 			{
-				"name" : "sam_bedroom",
+				"id" : "sam_bedroom",
 				"class": "Bedroom",
 				"description" : "Sam's bedroom"
 			}
@@ -1465,12 +1465,12 @@ Represents all the rooms present in a given flat.
 	{
 	"rooms":[
 		{
-			"name" : "kitchen",
+			"id" : "kitchen",
 			"class" : "Kitchen",
 			"description" : "The best room in the house"
 		},
 		{
-			"name" : "sam_bedroom",
+			"id" : "sam_bedroom",
 			"class": "Bedroom",
 			"description" : "Sam's bedroom"
 		}
@@ -1498,7 +1498,7 @@ Represents all the rooms present in a given flat.
 	-- REQUEST-BODY: --
 	
 	{
-		"name" : "bedroom",
+		"id" : "bedroom",
 		"class": "Bedroom",
 		"description" : "My bedroom"
 	}
@@ -1568,7 +1568,7 @@ Represents a specific room in the flat identified by the given *flat-id*.
 <div class="accordion-inner" markdown="1">
 
 	{
-		"name" : "kitchen",
+		"id" : "kitchen",
 		"class" : "Kitchen",
 		"description" : "The best room in the house"
 	}

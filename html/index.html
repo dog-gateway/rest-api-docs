@@ -265,7 +265,7 @@ Rules API
 <pre><code>&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot; standalone=&quot;yes&quot;?&gt;
   &lt;dhc:dogHomeConfiguration&gt;
     &lt;dhc:controllables&gt;
-        &lt;dhc:device domoticSystem=&quot;ELITE&quot; name=&quot;oven1&quot; class=&quot;ElectricalOven&quot;&gt;
+        &lt;dhc:device domoticSystem=&quot;ELITE&quot; id=&quot;oven1&quot; class=&quot;ElectricalOven&quot;&gt;
             &lt;dhc:description&gt;A ElectricalOven instance named oven1&lt;/dhc:description&gt;
             &lt;dhc:isIn&gt;kitchen&lt;/dhc:isIn&gt;
             &lt;dhc:pluggedIn&gt;MainsPowerOutlet_p12_kitchen&lt;/dhc:pluggedIn&gt;
@@ -294,7 +294,7 @@ Rules API
                         &lt;/dhc:statevalues&gt;
                     &lt;/dhc:state&gt;
                 &lt;/dhc:device&gt;
-                &lt;dhc:device domoticSystem=&quot;KONNEX&quot; name=&quot;MainsPowerOutlet_p12_kitchen&quot; class=&quot;MainsPowerOutlet&quot;&gt;
+                &lt;dhc:device domoticSystem=&quot;KONNEX&quot; id=&quot;MainsPowerOutlet_p12_kitchen&quot; class=&quot;MainsPowerOutlet&quot;&gt;
                     &lt;dhc:description&gt;A MainsPowerOutlet instance named MainsPowerOutlet_p12_kitchen&lt;/dhc:description&gt;
                     &lt;dhc:isIn&gt;kitchen&lt;/dhc:isIn&gt;
                     &lt;dhc:hasMeter&gt;energy_meter_1&lt;/dhc:hasMeter&gt;
@@ -433,7 +433,7 @@ and &#8220;controllable&#8221; by applications using this API. </p>
 <div class="accordion-inner" >
 
 <pre><code>{
-    &quot;name&quot; : &quot;MainsPowerOutlet_p12_kitchen&quot;,
+    &quot;id&quot; : &quot;MainsPowerOutlet_p12_kitchen&quot;,
     &quot;class&quot; : &quot;MainsPowerOutlet&quot;,
     &quot;description&quot; : &quot;The smart plug to which the dishwasher is connected&quot;,
     &quot;isIn&quot; : &quot;kitchen&quot;,
@@ -504,7 +504,7 @@ and &#8220;controllable&#8221; by applications using this API. </p>
 <div id="devices-single-example-xml"  class="accordion-body collapse" >
 <div class="accordion-inner" ></p>
 
-<pre><code>&lt;dhc:device domoticSystem=&quot;KONNEX&quot; name=&quot;MainsPowerOutlet_p12_kitchen&quot; class=&quot;MainsPowerOutlet&quot;&gt;
+<pre><code>&lt;dhc:device domoticSystem=&quot;KONNEX&quot; id=&quot;MainsPowerOutlet_p12_kitchen&quot; class=&quot;MainsPowerOutlet&quot;&gt;
     &lt;dhc:description&gt;A MainsPowerOutlet instance named MainsPowerOutlet_p12_kitchen&lt;/dhc:description&gt;
     &lt;dhc:isIn&gt;kitchen&lt;/dhc:isIn&gt;
     &lt;dhc:hasMeter&gt;energy_meter_1&lt;/dhc:hasMeter&gt;
@@ -666,7 +666,7 @@ and &#8220;controllable&#8221; by applications using this API. </p>
 <pre><code>{
 &quot;devices&quot;:[
     {
-        &quot;name&quot; : &quot;Lamp1&quot;,
+        &quot;id&quot; : &quot;Lamp1&quot;,
         &quot;description&quot; : &quot; The lamp over the closet near to the livingroom armchair&quot;,
         &quot;active&quot; : true,
         &quot;status&quot;:[
@@ -677,7 +677,7 @@ and &#8220;controllable&#8221; by applications using this API. </p>
     }
     ,
     {
-        &quot;name&quot; : &quot;Plug_h725&quot;,
+        &quot;id&quot; : &quot;Plug_h725&quot;,
         &quot;description&quot;:&quot; The smart plug driving the dishwasher&quot;,
         &quot;active&quot;: true,
         &quot;status&quot;: [
@@ -696,7 +696,7 @@ and &#8220;controllable&#8221; by applications using this API. </p>
     }
     ,
     {
-        &quot;name&quot; : &quot;Meter_1&quot;,
+        &quot;id&quot; : &quot;Meter_1&quot;,
         &quot;description&quot;:&quot; The  utility meter&quot;,
         &quot;active&quot;: true,
         &quot;status&quot;: [
@@ -977,7 +977,7 @@ and &#8220;controllable&#8221; by applications using this API. </p>
 <div class="accordion-inner" >
 
 <pre><code>    {
-        &quot;name&quot; : &quot;Meter_1&quot;,
+        &quot;id&quot; : &quot;Meter_1&quot;,
         &quot;description&quot;:&quot; The  utility meter&quot;,
         &quot;active&quot;: true,
         &quot;status&quot;: [
@@ -1490,39 +1490,39 @@ If the command brings the device in same state in which the device is, no differ
 <pre><code>&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot; standalone=&quot;yes&quot;?&gt;
     &lt;dhc:dogHomeConfiguration&gt;
         &lt;dhc:buildingEnvironment&gt;
-            &lt;dhc:building name=&quot;SimpleHome&quot;&gt;
-                &lt;dhc:flat class=&quot;Flat&quot; svgfootprint=&quot;simple_home.svg&quot; name=&quot;flat&quot;&gt;
+            &lt;dhc:building id=&quot;SimpleHome&quot;&gt;
+                &lt;dhc:flat class=&quot;Flat&quot; svgfootprint=&quot;simple_home.svg&quot; id=&quot;flat&quot;&gt;
                     &lt;dhc:description&gt;The flat I rent in Turin.&lt;/dhc:description&gt;
-                    &lt;dhc:room class=&quot;Kitchen&quot; name=&quot;kitchen&quot;&gt;
+                    &lt;dhc:room class=&quot;Kitchen&quot; id=&quot;kitchen&quot;&gt;
                         &lt;dhc:description&gt;The best room in the house.&lt;/dhc:description&gt;
-                        &lt;dhc:ceiling class=&quot;Ceiling&quot; name=&quot;Ceiling_kitchen&quot;/&gt;
-                        &lt;dhc:floor class=&quot;Floor&quot; name=&quot;Floor_kitchen&quot;/&gt;
-                        &lt;dhc:wall class=&quot;Wall&quot; name=&quot;Wall_kitchen_south&quot;/&gt;
-                        &lt;dhc:wall class=&quot;Wall&quot; name=&quot;Wall_kicthen_west&quot;&gt;
-                            &lt;dhc:hasWallOpening class=&quot;Window&quot; name=&quot;Window_w4_kitchen&quot;/&gt;
+                        &lt;dhc:ceiling class=&quot;Ceiling&quot; id=&quot;Ceiling_kitchen&quot;/&gt;
+                        &lt;dhc:floor class=&quot;Floor&quot; id=&quot;Floor_kitchen&quot;/&gt;
+                        &lt;dhc:wall class=&quot;Wall&quot; id=&quot;Wall_kitchen_south&quot;/&gt;
+                        &lt;dhc:wall class=&quot;Wall&quot; id=&quot;Wall_kicthen_west&quot;&gt;
+                            &lt;dhc:hasWallOpening class=&quot;Window&quot; id=&quot;Window_w4_kitchen&quot;/&gt;
                         &lt;/dhc:wall&gt;
-                        &lt;dhc:wall class=&quot;Wall&quot; name=&quot;Wall_kitchen_storage_lobby&quot;/&gt;
-                        &lt;dhc:wall class=&quot;Wall&quot; name=&quot;Wall_kitchen_lobby&quot;&gt;
-                            &lt;dhc:hasWallOpening class=&quot;Door&quot; name=&quot;Door_kitchen_lobby&quot;/&gt;
+                        &lt;dhc:wall class=&quot;Wall&quot; id=&quot;Wall_kitchen_storage_lobby&quot;/&gt;
+                        &lt;dhc:wall class=&quot;Wall&quot; id=&quot;Wall_kitchen_lobby&quot;&gt;
+                            &lt;dhc:hasWallOpening class=&quot;Door&quot; id=&quot;Door_kitchen_lobby&quot;/&gt;
                         &lt;/dhc:wall&gt;
-                        &lt;dhc:wall class=&quot;Wall&quot; name=&quot;Wall_kitchen_livingroom&quot;&gt;
-                            &lt;dhc:hasWallOpening class=&quot;Door&quot; name=&quot;Door_kitchen_living&quot;/&gt;
+                        &lt;dhc:wall class=&quot;Wall&quot; id=&quot;Wall_kitchen_livingroom&quot;&gt;
+                            &lt;dhc:hasWallOpening class=&quot;Door&quot; id=&quot;Door_kitchen_living&quot;/&gt;
                         &lt;/dhc:wall&gt;
                     &lt;/dhc:room&gt;
-                    &lt;dhc:room class=&quot;Bedroom&quot; name=&quot;sam_bedroom&quot;&gt;
+                    &lt;dhc:room class=&quot;Bedroom&quot; id=&quot;sam_bedroom&quot;&gt;
                         &lt;dhc:description&gt;Sam's bedroom&lt;/dhc:description&gt;
-                        &lt;dhc:ceiling class=&quot;Ceiling&quot; name=&quot;Ceiling_sam_bedroom&quot;/&gt;
-                        &lt;dhc:floor class=&quot;Floor&quot; name=&quot;Floor_sam_bedroom&quot;/&gt;
-                        &lt;dhc:wall class=&quot;Wall&quot; name=&quot;Wall_sam_bedroom_south&quot;/&gt;
-                        &lt;dhc:wall class=&quot;Wall&quot; name=&quot;Wall_sam_bedroom_west&quot;&gt;
-                            &lt;dhc:hasWallOpening class=&quot;Window&quot; name=&quot;Window_w1_sam_bedroom&quot;/&gt;
+                        &lt;dhc:ceiling class=&quot;Ceiling&quot; id=&quot;Ceiling_sam_bedroom&quot;/&gt;
+                        &lt;dhc:floor class=&quot;Floor&quot; id=&quot;Floor_sam_bedroom&quot;/&gt;
+                        &lt;dhc:wall class=&quot;Wall&quot; id=&quot;Wall_sam_bedroom_south&quot;/&gt;
+                        &lt;dhc:wall class=&quot;Wall&quot; id=&quot;Wall_sam_bedroom_west&quot;&gt;
+                            &lt;dhc:hasWallOpening class=&quot;Window&quot; id=&quot;Window_w1_sam_bedroom&quot;/&gt;
                         &lt;/dhc:wall&gt;
-                        &lt;dhc:wall class=&quot;Wall&quot; name=&quot;Wall_sam_bedroom_main_bathroom_lobby&quot;/&gt;
-                        &lt;dhc:wall class=&quot;Wall&quot; name=&quot;Wall_sam_bedroom_lobby&quot;&gt;
-                            &lt;dhc:hasWallOpening class=&quot;Door&quot; name=&quot;Door_sam_bedroom_lobby&quot;/&gt;
+                        &lt;dhc:wall class=&quot;Wall&quot; id=&quot;Wall_sam_bedroom_main_bathroom_lobby&quot;/&gt;
+                        &lt;dhc:wall class=&quot;Wall&quot; id=&quot;Wall_sam_bedroom_lobby&quot;&gt;
+                            &lt;dhc:hasWallOpening class=&quot;Door&quot; id=&quot;Door_sam_bedroom_lobby&quot;/&gt;
                         &lt;/dhc:wall&gt;
-                        &lt;dhc:wall class=&quot;Wall&quot; name=&quot;Wall_sam-bedroom_livingroom&quot;&gt;
-                            &lt;dhc:hasWallOpening class=&quot;Door&quot; name=&quot;Door_sam_bedroom_living&quot;/&gt;
+                        &lt;dhc:wall class=&quot;Wall&quot; id=&quot;Wall_sam-bedroom_livingroom&quot;&gt;
+                            &lt;dhc:hasWallOpening class=&quot;Door&quot; id=&quot;Door_sam_bedroom_living&quot;/&gt;
                         &lt;/dhc:wall&gt;
                     &lt;/dhc:room&gt;
                 &lt;/dhc:flat&gt;
@@ -1644,34 +1644,34 @@ If the command brings the device in same state in which the device is, no differ
 <pre><code>{
 &quot;flats&quot;:[
     {
-        &quot;name&quot; : &quot;flat&quot;,
+        &quot;id&quot; : &quot;flat&quot;,
         &quot;class&quot; : &quot;Flat&quot;,
         &quot;description&quot; : &quot;The flat I rent in Turin&quot;,
         &quot;rooms&quot;:[
             {
-                &quot;name&quot; : &quot;kitchen&quot;,
+                &quot;id&quot; : &quot;kitchen&quot;,
                 &quot;class&quot; : &quot;Kitchen&quot;,
                 &quot;description&quot; : &quot;The best room in the house&quot;
             },
             {
-                &quot;name&quot; : &quot;sam_bedroom&quot;,
+                &quot;id&quot; : &quot;sam_bedroom&quot;,
                 &quot;class&quot;: &quot;Bedroom&quot;,
                 &quot;description&quot; : &quot;Sam's bedroom&quot;
             }
         ]
     },
     {
-        &quot;name&quot; : &quot;milan-flat&quot;,
+        &quot;id&quot; : &quot;milan-flat&quot;,
         &quot;class&quot; : &quot;Flat&quot;,
         &quot;description&quot; : &quot;The flat I own in Milan&quot;,
         &quot;rooms&quot;:[
             {
-                &quot;name&quot; : &quot;kitchen&quot;,
+                &quot;id&quot; : &quot;kitchen&quot;,
                 &quot;class&quot; : &quot;Kitchen&quot;,
                 &quot;description&quot; : &quot;The kitchen&quot;
             },
             {
-                &quot;name&quot; : &quot;bathroom&quot;,
+                &quot;id&quot; : &quot;bathroom&quot;,
                 &quot;class&quot;: &quot;Bathroom&quot;,
                 &quot;description&quot; : &quot;The only bathroom&quot;
             }
@@ -1701,17 +1701,17 @@ If the command brings the device in same state in which the device is, no differ
 -- REQUEST-BODY: --
 
 {
-    &quot;name&quot; : &quot;loft&quot;,
+    &quot;id&quot; : &quot;loft&quot;,
     &quot;class&quot; : &quot;Flat&quot;,
     &quot;description&quot; : &quot;The loft in the city center&quot;,
     &quot;rooms&quot;:[
         {
-            &quot;name&quot; : &quot;kitchen&quot;,
+            &quot;id&quot; : &quot;kitchen&quot;,
             &quot;class&quot; : &quot;Kitchen&quot;,
             &quot;description&quot; : &quot;The kitchen with a wonderful view&quot;
         },
         {
-            &quot;name&quot; : &quot;bedroom&quot;,
+            &quot;id&quot; : &quot;bedroom&quot;,
             &quot;class&quot;: &quot;Bedroom&quot;,
             &quot;description&quot; : &quot;My bedroom&quot;
         }
@@ -1831,17 +1831,17 @@ If the command brings the device in same state in which the device is, no differ
 <div class="accordion-inner" >
 
 <pre><code>{
-    &quot;name&quot; : &quot;flat&quot;,
+    &quot;id&quot; : &quot;flat&quot;,
     &quot;class&quot; : &quot;Flat&quot;,
     &quot;description&quot; : &quot;The flat I rent in Turin&quot;,
     &quot;rooms&quot;:[
         {
-            &quot;name&quot; : &quot;kitchen&quot;,
+            &quot;id&quot; : &quot;kitchen&quot;,
             &quot;class&quot; : &quot;Kitchen&quot;,
             &quot;description&quot; : &quot;The best room in the house&quot;
         },
         {
-            &quot;name&quot; : &quot;sam_bedroom&quot;,
+            &quot;id&quot; : &quot;sam_bedroom&quot;,
             &quot;class&quot;: &quot;Bedroom&quot;,
             &quot;description&quot; : &quot;Sam's bedroom&quot;
         }
@@ -1987,12 +1987,12 @@ If the command brings the device in same state in which the device is, no differ
 <pre><code>{
 &quot;rooms&quot;:[
     {
-        &quot;name&quot; : &quot;kitchen&quot;,
+        &quot;id&quot; : &quot;kitchen&quot;,
         &quot;class&quot; : &quot;Kitchen&quot;,
         &quot;description&quot; : &quot;The best room in the house&quot;
     },
     {
-        &quot;name&quot; : &quot;sam_bedroom&quot;,
+        &quot;id&quot; : &quot;sam_bedroom&quot;,
         &quot;class&quot;: &quot;Bedroom&quot;,
         &quot;description&quot; : &quot;Sam's bedroom&quot;
     }
@@ -2020,7 +2020,7 @@ If the command brings the device in same state in which the device is, no differ
 -- REQUEST-BODY: --
 
 {
-    &quot;name&quot; : &quot;bedroom&quot;,
+    &quot;id&quot; : &quot;bedroom&quot;,
     &quot;class&quot;: &quot;Bedroom&quot;,
     &quot;description&quot; : &quot;My bedroom&quot;
 }
@@ -2138,7 +2138,7 @@ If the command brings the device in same state in which the device is, no differ
 <div class="accordion-inner" >
 
 <pre><code>{
-    &quot;name&quot; : &quot;kitchen&quot;,
+    &quot;id&quot; : &quot;kitchen&quot;,
     &quot;class&quot; : &quot;Kitchen&quot;,
     &quot;description&quot; : &quot;The best room in the house&quot;
 }
