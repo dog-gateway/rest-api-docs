@@ -57,7 +57,8 @@ Rules API
 <div id="collapseThree" class="accordion-body collapse" markdown="1">
 <div class="accordion-inner" markdown="1">
 
-* Definition
+* [Rules](#rules)
+	* [Single Rule](#single-rule)
 
 </div>
 </div>
@@ -87,7 +88,7 @@ APIs allow to:
 	* [insert](#rooms-in-flat), [update](#single-room-in-flat) or delete rooms;
 	* [insert](#flats), [update](#single-flat), or delete flats;
 * manage rules and automation scenarios
-	* insert, update, or delete automation rules;
+	* [insert](#rules), [update, or delete](#single-rule) automation rules;
 	* insert, update, or delete scenarios;
 * monitor the home/building performance
 	* historical information on consumptions;
@@ -114,7 +115,8 @@ APIs allow to:
 |[Resource /environment/flats/{flat-id}](#single-flat)|Represents a specific flat present in the environment (i.e., the building).|
 |[Resource /environment/{flat-id}/rooms](#rooms-in-flat)|Represents all the rooms present in a given flat.|
 |[Resource /environment/{flat-id}/rooms/{room-id}](#single-room-in-flat)|Represents a specific room present in a given flat in the environment (i.e., the building).|
-
+|[Resource /rules/](#rules)|Represents the rules registered in Dog. By using this resource, it is possible to get all the existing rules or add a new rule.|
+|[Resource /rules/{rule-id}](#single-rule)|Represents a single rule registered in Dog. By using this resource, it is possible to update or delete an existing rule.|
 
 ---------------------------------
 
@@ -1534,7 +1536,7 @@ Represents all the rooms present in a given flat.
 |Response Format|**json**|
 |HTTP Methods|**GET** or **POST**|
 |Resource family|**environment**|
-|Response Object|**Array [ Rooms ]**|
+|Response Object|**Array [ Room ]**|
 |API Version|**v1.0**|
  
 </div>
@@ -1630,6 +1632,220 @@ Represents a specific room in the flat identified by the given *flat-id*.
 |HTTP Methods|**GET** or **PUT**|
 |Resource family|**environment**|
 |Response Object|**Room**|
+|API Version|**v1.0**|
+ 
+</div>
+</div>
+</div>
+
+<div class="row-fluid" markdown="1">
+<div class="span3" markdown="1"></div>
+<div class="span9" markdown="1">
+
+----------------------------------
+
+</div>
+</div>
+
+---------------------------------
+
+### Rules API [rulesAPI]###
+
+---------------------------------
+
+</div>
+</div>
+
+<div class="row-fluid" markdown="1">
+<div class="span3" markdown="1"></div>
+<div class="span6" markdown="1">
+
+#### <a id="rules"></a> Resource /rules/ ####
+
+*Updated on Thu, 2013-10-25*
+<span class="label label-info pull-right">API version 1.0</span>
+<span class="label label-important pull-right">Incomplete documentation</span>
+
+Represents the rules registered in Dog. By using this resource, it is possible to get all the existing rules or add a new rule. 
+
+**URL:** /rules/
+
+|Method|Description|
+|:-----|:----------|
+| GET | Returns all the existing rules. |
+| POST | Add a new rule to the current rules set. |
+
+**GET: Example**
+
+	GET http://www.mydog.com/rules
+
+<div class="accordion" id="rules-example" markdown="1">
+<div class="accordion-group" markdown="1">
+<div class="accordion-heading" markdown="1">
+<a class="accordion-toggle" data-toggle="collapse" data-parent="#rules-example" href="#rules-example-json" markdown="1">
+**Example Response (JSON)**
+</a>
+</div>
+<div id="rules-example-json" class="accordion-body collapse" markdown="1">
+<div class="accordion-inner" markdown="1">
+
+	{
+		// to fill
+	}
+
+</div>
+</div>
+</div>
+</div>
+
+**POST: Example**
+<div class="accordion" id="add-rule-example" markdown="1">
+<div class="accordion-group" markdown="1">
+<div class="accordion-heading" markdown="1">
+<a class="accordion-toggle" data-toggle="collapse" data-parent="#add-rule-example" href="#add-rule-example-json" markdown="1">
+**Example Request**
+</a>
+</div>
+<div id="add-rule-example-json" class="accordion-body collapse" markdown="1">
+<div class="accordion-inner" markdown="1">
+
+	POST http://www.mydog.com/rules/
+	
+	-- REQUEST-BODY: --
+	
+	{
+		// to fill
+	}
+</div>
+</div>
+</div>
+</div>
+
+</div>
+<div class="span3" markdown="1">
+<div class="well" markdown="1">
+
+#### Resource Information ####
+
+|||
+|----------------|------------------|
+|Authentication |**Requires app key**|
+|Response Format|**json**|
+|HTTP Methods|**GET** or **POST**|
+|Resource family|**rules**|
+|Response Object|**Array [ Rule ]**|
+|API Version|**v1.0**|
+ 
+</div>
+</div>
+</div>
+
+<div class="row-fluid" markdown="1">
+<div class="span3" markdown="1"></div>
+<div class="span9" markdown="1">
+
+----------------------------------
+
+</div>
+</div>
+
+<div class="row-fluid" markdown="1">
+<div class="span3" markdown="1"></div>
+<div class="span6" markdown="1">
+
+#### <a id="single-rule"></a> Resource /rules/{rule-id} ####
+
+*Updated on Thu, 2013-10-25*
+<span class="label label-info pull-right">API version 1.0</span>
+<span class="label label-important pull-right">Incomplete documentation</span>
+
+Represents an existing rule registered in Dog. By using this resource, it is possible to update or delete an existing rule. 
+
+**URL:** /rules/
+
+|Method|Description|
+|:-----|:----------|
+| GET | Returns the details of the rules identified by *rule-id*. |
+| PUT | Update the rule identified by *rule-id*. |
+| DELETE | Remove the rule identified by the given *rule-id*. |
+
+**GET: Example**
+
+	GET http://www.mydog.com/rules/rule1
+
+<div class="accordion" id="single-rule-example" markdown="1">
+<div class="accordion-group" markdown="1">
+<div class="accordion-heading" markdown="1">
+<a class="accordion-toggle" data-toggle="collapse" data-parent="#single-rule-example" href="#single-rule-example-json" markdown="1">
+**Example Response (JSON)**
+</a>
+</div>
+<div id="single-rule-example-json" class="accordion-body collapse" markdown="1">
+<div class="accordion-inner" markdown="1">
+
+	{
+		// to fill
+	}
+
+</div>
+</div>
+</div>
+</div>
+
+**PUT: Example**
+<div class="accordion" id="update-rule-example" markdown="1">
+<div class="accordion-group" markdown="1">
+<div class="accordion-heading" markdown="1">
+<a class="accordion-toggle" data-toggle="collapse" data-parent="#update-rule-example" href="#update-rule-example-json" markdown="1">
+**Example Request**
+</a>
+</div>
+<div id="update-rule-example-json" class="accordion-body collapse" markdown="1">
+<div class="accordion-inner" markdown="1">
+
+	PUT http://www.mydog.com/rules/rule1
+	
+	-- REQUEST-BODY: --
+	
+	{
+		// to fill
+	}
+</div>
+</div>
+</div>
+</div>
+
+**DELETE: Example**
+<div class="accordion" id="remove-rule-example" markdown="1">
+<div class="accordion-group" markdown="1">
+<div class="accordion-heading" markdown="1">
+<a class="accordion-toggle" data-toggle="collapse" data-parent="#remove-rule-example" href="#remove-rule-example-json" markdown="1">
+**Example Request**
+</a>
+</div>
+<div id="remove-rule-example-json" class="accordion-body collapse" markdown="1">
+<div class="accordion-inner" markdown="1">
+
+	DELETE http://www.mydog.com/rules/rule1
+	
+</div>
+</div>
+</div>
+</div>
+
+</div>
+<div class="span3" markdown="1">
+<div class="well" markdown="1">
+
+#### Resource Information ####
+
+|||
+|----------------|------------------|
+|Authentication |**Requires app key**|
+|Response Format|**json**|
+|HTTP Methods|**GET**, **PUT** or **DELETE**|
+|Resource family|**rules**|
+|Response Object|**Rule**|
 |API Version|**v1.0**|
  
 </div>
