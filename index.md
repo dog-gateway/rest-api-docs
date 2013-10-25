@@ -99,6 +99,7 @@ APIs allow to:
 	* manage system updates;
 	* troubleshoot problems.
 
+All API access is currently over HTTP, and accessed from `http://<dog-address>/api/`.
 
 #### Function summary ####
 
@@ -146,7 +147,7 @@ Represents domotic devices handled by Dog and "controllable" by applications usi
 
 **Example Request**
 
-	GET http://www.mydog.com/devices
+	GET http://www.mydog.com/api/devices
 
 <div class="accordion" id="devices-example" markdown="1">
 <div class="accordion-group" markdown="1">
@@ -284,7 +285,7 @@ and "controllable" by applications using this API.
 
 **GET: Example**
 
-   GET http://www.mydog.com/devices/MainsPowerOutlet_p12_kitchen
+   GET http://www.mydog.com/api/devices/MainsPowerOutlet_p12_kitchen
 
 <div class="accordion" id="devices-single-example" markdown="1">
 <div class="accordion-group" markdown="1">
@@ -407,7 +408,7 @@ and "controllable" by applications using this API.
 <div id="device-update-example-json" class="accordion-body collapse" markdown="1">
 <div class="accordion-inner" markdown="1">
 
-	PUT http://www.mydog.com/devices/MainsPowerOutlet_p12_kitchen
+	PUT http://www.mydog.com/api/devices/MainsPowerOutlet_p12_kitchen
 	
 	-- REQUEST-BODY: --
 	
@@ -467,7 +468,7 @@ Represents the status of devices registered in the Dog gateway runtime, i.e., de
 
 **Example Request**
 
-	GET http://www.mydog.com/devices/status
+	GET http://www.mydog.com/api/devices/status
 
 <div class="accordion" id="devices-status-example" markdown="1">
 <div class="accordion-group" markdown="1">
@@ -735,7 +736,7 @@ Represents the status of the device identified by the given *device-id* and regi
 
 **Example Request**
 
-	GET http://www.mydog.com/devices/Meter_1/status
+	GET http://www.mydog.com/api/devices/Meter_1/status
 
 <div class="accordion" id="single-device-status-example" markdown="1">
 <div class="accordion-group" markdown="1">
@@ -979,11 +980,11 @@ If the command brings the device in same state in which the device is, no differ
 <div class="accordion-inner" markdown="1">
 (simple command)
 
-    PUT http://www.mydog.com/devices/MainsPowerOutlet_p12_kitchen/commands/on
+    PUT http://www.mydog.com/api/devices/MainsPowerOutlet_p12_kitchen/commands/on
 
 (command with parameters)
 
-	PUT http://www.mydog.com/devices/DimmerLamp_l4_livingroom/commands/set
+	PUT http://www.mydog.com/api/devices/DimmerLamp_l4_livingroom/commands/set
 	
 	-- REQUEST-BODY: --
 	
@@ -993,7 +994,7 @@ If the command brings the device in same state in which the device is, no differ
 
 (deprecated)    
    
-    POST http://www.mydog.com/devices/MainsPowerOutlet_p12_kitchen/commands/off
+    POST http://www.mydog.com/api/devices/MainsPowerOutlet_p12_kitchen/commands/off
 </div>
 </div>
 </div>
@@ -1094,7 +1095,7 @@ Represents the environment (i.e., the building) configured in Dog.
 
 **Example Request**
 
-	GET http://www.mydog.com/environment
+	GET http://www.mydog.com/api/environment
 
 <div class="accordion" id="environment-example" markdown="1">
 <div class="accordion-group" markdown="1">
@@ -1216,7 +1217,7 @@ Represents all the flats present in the environment (i.e., the building).
 
 **GET: Example**
 
-	GET http://www.mydog.com/environment/flats
+	GET http://www.mydog.com/api/environment/flats
 
 <div class="accordion" id="flats-example" markdown="1">
 <div class="accordion-group" markdown="1">
@@ -1283,7 +1284,7 @@ Represents all the flats present in the environment (i.e., the building).
 <div id="add-flat-example-json" class="accordion-body collapse" markdown="1">
 <div class="accordion-inner" markdown="1">
 
-	POST http://www.mydog.com/environment/flats
+	POST http://www.mydog.com/api/environment/flats
 	
 	-- REQUEST-BODY: --
 	
@@ -1359,7 +1360,7 @@ Represents a specific flat present in the environment (i.e., the building).
 
 **GET: Example**
 
-	GET http://www.mydog.com/environment/flats/flat
+	GET http://www.mydog.com/api/environment/flats/flat
 
 <div class="accordion" id="single-flat-example" markdown="1">
 <div class="accordion-group" markdown="1">
@@ -1405,7 +1406,7 @@ Represents a specific flat present in the environment (i.e., the building).
 <div id="update-flat-example-json" class="accordion-body collapse" markdown="1">
 <div class="accordion-inner" markdown="1">
 
-	PUT http://www.mydog.com/environment/flats/flat
+	PUT http://www.mydog.com/api/environment/flats/flat
 	
 	-- REQUEST-BODY: --
 	
@@ -1466,7 +1467,7 @@ Represents all the rooms present in a given flat.
 
 **GET: Example**
 
-	GET http://www.mydog.com/environment/flats/flat/rooms
+	GET http://www.mydog.com/api/environment/flats/flat/rooms
 
 <div class="accordion" id="rooms-in-flat-example" markdown="1">
 <div class="accordion-group" markdown="1">
@@ -1509,7 +1510,7 @@ Represents all the rooms present in a given flat.
 <div id="add-room-in-flat-example-json" class="accordion-body collapse" markdown="1">
 <div class="accordion-inner" markdown="1">
 
-	POST http://www.mydog.com/environment/flats/flat/rooms
+	POST http://www.mydog.com/api/environment/flats/flat/rooms
 	
 	-- REQUEST-BODY: --
 	
@@ -1573,7 +1574,7 @@ Represents a specific room in the flat identified by the given *flat-id*.
 
 **GET: Example**
 
-	GET http://www.mydog.com/environment/flats/flat/rooms/kitchen
+	GET http://www.mydog.com/api/environment/flats/flat/rooms/kitchen
 
 <div class="accordion" id="single-room-in-flat-example" markdown="1">
 <div class="accordion-group" markdown="1">
@@ -1607,7 +1608,7 @@ Represents a specific room in the flat identified by the given *flat-id*.
 <div id="update-single-room-in-flat-example-json" class="accordion-body collapse" markdown="1">
 <div class="accordion-inner" markdown="1">
 
-	PUT http://www.mydog.com/environment/flats/flat/rooms/kitchen
+	PUT http://www.mydog.com/api/environment/flats/flat/rooms/kitchen
 	
 	-- REQUEST-BODY: --
 	
@@ -1677,7 +1678,7 @@ Represents the rules registered in Dog. By using this resource, it is possible t
 
 **GET: Example**
 
-	GET http://www.mydog.com/rules
+	GET http://www.mydog.com/api/rules
 
 <div class="accordion" id="rules-example" markdown="1">
 <div class="accordion-group" markdown="1">
@@ -1709,7 +1710,7 @@ Represents the rules registered in Dog. By using this resource, it is possible t
 <div id="add-rule-example-json" class="accordion-body collapse" markdown="1">
 <div class="accordion-inner" markdown="1">
 
-	POST http://www.mydog.com/rules/
+	POST http://www.mydog.com/api/rules/
 	
 	-- REQUEST-BODY: --
 	
@@ -1771,7 +1772,7 @@ Represents an existing rule registered in Dog. By using this resource, it is pos
 
 **GET: Example**
 
-	GET http://www.mydog.com/rules/rule1
+	GET http://www.mydog.com/api/rules/rule1
 
 <div class="accordion" id="single-rule-example" markdown="1">
 <div class="accordion-group" markdown="1">
@@ -1803,7 +1804,7 @@ Represents an existing rule registered in Dog. By using this resource, it is pos
 <div id="update-rule-example-json" class="accordion-body collapse" markdown="1">
 <div class="accordion-inner" markdown="1">
 
-	PUT http://www.mydog.com/rules/rule1
+	PUT http://www.mydog.com/api/rules/rule1
 	
 	-- REQUEST-BODY: --
 	
@@ -1826,7 +1827,7 @@ Represents an existing rule registered in Dog. By using this resource, it is pos
 <div id="remove-rule-example-json" class="accordion-body collapse" markdown="1">
 <div class="accordion-inner" markdown="1">
 
-	DELETE http://www.mydog.com/rules/rule1
+	DELETE http://www.mydog.com/api/rules/rule1
 	
 </div>
 </div>
