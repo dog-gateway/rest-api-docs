@@ -79,16 +79,16 @@ The Dog REST API allows developers to easily integrate home and building automat
 APIs allow to:
 
 * manage connected devices
-	* query the gateway about installed devices, their location, functionalities and configurations;
-	* require execution of commands to existing devices;
+	* [query the gateway about installed devices, their location, functionalities and configurations](#devices);
+	* [require execution of commands to existing devices](#command);
 	* [monitor device statuses and measures in real-time](#status);
-	* add, modify or update the set of devices controlled through the gateway;
+	* add or [update](#singleDevice) the set of devices controlled through the gateway;
 * manage information about the environment
-	* insert, update, modify or delete rooms;
-	* insert, update, modify or delete flats;
+	* [insert](#rooms-in-flat), [update](#single-room-in-flat) or delete rooms;
+	* [insert](#flats), [update](#single-flat), or delete flats;
 * manage rules and automation scenarios
-	* insert, update, modify or delete automation rules;
-	* insert, update, modify or delete scenarios;
+	* insert, update, or delete automation rules;
+	* insert, update, or delete scenarios;
 * monitor the home/building performance
 	* historical information on consumptions;
 	* historical information on activations;
@@ -128,7 +128,7 @@ APIs allow to:
 <div class="span3" markdown="1"></div>
 <div class="span6" markdown="1">
 
-#### Resource /devices <a id="devices"></a> ####
+#### <a id="devices"></a> Resource /devices ####
 
 *Updated on Thu, 2013-10-24*
 <span class="label label-info pull-right">API version 1.0</span>
@@ -264,7 +264,7 @@ Represents domotic devices handled by Dog and "controllable" by applications usi
 <div class="span3" markdown="1"></div>
 <div class="span6" markdown="1">
 
-#### Resource /devices/{device-id} <a id="singleDevice"></a>####
+#### <a id="singleDevice"></a> Resource /devices/{device-id} ####
 
 *Updated on Thu, 2013-10-24*
 <span class="label label-info pull-right">API version 1.0</span>
@@ -451,7 +451,7 @@ and "controllable" by applications using this API.
 <div class="span3" markdown="1"></div>
 <div class="span6" markdown="1">
 
-#### Resource /devices/status <a id="status"></a>####
+#### <a id="status"></a> Resource /devices/status ####
 
 *Updated on Thu, 2013-10-24* <span class="label label-info pull-right">API version 1.0</span>
 
@@ -717,7 +717,7 @@ Represents the status of devices registered in the Dog gateway runtime, i.e., de
 <div class="span3" markdown="1"></div>
 <div class="span6" markdown="1">
 
-#### Resource /devices/{device-id}/status <a id="status-single"></a>####
+#### <a id="status-single"></a> Resource /devices/{device-id}/status ####
 
 *Updated on Thu, 2013-10-24*
 <span class="label label-info pull-right">API version 1.0</span>
@@ -951,7 +951,7 @@ Represents the status of the device identified by the given *device-id* and regi
 <div class="span3" markdown="1"></div>
 <div class="span6" markdown="1">
 
-#### Resource /devices/{device-id}/commands/{command-name} <a id="command"></a>####
+#### <a id="command"></a> Resource /devices/{device-id}/commands/{command-name} ####
 
 *Updated on Fri, 2013-09-06* <span class="label label-info pull-right">API version 1.0</span>
 
@@ -1029,7 +1029,7 @@ If the command brings the device in same state in which the device is, no differ
 <div class="span6" markdown="1">
 
 
-#### Resource /dog/configuration <a id="dogConfiguration"></a>####
+#### <a id="dogConfiguration"></a> Resource /dog/configuration ####
 
 *Updated on Tue, 2013-10-22* <span class="label label-important pull-right">Unavailable</span>
 
@@ -1076,7 +1076,7 @@ If the command brings the device in same state in which the device is, no differ
 <div class="span3" markdown="1"></div>
 <div class="span6" markdown="1">
 
-#### Resource /environment <a id="environment"></a> ####
+#### <a id="environment"></a> Resource /environment ####
 
 *Updated on Thu, 2013-10-24*
 <span class="label label-info pull-right">API version 1.0</span>
@@ -1197,7 +1197,7 @@ Represents the environment (i.e., the building) configured in Dog.
 <div class="span3" markdown="1"></div>
 <div class="span6" markdown="1">
 
-#### Resource /environment/flats <a id="flats"></a> ####
+#### <a id="flats"></a> Resource /environment/flats ####
 
 *Updated on Thu, 2013-10-24*
 <span class="label label-info pull-right">API version 1.0</span>
@@ -1340,7 +1340,7 @@ Represents all the flats present in the environment (i.e., the building).
 <div class="span3" markdown="1"></div>
 <div class="span6" markdown="1">
 
-#### Resource /environment/flats/{flat-id} <a id="single-flat"></a> ####
+#### <a id="single-flat"></a> Resource /environment/flats/{flat-id} ####
 
 *Updated on Thu, 2013-10-24*
 <span class="label label-info pull-right">API version 1.0</span>
@@ -1447,7 +1447,7 @@ Represents a specific flat present in the environment (i.e., the building).
 <div class="span3" markdown="1"></div>
 <div class="span6" markdown="1">
 
-#### Resource /environment/flats/{flat-id}/rooms <a id="rooms-in-flat"></a> ####
+#### <a id="rooms-in-flat"></a> Resource /environment/flats/{flat-id}/rooms ####
 
 *Updated on Thu, 2013-10-24*
 <span class="label label-info pull-right">API version 1.0</span>
@@ -1554,7 +1554,7 @@ Represents all the rooms present in a given flat.
 <div class="span3" markdown="1"></div>
 <div class="span6" markdown="1">
 
-#### Resource /environment/flats/{flat-id}/rooms/{room-id} <a id="single-room-in-flat"></a> ####
+#### <a id="single-room-in-flat"></a> Resource /environment/flats/{flat-id}/rooms/{room-id} ####
 
 *Updated on Thu, 2013-10-24*
 <span class="label label-info pull-right">API version 1.0</span>

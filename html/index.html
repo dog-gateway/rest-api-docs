@@ -102,22 +102,22 @@ Rules API
 <li>manage connected devices
 
 <ul>
-<li>query the gateway about installed devices, their location, functionalities and configurations;</li>
-<li>require execution of commands to existing devices;</li>
+<li><a href="#devices">query the gateway about installed devices, their location, functionalities and configurations</a>;</li>
+<li><a href="#command">require execution of commands to existing devices</a>;</li>
 <li><a href="#status">monitor device statuses and measures in real-time</a>;</li>
-<li>add, modify or update the set of devices controlled through the gateway;</li>
+<li>add or <a href="#singleDevice">update</a> the set of devices controlled through the gateway;</li>
 </ul></li>
 <li>manage information about the environment
 
 <ul>
-<li>insert, update, modify or delete rooms;</li>
-<li>insert, update, modify or delete flats;</li>
+<li><a href="#rooms-in-flat">insert</a>, <a href="#single-room-in-flat">update</a> or delete rooms;</li>
+<li><a href="#flats">insert</a>, <a href="#single-flat">update</a>, or delete flats;</li>
 </ul></li>
 <li>manage rules and automation scenarios
 
 <ul>
-<li>insert, update, modify or delete automation rules;</li>
-<li>insert, update, modify or delete scenarios;</li>
+<li>insert, update, or delete automation rules;</li>
+<li>insert, update, or delete scenarios;</li>
 </ul></li>
 <li>monitor the home/building performance
 
@@ -208,7 +208,7 @@ Rules API
 <div class="span3" ></div>
 <div class="span6" >
 
-<h4 id="resourcedevicesaiddevicesa">Resource /devices <a id="devices"></a></h4>
+<h4 id="aiddevicesaresourcedevices"><a id="devices"></a> Resource /devices</h4>
 
 <p><em>Updated on Thu, 2013&#8211;10&#8211;24</em>
 <span class="label label-info pull-right">API version 1.0</span>
@@ -387,7 +387,7 @@ Rules API
 <div class="span3" ></div>
 <div class="span6" >
 
-<h4 id="resourcedevicesdevice-idaidsingledevicea">Resource /devices/{device-id} <a id="singleDevice"></a></h4>
+<h4 id="aidsingledevicearesourcedevicesdevice-id"><a id="singleDevice"></a> Resource /devices/{device-id}</h4>
 
 <p><em>Updated on Thu, 2013&#8211;10&#8211;24</em>
 <span class="label label-info pull-right">API version 1.0</span>
@@ -624,7 +624,7 @@ and &#8220;controllable&#8221; by applications using this API. </p>
 <div class="span3" ></div>
 <div class="span6" >
 
-<h4 id="resourcedevicesstatusaidstatusa">Resource /devices/status <a id="status"></a></h4>
+<h4 id="aidstatusaresourcedevicesstatus"><a id="status"></a> Resource /devices/status</h4>
 
 <p><em>Updated on Thu, 2013&#8211;10&#8211;24</em> <span class="label label-info pull-right">API version 1.0</span></p>
 
@@ -937,7 +937,7 @@ and &#8220;controllable&#8221; by applications using this API. </p>
 <div class="span3" ></div>
 <div class="span6" >
 
-<h4 id="resourcedevicesdevice-idstatusaidstatus-singlea">Resource /devices/{device-id}/status <a id="status-single"></a></h4>
+<h4 id="aidstatus-singlearesourcedevicesdevice-idstatus"><a id="status-single"></a> Resource /devices/{device-id}/status</h4>
 
 <p><em>Updated on Thu, 2013&#8211;10&#8211;24</em>
 <span class="label label-info pull-right">API version 1.0</span>
@@ -1218,7 +1218,7 @@ and &#8220;controllable&#8221; by applications using this API. </p>
 <div class="span3" ></div>
 <div class="span6" >
 
-<h4 id="resourcedevicesdevice-idcommandscommand-nameaidcommanda">Resource /devices/{device-id}/commands/{command-name} <a id="command"></a></h4>
+<h4 id="aidcommandaresourcedevicesdevice-idcommandscommand-name"><a id="command"></a> Resource /devices/{device-id}/commands/{command-name}</h4>
 
 <p><em>Updated on Fri, 2013&#8211;09&#8211;06</em> <span class="label label-info pull-right">API version 1.0</span></p>
 
@@ -1345,7 +1345,7 @@ If the command brings the device in same state in which the device is, no differ
 <div class="span3" ></div>
 <div class="span6" >
 
-<h4 id="resourcedogconfigurationaiddogconfigurationa">Resource /dog/configuration <a id="dogConfiguration"></a></h4>
+<h4 id="aiddogconfigurationaresourcedogconfiguration"><a id="dogConfiguration"></a> Resource /dog/configuration</h4>
 
 <p><em>Updated on Tue, 2013&#8211;10&#8211;22</em> <span class="label label-important pull-right">Unavailable</span></p>
 
@@ -1439,7 +1439,7 @@ If the command brings the device in same state in which the device is, no differ
 <div class="span3" ></div>
 <div class="span6" >
 
-<h4 id="resourceenvironmentaidenvironmenta">Resource /environment <a id="environment"></a></h4>
+<h4 id="aidenvironmentaresourceenvironment"><a id="environment"></a> Resource /environment</h4>
 
 <p><em>Updated on Thu, 2013&#8211;10&#8211;24</em>
 <span class="label label-info pull-right">API version 1.0</span>
@@ -1602,7 +1602,7 @@ If the command brings the device in same state in which the device is, no differ
 <div class="span3" ></div>
 <div class="span6" >
 
-<h4 id="resourceenvironmentflatsaidflatsa">Resource /environment/flats <a id="flats"></a></h4>
+<h4 id="aidflatsaresourceenvironmentflats"><a id="flats"></a> Resource /environment/flats</h4>
 
 <p><em>Updated on Thu, 2013&#8211;10&#8211;24</em>
 <span class="label label-info pull-right">API version 1.0</span>
@@ -1793,7 +1793,7 @@ If the command brings the device in same state in which the device is, no differ
 <div class="span3" ></div>
 <div class="span6" >
 
-<h4 id="resourceenvironmentflatsflat-idaidsingle-flata">Resource /environment/flats/{flat-id} <a id="single-flat"></a></h4>
+<h4 id="aidsingle-flataresourceenvironmentflatsflat-id"><a id="single-flat"></a> Resource /environment/flats/{flat-id}</h4>
 
 <p><em>Updated on Thu, 2013&#8211;10&#8211;24</em>
 <span class="label label-info pull-right">API version 1.0</span>
@@ -1949,7 +1949,7 @@ If the command brings the device in same state in which the device is, no differ
 <div class="span3" ></div>
 <div class="span6" >
 
-<h4 id="resourceenvironmentflatsflat-idroomsaidrooms-in-flata">Resource /environment/flats/{flat-id}/rooms <a id="rooms-in-flat"></a></h4>
+<h4 id="aidrooms-in-flataresourceenvironmentflatsflat-idrooms"><a id="rooms-in-flat"></a> Resource /environment/flats/{flat-id}/rooms</h4>
 
 <p><em>Updated on Thu, 2013&#8211;10&#8211;24</em>
 <span class="label label-info pull-right">API version 1.0</span>
@@ -2104,7 +2104,7 @@ If the command brings the device in same state in which the device is, no differ
 <div class="span3" ></div>
 <div class="span6" >
 
-<h4 id="resourceenvironmentflatsflat-idroomsroom-idaidsingle-room-in-flata">Resource /environment/flats/{flat-id}/rooms/{room-id} <a id="single-room-in-flat"></a></h4>
+<h4 id="aidsingle-room-in-flataresourceenvironmentflatsflat-idroomsroom-id"><a id="single-room-in-flat"></a> Resource /environment/flats/{flat-id}/rooms/{room-id}</h4>
 
 <p><em>Updated on Thu, 2013&#8211;10&#8211;24</em>
 <span class="label label-info pull-right">API version 1.0</span>
