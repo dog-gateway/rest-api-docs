@@ -224,9 +224,8 @@ Rules API
 
 <h4 id="aiddevicesaresourcedevices"><a id="devices"></a> Resource /devices</h4>
 
-<p><em>Updated on Thu, 2013&#8211;10&#8211;24</em>
-<span class="label label-info pull-right">API version 1.0</span>
-<span class="label label-warning pull-right">Not yet implemented</span></p>
+<p><em>Updated on Thu, 2013&#8211;10&#8211;29</em>
+<span class="label label-info pull-right">API version 1.0</span></p>
 
 <p>Represents domotic devices handled by Dog and &#8220;controllable&#8221; by applications using this API. </p>
 
@@ -278,64 +277,237 @@ Rules API
 <div id="devices-example-xml"  class="accordion-body collapse" >
 <div class="accordion-inner" >
 
-<pre><code>&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot; standalone=&quot;yes&quot;?&gt;
-  &lt;dhc:dogHomeConfiguration&gt;
+<pre><code>&lt;dhc:dogHomeConfiguration xmlns:dhc=&quot;http://elite.polito.it/dogHomeConfiguration&quot;&gt;
     &lt;dhc:controllables&gt;
-        &lt;dhc:device domoticSystem=&quot;ELITE&quot; id=&quot;oven1&quot; class=&quot;ElectricalOven&quot;&gt;
-            &lt;dhc:description&gt;A ElectricalOven instance named oven1&lt;/dhc:description&gt;
-            &lt;dhc:isIn&gt;kitchen&lt;/dhc:isIn&gt;
-            &lt;dhc:pluggedIn&gt;MainsPowerOutlet_p12_kitchen&lt;/dhc:pluggedIn&gt;
+        &lt;dhc:device class=&quot;KNXNetIPGateway&quot; id=&quot;KNXNetIPGateway_DemoCase_Elite&quot; domoticSystem=&quot;KNXNETIP&quot;&gt;
+            &lt;dhc:description&gt;A KNXNetIPGateway instance named KNXNetIPGateway_DemoCase_Elite&lt;/dhc:description&gt;
+        &lt;/dhc:device&gt;
+        &lt;dhc:device class=&quot;MainsPowerOutlet&quot; id=&quot;MainsPowerOutlet_1&quot; domoticSystem=&quot;KNXNETIP&quot; gateway=&quot;KNXNetIPGateway_DemoCase_Elite&quot;&gt;
+            &lt;dhc:description&gt;A MainsPowerOutlet instance named MainsPowerOutlet_1
+            &lt;/dhc:description&gt;
+            &lt;dhc:isIn&gt;storageroom&lt;/dhc:isIn&gt;
+            &lt;dhc:hasMeter&gt;energy_meter_1&lt;/dhc:hasMeter&gt;
             &lt;dhc:controlFunctionality class=&quot;OnOffFunctionality&quot;&gt;
                 &lt;dhc:commands&gt;
-                    &lt;dhc:command name=&quot;on&quot; class=&quot;OnCommand&quot;/&gt;
-                    &lt;dhc:command name=&quot;off&quot; class=&quot;OffCommand&quot;/&gt;
-                &lt;/dhc:commands&gt;
-            &lt;/dhc:controlFunctionality&gt;
-            &lt;dhc:controlFunctionality class=&quot;QueryFunctionality&quot;&gt;
-                &lt;dhc:commands&gt;
-                    &lt;dhc:command name=&quot;getState&quot; class=&quot;GetCommand&quot;/&gt;
+                    &lt;dhc:command class=&quot;OffCommand&quot; name=&quot;OffCommand_1&quot; id=&quot;OffCommand_1&quot;&gt;
+                        &lt;dhc:param name=&quot;realCommandName&quot; value=&quot;off&quot;/&gt;
+                    &lt;/dhc:command&gt;
+                    &lt;dhc:command class=&quot;OnCommand&quot; name=&quot;OnCommand_1&quot; id=&quot;OnCommand_1&quot;&gt;
+                        &lt;dhc:param name=&quot;realCommandName&quot; value=&quot;on&quot;/&gt;
+                    &lt;/dhc:command&gt;
                 &lt;/dhc:commands&gt;
             &lt;/dhc:controlFunctionality&gt;
             &lt;dhc:notificationFunctionality class=&quot;StateChangeNotificationFunctionality&quot;&gt;
                 &lt;dhc:notifications&gt;
-                    &lt;dhc:notification name=&quot;stateChanged&quot; class=&quot;StateChangeNotification&quot;&gt;
-                        &lt;dhc:param type=&quot;State&quot; name=&quot;notificationParamName&quot;/&gt;
+                    &lt;dhc:notification class=&quot;StateChangeNotification&quot; id=&quot;StateChangeNotification_1&quot;&gt;
+                        &lt;dhc:param name=&quot;notificationName&quot; value=&quot;stateChanged&quot;/&gt;
+                        &lt;dhc:param name=&quot;notificationParamName&quot; value=&quot;newState&quot; type=&quot;State&quot;/&gt;
                     &lt;/dhc:notification&gt;
-                        &lt;/dhc:notifications&gt;
-                    &lt;/dhc:notificationFunctionality&gt;
-                    &lt;dhc:state class=&quot;OnOffState&quot;&gt;
-                        &lt;dhc:statevalues&gt;
-                            &lt;dhc:statevalue name=&quot;off&quot; class=&quot;OffStateValue&quot;/&gt;
-                            &lt;dhc:statevalue name=&quot;on&quot; class=&quot;OnStateValue&quot;/&gt;
-                        &lt;/dhc:statevalues&gt;
-                    &lt;/dhc:state&gt;
-                &lt;/dhc:device&gt;
-                &lt;dhc:device domoticSystem=&quot;KONNEX&quot; id=&quot;MainsPowerOutlet_p12_kitchen&quot; class=&quot;MainsPowerOutlet&quot;&gt;
-                    &lt;dhc:description&gt;A MainsPowerOutlet instance named MainsPowerOutlet_p12_kitchen&lt;/dhc:description&gt;
-                    &lt;dhc:isIn&gt;kitchen&lt;/dhc:isIn&gt;
-                    &lt;dhc:hasMeter&gt;energy_meter_1&lt;/dhc:hasMeter&gt;
-                    &lt;dhc:controlFunctionality class=&quot;OnOffFunctionality&quot;&gt;
-                        &lt;dhc:commands&gt;
-                            &lt;dhc:command name=&quot;on&quot; class=&quot;OnCommand&quot;/&gt;
-                            &lt;dhc:command name=&quot;off&quot; class=&quot;OffCommand&quot;/&gt;
-                        &lt;/dhc:commands&gt;
-                    &lt;/dhc:controlFunctionality&gt;
-                    &lt;dhc:notificationFunctionality class=&quot;StateChangeNotificationFunctionality&quot;&gt;
-                        &lt;dhc:notifications&gt;
-                            &lt;dhc:notification name=&quot;stateChanged&quot; class=&quot;StateChangeNotification&quot;&gt;
-                                &lt;dhc:param type=&quot;State&quot; name=&quot;notificationParamName&quot;/&gt;
-                            &lt;/dhc:notification&gt;
-                        &lt;/dhc:notifications&gt;
-                    &lt;/dhc:notificationFunctionality&gt;
-                    &lt;dhc:state class=&quot;OnOffState&quot;&gt;
-                        &lt;dhc:statevalues&gt;
-                            &lt;dhc:statevalue name=&quot;on&quot; class=&quot;OnStateValue&quot;/&gt;
-                            &lt;dhc:statevalue name=&quot;off&quot; class=&quot;OffStateValue&quot;/&gt;
-                        &lt;/dhc:statevalues&gt;
-                    &lt;/dhc:state&gt;
-                &lt;/dhc:device&gt;
-            &lt;/dhc:controllables&gt;
-    &lt;/dhc:dogHomeConfiguration&gt;
+                &lt;/dhc:notifications&gt;
+            &lt;/dhc:notificationFunctionality&gt;
+            &lt;dhc:state class=&quot;OnOffState&quot;&gt;
+                &lt;dhc:statevalues&gt;
+                    &lt;dhc:statevalue class=&quot;OffStateValue&quot; name=&quot;off&quot;/&gt;
+                    &lt;dhc:statevalue class=&quot;OnStateValue&quot; name=&quot;on&quot;/&gt;
+                &lt;/dhc:statevalues&gt;
+            &lt;/dhc:state&gt;
+        &lt;/dhc:device&gt;
+        &lt;dhc:device class=&quot;ThreePhaseElectricityMeter&quot; id=&quot;energy_power_meter_1&quot; domoticSystem=&quot;KNXNETIP&quot; gateway=&quot;KNXNetIPGateway_DemoCase_Elite&quot;&gt;
+            &lt;dhc:description&gt;A ThreePhaseElectricityMeter instance named energy_power_meter_1&lt;/dhc:description&gt;
+            &lt;dhc:isIn&gt;storageroom&lt;/dhc:isIn&gt;
+            &lt;dhc:notificationFunctionality class=&quot;StateChangeNotificationFunctionality&quot;&gt;
+                &lt;dhc:notifications&gt;
+                    &lt;dhc:notification class=&quot;StateChangeNotification&quot; id=&quot;StateChangeNotification_meter1&quot;&gt;
+                        &lt;dhc:param name=&quot;notificationName&quot; value=&quot;stateChanged&quot;/&gt;
+                        &lt;dhc:param name=&quot;notificationParamName&quot; value=&quot;newState&quot; type=&quot;State&quot;/&gt;
+                    &lt;/dhc:notification&gt;
+                &lt;/dhc:notifications&gt;
+            &lt;/dhc:notificationFunctionality&gt;
+            &lt;dhc:notificationFunctionality class=&quot;ThreePhaseVoltageMeasurementNotificationFunctionality&quot;&gt;
+                &lt;dhc:notifications&gt;
+                    &lt;dhc:notification class=&quot;ThreePhaseLNVoltageMeasurementNotification&quot; id=&quot;L1NVoltageMeasurementNotification_meter1&quot;&gt;
+                        &lt;dhc:param name=&quot;notificationName&quot; value=&quot;newPhaseNeutralVoltageValue&quot;/&gt;
+                        &lt;dhc:param name=&quot;notificationParamName&quot; value=&quot;phaseID&quot; type=&quot;String&quot;/&gt;
+                        &lt;dhc:param name=&quot;notificationParamName&quot; value=&quot;value&quot; type=&quot;Measure&quot;/&gt;
+                    &lt;/dhc:notification&gt;
+                    &lt;dhc:notification class=&quot;ThreePhaseLNVoltageMeasurementNotification&quot; id=&quot;L2NVoltageMeasurementNotification_meter1&quot;&gt;
+                        &lt;dhc:param name=&quot;notificationName&quot; value=&quot;newPhaseNeutralVoltageValue&quot;/&gt;
+                        &lt;dhc:param name=&quot;notificationParamName&quot; value=&quot;phaseID&quot; type=&quot;String&quot;/&gt;
+                        &lt;dhc:param name=&quot;notificationParamName&quot; value=&quot;value&quot; type=&quot;Measure&quot;/&gt;
+                    &lt;/dhc:notification&gt;
+                    &lt;dhc:notification class=&quot;ThreePhaseLNVoltageMeasurementNotification&quot; id=&quot;L3NVoltageMeasurementNotification_meter1&quot;&gt;
+                        &lt;dhc:param name=&quot;notificationName&quot; value=&quot;newPhaseNeutralVoltageValue&quot;/&gt;
+                        &lt;dhc:param name=&quot;notificationParamName&quot; value=&quot;phaseID&quot; type=&quot;String&quot;/&gt;
+                        &lt;dhc:param name=&quot;notificationParamName&quot; value=&quot;value&quot; type=&quot;Measure&quot;/&gt;
+                    &lt;/dhc:notification&gt;
+                &lt;/dhc:notifications&gt;
+            &lt;/dhc:notificationFunctionality&gt;
+            &lt;dhc:notificationFunctionality class=&quot;FrequencyMeasurementNotificationFunctionality&quot;&gt;
+                &lt;dhc:notifications&gt;
+                    &lt;dhc:notification class=&quot;FrequencyMeasurementNotification&quot; id=&quot;FrequencyMeasurementNotification_meter1&quot;&gt;
+                        &lt;dhc:param name=&quot;notificationName&quot; value=&quot;newFrequencyValue&quot;/&gt;
+                        &lt;dhc:param name=&quot;notificationParamName&quot; value=&quot;frequency&quot; type=&quot;Measure&quot;/&gt;
+                    &lt;/dhc:notification&gt;
+                &lt;/dhc:notifications&gt;
+            &lt;/dhc:notificationFunctionality&gt;
+            &lt;dhc:notificationFunctionality class=&quot;SinglePhaseReactiveEnergyMeasurementNotificationFunctionality&quot;&gt;
+                &lt;dhc:notifications&gt;
+                    &lt;dhc:notification class=&quot;SinglePhaseReactiveEnergyMeasurementNotification&quot; id=&quot;TotalReactiveEnergyMeasurementNotification_meter1&quot;&gt;
+                        &lt;dhc:param name=&quot;notificationName&quot; value=&quot;newReactiveEnergyValue&quot;/&gt;
+                        &lt;dhc:param name=&quot;notificationParamName&quot; value=&quot;value&quot; type=&quot;Measure&quot;/&gt;
+                    &lt;/dhc:notification&gt;
+                &lt;/dhc:notifications&gt;
+            &lt;/dhc:notificationFunctionality&gt;
+            &lt;dhc:notificationFunctionality class=&quot;SinglePhaseActiveEnergyMeasurementNotificationFunctionality&quot;&gt;
+                &lt;dhc:notifications&gt;
+                    &lt;dhc:notification class=&quot;SinglePhaseActiveEnergyMeasurementNotification&quot; id=&quot;TotalActiveEnergyMeasurementNotification_meter1&quot;&gt;
+                        &lt;dhc:param name=&quot;notificationName&quot; value=&quot;newActiveEnergyValue&quot;/&gt;
+                        &lt;dhc:param name=&quot;notificationParamName&quot; value=&quot;value&quot; type=&quot;Measure&quot;/&gt;
+                    &lt;/dhc:notification&gt;
+                &lt;/dhc:notifications&gt;
+            &lt;/dhc:notificationFunctionality&gt;
+            &lt;dhc:notificationFunctionality class=&quot;ThreePhaseCurrentMeasurementNotificationFunctionality&quot;&gt;
+                &lt;dhc:notifications&gt;
+                    &lt;dhc:notification class=&quot;ThreePhaseCurrentMeasurementNotification&quot; id=&quot;L1CurrentMeasurementNotification_meter1&quot;&gt;
+                        &lt;dhc:param name=&quot;notificationName&quot; value=&quot;newCurrentValue&quot;/&gt;
+                        &lt;dhc:param name=&quot;notificationParamName&quot; value=&quot;phaseID&quot; type=&quot;String&quot;/&gt;
+                        &lt;dhc:param name=&quot;notificationParamName&quot; value=&quot;value&quot; type=&quot;Measure&quot;/&gt;
+                    &lt;/dhc:notification&gt;
+                    &lt;dhc:notification class=&quot;ThreePhaseCurrentMeasurementNotification&quot; id=&quot;L2CurrentMeasurementNotification_meter1&quot;&gt;
+                        &lt;dhc:param name=&quot;notificationName&quot; value=&quot;newCurrentValue&quot;/&gt;
+                        &lt;dhc:param name=&quot;notificationParamName&quot; value=&quot;phaseID&quot; type=&quot;String&quot;/&gt;
+                        &lt;dhc:param name=&quot;notificationParamName&quot; value=&quot;value&quot; type=&quot;Measure&quot;/&gt;
+                    &lt;/dhc:notification&gt;
+                    &lt;dhc:notification class=&quot;ThreePhaseCurrentMeasurementNotification&quot; id=&quot;L3CurrentMeasurementNotification_meter1&quot;&gt;
+                        &lt;dhc:param name=&quot;notificationName&quot; value=&quot;newCurrentValue&quot;/&gt;
+                        &lt;dhc:param name=&quot;notificationParamName&quot; value=&quot;phaseID&quot; type=&quot;String&quot;/&gt;
+                        &lt;dhc:param name=&quot;notificationParamName&quot; value=&quot;value&quot; type=&quot;Measure&quot;/&gt;
+                    &lt;/dhc:notification&gt;
+                &lt;/dhc:notifications&gt;
+            &lt;/dhc:notificationFunctionality&gt;
+            &lt;dhc:notificationFunctionality class=&quot;ThreePhaseApparentPowerMeasurementNotificationFunctionality&quot;&gt;
+                &lt;dhc:notifications&gt;
+                    &lt;dhc:notification class=&quot;ThreePhaseApparentPowerMeasurementNotification&quot; id=&quot;L1ApparentPowerMeasurementNotification_meter1&quot;&gt;
+                        &lt;dhc:param name=&quot;notificationName&quot; value=&quot;newApparentPowerValue&quot;/&gt;
+                        &lt;dhc:param name=&quot;notificationParamName&quot; value=&quot;phaseID&quot; type=&quot;String&quot;/&gt;
+                        &lt;dhc:param name=&quot;notificationParamName&quot; value=&quot;value&quot; type=&quot;Measure&quot;/&gt;
+                    &lt;/dhc:notification&gt;
+                    &lt;dhc:notification class=&quot;ThreePhaseApparentPowerMeasurementNotification&quot; id=&quot;L2ApparentPowerMeasurementNotification_meter1&quot;&gt;
+                        &lt;dhc:param name=&quot;notificationName&quot; value=&quot;newApparentPowerValue&quot;/&gt;
+                        &lt;dhc:param name=&quot;notificationParamName&quot; value=&quot;phaseID&quot; type=&quot;String&quot;/&gt;
+                        &lt;dhc:param name=&quot;notificationParamName&quot; value=&quot;value&quot; type=&quot;Measure&quot;/&gt;
+                    &lt;/dhc:notification&gt;
+                    &lt;dhc:notification class=&quot;ThreePhaseApparentPowerMeasurementNotification&quot; id=&quot;L3ApparentPowerMeasurementNotification_meter1&quot;&gt;
+                        &lt;dhc:param name=&quot;notificationName&quot; value=&quot;newApparentPowerValue&quot;/&gt;
+                        &lt;dhc:param name=&quot;notificationParamName&quot; value=&quot;phaseID&quot; type=&quot;String&quot;/&gt;
+                        &lt;dhc:param name=&quot;notificationParamName&quot; value=&quot;value&quot; type=&quot;Measure&quot;/&gt;
+                    &lt;/dhc:notification&gt;
+                &lt;/dhc:notifications&gt;
+            &lt;/dhc:notificationFunctionality&gt;
+            &lt;dhc:notificationFunctionality class=&quot;PowerFactorMeasurementNotificationFunctionality&quot;&gt;
+                &lt;dhc:notifications&gt;
+                    &lt;dhc:notification class=&quot;PowerFactorMeasurementNotification&quot; id=&quot;PowerFactorMeasurementNotification_meter1&quot;&gt;
+                        &lt;dhc:param name=&quot;notificationName&quot; value=&quot;newPowerFactorValue&quot;/&gt;
+                        &lt;dhc:param name=&quot;notificationParamName&quot; value=&quot;powerfactor&quot; type=&quot;Measure&quot;/&gt;
+                    &lt;/dhc:notification&gt;
+                &lt;/dhc:notifications&gt;
+            &lt;/dhc:notificationFunctionality&gt;
+            &lt;dhc:notificationFunctionality class=&quot;ThreePhaseReactivePowerMeasurementNotificationFunctionality&quot;&gt;
+                &lt;dhc:notifications&gt;
+                    &lt;dhc:notification class=&quot;ThreePhaseReactivePowerMeasurementNotification&quot; id=&quot;L1ReactivePowerMeasurementNotification_meter1&quot;&gt;
+                        &lt;dhc:param name=&quot;notificationName&quot; value=&quot;newReactivePowerValue&quot;/&gt;
+                        &lt;dhc:param name=&quot;notificationParamName&quot; value=&quot;phaseID&quot; type=&quot;String&quot;/&gt;
+                        &lt;dhc:param name=&quot;notificationParamName&quot; value=&quot;value&quot; type=&quot;Measure&quot;/&gt;
+                    &lt;/dhc:notification&gt;
+                    &lt;dhc:notification class=&quot;ThreePhaseReactivePowerMeasurementNotification&quot; id=&quot;L2ReactivePowerMeasurementNotification_meter1&quot;&gt;
+                        &lt;dhc:param name=&quot;notificationName&quot; value=&quot;newReactivePowerValue&quot;/&gt;
+                        &lt;dhc:param name=&quot;notificationParamName&quot; value=&quot;phaseID&quot; type=&quot;String&quot;/&gt;
+                        &lt;dhc:param name=&quot;notificationParamName&quot; value=&quot;value&quot; type=&quot;Measure&quot;/&gt;
+                    &lt;/dhc:notification&gt;
+                    &lt;dhc:notification class=&quot;ThreePhaseReactivePowerMeasurementNotification&quot; id=&quot;L3ReactivePowerMeasurementNotification_meter1&quot;&gt;
+                        &lt;dhc:param name=&quot;notificationName&quot; value=&quot;newReactivePowerValue&quot;/&gt;
+                        &lt;dhc:param name=&quot;notificationParamName&quot; value=&quot;phaseID&quot; type=&quot;String&quot;/&gt;
+                        &lt;dhc:param name=&quot;notificationParamName&quot; value=&quot;value&quot; type=&quot;Measure&quot;/&gt;
+                    &lt;/dhc:notification&gt;
+                &lt;/dhc:notifications&gt;
+            &lt;/dhc:notificationFunctionality&gt;
+            &lt;dhc:notificationFunctionality class=&quot;ThreePhaseActivePowerMeasurementNotificationFunctionality&quot;&gt;
+                &lt;dhc:notifications&gt;
+                    &lt;dhc:notification class=&quot;ThreePhaseActivePowerMeasurementNotification&quot; id=&quot;L1ActivePowerMeasurementNotification_meter1&quot;&gt;
+                        &lt;dhc:param name=&quot;notificationName&quot; value=&quot;newActivePowerValue&quot;/&gt;
+                        &lt;dhc:param name=&quot;notificationParamName&quot; value=&quot;phaseID&quot; type=&quot;String&quot;/&gt;
+                        &lt;dhc:param name=&quot;notificationParamName&quot; value=&quot;value&quot; type=&quot;Measure&quot;/&gt;
+                    &lt;/dhc:notification&gt;
+                    &lt;dhc:notification class=&quot;ThreePhaseActivePowerMeasurementNotification&quot; id=&quot;L2ActivePowerMeasurementNotification_meter1&quot;&gt;
+                        &lt;dhc:param name=&quot;notificationName&quot; value=&quot;newActivePowerValue&quot;/&gt;
+                        &lt;dhc:param name=&quot;notificationParamName&quot; value=&quot;phaseID&quot; type=&quot;String&quot;/&gt;
+                        &lt;dhc:param name=&quot;notificationParamName&quot; value=&quot;value&quot; type=&quot;Measure&quot;/&gt;
+                    &lt;/dhc:notification&gt;
+                    &lt;dhc:notification class=&quot;ThreePhaseActivePowerMeasurementNotification&quot; id=&quot;L3ActivePowerMeasurementNotification_meter1&quot;&gt;
+                        &lt;dhc:param name=&quot;notificationName&quot; value=&quot;newActivePowerValue&quot;/&gt;
+                        &lt;dhc:param name=&quot;notificationParamName&quot; value=&quot;phaseID&quot; type=&quot;String&quot;/&gt;
+                        &lt;dhc:param name=&quot;notificationParamName&quot; value=&quot;value&quot; type=&quot;Measure&quot;/&gt;
+                    &lt;/dhc:notification&gt;
+                &lt;/dhc:notifications&gt;
+            &lt;/dhc:notificationFunctionality&gt;
+            &lt;dhc:state class=&quot;ThreePhaseVoltageState&quot;&gt;
+                &lt;dhc:statevalues&gt;
+                    &lt;dhc:statevalue class=&quot;ThreePhaseVoltageStateValue&quot; name=&quot;&quot;/&gt;
+                    &lt;dhc:statevalue class=&quot;ThreePhaseVoltageStateValue&quot; name=&quot;&quot;/&gt;
+                    &lt;dhc:statevalue class=&quot;ThreePhaseVoltageStateValue&quot; name=&quot;&quot;/&gt;
+                &lt;/dhc:statevalues&gt;
+            &lt;/dhc:state&gt;
+            &lt;dhc:state class=&quot;FrequencyMeasurementState&quot;&gt;
+                &lt;dhc:statevalues&gt;
+                    &lt;dhc:statevalue class=&quot;FrequencyStateValue&quot; name=&quot;&quot;/&gt;
+                &lt;/dhc:statevalues&gt;
+            &lt;/dhc:state&gt;
+            &lt;dhc:state class=&quot;SinglePhaseActiveEnergyState&quot;&gt;
+                &lt;dhc:statevalues&gt;
+                    &lt;dhc:statevalue class=&quot;ActiveEnergyStateValue&quot; name=&quot;&quot;/&gt;
+                &lt;/dhc:statevalues&gt;
+            &lt;/dhc:state&gt;
+            &lt;dhc:state class=&quot;SinglePhaseReactiveEnergyState&quot;&gt;
+                &lt;dhc:statevalues&gt;
+                    &lt;dhc:statevalue class=&quot;ReactiveEnergyStateValue&quot; name=&quot;&quot;/&gt;
+                &lt;/dhc:statevalues&gt;
+            &lt;/dhc:state&gt;
+            &lt;dhc:state class=&quot;ThreePhaseCurrentState&quot;&gt;
+                &lt;dhc:statevalues&gt;
+                    &lt;dhc:statevalue class=&quot;CurrentStateValue&quot; name=&quot;&quot;/&gt;
+                    &lt;dhc:statevalue class=&quot;CurrentStateValue&quot; name=&quot;&quot;/&gt;
+                    &lt;dhc:statevalue class=&quot;CurrentStateValue&quot; name=&quot;&quot;/&gt;
+                &lt;/dhc:statevalues&gt;
+            &lt;/dhc:state&gt;
+            &lt;dhc:state class=&quot;ThreePhaseApparentPowerMeasurementState&quot;&gt;
+                &lt;dhc:statevalues&gt;
+                    &lt;dhc:statevalue class=&quot;ApparentPowerStateValue&quot; name=&quot;&quot;/&gt;
+                    &lt;dhc:statevalue class=&quot;ApparentPowerStateValue&quot; name=&quot;&quot;/&gt;
+                    &lt;dhc:statevalue class=&quot;ApparentPowerStateValue&quot; name=&quot;&quot;/&gt;
+                &lt;/dhc:statevalues&gt;
+            &lt;/dhc:state&gt;
+            &lt;dhc:state class=&quot;PowerFactorMeasurementState&quot;&gt;
+                &lt;dhc:statevalues&gt;
+                    &lt;dhc:statevalue class=&quot;PowerFactorStateValue&quot; name=&quot;&quot;/&gt;
+                &lt;/dhc:statevalues&gt;
+            &lt;/dhc:state&gt;
+            &lt;dhc:state class=&quot;ThreePhaseReactivePowerMeasurementState&quot;&gt;
+                &lt;dhc:statevalues&gt;
+                    &lt;dhc:statevalue class=&quot;ReactivePowerStateValue&quot; name=&quot;&quot;/&gt;
+                    &lt;dhc:statevalue class=&quot;ReactivePowerStateValue&quot; name=&quot;&quot;/&gt;
+                    &lt;dhc:statevalue class=&quot;ReactivePowerStateValue&quot; name=&quot;&quot;/&gt;
+                &lt;/dhc:statevalues&gt;
+            &lt;/dhc:state&gt;
+            &lt;dhc:state class=&quot;ThreePhaseActivePowerMeasurementState&quot;&gt;
+                &lt;dhc:statevalues&gt;
+                    &lt;dhc:statevalue class=&quot;ActivePowerStateValue&quot; name=&quot;&quot;/&gt;
+                    &lt;dhc:statevalue class=&quot;ActivePowerStateValue&quot; name=&quot;&quot;/&gt;
+                    &lt;dhc:statevalue class=&quot;ActivePowerStateValue&quot; name=&quot;&quot;/&gt;
+                &lt;/dhc:statevalues&gt;
+            &lt;/dhc:state&gt;
+        &lt;/dhc:device&gt;
+    &lt;/dhc:controllables&gt;
+&lt;/dhc:dogHomeConfiguration&gt;
 </code></pre>
 </div>
 </div>
@@ -403,11 +575,11 @@ Rules API
 
 <h4 id="aidsingledevicearesourcedevicesdevice-id"><a id="singleDevice"></a> Resource /devices/{device-id}</h4>
 
-<p><em>Updated on Thu, 2013&#8211;10&#8211;24</em>
+<p><em>Updated on Thu, 2013&#8211;10&#8211;29</em>
 <span class="label label-info pull-right">API version 1.0</span>
-<span class="label label-warning pull-right">Not yet implemented</span></p>
+<span class="label label-warning pull-right">Partially implemented</span></p>
 
-<p>Represents a single domotic device handled by Dog, identified by a unique <em>device-id</em> (currently encoded in the <em>name</em> attribute for the XML response to the <a href="#devices">GET /devices</a> request),
+<p>Represents a single domotic device handled by Dog, identified by a unique <em>device-id</em> (currently encoded in the <em>id</em> attribute for the XML response to the <a href="#devices">GET /devices</a> request),
 and &#8220;controllable&#8221; by applications using this API. </p>
 
 <p><em>URL:</em> /devices/{device-id}</p>
@@ -522,30 +694,43 @@ and &#8220;controllable&#8221; by applications using this API. </p>
 <div id="devices-single-example-xml"  class="accordion-body collapse" >
 <div class="accordion-inner" ></p>
 
-<pre><code>&lt;dhc:device domoticSystem=&quot;KONNEX&quot; id=&quot;MainsPowerOutlet_p12_kitchen&quot; class=&quot;MainsPowerOutlet&quot;&gt;
-    &lt;dhc:description&gt;A MainsPowerOutlet instance named MainsPowerOutlet_p12_kitchen&lt;/dhc:description&gt;
-    &lt;dhc:isIn&gt;kitchen&lt;/dhc:isIn&gt;
-    &lt;dhc:hasMeter&gt;energy_meter_1&lt;/dhc:hasMeter&gt;
-    &lt;dhc:controlFunctionality class=&quot;OnOffFunctionality&quot;&gt;
-        &lt;dhc:commands&gt;
-            &lt;dhc:command name=&quot;on&quot; class=&quot;OnCommand&quot;/&gt;
-            &lt;dhc:command name=&quot;off&quot; class=&quot;OffCommand&quot;/&gt;
-        &lt;/dhc:commands&gt;
-    &lt;/dhc:controlFunctionality&gt;
-    &lt;dhc:notificationFunctionality class=&quot;StateChangeNotificationFunctionality&quot;&gt;
-        &lt;dhc:notifications&gt;
-            &lt;dhc:notification name=&quot;stateChanged&quot; class=&quot;StateChangeNotification&quot;&gt;
-                &lt;dhc:param type=&quot;State&quot; name=&quot;notificationParamName&quot;/&gt;
-            &lt;/dhc:notification&gt;
-        &lt;/dhc:notifications&gt;
-    &lt;/dhc:notificationFunctionality&gt;
-    &lt;dhc:state class=&quot;OnOffState&quot;&gt;
-        &lt;dhc:statevalues&gt;
-            &lt;dhc:statevalue name=&quot;on&quot; class=&quot;OnStateValue&quot;/&gt;
-            &lt;dhc:statevalue name=&quot;off&quot; class=&quot;OffStateValue&quot;/&gt;
-        &lt;/dhc:statevalues&gt;
-    &lt;/dhc:state&gt;
-&lt;/dhc:device&gt;
+<pre><code>&lt;dhc:dogHomeConfiguration xmlns:dhc=&quot;http://elite.polito.it/dogHomeConfiguration&quot;&gt;
+    &lt;dhc:controllables&gt;
+        &lt;dhc:device class=&quot;KNXNetIPGateway&quot; id=&quot;KNXNetIPGateway_DemoCase_Elite&quot; domoticSystem=&quot;KNXNETIP&quot;&gt;
+            &lt;dhc:description&gt;A KNXNetIPGateway instance named KNXNetIPGateway_DemoCase_Elite&lt;/dhc:description&gt;
+        &lt;/dhc:device&gt;
+        &lt;dhc:device class=&quot;MainsPowerOutlet&quot; id=&quot;MainsPowerOutlet_1&quot; domoticSystem=&quot;KNXNETIP&quot; gateway=&quot;KNXNetIPGateway_DemoCase_Elite&quot;&gt;
+            &lt;dhc:description&gt;A MainsPowerOutlet instance named MainsPowerOutlet_1
+            &lt;/dhc:description&gt;
+            &lt;dhc:isIn&gt;storageroom&lt;/dhc:isIn&gt;
+            &lt;dhc:hasMeter&gt;energy_meter_1&lt;/dhc:hasMeter&gt;
+            &lt;dhc:controlFunctionality class=&quot;OnOffFunctionality&quot;&gt;
+                &lt;dhc:commands&gt;
+                    &lt;dhc:command class=&quot;OffCommand&quot; name=&quot;OffCommand_1&quot; id=&quot;OffCommand_1&quot;&gt;
+                        &lt;dhc:param name=&quot;realCommandName&quot; value=&quot;off&quot;/&gt;
+                    &lt;/dhc:command&gt;
+                    &lt;dhc:command class=&quot;OnCommand&quot; name=&quot;OnCommand_1&quot; id=&quot;OnCommand_1&quot;&gt;
+                        &lt;dhc:param name=&quot;realCommandName&quot; value=&quot;on&quot;/&gt;
+                    &lt;/dhc:command&gt;
+                &lt;/dhc:commands&gt;
+            &lt;/dhc:controlFunctionality&gt;
+            &lt;dhc:notificationFunctionality class=&quot;StateChangeNotificationFunctionality&quot;&gt;
+                &lt;dhc:notifications&gt;
+                    &lt;dhc:notification class=&quot;StateChangeNotification&quot; id=&quot;StateChangeNotification_1&quot;&gt;
+                        &lt;dhc:param name=&quot;notificationName&quot; value=&quot;stateChanged&quot;/&gt;
+                        &lt;dhc:param name=&quot;notificationParamName&quot; value=&quot;newState&quot; type=&quot;State&quot;/&gt;
+                    &lt;/dhc:notification&gt;
+                &lt;/dhc:notifications&gt;
+            &lt;/dhc:notificationFunctionality&gt;
+            &lt;dhc:state class=&quot;OnOffState&quot;&gt;
+                &lt;dhc:statevalues&gt;
+                    &lt;dhc:statevalue class=&quot;OffStateValue&quot; name=&quot;off&quot;/&gt;
+                    &lt;dhc:statevalue class=&quot;OnStateValue&quot; name=&quot;on&quot;/&gt;
+                &lt;/dhc:statevalues&gt;
+            &lt;/dhc:state&gt;
+        &lt;/dhc:device&gt;
+    &lt;/dhc:controllables&gt;
+&lt;/dhc:dogHomeConfiguration&gt;
 </code></pre>
 </div>
 </div>
@@ -2256,17 +2441,12 @@ If the command brings the device in same state in which the device is, no differ
 <div class="span9" >
 
 <hr />
-</div>
-</div>
-
-<hr />
 
 <h3 id="rulesapi">Rules API</h3>
 
 <hr />
 </div>
-
-<p></div></p>
+</div>
 <div class="row-fluid" >
 <div class="span3" ></div>
 <div class="span6" >
@@ -2574,9 +2754,9 @@ If the command brings the device in same state in which the device is, no differ
 <hr />
 </div>
 </div>
+</div>
 
 <p></div>
-</div>
 <script src="./js/jquery.js"></script>
 <script src="./js/bootstrap.js"></script>
 <script src="./js/ajax.js"></script></p>

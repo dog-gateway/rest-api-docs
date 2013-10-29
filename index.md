@@ -133,9 +133,8 @@ All API access is currently over HTTP, and accessed from `http://<dog-address>/a
 
 #### <a id="devices"></a> Resource /devices ####
 
-*Updated on Thu, 2013-10-24*
+*Updated on Thu, 2013-10-29*
 <span class="label label-info pull-right">API version 1.0</span>
-<span class="label label-warning pull-right">Not yet implemented</span>
 
 Represents domotic devices handled by Dog and "controllable" by applications using this API. 
 
@@ -171,66 +170,237 @@ Represents domotic devices handled by Dog and "controllable" by applications usi
 <div class="accordion-inner" markdown="1">
 
 
-
-
-    <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
- 	  <dhc:dogHomeConfiguration>
-		<dhc:controllables>
-        	<dhc:device domoticSystem="ELITE" id="oven1" class="ElectricalOven">
-            	<dhc:description>A ElectricalOven instance named oven1</dhc:description>
-                <dhc:isIn>kitchen</dhc:isIn>
-                <dhc:pluggedIn>MainsPowerOutlet_p12_kitchen</dhc:pluggedIn>
-                <dhc:controlFunctionality class="OnOffFunctionality">
-                	<dhc:commands>
-                    	<dhc:command name="on" class="OnCommand"/>
-                        <dhc:command name="off" class="OffCommand"/>
-                    </dhc:commands>
-                </dhc:controlFunctionality>
-                <dhc:controlFunctionality class="QueryFunctionality">
-                	<dhc:commands>
-                    	<dhc:command name="getState" class="GetCommand"/>
-                    </dhc:commands>
-                </dhc:controlFunctionality>
-                <dhc:notificationFunctionality class="StateChangeNotificationFunctionality">
-                	<dhc:notifications>
-                    	<dhc:notification name="stateChanged" class="StateChangeNotification">
-                        	<dhc:param type="State" name="notificationParamName"/>
-                        </dhc:notification>
-                            </dhc:notifications>
-                        </dhc:notificationFunctionality>
-                        <dhc:state class="OnOffState">
-                            <dhc:statevalues>
-                                <dhc:statevalue name="off" class="OffStateValue"/>
-                                <dhc:statevalue name="on" class="OnStateValue"/>
-                            </dhc:statevalues>
-                        </dhc:state>
-                    </dhc:device>
-                    <dhc:device domoticSystem="KONNEX" id="MainsPowerOutlet_p12_kitchen" class="MainsPowerOutlet">
-                        <dhc:description>A MainsPowerOutlet instance named MainsPowerOutlet_p12_kitchen</dhc:description>
-                        <dhc:isIn>kitchen</dhc:isIn>
-                        <dhc:hasMeter>energy_meter_1</dhc:hasMeter>
-                        <dhc:controlFunctionality class="OnOffFunctionality">
-                            <dhc:commands>
-                                <dhc:command name="on" class="OnCommand"/>
-                                <dhc:command name="off" class="OffCommand"/>
-                            </dhc:commands>
-                        </dhc:controlFunctionality>
-                        <dhc:notificationFunctionality class="StateChangeNotificationFunctionality">
-                            <dhc:notifications>
-                                <dhc:notification name="stateChanged" class="StateChangeNotification">
-                                    <dhc:param type="State" name="notificationParamName"/>
-                                </dhc:notification>
-                            </dhc:notifications>
-                        </dhc:notificationFunctionality>
-                        <dhc:state class="OnOffState">
-                            <dhc:statevalues>
-                                <dhc:statevalue name="on" class="OnStateValue"/>
-                                <dhc:statevalue name="off" class="OffStateValue"/>
-                            </dhc:statevalues>
-                        </dhc:state>
-                    </dhc:device>
-                </dhc:controllables>
-		</dhc:dogHomeConfiguration>
+	<dhc:dogHomeConfiguration xmlns:dhc="http://elite.polito.it/dogHomeConfiguration">
+	    <dhc:controllables>
+	        <dhc:device class="KNXNetIPGateway" id="KNXNetIPGateway_DemoCase_Elite" domoticSystem="KNXNETIP">
+	            <dhc:description>A KNXNetIPGateway instance named KNXNetIPGateway_DemoCase_Elite</dhc:description>
+	        </dhc:device>
+	        <dhc:device class="MainsPowerOutlet" id="MainsPowerOutlet_1" domoticSystem="KNXNETIP" gateway="KNXNetIPGateway_DemoCase_Elite">
+	            <dhc:description>A MainsPowerOutlet instance named MainsPowerOutlet_1
+				</dhc:description>
+	            <dhc:isIn>storageroom</dhc:isIn>
+	            <dhc:hasMeter>energy_meter_1</dhc:hasMeter>
+	            <dhc:controlFunctionality class="OnOffFunctionality">
+	                <dhc:commands>
+	                    <dhc:command class="OffCommand" name="OffCommand_1" id="OffCommand_1">
+	                        <dhc:param name="realCommandName" value="off"/>
+	                    </dhc:command>
+	                    <dhc:command class="OnCommand" name="OnCommand_1" id="OnCommand_1">
+	                        <dhc:param name="realCommandName" value="on"/>
+	                    </dhc:command>
+	                </dhc:commands>
+	            </dhc:controlFunctionality>
+	            <dhc:notificationFunctionality class="StateChangeNotificationFunctionality">
+	                <dhc:notifications>
+	                    <dhc:notification class="StateChangeNotification" id="StateChangeNotification_1">
+	                        <dhc:param name="notificationName" value="stateChanged"/>
+	                        <dhc:param name="notificationParamName" value="newState" type="State"/>
+	                    </dhc:notification>
+	                </dhc:notifications>
+	            </dhc:notificationFunctionality>
+	            <dhc:state class="OnOffState">
+	                <dhc:statevalues>
+	                    <dhc:statevalue class="OffStateValue" name="off"/>
+	                    <dhc:statevalue class="OnStateValue" name="on"/>
+	                </dhc:statevalues>
+	            </dhc:state>
+	        </dhc:device>
+	        <dhc:device class="ThreePhaseElectricityMeter" id="energy_power_meter_1" domoticSystem="KNXNETIP" gateway="KNXNetIPGateway_DemoCase_Elite">
+	            <dhc:description>A ThreePhaseElectricityMeter instance named energy_power_meter_1</dhc:description>
+	            <dhc:isIn>storageroom</dhc:isIn>
+	            <dhc:notificationFunctionality class="StateChangeNotificationFunctionality">
+	                <dhc:notifications>
+	                    <dhc:notification class="StateChangeNotification" id="StateChangeNotification_meter1">
+	                        <dhc:param name="notificationName" value="stateChanged"/>
+	                        <dhc:param name="notificationParamName" value="newState" type="State"/>
+	                    </dhc:notification>
+	                </dhc:notifications>
+	            </dhc:notificationFunctionality>
+	            <dhc:notificationFunctionality class="ThreePhaseVoltageMeasurementNotificationFunctionality">
+	                <dhc:notifications>
+	                    <dhc:notification class="ThreePhaseLNVoltageMeasurementNotification" id="L1NVoltageMeasurementNotification_meter1">
+	                        <dhc:param name="notificationName" value="newPhaseNeutralVoltageValue"/>
+	                        <dhc:param name="notificationParamName" value="phaseID" type="String"/>
+	                        <dhc:param name="notificationParamName" value="value" type="Measure"/>
+	                    </dhc:notification>
+	                    <dhc:notification class="ThreePhaseLNVoltageMeasurementNotification" id="L2NVoltageMeasurementNotification_meter1">
+	                        <dhc:param name="notificationName" value="newPhaseNeutralVoltageValue"/>
+	                        <dhc:param name="notificationParamName" value="phaseID" type="String"/>
+	                        <dhc:param name="notificationParamName" value="value" type="Measure"/>
+	                    </dhc:notification>
+	                    <dhc:notification class="ThreePhaseLNVoltageMeasurementNotification" id="L3NVoltageMeasurementNotification_meter1">
+	                        <dhc:param name="notificationName" value="newPhaseNeutralVoltageValue"/>
+	                        <dhc:param name="notificationParamName" value="phaseID" type="String"/>
+	                        <dhc:param name="notificationParamName" value="value" type="Measure"/>
+	                    </dhc:notification>
+	                </dhc:notifications>
+	            </dhc:notificationFunctionality>
+	            <dhc:notificationFunctionality class="FrequencyMeasurementNotificationFunctionality">
+	                <dhc:notifications>
+	                    <dhc:notification class="FrequencyMeasurementNotification" id="FrequencyMeasurementNotification_meter1">
+	                        <dhc:param name="notificationName" value="newFrequencyValue"/>
+	                        <dhc:param name="notificationParamName" value="frequency" type="Measure"/>
+	                    </dhc:notification>
+	                </dhc:notifications>
+	            </dhc:notificationFunctionality>
+	            <dhc:notificationFunctionality class="SinglePhaseReactiveEnergyMeasurementNotificationFunctionality">
+	                <dhc:notifications>
+	                    <dhc:notification class="SinglePhaseReactiveEnergyMeasurementNotification" id="TotalReactiveEnergyMeasurementNotification_meter1">
+	                        <dhc:param name="notificationName" value="newReactiveEnergyValue"/>
+	                        <dhc:param name="notificationParamName" value="value" type="Measure"/>
+	                    </dhc:notification>
+	                </dhc:notifications>
+	            </dhc:notificationFunctionality>
+	            <dhc:notificationFunctionality class="SinglePhaseActiveEnergyMeasurementNotificationFunctionality">
+	                <dhc:notifications>
+	                    <dhc:notification class="SinglePhaseActiveEnergyMeasurementNotification" id="TotalActiveEnergyMeasurementNotification_meter1">
+	                        <dhc:param name="notificationName" value="newActiveEnergyValue"/>
+	                        <dhc:param name="notificationParamName" value="value" type="Measure"/>
+	                    </dhc:notification>
+	                </dhc:notifications>
+	            </dhc:notificationFunctionality>
+	            <dhc:notificationFunctionality class="ThreePhaseCurrentMeasurementNotificationFunctionality">
+	                <dhc:notifications>
+	                    <dhc:notification class="ThreePhaseCurrentMeasurementNotification" id="L1CurrentMeasurementNotification_meter1">
+	                        <dhc:param name="notificationName" value="newCurrentValue"/>
+	                        <dhc:param name="notificationParamName" value="phaseID" type="String"/>
+	                        <dhc:param name="notificationParamName" value="value" type="Measure"/>
+	                    </dhc:notification>
+	                    <dhc:notification class="ThreePhaseCurrentMeasurementNotification" id="L2CurrentMeasurementNotification_meter1">
+	                        <dhc:param name="notificationName" value="newCurrentValue"/>
+	                        <dhc:param name="notificationParamName" value="phaseID" type="String"/>
+	                        <dhc:param name="notificationParamName" value="value" type="Measure"/>
+	                    </dhc:notification>
+	                    <dhc:notification class="ThreePhaseCurrentMeasurementNotification" id="L3CurrentMeasurementNotification_meter1">
+	                        <dhc:param name="notificationName" value="newCurrentValue"/>
+	                        <dhc:param name="notificationParamName" value="phaseID" type="String"/>
+	                        <dhc:param name="notificationParamName" value="value" type="Measure"/>
+	                    </dhc:notification>
+	                </dhc:notifications>
+	            </dhc:notificationFunctionality>
+	            <dhc:notificationFunctionality class="ThreePhaseApparentPowerMeasurementNotificationFunctionality">
+	                <dhc:notifications>
+	                    <dhc:notification class="ThreePhaseApparentPowerMeasurementNotification" id="L1ApparentPowerMeasurementNotification_meter1">
+	                        <dhc:param name="notificationName" value="newApparentPowerValue"/>
+	                        <dhc:param name="notificationParamName" value="phaseID" type="String"/>
+	                        <dhc:param name="notificationParamName" value="value" type="Measure"/>
+	                    </dhc:notification>
+	                    <dhc:notification class="ThreePhaseApparentPowerMeasurementNotification" id="L2ApparentPowerMeasurementNotification_meter1">
+	                        <dhc:param name="notificationName" value="newApparentPowerValue"/>
+	                        <dhc:param name="notificationParamName" value="phaseID" type="String"/>
+	                        <dhc:param name="notificationParamName" value="value" type="Measure"/>
+	                    </dhc:notification>
+	                    <dhc:notification class="ThreePhaseApparentPowerMeasurementNotification" id="L3ApparentPowerMeasurementNotification_meter1">
+	                        <dhc:param name="notificationName" value="newApparentPowerValue"/>
+	                        <dhc:param name="notificationParamName" value="phaseID" type="String"/>
+	                        <dhc:param name="notificationParamName" value="value" type="Measure"/>
+	                    </dhc:notification>
+	                </dhc:notifications>
+	            </dhc:notificationFunctionality>
+	            <dhc:notificationFunctionality class="PowerFactorMeasurementNotificationFunctionality">
+	                <dhc:notifications>
+	                    <dhc:notification class="PowerFactorMeasurementNotification" id="PowerFactorMeasurementNotification_meter1">
+	                        <dhc:param name="notificationName" value="newPowerFactorValue"/>
+	                        <dhc:param name="notificationParamName" value="powerfactor" type="Measure"/>
+	                    </dhc:notification>
+	                </dhc:notifications>
+	            </dhc:notificationFunctionality>
+	            <dhc:notificationFunctionality class="ThreePhaseReactivePowerMeasurementNotificationFunctionality">
+	                <dhc:notifications>
+	                    <dhc:notification class="ThreePhaseReactivePowerMeasurementNotification" id="L1ReactivePowerMeasurementNotification_meter1">
+	                        <dhc:param name="notificationName" value="newReactivePowerValue"/>
+	                        <dhc:param name="notificationParamName" value="phaseID" type="String"/>
+	                        <dhc:param name="notificationParamName" value="value" type="Measure"/>
+	                    </dhc:notification>
+	                    <dhc:notification class="ThreePhaseReactivePowerMeasurementNotification" id="L2ReactivePowerMeasurementNotification_meter1">
+	                        <dhc:param name="notificationName" value="newReactivePowerValue"/>
+	                        <dhc:param name="notificationParamName" value="phaseID" type="String"/>
+	                        <dhc:param name="notificationParamName" value="value" type="Measure"/>
+	                    </dhc:notification>
+	                    <dhc:notification class="ThreePhaseReactivePowerMeasurementNotification" id="L3ReactivePowerMeasurementNotification_meter1">
+	                        <dhc:param name="notificationName" value="newReactivePowerValue"/>
+	                        <dhc:param name="notificationParamName" value="phaseID" type="String"/>
+	                        <dhc:param name="notificationParamName" value="value" type="Measure"/>
+	                    </dhc:notification>
+	                </dhc:notifications>
+	            </dhc:notificationFunctionality>
+	            <dhc:notificationFunctionality class="ThreePhaseActivePowerMeasurementNotificationFunctionality">
+	                <dhc:notifications>
+	                    <dhc:notification class="ThreePhaseActivePowerMeasurementNotification" id="L1ActivePowerMeasurementNotification_meter1">
+	                        <dhc:param name="notificationName" value="newActivePowerValue"/>
+	                        <dhc:param name="notificationParamName" value="phaseID" type="String"/>
+	                        <dhc:param name="notificationParamName" value="value" type="Measure"/>
+	                    </dhc:notification>
+	                    <dhc:notification class="ThreePhaseActivePowerMeasurementNotification" id="L2ActivePowerMeasurementNotification_meter1">
+	                        <dhc:param name="notificationName" value="newActivePowerValue"/>
+	                        <dhc:param name="notificationParamName" value="phaseID" type="String"/>
+	                        <dhc:param name="notificationParamName" value="value" type="Measure"/>
+	                    </dhc:notification>
+	                    <dhc:notification class="ThreePhaseActivePowerMeasurementNotification" id="L3ActivePowerMeasurementNotification_meter1">
+	                        <dhc:param name="notificationName" value="newActivePowerValue"/>
+	                        <dhc:param name="notificationParamName" value="phaseID" type="String"/>
+	                        <dhc:param name="notificationParamName" value="value" type="Measure"/>
+	                    </dhc:notification>
+	                </dhc:notifications>
+	            </dhc:notificationFunctionality>
+	            <dhc:state class="ThreePhaseVoltageState">
+	                <dhc:statevalues>
+	                    <dhc:statevalue class="ThreePhaseVoltageStateValue" name=""/>
+	                    <dhc:statevalue class="ThreePhaseVoltageStateValue" name=""/>
+	                    <dhc:statevalue class="ThreePhaseVoltageStateValue" name=""/>
+	                </dhc:statevalues>
+	            </dhc:state>
+	            <dhc:state class="FrequencyMeasurementState">
+	                <dhc:statevalues>
+	                    <dhc:statevalue class="FrequencyStateValue" name=""/>
+	                </dhc:statevalues>
+	            </dhc:state>
+	            <dhc:state class="SinglePhaseActiveEnergyState">
+	                <dhc:statevalues>
+	                    <dhc:statevalue class="ActiveEnergyStateValue" name=""/>
+	                </dhc:statevalues>
+	            </dhc:state>
+	            <dhc:state class="SinglePhaseReactiveEnergyState">
+	                <dhc:statevalues>
+	                    <dhc:statevalue class="ReactiveEnergyStateValue" name=""/>
+	                </dhc:statevalues>
+	            </dhc:state>
+	            <dhc:state class="ThreePhaseCurrentState">
+	                <dhc:statevalues>
+	                    <dhc:statevalue class="CurrentStateValue" name=""/>
+	                    <dhc:statevalue class="CurrentStateValue" name=""/>
+	                    <dhc:statevalue class="CurrentStateValue" name=""/>
+	                </dhc:statevalues>
+	            </dhc:state>
+	            <dhc:state class="ThreePhaseApparentPowerMeasurementState">
+	                <dhc:statevalues>
+	                    <dhc:statevalue class="ApparentPowerStateValue" name=""/>
+	                    <dhc:statevalue class="ApparentPowerStateValue" name=""/>
+	                    <dhc:statevalue class="ApparentPowerStateValue" name=""/>
+	                </dhc:statevalues>
+	            </dhc:state>
+	            <dhc:state class="PowerFactorMeasurementState">
+	                <dhc:statevalues>
+	                    <dhc:statevalue class="PowerFactorStateValue" name=""/>
+	                </dhc:statevalues>
+	            </dhc:state>
+	            <dhc:state class="ThreePhaseReactivePowerMeasurementState">
+	                <dhc:statevalues>
+	                    <dhc:statevalue class="ReactivePowerStateValue" name=""/>
+	                    <dhc:statevalue class="ReactivePowerStateValue" name=""/>
+	                    <dhc:statevalue class="ReactivePowerStateValue" name=""/>
+	                </dhc:statevalues>
+	            </dhc:state>
+	            <dhc:state class="ThreePhaseActivePowerMeasurementState">
+	                <dhc:statevalues>
+	                    <dhc:statevalue class="ActivePowerStateValue" name=""/>
+	                    <dhc:statevalue class="ActivePowerStateValue" name=""/>
+	                    <dhc:statevalue class="ActivePowerStateValue" name=""/>
+	                </dhc:statevalues>
+	            </dhc:state>
+	        </dhc:device>
+	    </dhc:controllables>
+	</dhc:dogHomeConfiguration>
 
 </div>
 </div>
@@ -269,11 +439,11 @@ Represents domotic devices handled by Dog and "controllable" by applications usi
 
 #### <a id="singleDevice"></a> Resource /devices/{device-id} ####
 
-*Updated on Thu, 2013-10-24*
+*Updated on Thu, 2013-10-29*
 <span class="label label-info pull-right">API version 1.0</span>
-<span class="label label-warning pull-right">Not yet implemented</span>
+<span class="label label-warning pull-right">Partially implemented</span>
 
-Represents a single domotic device handled by Dog, identified by a unique *device-id* (currently encoded in the *name* attribute for the XML response to the [GET /devices](#devices) request),
+Represents a single domotic device handled by Dog, identified by a unique *device-id* (currently encoded in the *id* attribute for the XML response to the [GET /devices](#devices) request),
 and "controllable" by applications using this API. 
 
 *URL:* /devices/{device-id}
@@ -368,30 +538,43 @@ and "controllable" by applications using this API.
 <div id="devices-single-example-xml" class="accordion-body collapse" markdown="1">
 <div class="accordion-inner" markdown="1">
 
-    <dhc:device domoticSystem="KONNEX" id="MainsPowerOutlet_p12_kitchen" class="MainsPowerOutlet">
-		<dhc:description>A MainsPowerOutlet instance named MainsPowerOutlet_p12_kitchen</dhc:description>
-		<dhc:isIn>kitchen</dhc:isIn>
-		<dhc:hasMeter>energy_meter_1</dhc:hasMeter>
-		<dhc:controlFunctionality class="OnOffFunctionality">
-			<dhc:commands>
-				<dhc:command name="on" class="OnCommand"/>
-				<dhc:command name="off" class="OffCommand"/>
-			</dhc:commands>
-		</dhc:controlFunctionality>
-		<dhc:notificationFunctionality class="StateChangeNotificationFunctionality">
-			<dhc:notifications>
-				<dhc:notification name="stateChanged" class="StateChangeNotification">
-					<dhc:param type="State" name="notificationParamName"/>
-				</dhc:notification>
-			</dhc:notifications>
-		</dhc:notificationFunctionality>
-		<dhc:state class="OnOffState">
-			<dhc:statevalues>
-				<dhc:statevalue name="on" class="OnStateValue"/>
-				<dhc:statevalue name="off" class="OffStateValue"/>
-			</dhc:statevalues>
-		</dhc:state>
-	</dhc:device>
+	<dhc:dogHomeConfiguration xmlns:dhc="http://elite.polito.it/dogHomeConfiguration">
+	    <dhc:controllables>
+	        <dhc:device class="KNXNetIPGateway" id="KNXNetIPGateway_DemoCase_Elite" domoticSystem="KNXNETIP">
+	            <dhc:description>A KNXNetIPGateway instance named KNXNetIPGateway_DemoCase_Elite</dhc:description>
+	        </dhc:device>
+	        <dhc:device class="MainsPowerOutlet" id="MainsPowerOutlet_1" domoticSystem="KNXNETIP" gateway="KNXNetIPGateway_DemoCase_Elite">
+	            <dhc:description>A MainsPowerOutlet instance named MainsPowerOutlet_1
+				</dhc:description>
+	            <dhc:isIn>storageroom</dhc:isIn>
+	            <dhc:hasMeter>energy_meter_1</dhc:hasMeter>
+	            <dhc:controlFunctionality class="OnOffFunctionality">
+	                <dhc:commands>
+	                    <dhc:command class="OffCommand" name="OffCommand_1" id="OffCommand_1">
+	                        <dhc:param name="realCommandName" value="off"/>
+	                    </dhc:command>
+	                    <dhc:command class="OnCommand" name="OnCommand_1" id="OnCommand_1">
+	                        <dhc:param name="realCommandName" value="on"/>
+	                    </dhc:command>
+	                </dhc:commands>
+	            </dhc:controlFunctionality>
+	            <dhc:notificationFunctionality class="StateChangeNotificationFunctionality">
+	                <dhc:notifications>
+	                    <dhc:notification class="StateChangeNotification" id="StateChangeNotification_1">
+	                        <dhc:param name="notificationName" value="stateChanged"/>
+	                        <dhc:param name="notificationParamName" value="newState" type="State"/>
+	                    </dhc:notification>
+	                </dhc:notifications>
+	            </dhc:notificationFunctionality>
+	            <dhc:state class="OnOffState">
+	                <dhc:statevalues>
+	                    <dhc:statevalue class="OffStateValue" name="off"/>
+	                    <dhc:statevalue class="OnStateValue" name="on"/>
+	                </dhc:statevalues>
+	            </dhc:state>
+	        </dhc:device>
+	    </dhc:controllables>
+	</dhc:dogHomeConfiguration>
 </div>
 </div>
 </div>
@@ -1642,11 +1825,6 @@ Represents a specific room in the flat identified by the given *flat-id*.
 <div class="row-fluid" markdown="1">
 <div class="span3" markdown="1"></div>
 <div class="span9" markdown="1">
-
-----------------------------------
-
-</div>
-</div>
 
 ---------------------------------
 
