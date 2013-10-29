@@ -1,0 +1,256 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema targetNamespace="http://elite.polito.it/dogHomeConfiguration" elementFormDefault="qualified" xmlns="http://www.w3.org/2001/XMLSchema" xmlns:dhc="http://elite.polito.it/dogHomeConfiguration">
+	
+    <element name="dhc" type="dhc:dogHomeConfiguration"></element>
+    
+    <complexType name="dogHomeConfiguration">
+    	<sequence>
+    		<element name="buildingEnvironment"
+    			type="dhc:buildingEnvironment" maxOccurs="unbounded" minOccurs="0">
+    		</element>
+    		<element name="controllables" type="dhc:controllables" maxOccurs="unbounded" minOccurs="0"></element>
+    	</sequence>
+    </complexType>
+    
+
+
+    <complexType name="buildingEnvironment">
+    	<sequence>
+    		<element name="building" type="dhc:building" maxOccurs="unbounded" minOccurs="0"></element>
+    	</sequence>
+    </complexType>
+    
+    <complexType name="controllables">
+    	<sequence>
+    		<element name="device" type="dhc:device" maxOccurs="unbounded" minOccurs="0"></element>
+    	</sequence>
+    </complexType>
+
+    <complexType name="device">
+    	<sequence>
+    		<element name="description" type="string" maxOccurs="1"
+    			minOccurs="0">
+    		</element>
+    		<element name="isIn" type="string" maxOccurs="1"
+    			minOccurs="0">
+    		</element>
+    		<element name="actuatorOf" type="string" maxOccurs="1"
+    			minOccurs="0">
+    		</element>
+    		<element name="sensorOf" type="string" maxOccurs="1"
+    			minOccurs="0">
+    		</element>
+    		<element name="pluggedIn" type="string" maxOccurs="1"
+    			minOccurs="0">
+    		</element>
+    		<element name="meterOf" type="string" maxOccurs="unbounded" minOccurs="0"></element>
+    		<element name="controls" type="string" maxOccurs="unbounded"
+    			minOccurs="0">
+    		</element>
+    		<element name="hasMeter" type="string" maxOccurs="1"
+    			minOccurs="0">
+    		</element>
+    		<element name="param" type="dhc:configparam"
+    			maxOccurs="unbounded" minOccurs="0">
+    		</element>
+    		<element name="controlFunctionality"
+    			type="dhc:controlFunctionality" maxOccurs="unbounded"
+    			minOccurs="0">
+    		</element>
+    		<element name="notificationFunctionality"
+    			type="dhc:notificationFunctionality" maxOccurs="unbounded"
+    			minOccurs="0">
+    		</element>
+    		<element name="state" type="dhc:configstate"
+    			maxOccurs="unbounded" minOccurs="1">
+    		</element>
+    	</sequence>
+    	<attribute name="class" type="string" use="required"></attribute>
+    	<attribute name="id" type="ID" use="required"></attribute>
+    	<attribute name="domoticSystem" type="string"></attribute>
+    	<attribute name="gateway" type="string" use="optional"></attribute>
+    </complexType>
+
+    <complexType name="configcommand">
+    	<sequence>
+    		<element name="param" type="dhc:configparam"
+    			maxOccurs="unbounded" minOccurs="0">
+    		</element>
+    	</sequence>
+    	<attribute name="class" type="string" use="required"></attribute>
+    	<attribute name="name" type="string" use="required"></attribute>
+    	<attribute name="returnType" type="string" use="optional"></attribute>
+    	<attribute name="id" type="ID" use="optional"></attribute>
+    </complexType>
+
+    <complexType name="confignotification">
+    	<sequence>
+    		<element name="generatesCommand" type="string" maxOccurs="unbounded" minOccurs="0"></element>
+    		<element name="param" type="dhc:configparam"
+    			maxOccurs="unbounded" minOccurs="0">
+    		</element>
+    	</sequence>
+    	<attribute name="class" type="string" use="required"></attribute>
+    	<attribute name="id" type="ID" use="required"></attribute>
+    </complexType>
+
+    <complexType name="configparam">
+    	<attribute name="name" type="string" use="required"></attribute>
+    	<attribute name="value" type="string" use="optional"></attribute>
+    	<attribute name="type" type="string" use="optional"></attribute>
+    </complexType>
+
+    <complexType name="building">
+    	<sequence>
+    		<choice><element name="storey" type="dhc:storey" maxOccurs="unbounded" minOccurs="1">
+    		</element><element name="flat" type="dhc:flat" maxOccurs="unbounded" minOccurs="1">
+    		</element></choice>
+            <element name="garden" type="dhc:garden" maxOccurs="unbounded" minOccurs="0">
+    		</element>
+            <element name="garage" type="dhc:garage" maxOccurs="unbounded" minOccurs="0">
+    		</element>
+        </sequence>
+    	<attribute name="id" type="ID"></attribute>
+    	<attribute name="class" type="string"></attribute>
+    </complexType>
+
+    <complexType name="flat">
+    	<sequence>
+    		<element name="description" type="string" maxOccurs="1" minOccurs="0"></element>
+    		<element name="room" type="dhc:room" maxOccurs="unbounded"
+    			minOccurs="1">
+    		</element>
+    	</sequence>
+    	<attribute name="id" type="ID"></attribute>
+    	<attribute name="svgfootprint" type="anyURI" use="optional"></attribute>
+    	<attribute name="class" type="string"></attribute>
+    </complexType>
+
+    <complexType name="garden">
+    	<sequence>
+    		<element name="description" type="string" maxOccurs="1" minOccurs="0"></element>
+    	</sequence>
+    	<attribute name="id" type="ID"></attribute>
+    </complexType>
+
+    <complexType name="garage">
+    	<sequence>
+    		<element name="description" type="string" maxOccurs="1" minOccurs="0"></element>
+    	</sequence>
+    	<attribute name="id" type="ID"></attribute>
+    </complexType>
+
+    <complexType name="room">
+    	<sequence>
+    		<element name="description" type="string" maxOccurs="1" minOccurs="0"></element>
+    		<element name="ceiling" type="dhc:ceiling" maxOccurs="1"
+    			minOccurs="1">
+    		</element>
+    		<element name="floor" type="dhc:floor" maxOccurs="1"
+    			minOccurs="1">
+    		</element>
+    		<element name="wall" type="dhc:wall" maxOccurs="unbounded"
+    			minOccurs="1">
+    		</element>
+    	</sequence>
+    	<attribute name="id" type="ID"></attribute>
+    	<attribute name="class" type="string"></attribute>
+    </complexType>
+
+    <complexType name="wall">
+    	<sequence>
+    		<element name="hasWallOpening" type="dhc:wallOpening"
+    			maxOccurs="unbounded" minOccurs="0">
+    		</element>
+    	</sequence>
+    	<attribute name="id" type="ID"></attribute>
+    	<attribute name="length" type="string"></attribute>
+    	<attribute name="height" type="string"></attribute>
+    	<attribute name="class" type="string"></attribute>
+    	<attribute name="ref" type="IDREF"></attribute>
+    </complexType>
+
+
+
+
+
+    <complexType name="ceiling">
+    	<attribute name="id" type="ID"></attribute>
+    	<attribute name="class" type="string"></attribute>
+    </complexType>
+    
+    <complexType name="floor">
+    	<attribute name="id" type="ID"></attribute>
+    	<attribute name="class" type="string"></attribute>
+    </complexType>
+
+    <complexType name="wallOpening">
+    	<attribute name="id" type="ID"></attribute>
+    	<attribute name="class" type="string"></attribute>
+    	<attribute name="ref" type="IDREF"></attribute>
+    </complexType>
+    
+
+
+    <complexType name="statevalue">
+    	<attribute name="class" type="string" use="required"></attribute>
+    	<attribute name="name" type="string" use="optional"></attribute>
+    </complexType>
+
+    <complexType name="controlFunctionality">
+    	<sequence>
+    		<element name="commands" type="dhc:commands" maxOccurs="1" minOccurs="1"></element>
+    	</sequence>
+    	<attribute name="class" type="string" use="required"></attribute>
+    </complexType>
+
+    <complexType name="commands">
+    	<sequence>
+    		<element name="command" type="dhc:configcommand" maxOccurs="unbounded" minOccurs="1"></element>
+    	</sequence>
+    </complexType>
+
+    <complexType name="notificationFunctionality">
+    	<sequence>
+    		<element name="notifications" type="dhc:notifications" maxOccurs="1" minOccurs="1"></element>
+    	</sequence>
+    	<attribute name="class" type="string" use="required"></attribute>
+    </complexType>
+
+    <complexType name="notifications">
+    	<sequence>
+    		<element name="notification" type="dhc:confignotification" maxOccurs="unbounded" minOccurs="1"></element>
+    	</sequence>
+    </complexType>
+
+    <complexType name="configstate">
+    	<sequence>
+    		<element name="statevalues" type="dhc:statevalues" maxOccurs="1" minOccurs="1"></element>
+    	</sequence>
+    	<attribute name="class" type="string" use="required"></attribute>
+    </complexType>
+
+    <complexType name="statevalues">
+    	<sequence>
+    		<element name="statevalue" type="dhc:statevalue" maxOccurs="unbounded" minOccurs="1"></element>
+    	</sequence>
+    </complexType>
+
+
+    <complexType name="storey">
+    	<sequence>
+    		<element name="description" type="string" maxOccurs="1"
+    			minOccurs="0">
+    		</element>
+    		<element name="flat" type="dhc:flat" maxOccurs="unbounded"
+    			minOccurs="0">
+    		</element>
+    		<element name="room" type="dhc:room" maxOccurs="unbounded"
+    			minOccurs="0">
+    		</element>
+    	</sequence>
+    	<attribute name="id" type="ID"></attribute>
+    	<attribute name="levelFromGround" type="int"></attribute>
+    	<attribute name="class" type="string"></attribute>
+    </complexType>
+</schema>
