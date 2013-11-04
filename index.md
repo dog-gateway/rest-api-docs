@@ -133,7 +133,7 @@ All API access is currently over HTTP, and accessed from `http://<dog-address>/a
 
 #### <a id="devices"></a> Resource /devices ####
 
-*Updated on Mon, 2013-11-05*
+*Updated on Mon, 2013-11-04*
 <span class="label label-info pull-right">API version 1.0</span>
 
 Represents domotic devices handled by Dog and "controllable" by applications using this API. 
@@ -760,9 +760,9 @@ Represents domotic devices handled by Dog and "controllable" by applications usi
 
 #### <a id="singleDevice"></a> Resource /devices/{device-id} ####
 
-*Updated on Thu, 2013-10-29*
+*Updated on Thu, 2013-11-04*
 <span class="label label-info pull-right">API version 1.0</span>
-<span class="label label-warning pull-right">Partially implemented</span>
+<span class="label label-warning pull-right">Partially implemented (XML GET)</span>
 
 Represents a single domotic device handled by Dog, identified by a unique *device-id* (currently encoded in the *id* attribute for the XML response to the [GET /devices](#devices) request),
 and "controllable" by applications using this API. 
@@ -776,7 +776,7 @@ and "controllable" by applications using this API.
 
 **GET: Example**
 
-   GET http://www.mydog.com/api/devices/MainsPowerOutlet_p12_kitchen
+   GET http://www.mydog.com/api/devices/Lamp_Holder
 
 <div class="accordion" id="devices-single-example" markdown="1">
 <div class="accordion-group" markdown="1">
@@ -789,11 +789,10 @@ and "controllable" by applications using this API.
 <div class="accordion-inner" markdown="1">
 
    	{
-   		"id" : "MainsPowerOutlet_p12_kitchen",
-   		"class" : "MainsPowerOutlet",
-   		"description" : "The smart plug to which the dishwasher is connected",
-   		"isIn" : "kitchen",
-   		"hasMeter" : "energy_meter_1",
+   		"id" : "Lamp_Holder",
+   		"class" : "LampHolder",
+   		"description" : "A MainsPowerOutlet instance named MainsPowerOutlet_ZW1",
+   		"isIn" : "demo_room",
    		"controlFunctionalities":[
    			{
    				"class":"OnOffFunctionality",
@@ -861,39 +860,34 @@ and "controllable" by applications using this API.
 
 	<dhc:dogHomeConfiguration xmlns:dhc="http://elite.polito.it/dogHomeConfiguration">
 	    <dhc:controllables>
-	        <dhc:device class="KNXNetIPGateway" id="KNXNetIPGateway_DemoCase_Elite" domoticSystem="KNXNETIP">
-	            <dhc:description>A KNXNetIPGateway instance named KNXNetIPGateway_DemoCase_Elite</dhc:description>
-	        </dhc:device>
-	        <dhc:device class="MainsPowerOutlet" id="MainsPowerOutlet_1" domoticSystem="KNXNETIP" gateway="KNXNetIPGateway_DemoCase_Elite">
-	            <dhc:description>A MainsPowerOutlet instance named MainsPowerOutlet_1
-				</dhc:description>
-	            <dhc:isIn>storageroom</dhc:isIn>
-	            <dhc:hasMeter>energy_meter_1</dhc:hasMeter>
-	            <dhc:controlFunctionality class="OnOffFunctionality">
-	                <dhc:commands>
-	                    <dhc:command class="OffCommand" name="OffCommand_1" id="OffCommand_1">
-	                        <dhc:param name="realCommandName" value="off"/>
-	                    </dhc:command>
-	                    <dhc:command class="OnCommand" name="OnCommand_1" id="OnCommand_1">
-	                        <dhc:param name="realCommandName" value="on"/>
-	                    </dhc:command>
-	                </dhc:commands>
-	            </dhc:controlFunctionality>
-	            <dhc:notificationFunctionality class="StateChangeNotificationFunctionality">
-	                <dhc:notifications>
-	                    <dhc:notification class="StateChangeNotification" id="StateChangeNotification_1">
-	                        <dhc:param name="notificationName" value="stateChanged"/>
-	                        <dhc:param name="notificationParamName" value="newState" type="State"/>
-	                    </dhc:notification>
-	                </dhc:notifications>
-	            </dhc:notificationFunctionality>
-	            <dhc:state class="OnOffState">
-	                <dhc:statevalues>
-	                    <dhc:statevalue class="OffStateValue" name="off"/>
-	                    <dhc:statevalue class="OnStateValue" name="on"/>
-	                </dhc:statevalues>
-	            </dhc:state>
-	        </dhc:device>
+	        <dhc:device class="LampHolder" id="Lamp_Holder" domoticSystem="ZWave" gateway="zwave-gateway">
+		        <dhc:description>A MainsPowerOutlet instance named MainsPowerOutlet_ZW1</dhc:description>
+		        <dhc:isIn>demo_room</dhc:isIn>
+		        <dhc:controlFunctionality class="OnOffFunctionality">
+		            <dhc:commands>
+		                <dhc:command class="OffCommand" name="OffCommand_Lamp_Holder" id="OffCommand_Lamp_Holder">
+		                    <dhc:param name="realCommandName" value="off"/>
+		                </dhc:command>
+		                <dhc:command class="OnCommand" name="OnCommand_Lamp_Holder" id="OnCommand_Lamp_Holder">
+		                    <dhc:param name="realCommandName" value="on"/>
+		                </dhc:command>
+		            </dhc:commands>
+		        </dhc:controlFunctionality>
+		        <dhc:notificationFunctionality class="StateChangeNotificationFunctionality">
+		            <dhc:notifications>
+		                <dhc:notification class="StateChangeNotification" id="StateChangeNotification_Lamp_Holder">
+		                    <dhc:param name="notificationName" value="stateChanged"/>
+		                    <dhc:param name="notificationParamName" value="newState" type="State"/>
+		                </dhc:notification>
+		            </dhc:notifications>
+		        </dhc:notificationFunctionality>
+		        <dhc:state class="OnOffState">
+		            <dhc:statevalues>
+		                <dhc:statevalue class="OffStateValue" name="off"/>
+		                <dhc:statevalue class="OnStateValue" name="on"/>
+		            </dhc:statevalues>
+		        </dhc:state>
+		    </dhc:device>
 	    </dhc:controllables>
 	</dhc:dogHomeConfiguration>
 </div>
@@ -912,13 +906,13 @@ and "controllable" by applications using this API.
 <div id="device-update-example-json" class="accordion-body collapse" markdown="1">
 <div class="accordion-inner" markdown="1">
 
-	PUT http://www.mydog.com/api/devices/MainsPowerOutlet_p12_kitchen
+	PUT http://www.mydog.com/api/devices/Lamp_Holder
 	
 	-- REQUEST-BODY: --
 	
 	{
 		"isIn" : "lobby",
-		"description" : "Lavastoviglie"
+		"description" : "Portalampada"
 	}
 </div>
 </div>
@@ -960,7 +954,7 @@ and "controllable" by applications using this API.
 
 #### <a id="status"></a> Resource /devices/status ####
 
-*Updated on Mon, 2013-11-05* <span class="label label-info pull-right">API version 1.0</span>
+*Updated on Mon, 2013-11-04* <span class="label label-info pull-right">API version 1.0</span>
 
 Represents the status of devices registered in the Dog gateway runtime, i.e., defined in the Dog [configuration](#devicesConfiguration) and successfully registered within the gateway runtime.
 
@@ -1243,9 +1237,8 @@ Represents the status of devices registered in the Dog gateway runtime, i.e., de
 
 #### <a id="status-single"></a> Resource /devices/{device-id}/status ####
 
-*Updated on Thu, 2013-10-24*
+*Updated on Thu, 2013-11-04*
 <span class="label label-info pull-right">API version 1.0</span>
-<span class="label label-warning pull-right">Not yet implemented</span>
 
 Represents the status of the device identified by the given *device-id* and registered in the Dog gateway runtime, i.e., defined in the Dog [configuration](#devicesConfiguration) and successfully registered within the gateway runtime.
 
@@ -1257,7 +1250,7 @@ Represents the status of the device identified by the given *device-id* and regi
 
 **Example Request**
 
-	GET http://www.mydog.com/api/devices/Meter_1/status
+	GET http://www.mydog.com/api/devices/MeteringPowerOutlet/status
 
 <div class="accordion" id="single-device-status-example" markdown="1">
 <div class="accordion-group" markdown="1">
@@ -1270,164 +1263,20 @@ Represents the status of the device identified by the given *device-id* and regi
 <div class="accordion-inner" markdown="1">
 
 		{
-			"id" : "Meter_1",
-			"description":" The  utility meter",
-			"active": true,
-			"status": [
-				{
-					"ThreePhaseActiveEnergyState":[
-						{
-							"phaseID" : "L1",
-							"value" : "345.32 kWh"
-						}
-						,
-						{
-							"phaseID" : "L2",
-							"value" : "237.56 kWh"
-						}
-						,
-						{
-							"phaseID" : "L3",
-							"value" : "305.23 kWh"
-						}
-					]
-				}
-				,
-				{
-					"ThreePhaseActivePowerMeasurementState":[
-						{
-							"phaseID" : "L1",
-							"value" : "3000 W"
-						}
-						,
-						{
-							"phaseID" : "L2",
-							"value" : "2573.08 W"
-						}
-						,
-						{
-							"phaseID" : "L3",
-							"value" : "1000,40 W"
-						}
-					]
-				}
-				,
-				{
-					"ThreePhaseApparentPowerMeasurementState":[
-						{
-							"phaseID" : "L1",
-							"value" : "3000 Va"
-						}
-						,
-						{
-							"phaseID" : "L2",
-							"value" : "2573.08 Va"
-						}
-						,
-						{
-							"phaseID" : "L3",
-							"value" : "1000,40 Va"
-						}
-					]
-				}
-				,
-				{
-					"ThreePhaseCurrentState":[
-						{
-							"phaseID" : "L1",
-							"value" : "8,758 A"
-						}
-						,
-						{
-							"phaseID" : "L2",
-							"value" : "7.511 A"
-						}
-						,
-						{
-							"phaseID" : "L3",
-							"value" : "2.919 A"
-						}
-					]
-				}
-				,
-				{
-					"ThreePhaseReactivePowerMeasurementState":[
-						{
-							"phaseID" : "L1",
-							"value" : "333 Varh"
-						}
-						,
-						{
-							"phaseID" : "L2",
-							"value" : "257,3 Varh"
-						}
-						,
-						{
-							"phaseID" : "L3",
-							"value" : "98,57 Varh"
-						}
-					]
-				}
-				,
-				{
-					"ThreePhaseVoltageState":[
-						{
-							"phaseID" : "L12",
-							"value" : "380 V"
-						}
-						,
-						{
-							"phaseID" : "L23",
-							"value" : "380 V"
-						}
-						,
-						{
-							"phaseID" : "L31",
-							"value" : "380 V"
-						}
-					]
-				}
-				,
-				{
-					"ThreePhaseVoltageState":[
-						{
-							"phaseID" : "L1N",
-							"value" : "220 V"
-						}
-						,
-						{
-							"phaseID" : "L2N",
-							"value" : "220 V"
-						}
-						,
-						{
-							"phaseID" : "L3N",
-							"value" : "220 V"
-						}
-					]
-				}
-				,
-				{
-					"SinglePhaseActivePowerMeasurementState":"6873,48 W"
-				}
-				,
-				{
-					"SinglePhaseActiveEnergyState":"888.11 kWh"
-				}
-				,
-				{
-					"SinglePhaseReactiveEnergyState":"888.11 kWh"
-				}
-				,
-				{
-					"FrequencyMeasurementState":"888.11 kWh"
-				}
-				,
-				{
-					"PowerFactorMeasurementState" : "0.9"
-				}
-				
-			]
+			"active" : true,
+	        "description" : "A \"MeteringPowerOutlet\" instance named MeteringPowerOutlet",
+	        "id" : "MeteringPowerOutlet",
+	        "status" : {
+	          "SinglePhaseActiveEnergyState" : [ {
+	            "value" : "0.0 kWh"
+	          } ],
+	          "OnOffState" : [ {
+	            "value" : "off"
+	          } ],
+	          "SinglePhaseActivePowerMeasurementState" : [ {
+	            "value" : "0.0 W"
+	          } ]
+	        }
 		}
 </div>
 </div>
