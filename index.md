@@ -762,7 +762,6 @@ Represents domotic devices handled by Dog and "controllable" by applications usi
 
 *Updated on Thu, 2013-11-04*
 <span class="label label-info pull-right">API version 1.0</span>
-<span class="label label-warning pull-right">Partially implemented (XML GET)</span>
 
 Represents a single domotic device handled by Dog, identified by a unique *device-id* (currently encoded in the *id* attribute for the XML response to the [GET /devices](#devices) request),
 and "controllable" by applications using this API. 
