@@ -100,7 +100,7 @@ APIs allow to:
 	* troubleshoot problems.
 
 All API access is currently over HTTP, and accessed from `http://<dog-address>/api/`.
-When both JSON and XML responses are available, JSON is preferred. To obtain a different response type, the `Accept` header must be used.
+To select the desired response type (JSON or XML), the `Accept` header must be used in the request.
 
 #### Function summary ####
 
@@ -138,8 +138,6 @@ When both JSON and XML responses are available, JSON is preferred. To obtain a d
 <span class="label label-info pull-right">API version 1.0</span>
 
 Represents domotic devices handled by Dog and "controllable" by applications using this API.
-
-With no explicit `Accept` header in the request, the API provides the JSON response.
 
 **URL:** /devices
 
@@ -860,8 +858,6 @@ With no explicit `Accept` header in the request, the API provides the JSON respo
 
 Represents a single domotic device handled by Dog, identified by a unique *device-id* (currently encoded in the *id* attribute for the XML response to the [GET /devices](#devices) request),
 and "controllable" by applications using this API. 
-
-With no explicit `Accept` header in the request, the API provides the JSON response.
 
 *URL:* /devices/{device-id}
 

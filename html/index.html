@@ -140,7 +140,7 @@ Rules API
 </ul>
 
 <p>All API access is currently over HTTP, and accessed from <code>http://&lt;dog-address&gt;/api/</code>.
-When both JSON and XML responses are available, JSON is preferred. To obtain a different response type, the <code>Accept</code> header must be used.</p>
+To select the desired response type (JSON or XML), the <code>Accept</code> header must be used in the request.</p>
 
 <h4 id="functionsummary">Function summary</h4>
 
@@ -229,8 +229,6 @@ When both JSON and XML responses are available, JSON is preferred. To obtain a d
 <span class="label label-info pull-right">API version 1.0</span></p>
 
 <p>Represents domotic devices handled by Dog and &#8220;controllable&#8221; by applications using this API.</p>
-
-<p>With no explicit <code>Accept</code> header in the request, the API provides the JSON response.</p>
 
 <p><strong>URL:</strong> /devices</p>
 
@@ -995,8 +993,6 @@ When both JSON and XML responses are available, JSON is preferred. To obtain a d
 
 <p>Represents a single domotic device handled by Dog, identified by a unique <em>device-id</em> (currently encoded in the <em>id</em> attribute for the XML response to the <a href="#devices">GET /devices</a> request),
 and &#8220;controllable&#8221; by applications using this API. </p>
-
-<p>With no explicit <code>Accept</code> header in the request, the API provides the JSON response.</p>
 
 <p><em>URL:</em> /devices/{device-id}</p>
 
