@@ -139,7 +139,8 @@ Rules API
 </ul></li>
 </ul>
 
-<p>All API access is currently over HTTP, and accessed from <code>http://&lt;dog-address&gt;/api/</code>.</p>
+<p>All API access is currently over HTTP, and accessed from <code>http://&lt;dog-address&gt;/api/</code>.
+When both JSON and XML responses are available, JSON is preferred. To obtain a different response type, the <code>Accept</code> header must be used.</p>
 
 <h4 id="functionsummary">Function summary</h4>
 
@@ -227,7 +228,9 @@ Rules API
 <p><em>Updated on Mon, 2013&#8211;11&#8211;04</em>
 <span class="label label-info pull-right">API version 1.0</span></p>
 
-<p>Represents domotic devices handled by Dog and &#8220;controllable&#8221; by applications using this API. </p>
+<p>Represents domotic devices handled by Dog and &#8220;controllable&#8221; by applications using this API.</p>
+
+<p>With no explicit <code>Accept</code> header in the request, the API provides the JSON response.</p>
 
 <p><strong>URL:</strong> /devices</p>
 
@@ -265,7 +268,99 @@ Rules API
 </div>
 <div id="devices-example-json"  class="accordion-body collapse" >
 <div class="accordion-inner" >
-</div>
+
+<pre><code>{
+  &quot;devices&quot; : [ {
+    &quot;description&quot; : &quot;The ZWave X gateway&quot;,
+    &quot;id&quot; : &quot;zwave-gateway&quot;,
+    &quot;isIn&quot; : demo_room,
+    &quot;domoticSystem&quot; : &quot;ZWave&quot;,
+    &quot;class&quot; : &quot;ZWaveGateway&quot;,
+    &quot;controlFunctionality&quot; : [ {
+      &quot;commands&quot; : {
+        &quot;command&quot; : [ {
+          &quot;param&quot; : [ {
+            &quot;name&quot; : &quot;realCommandName&quot;,
+            &quot;value&quot; : &quot;associate&quot;
+          } ],
+          &quot;name&quot; : &quot;AssociateCommand_zwave-gateway&quot;,
+          &quot;id&quot; : &quot;AssociateCommand_zwave-gateway&quot;,
+          &quot;class&quot; : &quot;AssociateCommand&quot;
+        }, {
+          &quot;param&quot; : [ {
+            &quot;name&quot; : &quot;realCommandName&quot;,
+            &quot;value&quot; : &quot;disassociate&quot;
+          } ],
+          &quot;name&quot; : &quot;DisassociateCommand_zwave-gateway&quot;,
+          &quot;id&quot; : &quot;DisassociateCommand_zwave-gateway&quot;,
+          &quot;class&quot; : &quot;DisassociateCommand&quot;
+        } ]
+      },
+      &quot;class&quot; : &quot;AssociateFunctionality&quot;
+    } ]
+  }, {
+    &quot;description&quot; : &quot;A MainsPowerOutlet instance named MainsPowerOutlet_ZW1&quot;,
+    &quot;isIn&quot; : &quot;demo_room&quot;,
+    &quot;controlFunctionality&quot; : [ {
+      &quot;commands&quot; : {
+        &quot;command&quot; : [ {
+          &quot;param&quot; : [ {
+            &quot;name&quot; : &quot;realCommandName&quot;,
+            &quot;value&quot; : &quot;off&quot;
+          } ],
+          &quot;name&quot; : &quot;OffCommand_Lamp_Holder&quot;,
+          &quot;id&quot; : &quot;OffCommand_Lamp_Holder&quot;,
+          &quot;class&quot; : &quot;OffCommand&quot;
+        }, {
+          &quot;param&quot; : [ {
+            &quot;name&quot; : &quot;realCommandName&quot;,
+            &quot;value&quot; : &quot;on&quot;
+          } ],
+          &quot;name&quot; : &quot;OnCommand_Lamp_Holder&quot;,
+          &quot;id&quot; : &quot;OnCommand_Lamp_Holder&quot;,
+          &quot;class&quot; : &quot;OnCommand&quot;
+        } ]
+      },
+      &quot;class&quot; : &quot;OnOffFunctionality&quot;
+    } ],
+    &quot;notificationFunctionality&quot; : [ {
+      &quot;notifications&quot; : {
+        &quot;notification&quot; : [ {
+          &quot;param&quot; : [ {
+            &quot;name&quot; : &quot;notificationName&quot;,
+            &quot;value&quot; : &quot;stateChanged&quot;
+          }, {
+            &quot;name&quot; : &quot;notificationParamName&quot;,
+            &quot;value&quot; : &quot;newState&quot;,
+            &quot;type&quot; : &quot;State&quot;
+          } ],
+          &quot;id&quot; : &quot;StateChangeNotification_Lamp_Holder&quot;,
+          &quot;class&quot; : &quot;StateChangeNotification&quot;
+        } ]
+      },
+      &quot;class&quot; : &quot;StateChangeNotificationFunctionality&quot;
+    } ],
+    &quot;state&quot; : [ {
+      &quot;statevalues&quot; : {
+        &quot;statevalue&quot; : [ {
+          &quot;name&quot; : &quot;off&quot;,
+          &quot;class&quot; : &quot;OffStateValue&quot;
+        }, {
+          &quot;name&quot; : &quot;on&quot;,
+          &quot;class&quot; : &quot;OnStateValue&quot;
+        } ]
+      },
+      &quot;class&quot; : &quot;OnOffState&quot;
+    } ],
+    &quot;id&quot; : &quot;Lamp_Holder&quot;,
+    &quot;domoticSystem&quot; : &quot;ZWave&quot;,
+    &quot;gateway&quot; : &quot;zwave-gateway&quot;,
+    &quot;class&quot; : &quot;LampHolder&quot;
+  }
+}
+</code></pre>
+
+<p></div>
 </div>
 </div>
 <div class="accordion-group" >
@@ -275,7 +370,7 @@ Rules API
 </a>
 </div>
 <div id="devices-example-xml"  class="accordion-body collapse" >
-<div class="accordion-inner" >
+<div class="accordion-inner" ></p>
 
 <pre><code>&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot; standalone=&quot;yes&quot;?&gt;
 &lt;dhc:dogHomeConfiguration xmlns:dhc=&quot;http://elite.polito.it/dogHomeConfiguration&quot;&gt;
@@ -901,6 +996,8 @@ Rules API
 <p>Represents a single domotic device handled by Dog, identified by a unique <em>device-id</em> (currently encoded in the <em>id</em> attribute for the XML response to the <a href="#devices">GET /devices</a> request),
 and &#8220;controllable&#8221; by applications using this API. </p>
 
+<p>With no explicit <code>Accept</code> header in the request, the API provides the JSON response.</p>
+
 <p><em>URL:</em> /devices/{device-id}</p>
 
 <table>
@@ -942,61 +1039,63 @@ and &#8220;controllable&#8221; by applications using this API. </p>
 <div class="accordion-inner" >
 
 <pre><code>{
-    &quot;id&quot; : &quot;Lamp_Holder&quot;,
-    &quot;class&quot; : &quot;LampHolder&quot;,
     &quot;description&quot; : &quot;A MainsPowerOutlet instance named MainsPowerOutlet_ZW1&quot;,
     &quot;isIn&quot; : &quot;demo_room&quot;,
-    &quot;controlFunctionalities&quot;:[
-        {
-            &quot;class&quot;:&quot;OnOffFunctionality&quot;,
-            &quot;commands&quot;:[
-                {
-                    &quot;name&quot;:&quot;on&quot;,
-                    &quot;class&quot;:&quot;OnCommand&quot;
-                }
-                ,
-                {
-                    &quot;name&quot; : &quot;off&quot;,
-                    &quot;class&quot; : &quot;OffCommand&quot;
-                }
-            ]
-        }
-    ]
-    ,
-    &quot;notificationFunctionalities&quot; : [
-        {
-            &quot;class&quot; : &quot;StateChangeNotificationFunctionality&quot;,
-            &quot;notifications&quot;: [
-                {
-                    &quot;name&quot; : &quot;stateChanged&quot;,
-                    &quot;class&quot; : &quot;StateChangeNotification&quot;,
-                    &quot;parameters&quot; : [
-                        {
-                            &quot;name&quot; : &quot;notificationParamName&quot;,
-                            &quot;type&quot; : &quot;State&quot;
-                        }
-                    ]
-                }
-            ]
-        }
-    ]
-    ,
-    &quot;states&quot; : [
-        {
-            &quot;class&quot; : &quot;OnOffState&quot;,
-            &quot;values&quot; : [
-                {
-                    &quot;name&quot; : &quot;on&quot;,
-                    &quot;class&quot; : &quot;OnStateValue&quot;
-                }
-                ,
-                {
-                    &quot;name&quot; : &quot;off&quot;,
-                    &quot;class&quot; : &quot;OffStateValue&quot;
-                }
-            ]
-        }
-    ]   
+    &quot;controlFunctionality&quot; : [ {
+      &quot;commands&quot; : {
+        &quot;command&quot; : [ {
+          &quot;param&quot; : [ {
+            &quot;name&quot; : &quot;realCommandName&quot;,
+            &quot;value&quot; : &quot;off&quot;
+          } ],
+          &quot;name&quot; : &quot;OffCommand_Lamp_Holder&quot;,
+          &quot;id&quot; : &quot;OffCommand_Lamp_Holder&quot;,
+          &quot;class&quot; : &quot;OffCommand&quot;
+        }, {
+          &quot;param&quot; : [ {
+            &quot;name&quot; : &quot;realCommandName&quot;,
+            &quot;value&quot; : &quot;on&quot;
+          } ],
+          &quot;name&quot; : &quot;OnCommand_Lamp_Holder&quot;,
+          &quot;id&quot; : &quot;OnCommand_Lamp_Holder&quot;,
+          &quot;class&quot; : &quot;OnCommand&quot;
+        } ]
+      },
+      &quot;class&quot; : &quot;OnOffFunctionality&quot;
+    } ],
+    &quot;notificationFunctionality&quot; : [ {
+      &quot;notifications&quot; : {
+        &quot;notification&quot; : [ {
+          &quot;param&quot; : [ {
+            &quot;name&quot; : &quot;notificationName&quot;,
+            &quot;value&quot; : &quot;stateChanged&quot;
+          }, {
+            &quot;name&quot; : &quot;notificationParamName&quot;,
+            &quot;value&quot; : &quot;newState&quot;,
+            &quot;type&quot; : &quot;State&quot;
+          } ],
+          &quot;id&quot; : &quot;StateChangeNotification_Lamp_Holder&quot;,
+          &quot;class&quot; : &quot;StateChangeNotification&quot;
+        } ]
+      },
+      &quot;class&quot; : &quot;StateChangeNotificationFunctionality&quot;
+    } ],
+    &quot;state&quot; : [ {
+      &quot;statevalues&quot; : {
+        &quot;statevalue&quot; : [ {
+          &quot;name&quot; : &quot;off&quot;,
+          &quot;class&quot; : &quot;OffStateValue&quot;
+        }, {
+          &quot;name&quot; : &quot;on&quot;,
+          &quot;class&quot; : &quot;OnStateValue&quot;
+        } ]
+      },
+      &quot;class&quot; : &quot;OnOffState&quot;
+    } ],
+    &quot;id&quot; : &quot;Lamp_Holder&quot;,
+    &quot;domoticSystem&quot; : &quot;ZWave&quot;,
+    &quot;gateway&quot; : &quot;zwave-gateway&quot;,
+    &quot;class&quot; : &quot;LampHolder&quot;
 }
 </code></pre>
 
