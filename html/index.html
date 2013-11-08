@@ -2732,11 +2732,12 @@ If the command brings the device in same state in which the device is, no differ
 
 <h4 id="aidrulesaresourcerules"><a id="rules"></a> Resource /rules/</h4>
 
-<p><em>Updated on Thu, 2013&#8211;10&#8211;25</em>
-<span class="label label-info pull-right">API version 1.0</span>
-<span class="label label-important pull-right">Incomplete documentation</span></p>
+<p><em>Updated on Thu, 2013&#8211;11&#8211;08</em>
+<span class="label label-info pull-right">API version 1.0</span></p>
 
-<p>Represents the rules registered in Dog. By using this resource, it is possible to get all the existing rules or add a new rule. </p>
+<p>Represents the rules registered in Dog. By using this resource, it is possible to get all the existing rules or add a new rule.</p>
+
+<p>Currently, all the responses and the requests are in XML format.</p>
 
 <p><strong>URL:</strong> /rules/</p>
 
@@ -2760,7 +2761,7 @@ If the command brings the device in same state in which the device is, no differ
 </tr>
 <tr>
 	<td style="text-align:left;">POST</td>
-	<td style="text-align:left;">Add a new rule to the current rules set.</td>
+	<td style="text-align:left;">Add a new rule to the current rules set. If the rule already exists, it will be overwritten.</td>
 </tr>
 </tbody>
 </table>
@@ -2780,8 +2781,57 @@ If the command brings the device in same state in which the device is, no differ
 <div class="accordion-inner" >
 
 <pre><code>{
-    // to fill
+    // not yet supported
 }
+</code></pre>
+
+<p></div>
+</div>
+</div>
+<div class="accordion-group" >
+<div class="accordion-heading" >
+<a class="accordion-toggle" data-toggle="collapse" data-parent="#devices-example" href="#rules-example-xml" markdown="1">
+<strong>Example Response (XML)</strong>
+</a>
+</div>
+<div id="rules-example-xml"  class="accordion-body collapse" >
+<div class="accordion-inner" ></p>
+
+<pre><code>&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot; standalone=&quot;yes&quot;?&gt;
+&lt;dogrules:ruleList xmlns:dogrules=&quot;http://elite.polito.it/domotics/dog/rules/rule_definition&quot;&gt;
+    &lt;dogrules:rule name=&quot;onToOn&quot;&gt;
+        &lt;dogrules:if&gt;
+            &lt;dogrules:event&gt;
+                &lt;dogrules:notification name=&quot;stateChanged&quot; class=&quot;StateChangeNotification&quot; fromDevice=&quot;MeteringPowerOutlet_1&quot;&gt;
+                    &lt;dogrules:param name=&quot;newState&quot; value=&quot;on&quot; type=&quot;OnOffState&quot;/&gt;
+                &lt;/dogrules:notification&gt;
+            &lt;/dogrules:event&gt;
+            &lt;dogrules:when&gt;
+                &lt;dogrules:state name=&quot;off&quot; class=&quot;OnOffState&quot; ofDevice=&quot;LampHolder_3&quot;/&gt;
+            &lt;/dogrules:when&gt;
+        &lt;/dogrules:if&gt;
+        &lt;dogrules:then&gt;
+            &lt;dogrules:action&gt;
+                &lt;dogrules:command name=&quot;on&quot; class=&quot;OnOffFunctionality&quot; toDevice=&quot;MeteringPowerOutlet_2&quot;/&gt;
+            &lt;/dogrules:action&gt;
+        &lt;/dogrules:then&gt;
+    &lt;/dogrules:rule&gt;
+    &lt;dogrules:rule name=&quot;temporaryDisconnection&quot;&gt;
+        &lt;dogrules:if&gt;
+            &lt;dogrules:event&gt;
+                &lt;dogrules:notification name=&quot;newActivePowerValue&quot; class=&quot;SinglePhaseActivePowerMeasurementNotification&quot; fromDevice=&quot;SmartEnergySwitch_5&quot;/&gt;
+            &lt;/dogrules:event&gt;
+            &lt;dogrules:when&gt;
+                &lt;dogrules:state class=&quot;SinglePhaseActivePowerMeasurementState&quot; ofDevice=&quot;SmartEnergySwitch_5&quot; value=&quot;50.0&quot; evaluator=&quot;&amp;gt;&quot;/&gt;
+            &lt;/dogrules:when&gt;
+        &lt;/dogrules:if&gt;
+        &lt;dogrules:then&gt;
+            &lt;dogrules:action&gt;
+                &lt;dogrules:command name=&quot;off&quot; class=&quot;OnOffFunctionality&quot; toDevice=&quot;SmartEnergySwitch_5&quot;/&gt;
+            &lt;/dogrules:action&gt;
+        &lt;/dogrules:then&gt;
+    &lt;/dogrules:rule&gt;
+&lt;/dogrules:ruleList&gt;
 </code></pre>
 </div>
 </div>
@@ -2792,20 +2842,34 @@ If the command brings the device in same state in which the device is, no differ
 <div class="accordion"  id="add-rule-example" >
 <div class="accordion-group" >
 <div class="accordion-heading" >
-<a class="accordion-toggle" data-toggle="collapse" data-parent="#add-rule-example" href="#add-rule-example-json" markdown="1">
+<a class="accordion-toggle" data-toggle="collapse" data-parent="#add-rule-example" href="#add-rule-example-xml" markdown="1">
 <strong>Example Request</strong>
 </a>
 </div>
-<div id="add-rule-example-json"  class="accordion-body collapse" >
+<div id="add-rule-example-xml"  class="accordion-body collapse" >
 <div class="accordion-inner" ></p>
 
 <pre><code>POST http://www.mydog.com/api/rules/
 
 -- REQUEST-BODY: --
 
-{
-    // to fill
-}
+&lt;dogrules:ruleList xmlns:dogrules=&quot;http://elite.polito.it/domotics/dog/rules/rule_definition&quot;&gt;
+    &lt;dogrules:rule name=&quot;consumptionTooHigh&quot;&gt;
+        &lt;dogrules:if&gt;
+            &lt;dogrules:event&gt;
+                &lt;dogrules:notification name=&quot;newActivePowerValue&quot; class=&quot;SinglePhaseActivePowerMeasurementNotification&quot; fromDevice=&quot;MeteringPowerOutlet_1&quot;/&gt;
+            &lt;/dogrules:event&gt;
+            &lt;dogrules:when&gt;
+                &lt;dogrules:state class=&quot;SinglePhaseActivePowerMeasurementState&quot; ofDevice=&quot;MeteringPowerOutlet_1&quot; value=&quot;50.0&quot; evaluator=&quot;&amp;gt;&quot;/&gt;
+            &lt;/dogrules:when&gt;
+        &lt;/dogrules:if&gt;
+        &lt;dogrules:then&gt;
+            &lt;dogrules:action&gt;
+                &lt;dogrules:command name=&quot;off&quot; class=&quot;OnOffFunctionality&quot; toDevice=&quot;MeteringPowerOutlet_1&quot;/&gt;
+            &lt;/dogrules:action&gt;
+        &lt;/dogrules:then&gt;
+    &lt;/dogrules:rule&gt;
+&lt;/dogrules:ruleList&gt;
 </code></pre>
 
 <p></div>
@@ -2838,7 +2902,7 @@ If the command brings the device in same state in which the device is, no differ
 </tr>
 <tr>
 	<td style="text-align:left;">Response Format</td>
-	<td style="text-align:left;"><strong>json</strong></td>
+	<td style="text-align:left;"><strong>xml</strong> or <strong>json</strong></td>
 </tr>
 <tr>
 	<td style="text-align:left;">HTTP Methods</td>
@@ -2874,13 +2938,14 @@ If the command brings the device in same state in which the device is, no differ
 
 <h4 id="aidsingle-rulearesourcerulesrule-id"><a id="single-rule"></a> Resource /rules/{rule-id}</h4>
 
-<p><em>Updated on Thu, 2013&#8211;10&#8211;25</em>
-<span class="label label-info pull-right">API version 1.0</span>
-<span class="label label-important pull-right">Incomplete documentation</span></p>
+<p><em>Updated on Thu, 2013&#8211;11&#8211;08</em>
+<span class="label label-info pull-right">API version 1.0</span></p>
 
-<p>Represents an existing rule registered in Dog. By using this resource, it is possible to update or delete an existing rule. </p>
+<p>Represents an existing rule registered in Dog. By using this resource, it is possible to update or delete an existing rule.</p>
 
-<p><strong>URL:</strong> /rules/</p>
+<p>Currently, all the responses and the requests are in XML format.</p>
+
+<p><strong>URL:</strong> /rules/{rule-id}</p>
 
 <table>
 <colgroup>
@@ -2913,7 +2978,7 @@ If the command brings the device in same state in which the device is, no differ
 
 <p><strong>GET: Example</strong></p>
 
-<pre><code>GET http://www.mydog.com/api/rules/rule1
+<pre><code>GET http://www.mydog.com/api/rules/onToOn
 </code></pre>
 <div class="accordion"  id="single-rule-example" >
 <div class="accordion-group" >
@@ -2926,8 +2991,42 @@ If the command brings the device in same state in which the device is, no differ
 <div class="accordion-inner" >
 
 <pre><code>{
-    // to fill
+    // not yet supported
 }
+</code></pre>
+
+<p></div>
+</div>
+</div>
+<div class="accordion-group" >
+<div class="accordion-heading" >
+<a class="accordion-toggle" data-toggle="collapse" data-parent="#devices-example" href="#rules-example-xml" markdown="1">
+<strong>Example Response (XML)</strong>
+</a>
+</div>
+<div id="rules-example-xml"  class="accordion-body collapse" >
+<div class="accordion-inner" ></p>
+
+<pre><code>&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot; standalone=&quot;yes&quot;?&gt;
+&lt;dogrules:ruleList xmlns:dogrules=&quot;http://elite.polito.it/domotics/dog/rules/rule_definition&quot;&gt;
+    &lt;dogrules:rule name=&quot;onToOn&quot;&gt;
+        &lt;dogrules:if&gt;
+            &lt;dogrules:event&gt;
+                &lt;dogrules:notification name=&quot;stateChanged&quot; class=&quot;StateChangeNotification&quot; fromDevice=&quot;MeteringPowerOutlet_1&quot;&gt;
+                    &lt;dogrules:param name=&quot;newState&quot; value=&quot;on&quot; type=&quot;OnOffState&quot;/&gt;
+                &lt;/dogrules:notification&gt;
+            &lt;/dogrules:event&gt;
+            &lt;dogrules:when&gt;
+                &lt;dogrules:state name=&quot;off&quot; class=&quot;OnOffState&quot; ofDevice=&quot;LampHolder_3&quot;/&gt;
+            &lt;/dogrules:when&gt;
+        &lt;/dogrules:if&gt;
+        &lt;dogrules:then&gt;
+            &lt;dogrules:action&gt;
+                &lt;dogrules:command name=&quot;on&quot; class=&quot;OnOffFunctionality&quot; toDevice=&quot;MeteringPowerOutlet_2&quot;/&gt;
+            &lt;/dogrules:action&gt;
+        &lt;/dogrules:then&gt;
+    &lt;/dogrules:rule&gt;
+&lt;/dogrules:ruleList&gt;
 </code></pre>
 </div>
 </div>
@@ -2945,13 +3044,27 @@ If the command brings the device in same state in which the device is, no differ
 <div id="update-rule-example-json"  class="accordion-body collapse" >
 <div class="accordion-inner" ></p>
 
-<pre><code>PUT http://www.mydog.com/api/rules/rule1
+<pre><code>PUT http://www.mydog.com/api/rules/consumptionToHigh
 
 -- REQUEST-BODY: --
 
-{
-    // to fill
-}
+&lt;dogrules:ruleList xmlns:dogrules=&quot;http://elite.polito.it/domotics/dog/rules/rule_definition&quot;&gt;
+    &lt;dogrules:rule name=&quot;consumptionTooHigh&quot;&gt;
+        &lt;dogrules:if&gt;
+            &lt;dogrules:event&gt;
+                &lt;dogrules:notification name=&quot;newActivePowerValue&quot; class=&quot;SinglePhaseActivePowerMeasurementNotification&quot; fromDevice=&quot;MeteringPowerOutlet_1&quot;/&gt;
+            &lt;/dogrules:event&gt;
+            &lt;dogrules:when&gt;
+                &lt;dogrules:state class=&quot;SinglePhaseActivePowerMeasurementState&quot; ofDevice=&quot;MeteringPowerOutlet_1&quot; value=&quot;20.0&quot; evaluator=&quot;&amp;gt;&quot;/&gt;
+            &lt;/dogrules:when&gt;
+        &lt;/dogrules:if&gt;
+        &lt;dogrules:then&gt;
+            &lt;dogrules:action&gt;
+                &lt;dogrules:command name=&quot;off&quot; class=&quot;OnOffFunctionality&quot; toDevice=&quot;MeteringPowerOutlet_1&quot;/&gt;
+            &lt;/dogrules:action&gt;
+        &lt;/dogrules:then&gt;
+    &lt;/dogrules:rule&gt;
+&lt;/dogrules:ruleList&gt;
 </code></pre>
 
 <p></div>
@@ -2970,7 +3083,7 @@ If the command brings the device in same state in which the device is, no differ
 <div id="remove-rule-example-json"  class="accordion-body collapse" >
 <div class="accordion-inner" ></p>
 
-<pre><code>DELETE http://www.mydog.com/api/rules/rule1
+<pre><code>DELETE http://www.mydog.com/api/rules/onToOn
 </code></pre>
 
 <p></div>
@@ -3003,7 +3116,7 @@ If the command brings the device in same state in which the device is, no differ
 </tr>
 <tr>
 	<td style="text-align:left;">Response Format</td>
-	<td style="text-align:left;"><strong>json</strong></td>
+	<td style="text-align:left;"><strong>xml</strong> or <strong>json</strong></td>
 </tr>
 <tr>
 	<td style="text-align:left;">HTTP Methods</td>

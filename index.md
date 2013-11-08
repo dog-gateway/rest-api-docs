@@ -2122,18 +2122,20 @@ Represents a specific room in the flat identified by the given *flat-id*.
 
 #### <a id="rules"></a> Resource /rules/ ####
 
-*Updated on Thu, 2013-10-25*
+*Updated on Thu, 2013-11-08*
 <span class="label label-info pull-right">API version 1.0</span>
-<span class="label label-important pull-right">Incomplete documentation</span>
 
-Represents the rules registered in Dog. By using this resource, it is possible to get all the existing rules or add a new rule. 
+Represents the rules registered in Dog. By using this resource, it is possible to get all the existing rules or add a new rule.
+
+Currently, all the responses and the requests are in XML format.
+
 
 **URL:** /rules/
 
 |Method|Description|
 |:-----|:----------|
 | GET | Returns all the existing rules. |
-| POST | Add a new rule to the current rules set. |
+| POST | Add a new rule to the current rules set. If the rule already exists, it will be overwritten. |
 
 **GET: Example**
 
@@ -2150,8 +2152,56 @@ Represents the rules registered in Dog. By using this resource, it is possible t
 <div class="accordion-inner" markdown="1">
 
 	{
-		// to fill
+		// not yet supported
 	}
+
+</div>
+</div>
+</div>
+<div class="accordion-group" markdown="1">
+<div class="accordion-heading" markdown="1">
+<a class="accordion-toggle" data-toggle="collapse" data-parent="#devices-example" href="#rules-example-xml" markdown="1">
+**Example Response (XML)**
+</a>
+</div>
+<div id="rules-example-xml" class="accordion-body collapse" markdown="1">
+<div class="accordion-inner" markdown="1">
+
+	<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+	<dogrules:ruleList xmlns:dogrules="http://elite.polito.it/domotics/dog/rules/rule_definition">
+	    <dogrules:rule name="onToOn">
+	        <dogrules:if>
+	            <dogrules:event>
+	                <dogrules:notification name="stateChanged" class="StateChangeNotification" fromDevice="MeteringPowerOutlet_1">
+	                    <dogrules:param name="newState" value="on" type="OnOffState"/>
+	                </dogrules:notification>
+	            </dogrules:event>
+	            <dogrules:when>
+	                <dogrules:state name="off" class="OnOffState" ofDevice="LampHolder_3"/>
+	            </dogrules:when>
+	        </dogrules:if>
+	        <dogrules:then>
+	            <dogrules:action>
+	                <dogrules:command name="on" class="OnOffFunctionality" toDevice="MeteringPowerOutlet_2"/>
+	            </dogrules:action>
+	        </dogrules:then>
+	    </dogrules:rule>
+	    <dogrules:rule name="temporaryDisconnection">
+	        <dogrules:if>
+	            <dogrules:event>
+	                <dogrules:notification name="newActivePowerValue" class="SinglePhaseActivePowerMeasurementNotification" fromDevice="SmartEnergySwitch_5"/>
+	            </dogrules:event>
+	            <dogrules:when>
+	                <dogrules:state class="SinglePhaseActivePowerMeasurementState" ofDevice="SmartEnergySwitch_5" value="50.0" evaluator="&gt;"/>
+	            </dogrules:when>
+	        </dogrules:if>
+	        <dogrules:then>
+	            <dogrules:action>
+	                <dogrules:command name="off" class="OnOffFunctionality" toDevice="SmartEnergySwitch_5"/>
+	            </dogrules:action>
+	        </dogrules:then>
+    	</dogrules:rule>
+	</dogrules:ruleList>
 
 </div>
 </div>
@@ -2162,20 +2212,35 @@ Represents the rules registered in Dog. By using this resource, it is possible t
 <div class="accordion" id="add-rule-example" markdown="1">
 <div class="accordion-group" markdown="1">
 <div class="accordion-heading" markdown="1">
-<a class="accordion-toggle" data-toggle="collapse" data-parent="#add-rule-example" href="#add-rule-example-json" markdown="1">
+<a class="accordion-toggle" data-toggle="collapse" data-parent="#add-rule-example" href="#add-rule-example-xml" markdown="1">
 **Example Request**
 </a>
 </div>
-<div id="add-rule-example-json" class="accordion-body collapse" markdown="1">
+<div id="add-rule-example-xml" class="accordion-body collapse" markdown="1">
 <div class="accordion-inner" markdown="1">
 
 	POST http://www.mydog.com/api/rules/
 	
 	-- REQUEST-BODY: --
 	
-	{
-		// to fill
-	}
+	<dogrules:ruleList xmlns:dogrules="http://elite.polito.it/domotics/dog/rules/rule_definition">
+		<dogrules:rule name="consumptionTooHigh">
+	        <dogrules:if>
+	            <dogrules:event>
+	                <dogrules:notification name="newActivePowerValue" class="SinglePhaseActivePowerMeasurementNotification" fromDevice="MeteringPowerOutlet_1"/>
+	            </dogrules:event>
+	            <dogrules:when>
+	                <dogrules:state class="SinglePhaseActivePowerMeasurementState" ofDevice="MeteringPowerOutlet_1" value="50.0" evaluator="&gt;"/>
+	            </dogrules:when>
+	        </dogrules:if>
+	        <dogrules:then>
+	            <dogrules:action>
+	                <dogrules:command name="off" class="OnOffFunctionality" toDevice="MeteringPowerOutlet_1"/>
+	            </dogrules:action>
+	        </dogrules:then>
+	    </dogrules:rule>
+	</dogrules:ruleList>
+	
 </div>
 </div>
 </div>
@@ -2190,7 +2255,7 @@ Represents the rules registered in Dog. By using this resource, it is possible t
 |||
 |----------------|------------------|
 |Authentication |**Requires app key**|
-|Response Format|**json**|
+|Response Format|**xml** or **json**|
 |HTTP Methods|**GET** or **POST**|
 |Resource family|**rules**|
 |Response Object|**Array [ Rule ]**|
@@ -2215,13 +2280,14 @@ Represents the rules registered in Dog. By using this resource, it is possible t
 
 #### <a id="single-rule"></a> Resource /rules/{rule-id} ####
 
-*Updated on Thu, 2013-10-25*
+*Updated on Thu, 2013-11-08*
 <span class="label label-info pull-right">API version 1.0</span>
-<span class="label label-important pull-right">Incomplete documentation</span>
 
-Represents an existing rule registered in Dog. By using this resource, it is possible to update or delete an existing rule. 
+Represents an existing rule registered in Dog. By using this resource, it is possible to update or delete an existing rule.
 
-**URL:** /rules/
+Currently, all the responses and the requests are in XML format.
+
+**URL:** /rules/{rule-id}
 
 |Method|Description|
 |:-----|:----------|
@@ -2231,7 +2297,7 @@ Represents an existing rule registered in Dog. By using this resource, it is pos
 
 **GET: Example**
 
-	GET http://www.mydog.com/api/rules/rule1
+	GET http://www.mydog.com/api/rules/onToOn
 
 <div class="accordion" id="single-rule-example" markdown="1">
 <div class="accordion-group" markdown="1">
@@ -2244,8 +2310,41 @@ Represents an existing rule registered in Dog. By using this resource, it is pos
 <div class="accordion-inner" markdown="1">
 
 	{
-		// to fill
+		// not yet supported
 	}
+
+</div>
+</div>
+</div>
+<div class="accordion-group" markdown="1">
+<div class="accordion-heading" markdown="1">
+<a class="accordion-toggle" data-toggle="collapse" data-parent="#devices-example" href="#rules-example-xml" markdown="1">
+**Example Response (XML)**
+</a>
+</div>
+<div id="rules-example-xml" class="accordion-body collapse" markdown="1">
+<div class="accordion-inner" markdown="1">
+
+	<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+	<dogrules:ruleList xmlns:dogrules="http://elite.polito.it/domotics/dog/rules/rule_definition">
+	    <dogrules:rule name="onToOn">
+	        <dogrules:if>
+	            <dogrules:event>
+	                <dogrules:notification name="stateChanged" class="StateChangeNotification" fromDevice="MeteringPowerOutlet_1">
+	                    <dogrules:param name="newState" value="on" type="OnOffState"/>
+	                </dogrules:notification>
+	            </dogrules:event>
+	            <dogrules:when>
+	                <dogrules:state name="off" class="OnOffState" ofDevice="LampHolder_3"/>
+	            </dogrules:when>
+	        </dogrules:if>
+	        <dogrules:then>
+	            <dogrules:action>
+	                <dogrules:command name="on" class="OnOffFunctionality" toDevice="MeteringPowerOutlet_2"/>
+	            </dogrules:action>
+	        </dogrules:then>
+	    </dogrules:rule>
+	</dogrules:ruleList>
 
 </div>
 </div>
@@ -2263,13 +2362,28 @@ Represents an existing rule registered in Dog. By using this resource, it is pos
 <div id="update-rule-example-json" class="accordion-body collapse" markdown="1">
 <div class="accordion-inner" markdown="1">
 
-	PUT http://www.mydog.com/api/rules/rule1
+	PUT http://www.mydog.com/api/rules/consumptionToHigh
 	
 	-- REQUEST-BODY: --
 	
-	{
-		// to fill
-	}
+	<dogrules:ruleList xmlns:dogrules="http://elite.polito.it/domotics/dog/rules/rule_definition">
+		<dogrules:rule name="consumptionTooHigh">
+	        <dogrules:if>
+	            <dogrules:event>
+	                <dogrules:notification name="newActivePowerValue" class="SinglePhaseActivePowerMeasurementNotification" fromDevice="MeteringPowerOutlet_1"/>
+	            </dogrules:event>
+	            <dogrules:when>
+	                <dogrules:state class="SinglePhaseActivePowerMeasurementState" ofDevice="MeteringPowerOutlet_1" value="20.0" evaluator="&gt;"/>
+	            </dogrules:when>
+	        </dogrules:if>
+	        <dogrules:then>
+	            <dogrules:action>
+	                <dogrules:command name="off" class="OnOffFunctionality" toDevice="MeteringPowerOutlet_1"/>
+	            </dogrules:action>
+	        </dogrules:then>
+	    </dogrules:rule>
+	</dogrules:ruleList>
+	
 </div>
 </div>
 </div>
@@ -2286,7 +2400,7 @@ Represents an existing rule registered in Dog. By using this resource, it is pos
 <div id="remove-rule-example-json" class="accordion-body collapse" markdown="1">
 <div class="accordion-inner" markdown="1">
 
-	DELETE http://www.mydog.com/api/rules/rule1
+	DELETE http://www.mydog.com/api/rules/onToOn
 	
 </div>
 </div>
@@ -2302,7 +2416,7 @@ Represents an existing rule registered in Dog. By using this resource, it is pos
 |||
 |----------------|------------------|
 |Authentication |**Requires app key**|
-|Response Format|**json**|
+|Response Format|**xml** or **json**|
 |HTTP Methods|**GET**, **PUT** or **DELETE**|
 |Resource family|**rules**|
 |Response Object|**Rule**|
