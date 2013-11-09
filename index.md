@@ -1942,9 +1942,8 @@ Represents a specific flat present in the environment (i.e., in the building).
 
 #### <a id="rooms-in-flat"></a> Resource /environment/flats/{flat-id}/rooms ####
 
-*Updated on Thu, 2013-10-24*
+*Updated on Thu, 2013-11-09*
 <span class="label label-info pull-right">API version 1.0</span>
-<span class="label label-warning pull-right">Not yet implemented</span>
 
 Represents all the rooms present in a given flat. 
 
