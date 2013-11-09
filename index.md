@@ -1836,11 +1836,10 @@ Represents all the flats present in the environment (i.e., int the building).
 
 #### <a id="single-flat"></a> Resource /environment/flats/{flat-id} ####
 
-*Updated on Thu, 2013-10-24*
+*Updated on Thu, 2013-11-09*
 <span class="label label-info pull-right">API version 1.0</span>
-<span class="label label-warning pull-right">Not yet implemented</span>
 
-Represents a specific flat present in the environment (i.e., the building). 
+Represents a specific flat present in the environment (i.e., in the building). 
 
 **URL:** /environment/flats
 
@@ -1866,7 +1865,7 @@ Represents a specific flat present in the environment (i.e., the building).
 	{
 		"id" : "flat",
 		"class" : "Flat",
-		"description" : "The flat I rent in Turin",
+		"description" : "The flat I rent",
 		"rooms":[
 			{
 				"id" : "kitchen",
