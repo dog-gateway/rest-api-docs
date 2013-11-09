@@ -2048,9 +2048,8 @@ Represents all the rooms present in a given flat.
 
 #### <a id="single-room-in-flat"></a> Resource /environment/flats/{flat-id}/rooms/{room-id} ####
 
-*Updated on Thu, 2013-10-24*
+*Updated on Thu, 2013-11-09*
 <span class="label label-info pull-right">API version 1.0</span>
-<span class="label label-warning pull-right">Not yet implemented</span>
 
 Represents a specific room in the flat identified by the given *flat-id*. 
 
