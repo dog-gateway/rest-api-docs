@@ -1919,9 +1919,8 @@ If the command brings the device in same state in which the device is, no differ
 
 <h4 id="aidenvironmentaresourceenvironment"><a id="environment"></a> Resource /environment</h4>
 
-<p><em>Updated on Thu, 2013&#8211;10&#8211;24</em>
-<span class="label label-info pull-right">API version 1.0</span>
-<span class="label label-warning pull-right">Not yet implemented</span></p>
+<p><em>Updated on Thu, 2013&#8211;11&#8211;09</em>
+<span class="label label-info pull-right">API version 1.0</span></p>
 
 <p>Represents the environment (i.e., the building) configured in Dog. </p>
 
@@ -1961,7 +1960,35 @@ If the command brings the device in same state in which the device is, no differ
 </div>
 <div id="environment-example-json"  class="accordion-body collapse" >
 <div class="accordion-inner" >
-</div>
+
+<pre><code>{
+  &quot;building&quot; : [ {
+    &quot;flat&quot; : [ {
+      &quot;room&quot; : [ {
+        &quot;ceiling&quot; : {
+          &quot;id&quot; : &quot;ceiling&quot;,
+          &quot;class&quot; : &quot;Ceiling&quot;
+        },
+        &quot;floor&quot; : {
+          &quot;id&quot; : &quot;floor&quot;,
+          &quot;class&quot; : &quot;Floor&quot;
+        },
+        &quot;wall&quot; : [ {
+          &quot;id&quot; : &quot;wall&quot;,
+          &quot;class&quot; : &quot;Wall&quot;
+        } ],
+        &quot;id&quot; : &quot;storageroom&quot;,
+        &quot;class&quot; : &quot;StorageRoom&quot;
+      } ],
+      &quot;id&quot; : &quot;KNX_DemoBox&quot;,
+      &quot;class&quot; : &quot;Flat&quot;
+    } ],
+    &quot;id&quot; : &quot;KNX&quot;
+  } ]
+}
+</code></pre>
+
+<p></div>
 </div>
 </div>
 <div class="accordion-group" >
@@ -1971,7 +1998,7 @@ If the command brings the device in same state in which the device is, no differ
 </a>
 </div>
 <div id="environment-example-xml"  class="accordion-body collapse" >
-<div class="accordion-inner" >
+<div class="accordion-inner" ></p>
 
 <pre><code>&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot; standalone=&quot;yes&quot;?&gt;
     &lt;dhc:dogHomeConfiguration&gt;

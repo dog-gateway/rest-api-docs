@@ -24,7 +24,7 @@ Device API
 	* [Single Device](#singleDevice)
 * [Status](#status)
 	* [Single Device](#status-single)
-* [Commands] (#command)
+* [Commands](#command)
 * [Configuration](#dogConfiguration)
 
 </div>
@@ -1545,9 +1545,8 @@ If the command brings the device in same state in which the device is, no differ
 
 #### <a id="environment"></a> Resource /environment ####
 
-*Updated on Thu, 2013-10-24*
+*Updated on Thu, 2013-11-09*
 <span class="label label-info pull-right">API version 1.0</span>
-<span class="label label-warning pull-right">Not yet implemented</span>
 
 Represents the environment (i.e., the building) configured in Dog. 
 
@@ -1570,6 +1569,33 @@ Represents the environment (i.e., the building) configured in Dog.
 </div>
 <div id="environment-example-json" class="accordion-body collapse" markdown="1">
 <div class="accordion-inner" markdown="1">
+
+	{
+	  "building" : [ {
+	    "flat" : [ {
+	      "room" : [ {
+	        "ceiling" : {
+	          "id" : "ceiling",
+	          "class" : "Ceiling"
+	        },
+	        "floor" : {
+	          "id" : "floor",
+	          "class" : "Floor"
+	        },
+	        "wall" : [ {
+	          "id" : "wall",
+	          "class" : "Wall"
+	        } ],
+	        "id" : "storageroom",
+	        "class" : "StorageRoom"
+	      } ],
+	      "id" : "KNX_DemoBox",
+	      "class" : "Flat"
+	    } ],
+	    "id" : "KNX"
+	  } ]
+	}
+
 </div>
 </div>
 </div>
