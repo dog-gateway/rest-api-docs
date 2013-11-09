@@ -1942,7 +1942,7 @@ If the command brings the device in same state in which the device is, no differ
 <tbody>
 <tr>
 	<td style="text-align:left;">GET</td>
-	<td style="text-align:left;">List the building environments configured in the Dog gateway.</td>
+	<td style="text-align:left;">List the building environments (i.e., the building) configured in the Dog gateway.</td>
 </tr>
 </tbody>
 </table>
@@ -1963,8 +1963,10 @@ If the command brings the device in same state in which the device is, no differ
 
 <pre><code>{
   &quot;building&quot; : [ {
-    &quot;flat&quot; : [ {
-      &quot;room&quot; : [ {
+    &quot;flats&quot; : [ {
+      &quot;description&quot; : &quot;The flat I rent&quot;,
+      &quot;rooms&quot; : [ {
+        &quot;description : &quot;The best room in the house&quot;,
         &quot;ceiling&quot; : {
           &quot;id&quot; : &quot;ceiling&quot;,
           &quot;class&quot; : &quot;Ceiling&quot;
@@ -1973,17 +1975,17 @@ If the command brings the device in same state in which the device is, no differ
           &quot;id&quot; : &quot;floor&quot;,
           &quot;class&quot; : &quot;Floor&quot;
         },
-        &quot;wall&quot; : [ {
+        &quot;walls&quot; : [ {
           &quot;id&quot; : &quot;wall&quot;,
           &quot;class&quot; : &quot;Wall&quot;
         } ],
-        &quot;id&quot; : &quot;storageroom&quot;,
-        &quot;class&quot; : &quot;StorageRoom&quot;
+        &quot;id&quot; : &quot;kitchen&quot;,
+        &quot;class&quot; : &quot;Kitchen&quot;
       } ],
-      &quot;id&quot; : &quot;KNX_DemoBox&quot;,
+      &quot;id&quot; : &quot;flat&quot;,
       &quot;class&quot; : &quot;Flat&quot;
     } ],
-    &quot;id&quot; : &quot;KNX&quot;
+    &quot;id&quot; : &quot;SimpleHome&quot;
   } ]
 }
 </code></pre>
@@ -2005,7 +2007,7 @@ If the command brings the device in same state in which the device is, no differ
         &lt;dhc:buildingEnvironment&gt;
             &lt;dhc:building id=&quot;SimpleHome&quot;&gt;
                 &lt;dhc:flat class=&quot;Flat&quot; svgfootprint=&quot;simple_home.svg&quot; id=&quot;flat&quot;&gt;
-                    &lt;dhc:description&gt;The flat I rent in Turin.&lt;/dhc:description&gt;
+                    &lt;dhc:description&gt;The flat I rent&lt;/dhc:description&gt;
                     &lt;dhc:room class=&quot;Kitchen&quot; id=&quot;kitchen&quot;&gt;
                         &lt;dhc:description&gt;The best room in the house.&lt;/dhc:description&gt;
                         &lt;dhc:ceiling class=&quot;Ceiling&quot; id=&quot;Ceiling_kitchen&quot;/&gt;
@@ -2109,11 +2111,10 @@ If the command brings the device in same state in which the device is, no differ
 
 <h4 id="aidflatsaresourceenvironmentflats"><a id="flats"></a> Resource /environment/flats</h4>
 
-<p><em>Updated on Thu, 2013&#8211;10&#8211;24</em>
-<span class="label label-info pull-right">API version 1.0</span>
-<span class="label label-warning pull-right">Not yet implemented</span></p>
+<p><em>Updated on Thu, 2013&#8211;11&#8211;09</em>
+<span class="label label-info pull-right">API version 1.0</span></p>
 
-<p>Represents all the flats present in the environment (i.e., the building). </p>
+<p>Represents all the flats present in the environment (i.e., int the building). </p>
 
 <p><strong>URL:</strong> /environment/flats</p>
 
@@ -2133,11 +2134,11 @@ If the command brings the device in same state in which the device is, no differ
 <tbody>
 <tr>
 	<td style="text-align:left;">GET</td>
-	<td style="text-align:left;">List all the flats present in the environment (i.e., in the building) configured in Dog.</td>
+	<td style="text-align:left;">List all the flats present in the in the (only, right now) building configured in Dog.</td>
 </tr>
 <tr>
 	<td style="text-align:left;">POST</td>
-	<td style="text-align:left;">Add a new flat to the environment configured in Dog.</td>
+	<td style="text-align:left;">Add a new flat to the building configured in Dog.</td>
 </tr>
 </tbody>
 </table>
@@ -2161,7 +2162,7 @@ If the command brings the device in same state in which the device is, no differ
     {
         &quot;id&quot; : &quot;flat&quot;,
         &quot;class&quot; : &quot;Flat&quot;,
-        &quot;description&quot; : &quot;The flat I rent in Turin&quot;,
+        &quot;description&quot; : &quot;The flat I rent&quot;,
         &quot;rooms&quot;:[
             {
                 &quot;id&quot; : &quot;kitchen&quot;,
@@ -2176,9 +2177,9 @@ If the command brings the device in same state in which the device is, no differ
         ]
     },
     {
-        &quot;id&quot; : &quot;milan-flat&quot;,
+        &quot;id&quot; : &quot;other-flat&quot;,
         &quot;class&quot; : &quot;Flat&quot;,
-        &quot;description&quot; : &quot;The flat I own in Milan&quot;,
+        &quot;description&quot; : &quot;The flat I own&quot;,
         &quot;rooms&quot;:[
             {
                 &quot;id&quot; : &quot;kitchen&quot;,

@@ -1554,7 +1554,7 @@ Represents the environment (i.e., the building) configured in Dog.
 
 |Method|Description|
 |:-----|:----------|
-| GET | List the building environments configured in the Dog gateway. |
+| GET | List the building environments (i.e., the building) configured in the Dog gateway. |
 
 **Example Request**
 
@@ -1572,8 +1572,10 @@ Represents the environment (i.e., the building) configured in Dog.
 
 	{
 	  "building" : [ {
-	    "flat" : [ {
-	      "room" : [ {
+	    "flats" : [ {
+	      "description" : "The flat I rent",
+	      "rooms" : [ {
+	        "description : "The best room in the house",
 	        "ceiling" : {
 	          "id" : "ceiling",
 	          "class" : "Ceiling"
@@ -1582,17 +1584,17 @@ Represents the environment (i.e., the building) configured in Dog.
 	          "id" : "floor",
 	          "class" : "Floor"
 	        },
-	        "wall" : [ {
+	        "walls" : [ {
 	          "id" : "wall",
 	          "class" : "Wall"
 	        } ],
-	        "id" : "storageroom",
-	        "class" : "StorageRoom"
+	        "id" : "kitchen",
+	        "class" : "Kitchen"
 	      } ],
-	      "id" : "KNX_DemoBox",
+	      "id" : "flat",
 	      "class" : "Flat"
 	    } ],
-	    "id" : "KNX"
+	    "id" : "SimpleHome"
 	  } ]
 	}
 
@@ -1616,7 +1618,7 @@ Represents the environment (i.e., the building) configured in Dog.
         	<dhc:buildingEnvironment>
             	<dhc:building id="SimpleHome">
                 	<dhc:flat class="Flat" svgfootprint="simple_home.svg" id="flat">
-                		<dhc:description>The flat I rent in Turin.</dhc:description>
+                		<dhc:description>The flat I rent</dhc:description>
                     	<dhc:room class="Kitchen" id="kitchen">
                     		<dhc:description>The best room in the house.</dhc:description>
                         	<dhc:ceiling class="Ceiling" id="Ceiling_kitchen"/>
@@ -1692,18 +1694,17 @@ Represents the environment (i.e., the building) configured in Dog.
 
 #### <a id="flats"></a> Resource /environment/flats ####
 
-*Updated on Thu, 2013-10-24*
+*Updated on Thu, 2013-11-09*
 <span class="label label-info pull-right">API version 1.0</span>
-<span class="label label-warning pull-right">Not yet implemented</span>
 
-Represents all the flats present in the environment (i.e., the building). 
+Represents all the flats present in the environment (i.e., int the building). 
 
 **URL:** /environment/flats
 
 |Method|Description|
 |:-----|:----------|
-| GET | List all the flats present in the environment (i.e., in the building) configured in Dog. |
-| POST | Add a new flat to the environment configured in Dog. |
+| GET | List all the flats present in the in the (only, right now) building configured in Dog. |
+| POST | Add a new flat to the building configured in Dog. |
 
 **GET: Example**
 
@@ -1724,7 +1725,7 @@ Represents all the flats present in the environment (i.e., the building).
 		{
 			"id" : "flat",
 			"class" : "Flat",
-			"description" : "The flat I rent in Turin",
+			"description" : "The flat I rent",
 			"rooms":[
 				{
 					"id" : "kitchen",
@@ -1739,9 +1740,9 @@ Represents all the flats present in the environment (i.e., the building).
 			]
 		},
 		{
-			"id" : "milan-flat",
+			"id" : "other-flat",
 			"class" : "Flat",
-			"description" : "The flat I own in Milan",
+			"description" : "The flat I own",
 			"rooms":[
 				{
 					"id" : "kitchen",
