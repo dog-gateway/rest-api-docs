@@ -2301,7 +2301,7 @@ If the command brings the device in same state in which the device is, no differ
 
 <h4 id="aidsingle-flataresourceenvironmentflatsflat-id"><a id="single-flat"></a> Resource /environment/flats/{flat-id}</h4>
 
-<p><em>Updated on Thu, 2013&#8211;11&#8211;09</em>
+<p><em>Updated on Thu, 2013&#8211;11&#8211;10</em>
 <span class="label label-info pull-right">API version 1.0</span></p>
 
 <p>Represents a specific flat present in the environment (i.e., in the building). </p>
@@ -2328,7 +2328,7 @@ If the command brings the device in same state in which the device is, no differ
 </tr>
 <tr>
 	<td style="text-align:left;">PUT</td>
-	<td style="text-align:left;">Update some properties of the flat identified by the given <em>flat-id</em>.</td>
+	<td style="text-align:left;">Update the flat identified by the given <em>flat-id</em>.</td>
 </tr>
 </tbody>
 </table>
@@ -2386,7 +2386,21 @@ If the command brings the device in same state in which the device is, no differ
 -- REQUEST-BODY: --
 
 {
-    &quot;description&quot; : &quot;The flat where I grew&quot;
+    &quot;id&quot; : &quot;flat&quot;,
+    &quot;class&quot; : &quot;Flat&quot;,
+    &quot;description&quot; : &quot;The flat where I grew&quot;,
+    &quot;rooms&quot;:[
+        {
+            &quot;id&quot; : &quot;kitchen&quot;,
+            &quot;class&quot; : &quot;Kitchen&quot;,
+            &quot;description&quot; : &quot;The best room in the house&quot;
+        },
+        {
+            &quot;id&quot; : &quot;sam_bedroom&quot;,
+            &quot;class&quot;: &quot;Bedroom&quot;,
+            &quot;description&quot; : &quot;Sam's bedroom&quot;
+        }
+    ]
 }
 </code></pre>
 
@@ -2610,7 +2624,7 @@ If the command brings the device in same state in which the device is, no differ
 
 <h4 id="aidsingle-room-in-flataresourceenvironmentflatsflat-idroomsroom-id"><a id="single-room-in-flat"></a> Resource /environment/flats/{flat-id}/rooms/{room-id}</h4>
 
-<p><em>Updated on Thu, 2013&#8211;11&#8211;09</em>
+<p><em>Updated on Thu, 2013&#8211;11&#8211;10</em>
 <span class="label label-info pull-right">API version 1.0</span></p>
 
 <p>Represents a specific room in the flat identified by the given <em>flat-id</em>. </p>
@@ -2637,7 +2651,7 @@ If the command brings the device in same state in which the device is, no differ
 </tr>
 <tr>
 	<td style="text-align:left;">PUT</td>
-	<td style="text-align:left;">Update some properties of the room identified by the given <em>room-id</em> and located in the given flat.</td>
+	<td style="text-align:left;">Update the room identified by the given <em>room-id</em> and located in the given flat.</td>
 </tr>
 </tbody>
 </table>
@@ -2683,7 +2697,9 @@ If the command brings the device in same state in which the device is, no differ
 -- REQUEST-BODY: --
 
 {
-    &quot;description&quot; : &quot;The room I love: the kitchen&quot;
+    &quot;id&quot; : &quot;kitchen&quot;,
+    &quot;class&quot; : &quot;Kitchen&quot;,
+    &quot;description&quot; : &quot;The room I love&quot;
 }
 </code></pre>
 

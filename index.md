@@ -1836,7 +1836,7 @@ Represents all the flats present in the environment (i.e., int the building).
 
 #### <a id="single-flat"></a> Resource /environment/flats/{flat-id} ####
 
-*Updated on Thu, 2013-11-09*
+*Updated on Thu, 2013-11-10*
 <span class="label label-info pull-right">API version 1.0</span>
 
 Represents a specific flat present in the environment (i.e., in the building). 
@@ -1846,7 +1846,7 @@ Represents a specific flat present in the environment (i.e., in the building).
 |Method|Description|
 |:-----|:----------|
 | GET | Returns the details of the flat identified by the given *flat-id*. |
-| PUT | Update some properties of the flat identified by the given *flat-id*. |
+| PUT | Update the flat identified by the given *flat-id*. |
 
 **GET: Example**
 
@@ -1901,7 +1901,21 @@ Represents a specific flat present in the environment (i.e., in the building).
 	-- REQUEST-BODY: --
 	
 	{
-		"description" : "The flat where I grew"
+		"id" : "flat",
+		"class" : "Flat",
+		"description" : "The flat where I grew",
+		"rooms":[
+			{
+				"id" : "kitchen",
+				"class" : "Kitchen",
+				"description" : "The best room in the house"
+			},
+			{
+				"id" : "sam_bedroom",
+				"class": "Bedroom",
+				"description" : "Sam's bedroom"
+			}
+		]
 	}
 </div>
 </div>
@@ -2048,7 +2062,7 @@ Represents all the rooms present in a given flat.
 
 #### <a id="single-room-in-flat"></a> Resource /environment/flats/{flat-id}/rooms/{room-id} ####
 
-*Updated on Thu, 2013-11-09*
+*Updated on Thu, 2013-11-10*
 <span class="label label-info pull-right">API version 1.0</span>
 
 Represents a specific room in the flat identified by the given *flat-id*. 
@@ -2058,7 +2072,7 @@ Represents a specific room in the flat identified by the given *flat-id*.
 |Method|Description|
 |:-----|:----------|
 | GET | Returns the details of the room identified by the given *room-id* and located in the given flat. |
-| PUT | Update some properties of the room identified by the given *room-id* and located in the given flat. |
+| PUT | Update the room identified by the given *room-id* and located in the given flat. |
 
 **GET: Example**
 
@@ -2101,7 +2115,9 @@ Represents a specific room in the flat identified by the given *flat-id*.
 	-- REQUEST-BODY: --
 	
 	{
-		"description" : "The room I love: the kitchen"
+		"id" : "kitchen",
+		"class" : "Kitchen",
+		"description" : "The room I love"
 	}
 </div>
 </div>
