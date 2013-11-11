@@ -26,7 +26,7 @@ Device API
 		* [Description](#device-description)
 * [Status](#status)
 	* [Single Device](#status-single)
-* [Commands] (#command)
+* [Commands](#command)
 * [Configuration](#dogConfiguration)
 
 </div>
@@ -1643,9 +1643,8 @@ If the command brings the device in same state in which the device is, no differ
 
 #### <a id="environment"></a> Resource /environment ####
 
-*Updated on Thu, 2013-10-24*
+*Updated on Thu, 2013-11-09*
 <span class="label label-info pull-right">API version 1.0</span>
-<span class="label label-warning pull-right">Not yet implemented</span>
 
 Represents the environment (i.e., the building) configured in Dog. 
 
@@ -1653,7 +1652,7 @@ Represents the environment (i.e., the building) configured in Dog.
 
 |Method|Description|
 |:-----|:----------|
-| GET | List the building environments configured in the Dog gateway. |
+| GET | List the building environments (i.e., the building) configured in the Dog gateway. |
 
 **Example Request**
 
@@ -1668,6 +1667,35 @@ Represents the environment (i.e., the building) configured in Dog.
 </div>
 <div id="environment-example-json" class="accordion-body collapse" markdown="1">
 <div class="accordion-inner" markdown="1">
+
+	{
+	  "building" : [ {
+	    "flats" : [ {
+	      "description" : "The flat I rent",
+	      "rooms" : [ {
+	        "description : "The best room in the house",
+	        "ceiling" : {
+	          "id" : "ceiling",
+	          "class" : "Ceiling"
+	        },
+	        "floor" : {
+	          "id" : "floor",
+	          "class" : "Floor"
+	        },
+	        "walls" : [ {
+	          "id" : "wall",
+	          "class" : "Wall"
+	        } ],
+	        "id" : "kitchen",
+	        "class" : "Kitchen"
+	      } ],
+	      "id" : "flat",
+	      "class" : "Flat"
+	    } ],
+	    "id" : "SimpleHome"
+	  } ]
+	}
+
 </div>
 </div>
 </div>
@@ -1688,7 +1716,7 @@ Represents the environment (i.e., the building) configured in Dog.
         	<dhc:buildingEnvironment>
             	<dhc:building id="SimpleHome">
                 	<dhc:flat class="Flat" svgfootprint="simple_home.svg" id="flat">
-                		<dhc:description>The flat I rent in Turin.</dhc:description>
+                		<dhc:description>The flat I rent</dhc:description>
                     	<dhc:room class="Kitchen" id="kitchen">
                     		<dhc:description>The best room in the house.</dhc:description>
                         	<dhc:ceiling class="Ceiling" id="Ceiling_kitchen"/>
@@ -1764,18 +1792,17 @@ Represents the environment (i.e., the building) configured in Dog.
 
 #### <a id="flats"></a> Resource /environment/flats ####
 
-*Updated on Thu, 2013-10-24*
+*Updated on Thu, 2013-11-09*
 <span class="label label-info pull-right">API version 1.0</span>
-<span class="label label-warning pull-right">Not yet implemented</span>
 
-Represents all the flats present in the environment (i.e., the building). 
+Represents all the flats present in the environment (i.e., int the building). 
 
 **URL:** /environment/flats
 
 |Method|Description|
 |:-----|:----------|
-| GET | List all the flats present in the environment (i.e., in the building) configured in Dog. |
-| POST | Add a new flat to the environment configured in Dog. |
+| GET | List all the flats present in the in the (only, right now) building configured in Dog. |
+| POST | Add a new flat to the building configured in Dog. |
 
 **GET: Example**
 
@@ -1796,7 +1823,7 @@ Represents all the flats present in the environment (i.e., the building).
 		{
 			"id" : "flat",
 			"class" : "Flat",
-			"description" : "The flat I rent in Turin",
+			"description" : "The flat I rent",
 			"rooms":[
 				{
 					"id" : "kitchen",
@@ -1811,9 +1838,9 @@ Represents all the flats present in the environment (i.e., the building).
 			]
 		},
 		{
-			"id" : "milan-flat",
+			"id" : "other-flat",
 			"class" : "Flat",
-			"description" : "The flat I own in Milan",
+			"description" : "The flat I own",
 			"rooms":[
 				{
 					"id" : "kitchen",
@@ -1907,18 +1934,17 @@ Represents all the flats present in the environment (i.e., the building).
 
 #### <a id="single-flat"></a> Resource /environment/flats/{flat-id} ####
 
-*Updated on Thu, 2013-10-24*
+*Updated on Thu, 2013-11-10*
 <span class="label label-info pull-right">API version 1.0</span>
-<span class="label label-warning pull-right">Not yet implemented</span>
 
-Represents a specific flat present in the environment (i.e., the building). 
+Represents a specific flat present in the environment (i.e., in the building). 
 
 **URL:** /environment/flats
 
 |Method|Description|
 |:-----|:----------|
 | GET | Returns the details of the flat identified by the given *flat-id*. |
-| PUT | Update some properties of the flat identified by the given *flat-id*. |
+| PUT | Update the flat identified by the given *flat-id*. |
 
 **GET: Example**
 
@@ -1937,7 +1963,7 @@ Represents a specific flat present in the environment (i.e., the building).
 	{
 		"id" : "flat",
 		"class" : "Flat",
-		"description" : "The flat I rent in Turin",
+		"description" : "The flat I rent",
 		"rooms":[
 			{
 				"id" : "kitchen",
@@ -1973,7 +1999,21 @@ Represents a specific flat present in the environment (i.e., the building).
 	-- REQUEST-BODY: --
 	
 	{
-		"description" : "The flat where I grew"
+		"id" : "flat",
+		"class" : "Flat",
+		"description" : "The flat where I grew",
+		"rooms":[
+			{
+				"id" : "kitchen",
+				"class" : "Kitchen",
+				"description" : "The best room in the house"
+			},
+			{
+				"id" : "sam_bedroom",
+				"class": "Bedroom",
+				"description" : "Sam's bedroom"
+			}
+		]
 	}
 </div>
 </div>
@@ -2014,9 +2054,8 @@ Represents a specific flat present in the environment (i.e., the building).
 
 #### <a id="rooms-in-flat"></a> Resource /environment/flats/{flat-id}/rooms ####
 
-*Updated on Thu, 2013-10-24*
+*Updated on Thu, 2013-11-09*
 <span class="label label-info pull-right">API version 1.0</span>
-<span class="label label-warning pull-right">Not yet implemented</span>
 
 Represents all the rooms present in a given flat. 
 
@@ -2121,9 +2160,8 @@ Represents all the rooms present in a given flat.
 
 #### <a id="single-room-in-flat"></a> Resource /environment/flats/{flat-id}/rooms/{room-id} ####
 
-*Updated on Thu, 2013-10-24*
+*Updated on Thu, 2013-11-10*
 <span class="label label-info pull-right">API version 1.0</span>
-<span class="label label-warning pull-right">Not yet implemented</span>
 
 Represents a specific room in the flat identified by the given *flat-id*. 
 
@@ -2132,7 +2170,7 @@ Represents a specific room in the flat identified by the given *flat-id*.
 |Method|Description|
 |:-----|:----------|
 | GET | Returns the details of the room identified by the given *room-id* and located in the given flat. |
-| PUT | Update some properties of the room identified by the given *room-id* and located in the given flat. |
+| PUT | Update the room identified by the given *room-id* and located in the given flat. |
 
 **GET: Example**
 
@@ -2175,7 +2213,9 @@ Represents a specific room in the flat identified by the given *flat-id*.
 	-- REQUEST-BODY: --
 	
 	{
-		"description" : "The room I love: the kitchen"
+		"id" : "kitchen",
+		"class" : "Kitchen",
+		"description" : "The room I love"
 	}
 </div>
 </div>
