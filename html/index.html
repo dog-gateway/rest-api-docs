@@ -28,7 +28,12 @@ Device API
 <li><a href="#devices">Devices</a>
 
 <ul>
-<li><a href="#singleDevice">Single Device</a></li>
+<li><a href="#singleDevice">Single Device</a>
+
+<ul>
+<li><a href="#device-location">Location</a></li>
+<li><a href="#device-description">Description</a></li>
+</ul></li>
 </ul></li>
 <li><a href="#status">Status</a>
 
@@ -109,7 +114,8 @@ Rules API
 <li><a href="#devices">query the gateway about installed devices, their location, functionalities and configurations</a>;</li>
 <li><a href="#command">require execution of commands to existing devices</a>;</li>
 <li><a href="#status">monitor device statuses and measures in real-time</a>;</li>
-<li>add or <a href="#singleDevice">update</a> the set of devices controlled through the gateway;</li>
+<li>add or update the set of devices controlled through the gateway;</li>
+<li>update the <a href="#device-location">location</a> and the <a href="#device-description">description</a> of a device controlled through the gateway;</li>
 </ul></li>
 <li>manage information about the environment
 
@@ -163,7 +169,15 @@ To select the desired response type (JSON or XML), the <code>Accept</code> heade
 </tr>
 <tr>
 	<td style="text-align:left;"><a href="#singleDevice">Resource /devices/{device-id} </a></td>
-	<td style="text-align:left;">Represents a single domotic device handled by Dog, identified by a unique <em>device-id</em> (currently encoded in the <em>name</em> attribute for the XML response to the <a href="#devices">GET /devices</a> request), and &#8220;controllable&#8221; by applications using this API.</td>
+	<td style="text-align:left;">Represents a single domotic device handled by Dog, identified by a unique <em>device-id</em> (currently encoded in the <em>id</em> attribute for the XML response to the <a href="#devices">GET /devices</a> request), and &#8220;controllable&#8221; by applications using this API.</td>
+</tr>
+<tr>
+	<td style="text-align:left;"><a href="#device-location">Resource /devices/{device-id}/location </a></td>
+	<td style="text-align:left;">Update the location of a single domotic device handled by Dog, identified by a unique <em>device-id</em>.</td>
+</tr>
+<tr>
+	<td style="text-align:left;"><a href="#device-description">Resource /devices/{device-id}/description </a></td>
+	<td style="text-align:left;">Update the description (i.e., the long name) of a single domotic device handled by Dog, identified by a unique <em>device-id</em>.</td>
 </tr>
 <tr>
 	<td style="text-align:left;"><a href="#status">Resource /devices/status</a></td>
@@ -171,7 +185,7 @@ To select the desired response type (JSON or XML), the <code>Accept</code> heade
 </tr>
 <tr>
 	<td style="text-align:left;"><a href="#status-single">Resource /devices/{device-id}/status</a></td>
-	<td style="text-align:left;">Represents the status of the device identified by the given <em>device-id</em>, registered in the Dog gateway runtime, i.e., defined in the Dog [configuration][devicesConfiguration] and successfully registered within the gateway runtime.</td>
+	<td style="text-align:left;">Represents the status of the device identified by the given <em>device-id</em>, registered in the Dog gateway runtime, i.e., defined in the Dog <a href="#devices">configuration</a> and successfully registered within the gateway runtime.</td>
 </tr>
 <tr>
 	<td style="text-align:left;"><a href="#command">Resource /devices/{device-id}/commands/{command-name} </a></td>
@@ -988,7 +1002,7 @@ To select the desired response type (JSON or XML), the <code>Accept</code> heade
 
 <h4 id="aidsingledevicearesourcedevicesdevice-id"><a id="singleDevice"></a> Resource /devices/{device-id}</h4>
 
-<p><em>Updated on Thu, 2013&#8211;11&#8211;04</em>
+<p><em>Updated on Thu, 2013&#8211;11&#8211;11</em>
 <span class="label label-info pull-right">API version 1.0</span></p>
 
 <p>Represents a single domotic device handled by Dog, identified by a unique <em>device-id</em> (currently encoded in the <em>id</em> attribute for the XML response to the <a href="#devices">GET /devices</a> request),
@@ -1013,10 +1027,6 @@ and &#8220;controllable&#8221; by applications using this API. </p>
 <tr>
 	<td style="text-align:left;">GET</td>
 	<td style="text-align:left;">Returns the details of the device identified by the given <em>device-id</em></td>
-</tr>
-<tr>
-	<td style="text-align:left;">PUT</td>
-	<td style="text-align:left;">Update some details of the device identified by the given <em>device-id</em></td>
 </tr>
 </tbody>
 </table>
@@ -1145,32 +1155,6 @@ and &#8220;controllable&#8221; by applications using this API. </p>
 </div>
 </div>
 
-<p><strong>PUT: Example</strong>
-<div class="accordion"  id="device-update-example" >
-<div class="accordion-group" >
-<div class="accordion-heading" >
-<a class="accordion-toggle" data-toggle="collapse" data-parent="#device-update-example" href="#device-update-example-json" markdown="1">
-<strong>Example Request</strong>
-</a>
-</div>
-<div id="device-update-example-json"  class="accordion-body collapse" >
-<div class="accordion-inner" ></p>
-
-<pre><code>PUT http://www.mydog.com/api/devices/Lamp_Holder
-
--- REQUEST-BODY: --
-
-{
-    &quot;isIn&quot; : &quot;lobby&quot;,
-    &quot;description&quot; : &quot;Portalampada&quot;
-}
-</code></pre>
-
-<p></div>
-</div>
-</div>
-</div></p>
-
 <p></div>
 <div class="span3" >
 <div class="well" ></p>
@@ -1200,7 +1184,7 @@ and &#8220;controllable&#8221; by applications using this API. </p>
 </tr>
 <tr>
 	<td style="text-align:left;">HTTP Methods</td>
-	<td style="text-align:left;"><strong>GET</strong> or <strong>PUT</strong></td>
+	<td style="text-align:left;"><strong>GET</strong></td>
 </tr>
 <tr>
 	<td style="text-align:left;">Resource family</td>
@@ -1209,6 +1193,218 @@ and &#8220;controllable&#8221; by applications using this API. </p>
 <tr>
 	<td style="text-align:left;">Response Object</td>
 	<td style="text-align:left;"><strong>Device</strong></td>
+</tr>
+<tr>
+	<td style="text-align:left;">API Version</td>
+	<td style="text-align:left;"><strong>v1.0</strong></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+<div class="row-fluid" >
+<div class="span3" ></div>
+<div class="span6" >
+
+<h4 id="aiddevice-locationaresourcedevicesdevice-idlocation"><a id="device-location"></a> Resource /devices/{device-id}/location</h4>
+
+<p><em>Updated on Thu, 2013&#8211;11&#8211;11</em>
+<span class="label label-info pull-right">API version 1.0</span></p>
+
+<p>Updates the location of a single domotic device handled by Dog, identified by a unique <em>device-id</em>. </p>
+
+<p><em>URL:</em> /devices/{device-id}/location</p>
+
+<table>
+<colgroup>
+<col style="text-align:left;"/>
+<col style="text-align:left;"/>
+</colgroup>
+
+<thead>
+<tr>
+	<th style="text-align:left;">Method</th>
+	<th style="text-align:left;">Description</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+	<td style="text-align:left;">PUT</td>
+	<td style="text-align:left;">Update the location of the device identified by the given <em>device-id</em></td>
+</tr>
+</tbody>
+</table>
+
+<p><strong>PUT: Example</strong></p>
+<div class="accordion"  id="location-update-example" >
+<div class="accordion-group" >
+<div class="accordion-heading" >
+<a class="accordion-toggle" data-toggle="collapse" data-parent="#location-update-example" href="#location-update-example-json" markdown="1">
+<strong>Example Request</strong>
+</a>
+</div>
+<div id="location-update-example-json"  class="accordion-body collapse" >
+<div class="accordion-inner" >
+
+<pre><code>PUT http://www.mydog.com/api/devices/Lamp_Holder/location
+
+-- REQUEST-BODY: --
+
+{
+    &quot;isIn&quot; : &quot;lobby&quot;,
+}
+</code></pre>
+</div>
+</div>
+</div>
+</div>
+
+<p></div>
+<div class="span3" >
+<div class="well" ></p>
+
+<h4 id="resourceinformation">Resource Information</h4>
+
+<table>
+<colgroup>
+<col style="text-align:left;"/>
+<col style="text-align:left;"/>
+</colgroup>
+
+<thead>
+<tr>
+	<th style="text-align:left;" colspan="2"></th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+	<td style="text-align:left;">Authentication</td>
+	<td style="text-align:left;"><strong>Requires app key</strong></td>
+</tr>
+<tr>
+	<td style="text-align:left;">Response Format</td>
+	<td style="text-align:left;"><strong>json</strong></td>
+</tr>
+<tr>
+	<td style="text-align:left;">HTTP Methods</td>
+	<td style="text-align:left;"><strong>PUT</strong></td>
+</tr>
+<tr>
+	<td style="text-align:left;">Resource family</td>
+	<td style="text-align:left;"><strong>device</strong></td>
+</tr>
+<tr>
+	<td style="text-align:left;">Response Object</td>
+	<td style="text-align:left;"><strong>String</strong></td>
+</tr>
+<tr>
+	<td style="text-align:left;">API Version</td>
+	<td style="text-align:left;"><strong>v1.0</strong></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+<div class="row-fluid" >
+<div class="span3" ></div>
+<div class="span6" >
+
+<h4 id="aiddevice-descriptionaresourcedevicesdevice-iddescription"><a id="device-description"></a> Resource /devices/{device-id}/description</h4>
+
+<p><em>Updated on Thu, 2013&#8211;11&#8211;11</em>
+<span class="label label-info pull-right">API version 1.0</span></p>
+
+<p>Updates the description (i.e., the long name) of a single domotic device handled by Dog, identified by a unique <em>device-id</em>. </p>
+
+<p><em>URL:</em> /devices/{device-id}/description</p>
+
+<table>
+<colgroup>
+<col style="text-align:left;"/>
+<col style="text-align:left;"/>
+</colgroup>
+
+<thead>
+<tr>
+	<th style="text-align:left;">Method</th>
+	<th style="text-align:left;">Description</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+	<td style="text-align:left;">PUT</td>
+	<td style="text-align:left;">Update the description (i.e., the long name) of the device identified by the given <em>device-id</em></td>
+</tr>
+</tbody>
+</table>
+
+<p><strong>PUT: Example</strong></p>
+<div class="accordion"  id="description-update-example" >
+<div class="accordion-group" >
+<div class="accordion-heading" >
+<a class="accordion-toggle" data-toggle="collapse" data-parent="#description-update-example" href="#description-update-example-json" markdown="1">
+<strong>Example Request</strong>
+</a>
+</div>
+<div id="description-update-example-json"  class="accordion-body collapse" >
+<div class="accordion-inner" >
+
+<pre><code>PUT http://www.mydog.com/api/devices/Lamp_Holder/description
+
+-- REQUEST-BODY: --
+
+{
+    &quot;description&quot; : &quot;Portalampada&quot;,
+}
+</code></pre>
+</div>
+</div>
+</div>
+</div>
+
+<p></div>
+<div class="span3" >
+<div class="well" ></p>
+
+<h4 id="resourceinformation">Resource Information</h4>
+
+<table>
+<colgroup>
+<col style="text-align:left;"/>
+<col style="text-align:left;"/>
+</colgroup>
+
+<thead>
+<tr>
+	<th style="text-align:left;" colspan="2"></th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+	<td style="text-align:left;">Authentication</td>
+	<td style="text-align:left;"><strong>Requires app key</strong></td>
+</tr>
+<tr>
+	<td style="text-align:left;">Response Format</td>
+	<td style="text-align:left;"><strong>json</strong></td>
+</tr>
+<tr>
+	<td style="text-align:left;">HTTP Methods</td>
+	<td style="text-align:left;"><strong>PUT</strong></td>
+</tr>
+<tr>
+	<td style="text-align:left;">Resource family</td>
+	<td style="text-align:left;"><strong>device</strong></td>
+</tr>
+<tr>
+	<td style="text-align:left;">Response Object</td>
+	<td style="text-align:left;"><strong>String</strong></td>
 </tr>
 <tr>
 	<td style="text-align:left;">API Version</td>

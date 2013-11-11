@@ -22,6 +22,8 @@ Device API
 
 * [Devices](#devices)
 	* [Single Device](#singleDevice)
+		* [Location](#device-location)
+		* [Description](#device-description)
 * [Status](#status)
 	* [Single Device](#status-single)
 * [Commands] (#command)
@@ -83,7 +85,8 @@ APIs allow to:
 	* [query the gateway about installed devices, their location, functionalities and configurations](#devices);
 	* [require execution of commands to existing devices](#command);
 	* [monitor device statuses and measures in real-time](#status);
-	* add or [update](#singleDevice) the set of devices controlled through the gateway;
+	* add or update the set of devices controlled through the gateway;
+	* update the [location](#device-location) and the [description](#device-description) of a device controlled through the gateway;
 * manage information about the environment
 	* [insert](#rooms-in-flat), [update](#single-room-in-flat) or delete rooms;
 	* [insert](#flats), [update](#single-flat), or delete flats;
@@ -107,9 +110,11 @@ To select the desired response type (JSON or XML), the `Accept` header must be u
 |||
 |----|----|
 |[Resource /devices](#devices)|Represents domotic devices handled by Dog and "controllable" by applications using this API. |
-|[Resource /devices/{device-id} ](#singleDevice)|Represents a single domotic device handled by Dog, identified by a unique *device-id* (currently encoded in the *name* attribute for the XML response to the [GET /devices](#devices) request), and "controllable" by applications using this API. |
+|[Resource /devices/{device-id} ](#singleDevice)|Represents a single domotic device handled by Dog, identified by a unique *device-id* (currently encoded in the *id* attribute for the XML response to the [GET /devices](#devices) request), and "controllable" by applications using this API. |
+|[Resource /devices/{device-id}/location ](#device-location)|Update the location of a single domotic device handled by Dog, identified by a unique *device-id*. |
+|[Resource /devices/{device-id}/description ](#device-description)|Update the description (i.e., the long name) of a single domotic device handled by Dog, identified by a unique *device-id*. |
 |[Resource /devices/status](#status)|Represents the status of devices registered in the Dog gateway runtime, i.e., defined in the Dog [configuration](#devices) and successfully registered within the gateway runtime.|
-|[Resource /devices/{device-id}/status](#status-single)|Represents the status of the device identified by the given *device-id*, registered in the Dog gateway runtime, i.e., defined in the Dog [configuration][devicesConfiguration] and successfully registered within the gateway runtime.|
+|[Resource /devices/{device-id}/status](#status-single)|Represents the status of the device identified by the given *device-id*, registered in the Dog gateway runtime, i.e., defined in the Dog [configuration](#devices) and successfully registered within the gateway runtime.|
 |[Resource /devices/{device-id}/commands/{command-name} ](#command)|Represents a command, identified by a *command-name*, to be sent to the device identified by the given *device-id*. Commands are idempotent: the same command always results in the same behavior of the selected device. If the command brings the device in same state in which the device is, no differences will be appreciable.|
 |[Resource /dog/configuration](#dogConfiguration)| Unsupported, to be implemented in future... |
 |[Resource /environment](#environment)|Represents the environment (i.e., the building) configured in Dog.|
@@ -853,7 +858,7 @@ Represents domotic devices handled by Dog and "controllable" by applications usi
 
 #### <a id="singleDevice"></a> Resource /devices/{device-id} ####
 
-*Updated on Thu, 2013-11-04*
+*Updated on Thu, 2013-11-11*
 <span class="label label-info pull-right">API version 1.0</span>
 
 Represents a single domotic device handled by Dog, identified by a unique *device-id* (currently encoded in the *id* attribute for the XML response to the [GET /devices](#devices) request),
@@ -864,7 +869,6 @@ and "controllable" by applications using this API.
 |Method|Description|
 |:-----|:----------|
 | GET |Returns the details of the device identified by the given *device-id* |
-| PUT |Update some details of the device identified by the given *device-id* |
 
 **GET: Example**
 
@@ -984,35 +988,11 @@ and "controllable" by applications using this API.
 		    </dhc:device>
 	    </dhc:controllables>
 	</dhc:dogHomeConfiguration>
-</div>
-</div>
-</div>
-</div>
 
-**PUT: Example**
-<div class="accordion" id="device-update-example" markdown="1">
-<div class="accordion-group" markdown="1">
-<div class="accordion-heading" markdown="1">
-<a class="accordion-toggle" data-toggle="collapse" data-parent="#device-update-example" href="#device-update-example-json" markdown="1">
-**Example Request**
-</a>
-</div>
-<div id="device-update-example-json" class="accordion-body collapse" markdown="1">
-<div class="accordion-inner" markdown="1">
-
-	PUT http://www.mydog.com/api/devices/Lamp_Holder
-	
-	-- REQUEST-BODY: --
-	
-	{
-		"isIn" : "lobby",
-		"description" : "Portalampada"
-	}
 </div>
 </div>
 </div>
 </div>
-
 </div>
 <div class="span3" markdown="1">
 <div class="well" markdown="1">
@@ -1023,9 +1003,127 @@ and "controllable" by applications using this API.
 |----------------|------------------|
 |Authentication |**Requires app key**|
 |Response Format|**json** or **xml**|
-|HTTP Methods|**GET** or **PUT**|
+|HTTP Methods|**GET**|
 |Resource family|**device**|
 |Response Object|**Device**|
+|API Version|**v1.0**|
+ 
+</div>
+</div>
+</div>
+
+<div class="row-fluid" markdown="1">
+<div class="span3" markdown="1"></div>
+<div class="span6" markdown="1">
+
+#### <a id="device-location"></a> Resource /devices/{device-id}/location ####
+
+*Updated on Thu, 2013-11-11*
+<span class="label label-info pull-right">API version 1.0</span>
+
+Updates the location of a single domotic device handled by Dog, identified by a unique *device-id*. 
+
+*URL:* /devices/{device-id}/location
+
+|Method|Description|
+|:-----|:----------|
+| PUT |Update the location of the device identified by the given *device-id* |
+
+**PUT: Example**
+
+<div class="accordion" id="location-update-example" markdown="1">
+<div class="accordion-group" markdown="1">
+<div class="accordion-heading" markdown="1">
+<a class="accordion-toggle" data-toggle="collapse" data-parent="#location-update-example" href="#location-update-example-json" markdown="1">
+**Example Request**
+</a>
+</div>
+<div id="location-update-example-json" class="accordion-body collapse" markdown="1">
+<div class="accordion-inner" markdown="1">
+
+	PUT http://www.mydog.com/api/devices/Lamp_Holder/location
+	
+	-- REQUEST-BODY: --
+	
+	{
+		"isIn" : "lobby",
+	}
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="span3" markdown="1">
+<div class="well" markdown="1">
+
+#### Resource Information ####
+
+|||
+|----------------|------------------|
+|Authentication |**Requires app key**|
+|Response Format|**json**|
+|HTTP Methods|**PUT**|
+|Resource family|**device**|
+|Response Object|**String**|
+|API Version|**v1.0**|
+ 
+</div>
+</div>
+</div>
+
+<div class="row-fluid" markdown="1">
+<div class="span3" markdown="1"></div>
+<div class="span6" markdown="1">
+
+#### <a id="device-description"></a> Resource /devices/{device-id}/description ####
+
+*Updated on Thu, 2013-11-11*
+<span class="label label-info pull-right">API version 1.0</span>
+
+Updates the description (i.e., the long name) of a single domotic device handled by Dog, identified by a unique *device-id*. 
+
+*URL:* /devices/{device-id}/description
+
+|Method|Description|
+|:-----|:----------|
+| PUT |Update the description (i.e., the long name) of the device identified by the given *device-id* |
+
+**PUT: Example**
+
+<div class="accordion" id="description-update-example" markdown="1">
+<div class="accordion-group" markdown="1">
+<div class="accordion-heading" markdown="1">
+<a class="accordion-toggle" data-toggle="collapse" data-parent="#description-update-example" href="#description-update-example-json" markdown="1">
+**Example Request**
+</a>
+</div>
+<div id="description-update-example-json" class="accordion-body collapse" markdown="1">
+<div class="accordion-inner" markdown="1">
+
+	PUT http://www.mydog.com/api/devices/Lamp_Holder/description
+	
+	-- REQUEST-BODY: --
+	
+	{
+		"description" : "Portalampada",
+	}
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="span3" markdown="1">
+<div class="well" markdown="1">
+
+#### Resource Information ####
+
+|||
+|----------------|------------------|
+|Authentication |**Requires app key**|
+|Response Format|**json**|
+|HTTP Methods|**PUT**|
+|Resource family|**device**|
+|Response Object|**String**|
 |API Version|**v1.0**|
  
 </div>
