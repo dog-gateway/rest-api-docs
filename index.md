@@ -120,8 +120,8 @@ To select the desired response type (JSON or XML), the `Accept` header must be u
 |[Resource /environment](#environment)|Represents the environment (i.e., the building) configured in Dog.|
 |[Resource /environment/flats](#flats)|Represents all the flats present in the environment (i.e., the building).|
 |[Resource /environment/flats/{flat-id}](#single-flat)|Represents a specific flat present in the environment (i.e., the building).|
-|[Resource /environment/{flat-id}/rooms](#rooms-in-flat)|Represents all the rooms present in a given flat.|
-|[Resource /environment/{flat-id}/rooms/{room-id}](#single-room-in-flat)|Represents a specific room present in a given flat in the environment (i.e., the building).|
+|[Resource /environment/flats/{flat-id}/rooms](#rooms-in-flat)|Represents all the rooms present in a given flat.|
+|[Resource /environment/flats/{flat-id}/rooms/{room-id}](#single-room-in-flat)|Represents a specific room present in a given flat in the environment (i.e., the building).|
 |[Resource /rules/](#rules)|Represents the rules registered in Dog. By using this resource, it is possible to get all the existing rules or add a new rule.|
 |[Resource /rules/{rule-id}](#single-rule)|Represents a single rule registered in Dog. By using this resource, it is possible to update or delete an existing rule.|
 
