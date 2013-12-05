@@ -27,6 +27,11 @@ Device API
 * [Status](#status)
 	* [Single Device](#status-single)
 * [Commands](#command)
+	* [Examples](#command-examples) 
+		* [Thermostatic Valves](#thermostatic-valves)
+			* [Weekly Schedule](#weekly-schedule)
+			* [Daily Schedule](#daily-schedule)
+			* [SetPoint](#setpoint)
 * [Configuration](#dogConfiguration)
 
 </div>
@@ -127,7 +132,7 @@ To select the desired response type (JSON or XML), the `Accept` header must be u
 
 ---------------------------------
 
-### Device API [deviceAPI]###
+## Device API [deviceAPI]##
 
 ---------------------------------
 
@@ -1581,6 +1586,342 @@ If the command brings the device in same state in which the device is, no differ
 </div>
 
 <div class="row-fluid" markdown="1">
+<div class="span3" markdown="1">
+</div>
+<div class="span9" markdown="1">
+
+---------------------------------------
+
+</div>
+</div>
+
+<div class="row-fluid" markdown="1">
+<div class="span3" markdown="1"></div>
+<div class="span9" markdown="1">
+
+### Examples [command-examples]###
+
+</div>
+</div>
+
+<div class="row-fluid" markdown="1">
+<div class="span3" markdown="1"></div>
+<div class="span9" markdown="1">
+
+---------------------------------
+
+#### Thermostatic Valves[thermostatic-valves]####
+
+---------------------------------
+
+</div>
+</div>
+
+<div class="row-fluid" markdown="1">
+<div class="span3" markdown="1"></div>
+<div class="span6" markdown="1">
+
+#### <a id="weekly-schedule"></a> Resource /devices/{device-id}/commands/setClimateSchedule ####
+
+*Updated on Thu, 2013-12-05*
+<span class="label label-info pull-right">API version 1.0</span>
+
+Sets the Weekly Schedule for the Thermostatic Vlave identified by {device-id}
+
+*URL:* /devices/{device-id}/commands/setClimateSchedule
+
+|Method|Description|
+|:-----|:----------|
+| PUT |Set the new weekly schedule for the Thermostatic Valve identified by {device-id}, the previous schedule is discarded.|
+| POST |*(Deprecated)* Set the new weekly schedule for the Thermostatic Valve identified by {device-id}, the previous schedule is discarded.|
+
+**POST: Example**
+
+<div class="accordion" id="weekly-schedule-example" markdown="1">
+<div class="accordion-group" markdown="1">
+<div class="accordion-heading" markdown="1">
+<a class="accordion-toggle" data-toggle="collapse" data-parent="#weekly-schedule-example" href="#weekly-schedule-example-json" markdown="1">
+**Example Request**
+</a>
+</div>
+<div id="weekly-schedule-example-json" class="accordion-body collapse" markdown="1">
+<div class="accordion-inner" markdown="1">
+
+	PUT http://www.mydog.com/api/devices/ThermostaticRadiatorValve_1/commands/setClimateSchedule
+	
+	-- REQUEST-BODY: --
+	
+	{
+		"value":[
+		{
+			"weekDay":"1",
+			"switchPoints":[
+			{
+				"timeAt":"2013-10-22T16:45:00.000+02:00",
+				"desiredTemperature":"19.5 C"
+			},
+			{
+				"timeAt":"2013-10-22T17:45:00.000+02:00",
+				"desiredTemperature":"20.5 C"
+			}
+			]
+		},
+		{
+			"weekDay":"2",
+			"switchPoints":[
+			{
+				"timeAt":"2013-10-22T16:45:00.000+02:00",
+				"desiredTemperature":"19.5 C"
+			},
+			{
+				"timeAt":"2013-10-22T17:45:00.000+02:00",
+				"desiredTemperature":"20.5 C"
+			}
+			]
+		},
+		{
+			"weekDay":"3",
+			"switchPoints":[
+			{
+				"timeAt":"2013-10-22T14:33:00.000+02:00",
+				"desiredTemperature":"25.5 C"
+			},
+			{
+				"timeAt":"2013-10-22T15:34:00.000+02:00",
+				"desiredTemperature":"20.5 C"
+			}
+			]
+		},
+		{
+			"weekDay":"4",
+			"switchPoints":[
+			{
+				"timeAt":"2013-10-22T16:45:00.000+02:00",
+				"desiredTemperature":"19.5 C"
+			},
+			{
+				"timeAt":"2013-10-22T17:45:00.000+02:00",
+				"desiredTemperature":"20.5 C"
+			}
+			]
+		}
+		,
+		{
+			"weekDay":"5",
+			"switchPoints":[
+			{
+				"timeAt":"2013-10-22T16:45:00.000+02:00",
+				"desiredTemperature":"19.5 C"
+			},
+			{
+				"timeAt":"2013-10-22T17:45:00.000+02:00",
+				"desiredTemperature":"20.5 C"
+			}
+			]
+		},
+		{
+			"weekDay":"6",
+			"switchPoints":[
+			{
+				"timeAt":"2013-10-22T16:45:00.000+02:00",
+				"desiredTemperature":"19.5 C"
+			},
+			{
+				"timeAt":"2013-10-22T17:45:00.000+02:00",
+				"desiredTemperature":"20.5 C"
+			}
+			]
+		},
+		{
+			"weekDay":"7",
+			"switchPoints":[
+			{
+				"timeAt":"2013-10-22T16:45:00.000+02:00",
+				"desiredTemperature":"19.5 C"
+			},
+			{
+				"timeAt":"2013-10-22T17:45:00.000+02:00",
+				"desiredTemperature":"20.5 C"
+			}
+			]
+		}
+	]
+	}
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="span3" markdown="1">
+<div class="well" markdown="1">
+
+#### Resource Information ####
+
+|||
+|----------------|------------------|
+|Authentication |**Requires app key**|
+|Response Format|**json**|
+|HTTP Methods|**PUT**|
+|Resource family|**device**|
+|Response Object|**String**|
+|API Version|**v1.0**|
+ 
+</div>
+</div>
+</div>
+
+<div class="row-fluid" markdown="1">
+<div class="span3" markdown="1">
+</div>
+<div class="span9" markdown="1">
+
+---------------------------------------
+
+</div>
+</div>
+
+<div class="row-fluid" markdown="1">
+<div class="span3" markdown="1"></div>
+<div class="span6" markdown="1">
+
+#### <a id="daily-schedule"></a> Resource /devices/{device-id}/commands/setDailyClimateSchedule ####
+
+*Updated on Thu, 2013-12-05*
+<span class="label label-info pull-right">API version 1.0</span>
+
+Sets the Daily Schedule for the Thermostatic Valve identified by {device-id}
+
+*URL:* /devices/{device-id}/commands/setDailyClimateSchedule
+
+|Method|Description|
+|:-----|:----------|
+| PUT |Set the new daily schedule for the Thermostatic Valve identified by {device-id}, the previous schedule is discarded.|
+| POST |*(Deprecated)* Set the new daily schedule for the Thermostatic Valve identified by {device-id}, the previous schedule is discarded.|
+
+**POST: Example**
+
+<div class="accordion" id="daily-schedule-example" markdown="1">
+<div class="accordion-group" markdown="1">
+<div class="accordion-heading" markdown="1">
+<a class="accordion-toggle" data-toggle="collapse" data-parent="#daily-schedule-example" href="#daily-schedule-example-json" markdown="1">
+**Example Request**
+</a>
+</div>
+<div id="daily-schedule-example-json" class="accordion-body collapse" markdown="1">
+<div class="accordion-inner" markdown="1">
+
+	PUT http://www.mydog.com/api/devices/ThermostaticRadiatorValve_1/commands/setDailyClimateSchedule
+	
+	-- REQUEST-BODY: --
+	
+	{
+		"value":{
+			"switchPoints":[
+				{
+					"timeAt":"2013-10-22T15:55:00.000+02:00",
+					"desiredTemperature":"20.5 C"
+				},
+				{
+					"timeAt":"2013-10-22T20:45:00.000+02:00",
+					"desiredTemperature":"17.5 C"
+				}
+			],
+			"weekDay":1
+		} 
+	}
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="span3" markdown="1">
+<div class="well" markdown="1">
+
+#### Resource Information ####
+
+|||
+|----------------|------------------|
+|Authentication |**Requires app key**|
+|Response Format|**json**|
+|HTTP Methods|**PUT**|
+|Resource family|**device**|
+|Response Object|**String**|
+|API Version|**v1.0**|
+ 
+</div>
+</div>
+</div>
+
+<div class="row-fluid" markdown="1">
+<div class="span3" markdown="1"></div>
+<div class="span9" markdown="1">
+
+----------------------------------
+
+</div>
+</div>
+
+<div class="row-fluid" markdown="1">
+<div class="span3" markdown="1"></div>
+<div class="span6" markdown="1">
+
+#### <a id="setpoint"></a> Resource /devices/{device-id}/commands/setTemperatureAt ####
+
+*Updated on Thu, 2013-12-05*
+<span class="label label-info pull-right">API version 1.0</span>
+
+Sets the Temperature setPoint for the Thermostatic Valve identified by {device-id}
+
+*URL:* /devices/{device-id}/commands/setTemperatureAt
+
+|Method|Description|
+|:-----|:----------|
+| PUT |Set the new temperature setPoint for the Thermostatic Valve identified by {device-id}, the previous schedule is discarded.|
+| POST |*(Deprecated)* Set the new temperature setPoint for the Thermostatic Valve identified by {device-id}, the previous schedule is discarded.|
+
+**POST: Example**
+
+<div class="accordion" id="setpoint-example" markdown="1">
+<div class="accordion-group" markdown="1">
+<div class="accordion-heading" markdown="1">
+<a class="accordion-toggle" data-toggle="collapse" data-parent="#setpoint-example" href="#setpoint-example-json" markdown="1">
+**Example Request**
+</a>
+</div>
+<div id="setpoint-example-json" class="accordion-body collapse" markdown="1">
+<div class="accordion-inner" markdown="1">
+
+	PUT http://www.mydog.com/api/devices/ThermostaticRadiatorValve_1/commands/setTemperatureAt
+	
+	-- REQUEST-BODY: --
+	
+	{
+   		"value":"20 C"
+	}
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="span3" markdown="1">
+<div class="well" markdown="1">
+
+#### Resource Information ####
+
+|||
+|----------------|------------------|
+|Authentication |**Requires app key**|
+|Response Format|**json**|
+|HTTP Methods|**PUT**|
+|Resource family|**device**|
+|Response Object|**String**|
+|API Version|**v1.0**|
+ 
+</div>
+</div>
+</div>
+
+<div class="row-fluid" markdown="1">
 <div class="span3" markdown="1"></div>
 <div class="span9" markdown="1">
 
@@ -1630,7 +1971,7 @@ If the command brings the device in same state in which the device is, no differ
 
 ---------------------------------
 
-### Environment API [environmentAPI]###
+## Environment API [environmentAPI]##
 
 ---------------------------------
 
@@ -2247,7 +2588,7 @@ Represents a specific room in the flat identified by the given *flat-id*.
 
 ---------------------------------
 
-### Rules API [rulesAPI]###
+## Rules API [rulesAPI]##
 
 ---------------------------------
 

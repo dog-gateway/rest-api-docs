@@ -7,7 +7,6 @@
 	<link type="text/css" rel="stylesheet" href="./css/custom.css"/>
 </head>
 <body>
-
 <div class="container-fluid" >
 <div class="navbar navbar-fixed-top span3" >
 
@@ -40,7 +39,21 @@ Device API
 <ul>
 <li><a href="#status-single">Single Device</a></li>
 </ul></li>
-<li><a href="#command">Commands</a></li>
+<li><a href="#command">Commands</a>
+
+<ul>
+<li><a href="#command-examples">Examples</a>
+
+<ul>
+<li><a href="#thermostatic-valves">Thermostatic Valves</a>
+
+<ul>
+<li><a href="#weekly-schedule">Weekly Schedule</a></li>
+<li><a href="#daily-schedule">Daily Schedule</a></li>
+<li><a href="#setpoint">SetPoint</a></li>
+</ul></li>
+</ul></li>
+</ul></li>
 <li><a href="#dogConfiguration">Configuration</a></li>
 </ul>
 
@@ -89,10 +102,11 @@ Rules API
 <li><a href="#single-rule">Single Rule</a></li>
 </ul></li>
 </ul>
+
+<p></div>
 </div>
 </div>
-</div>
-</div>
+</div></p>
 
 <p></div></p>
 <div class="row-fluid" >
@@ -101,7 +115,8 @@ Rules API
 <div class="page-header" >
 
 <h2 id="dogrestapi-documentation">Dog REST API - Documentation</h2>
-</div>
+
+<p></div></p>
 
 <p>The Dog REST API allows developers to easily integrate home and building automation into their applications, be they web applications, smartphone (Android, iOS, etc.) apps or computer programs.</p>
 
@@ -225,17 +240,17 @@ To select the desired response type (JSON or XML), the <code>Accept</code> heade
 </tr>
 </tbody>
 </table>
+<hr />
+
+<h2 id="deviceapi">Device API</h2>
 
 <hr />
 
-<h3 id="deviceapi">Device API</h3>
-
-<hr />
-</div>
+<p></div>
 </div>
 <div class="row-fluid" >
 <div class="span3" ></div>
-<div class="span6" >
+<div class="span6" ></p>
 
 <h4 id="aiddevicesaresourcedevices"><a id="devices"></a> Resource /devices</h4>
 
@@ -266,7 +281,6 @@ To select the desired response type (JSON or XML), the <code>Accept</code> heade
 </tr>
 </tbody>
 </table>
-
 <p><strong>Example Request</strong></p>
 
 <pre><code>GET http://www.mydog.com/api/devices
@@ -936,12 +950,12 @@ To select the desired response type (JSON or XML), the <code>Accept</code> heade
 &lt;/dhc:controllables&gt;
 &lt;/dhc:dogHomeConfiguration&gt;
 </code></pre>
-</div>
-</div>
-</div>
-</div>
 
 <p></div>
+</div>
+</div>
+</div>
+</div>
 <div class="span3" >
 <div class="well" ></p>
 
@@ -986,19 +1000,20 @@ To select the desired response type (JSON or XML), the <code>Accept</code> heade
 </tr>
 </tbody>
 </table>
+<p></div>
 </div>
-</div>
-</div>
+</div></p>
 <div class="row-fluid" >
 <div class="span3" ></div>
 <div class="span9" >
 
 <hr />
-</div>
+
+<p></div>
 </div>
 <div class="row-fluid" >
 <div class="span3" ></div>
-<div class="span6" >
+<div class="span6" ></p>
 
 <h4 id="aidsingledevicearesourcedevicesdevice-id"><a id="singleDevice"></a> Resource /devices/{device-id}</h4>
 
@@ -1030,7 +1045,6 @@ and &#8220;controllable&#8221; by applications using this API. </p>
 </tr>
 </tbody>
 </table>
-
 <p><strong>GET: Example</strong></p>
 
 <p>GET http://www.mydog.com/api/devices/Lamp_Holder</p>
@@ -1150,12 +1164,12 @@ and &#8220;controllable&#8221; by applications using this API. </p>
     &lt;/dhc:controllables&gt;
 &lt;/dhc:dogHomeConfiguration&gt;
 </code></pre>
-</div>
-</div>
-</div>
-</div>
 
 <p></div>
+</div>
+</div>
+</div>
+</div>
 <div class="span3" >
 <div class="well" ></p>
 
@@ -1200,9 +1214,9 @@ and &#8220;controllable&#8221; by applications using this API. </p>
 </tr>
 </tbody>
 </table>
+<p></div>
 </div>
-</div>
-</div>
+</div></p>
 <div class="row-fluid" >
 <div class="span3" ></div>
 <div class="span6" >
@@ -1236,7 +1250,6 @@ and &#8220;controllable&#8221; by applications using this API. </p>
 </tr>
 </tbody>
 </table>
-
 <p><strong>PUT: Example</strong></p>
 <div class="accordion"  id="location-update-example" >
 <div class="accordion-group" >
@@ -1256,12 +1269,12 @@ and &#8220;controllable&#8221; by applications using this API. </p>
     &quot;isIn&quot; : &quot;lobby&quot;,
 }
 </code></pre>
-</div>
-</div>
-</div>
-</div>
 
 <p></div>
+</div>
+</div>
+</div>
+</div>
 <div class="span3" >
 <div class="well" ></p>
 
@@ -1306,9 +1319,9 @@ and &#8220;controllable&#8221; by applications using this API. </p>
 </tr>
 </tbody>
 </table>
+<p></div>
 </div>
-</div>
-</div>
+</div></p>
 <div class="row-fluid" >
 <div class="span3" ></div>
 <div class="span6" >
@@ -1342,7 +1355,6 @@ and &#8220;controllable&#8221; by applications using this API. </p>
 </tr>
 </tbody>
 </table>
-
 <p><strong>PUT: Example</strong></p>
 <div class="accordion"  id="description-update-example" >
 <div class="accordion-group" >
@@ -1362,12 +1374,12 @@ and &#8220;controllable&#8221; by applications using this API. </p>
     &quot;description&quot; : &quot;Portalampada&quot;,
 }
 </code></pre>
-</div>
-</div>
-</div>
-</div>
 
 <p></div>
+</div>
+</div>
+</div>
+</div>
 <div class="span3" >
 <div class="well" ></p>
 
@@ -1412,17 +1424,18 @@ and &#8220;controllable&#8221; by applications using this API. </p>
 </tr>
 </tbody>
 </table>
+<p></div>
 </div>
-</div>
-</div>
+</div></p>
 <div class="row-fluid" >
 <div class="span3" >
 </div>
 <div class="span9" >
 
 <hr />
-</div>
-</div>
+
+<p></div>
+</div></p>
 <div class="row-fluid" >
 <div class="span3" ></div>
 <div class="span6" >
@@ -1455,7 +1468,6 @@ and &#8220;controllable&#8221; by applications using this API. </p>
 </tr>
 </tbody>
 </table>
-
 <p><strong>Example Request</strong></p>
 
 <pre><code>GET http://www.mydog.com/api/devices/status
@@ -1681,7 +1693,8 @@ and &#8220;controllable&#8221; by applications using this API. </p>
   } ]
 }
 </code></pre>
-</div>
+
+<p></div>
 </div>
 </div>
 <div class="accordion-group" >
@@ -1696,8 +1709,7 @@ and &#8220;controllable&#8221; by applications using this API. </p>
 </div>
 </div>
 </div>
-
-<p></div>
+</div>
 <div class="span3" >
 <div class="well" ></p>
 
@@ -1742,16 +1754,17 @@ and &#8220;controllable&#8221; by applications using this API. </p>
 </tr>
 </tbody>
 </table>
+<p></div>
 </div>
-</div>
-</div>
+</div></p>
 <div class="row-fluid" >
 <div class="span3" ></div>
 <div class="span9" >
 
 <hr />
-</div>
-</div>
+
+<p></div>
+</div></p>
 <div class="row-fluid" >
 <div class="span3" ></div>
 <div class="span6" >
@@ -1785,7 +1798,6 @@ and &#8220;controllable&#8221; by applications using this API. </p>
 </tr>
 </tbody>
 </table>
-
 <p><strong>Example Request</strong></p>
 
 <pre><code>GET http://www.mydog.com/api/devices/MeteringPowerOutlet/status
@@ -1817,7 +1829,8 @@ and &#8220;controllable&#8221; by applications using this API. </p>
         }
     }
 </code></pre>
-</div>
+
+<p></div>
 </div>
 </div>
 <div class="accordion-group" >
@@ -1832,8 +1845,7 @@ and &#8220;controllable&#8221; by applications using this API. </p>
 </div>
 </div>
 </div>
-
-<p></div>
+</div>
 <div class="span3" >
 <div class="well" ></p>
 
@@ -1878,16 +1890,17 @@ and &#8220;controllable&#8221; by applications using this API. </p>
 </tr>
 </tbody>
 </table>
+<p></div>
 </div>
-</div>
-</div>
+</div></p>
 <div class="row-fluid" >
 <div class="span3" ></div>
 <div class="span9" >
 
 <hr />
-</div>
-</div>
+
+<p></div>
+</div></p>
 <div class="row-fluid" >
 <div class="span3" ></div>
 <div class="span6" >
@@ -1955,12 +1968,12 @@ If the command brings the device in same state in which the device is, no differ
 
 <pre><code>POST http://www.mydog.com/api/devices/MainsPowerOutlet_p12_kitchen/commands/off
 </code></pre>
-</div>
-</div>
-</div>
-</div>
 
 <p></div>
+</div>
+</div>
+</div>
+</div>
 <div class="span3" >
 <div class="well" ></p>
 
@@ -2005,16 +2018,495 @@ If the command brings the device in same state in which the device is, no differ
 </tr>
 </tbody>
 </table>
+<p></div>
 </div>
+</div></p>
+<div class="row-fluid" >
+<div class="span3" >
 </div>
-</div>
+<div class="span9" >
+
+<hr />
+
+<p></div>
+</div></p>
+<div class="row-fluid" >
+<div class="span3" ></div>
+<div class="span9" >
+
+<h3 id="command-examples">Examples</h3>
+
+<p></div>
+</div></p>
 <div class="row-fluid" >
 <div class="span3" ></div>
 <div class="span9" >
 
 <hr />
+
+<h4 id="thermostatic-valves">Thermostatic Valves</h4>
+
+<hr />
+
+<p></div>
+</div></p>
+<div class="row-fluid" >
+<div class="span3" ></div>
+<div class="span6" >
+
+<h4 id="aidweekly-schedulearesourcedevicesdevice-idcommandssetclimateschedule"><a id="weekly-schedule"></a> Resource /devices/{device-id}/commands/setClimateSchedule</h4>
+
+<p><em>Updated on Thu, 2013&#8211;12&#8211;05</em>
+<span class="label label-info pull-right">API version 1.0</span></p>
+
+<p>Sets the Weekly Schedule for the Thermostatic Vlave identified by {device-id}</p>
+
+<p><em>URL:</em> /devices/{device-id}/commands/setClimateSchedule</p>
+
+<table>
+<colgroup>
+<col style="text-align:left;"/>
+<col style="text-align:left;"/>
+</colgroup>
+
+<thead>
+<tr>
+	<th style="text-align:left;">Method</th>
+	<th style="text-align:left;">Description</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+	<td style="text-align:left;">PUT</td>
+	<td style="text-align:left;">Set the new weekly schedule for the Thermostatic Valve identified by {device-id}, the previous schedule is discarded.</td>
+</tr>
+<tr>
+	<td style="text-align:left;">POST</td>
+	<td style="text-align:left;"><em>(Deprecated)</em> Set the new weekly schedule for the Thermostatic Valve identified by {device-id}, the previous schedule is discarded.</td>
+</tr>
+</tbody>
+</table>
+<p><strong>POST: Example</strong></p>
+<div class="accordion"  id="weekly-schedule-example" >
+<div class="accordion-group" >
+<div class="accordion-heading" >
+<a class="accordion-toggle" data-toggle="collapse" data-parent="#weekly-schedule-example" href="#weekly-schedule-example-json" markdown="1">
+<strong>Example Request</strong>
+</a>
+</div>
+<div id="weekly-schedule-example-json"  class="accordion-body collapse" >
+<div class="accordion-inner" >
+
+<pre><code>PUT http://www.mydog.com/api/devices/ThermostaticRadiatorValve_1/commands/setClimateSchedule
+
+-- REQUEST-BODY: --
+
+{
+    &quot;value&quot;:[
+    {
+        &quot;weekDay&quot;:&quot;1&quot;,
+        &quot;switchPoints&quot;:[
+        {
+            &quot;timeAt&quot;:&quot;2013-10-22T16:45:00.000+02:00&quot;,
+            &quot;desiredTemperature&quot;:&quot;19.5 C&quot;
+        },
+        {
+            &quot;timeAt&quot;:&quot;2013-10-22T17:45:00.000+02:00&quot;,
+            &quot;desiredTemperature&quot;:&quot;20.5 C&quot;
+        }
+        ]
+    },
+    {
+        &quot;weekDay&quot;:&quot;2&quot;,
+        &quot;switchPoints&quot;:[
+        {
+            &quot;timeAt&quot;:&quot;2013-10-22T16:45:00.000+02:00&quot;,
+            &quot;desiredTemperature&quot;:&quot;19.5 C&quot;
+        },
+        {
+            &quot;timeAt&quot;:&quot;2013-10-22T17:45:00.000+02:00&quot;,
+            &quot;desiredTemperature&quot;:&quot;20.5 C&quot;
+        }
+        ]
+    },
+    {
+        &quot;weekDay&quot;:&quot;3&quot;,
+        &quot;switchPoints&quot;:[
+        {
+            &quot;timeAt&quot;:&quot;2013-10-22T14:33:00.000+02:00&quot;,
+            &quot;desiredTemperature&quot;:&quot;25.5 C&quot;
+        },
+        {
+            &quot;timeAt&quot;:&quot;2013-10-22T15:34:00.000+02:00&quot;,
+            &quot;desiredTemperature&quot;:&quot;20.5 C&quot;
+        }
+        ]
+    },
+    {
+        &quot;weekDay&quot;:&quot;4&quot;,
+        &quot;switchPoints&quot;:[
+        {
+            &quot;timeAt&quot;:&quot;2013-10-22T16:45:00.000+02:00&quot;,
+            &quot;desiredTemperature&quot;:&quot;19.5 C&quot;
+        },
+        {
+            &quot;timeAt&quot;:&quot;2013-10-22T17:45:00.000+02:00&quot;,
+            &quot;desiredTemperature&quot;:&quot;20.5 C&quot;
+        }
+        ]
+    }
+    ,
+    {
+        &quot;weekDay&quot;:&quot;5&quot;,
+        &quot;switchPoints&quot;:[
+        {
+            &quot;timeAt&quot;:&quot;2013-10-22T16:45:00.000+02:00&quot;,
+            &quot;desiredTemperature&quot;:&quot;19.5 C&quot;
+        },
+        {
+            &quot;timeAt&quot;:&quot;2013-10-22T17:45:00.000+02:00&quot;,
+            &quot;desiredTemperature&quot;:&quot;20.5 C&quot;
+        }
+        ]
+    },
+    {
+        &quot;weekDay&quot;:&quot;6&quot;,
+        &quot;switchPoints&quot;:[
+        {
+            &quot;timeAt&quot;:&quot;2013-10-22T16:45:00.000+02:00&quot;,
+            &quot;desiredTemperature&quot;:&quot;19.5 C&quot;
+        },
+        {
+            &quot;timeAt&quot;:&quot;2013-10-22T17:45:00.000+02:00&quot;,
+            &quot;desiredTemperature&quot;:&quot;20.5 C&quot;
+        }
+        ]
+    },
+    {
+        &quot;weekDay&quot;:&quot;7&quot;,
+        &quot;switchPoints&quot;:[
+        {
+            &quot;timeAt&quot;:&quot;2013-10-22T16:45:00.000+02:00&quot;,
+            &quot;desiredTemperature&quot;:&quot;19.5 C&quot;
+        },
+        {
+            &quot;timeAt&quot;:&quot;2013-10-22T17:45:00.000+02:00&quot;,
+            &quot;desiredTemperature&quot;:&quot;20.5 C&quot;
+        }
+        ]
+    }
+]
+}
+</code></pre>
+
+<p></div>
 </div>
 </div>
+</div>
+</div>
+<div class="span3" >
+<div class="well" ></p>
+
+<h4 id="resourceinformation">Resource Information</h4>
+
+<table>
+<colgroup>
+<col style="text-align:left;"/>
+<col style="text-align:left;"/>
+</colgroup>
+
+<thead>
+<tr>
+	<th style="text-align:left;" colspan="2"></th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+	<td style="text-align:left;">Authentication</td>
+	<td style="text-align:left;"><strong>Requires app key</strong></td>
+</tr>
+<tr>
+	<td style="text-align:left;">Response Format</td>
+	<td style="text-align:left;"><strong>json</strong></td>
+</tr>
+<tr>
+	<td style="text-align:left;">HTTP Methods</td>
+	<td style="text-align:left;"><strong>PUT</strong></td>
+</tr>
+<tr>
+	<td style="text-align:left;">Resource family</td>
+	<td style="text-align:left;"><strong>device</strong></td>
+</tr>
+<tr>
+	<td style="text-align:left;">Response Object</td>
+	<td style="text-align:left;"><strong>String</strong></td>
+</tr>
+<tr>
+	<td style="text-align:left;">API Version</td>
+	<td style="text-align:left;"><strong>v1.0</strong></td>
+</tr>
+</tbody>
+</table>
+<p></div>
+</div>
+</div></p>
+<div class="row-fluid" >
+<div class="span3" >
+</div>
+<div class="span9" >
+
+<hr />
+
+<p></div>
+</div></p>
+<div class="row-fluid" >
+<div class="span3" ></div>
+<div class="span6" >
+
+<h4 id="aiddaily-schedulearesourcedevicesdevice-idcommandssetdailyclimateschedule"><a id="daily-schedule"></a> Resource /devices/{device-id}/commands/setDailyClimateSchedule</h4>
+
+<p><em>Updated on Thu, 2013&#8211;12&#8211;05</em>
+<span class="label label-info pull-right">API version 1.0</span></p>
+
+<p>Sets the Daily Schedule for the Thermostatic Valve identified by {device-id}</p>
+
+<p><em>URL:</em> /devices/{device-id}/commands/setDailyClimateSchedule</p>
+
+<table>
+<colgroup>
+<col style="text-align:left;"/>
+<col style="text-align:left;"/>
+</colgroup>
+
+<thead>
+<tr>
+	<th style="text-align:left;">Method</th>
+	<th style="text-align:left;">Description</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+	<td style="text-align:left;">PUT</td>
+	<td style="text-align:left;">Set the new daily schedule for the Thermostatic Valve identified by {device-id}, the previous schedule is discarded.</td>
+</tr>
+<tr>
+	<td style="text-align:left;">POST</td>
+	<td style="text-align:left;"><em>(Deprecated)</em> Set the new daily schedule for the Thermostatic Valve identified by {device-id}, the previous schedule is discarded.</td>
+</tr>
+</tbody>
+</table>
+<p><strong>POST: Example</strong></p>
+<div class="accordion"  id="daily-schedule-example" >
+<div class="accordion-group" >
+<div class="accordion-heading" >
+<a class="accordion-toggle" data-toggle="collapse" data-parent="#daily-schedule-example" href="#daily-schedule-example-json" markdown="1">
+<strong>Example Request</strong>
+</a>
+</div>
+<div id="daily-schedule-example-json"  class="accordion-body collapse" >
+<div class="accordion-inner" >
+
+<pre><code>PUT http://www.mydog.com/api/devices/ThermostaticRadiatorValve_1/commands/setDailyClimateSchedule
+
+-- REQUEST-BODY: --
+
+{
+    &quot;value&quot;:{
+        &quot;switchPoints&quot;:[
+            {
+                &quot;timeAt&quot;:&quot;2013-10-22T15:55:00.000+02:00&quot;,
+                &quot;desiredTemperature&quot;:&quot;20.5 C&quot;
+            },
+            {
+                &quot;timeAt&quot;:&quot;2013-10-22T20:45:00.000+02:00&quot;,
+                &quot;desiredTemperature&quot;:&quot;17.5 C&quot;
+            }
+        ],
+        &quot;weekDay&quot;:1
+    } 
+}
+</code></pre>
+
+<p></div>
+</div>
+</div>
+</div>
+</div>
+<div class="span3" >
+<div class="well" ></p>
+
+<h4 id="resourceinformation">Resource Information</h4>
+
+<table>
+<colgroup>
+<col style="text-align:left;"/>
+<col style="text-align:left;"/>
+</colgroup>
+
+<thead>
+<tr>
+	<th style="text-align:left;" colspan="2"></th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+	<td style="text-align:left;">Authentication</td>
+	<td style="text-align:left;"><strong>Requires app key</strong></td>
+</tr>
+<tr>
+	<td style="text-align:left;">Response Format</td>
+	<td style="text-align:left;"><strong>json</strong></td>
+</tr>
+<tr>
+	<td style="text-align:left;">HTTP Methods</td>
+	<td style="text-align:left;"><strong>PUT</strong></td>
+</tr>
+<tr>
+	<td style="text-align:left;">Resource family</td>
+	<td style="text-align:left;"><strong>device</strong></td>
+</tr>
+<tr>
+	<td style="text-align:left;">Response Object</td>
+	<td style="text-align:left;"><strong>String</strong></td>
+</tr>
+<tr>
+	<td style="text-align:left;">API Version</td>
+	<td style="text-align:left;"><strong>v1.0</strong></td>
+</tr>
+</tbody>
+</table>
+<p></div>
+</div>
+</div></p>
+<div class="row-fluid" >
+<div class="span3" ></div>
+<div class="span9" >
+
+<hr />
+
+<p></div>
+</div></p>
+<div class="row-fluid" >
+<div class="span3" ></div>
+<div class="span6" >
+
+<h4 id="aidsetpointaresourcedevicesdevice-idcommandssettemperatureat"><a id="setpoint"></a> Resource /devices/{device-id}/commands/setTemperatureAt</h4>
+
+<p><em>Updated on Thu, 2013&#8211;12&#8211;05</em>
+<span class="label label-info pull-right">API version 1.0</span></p>
+
+<p>Sets the Temperature setPoint for the Thermostatic Valve identified by {device-id}</p>
+
+<p><em>URL:</em> /devices/{device-id}/commands/setTemperatureAt</p>
+
+<table>
+<colgroup>
+<col style="text-align:left;"/>
+<col style="text-align:left;"/>
+</colgroup>
+
+<thead>
+<tr>
+	<th style="text-align:left;">Method</th>
+	<th style="text-align:left;">Description</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+	<td style="text-align:left;">PUT</td>
+	<td style="text-align:left;">Set the new temperature setPoint for the Thermostatic Valve identified by {device-id}, the previous schedule is discarded.</td>
+</tr>
+<tr>
+	<td style="text-align:left;">POST</td>
+	<td style="text-align:left;"><em>(Deprecated)</em> Set the new temperature setPoint for the Thermostatic Valve identified by {device-id}, the previous schedule is discarded.</td>
+</tr>
+</tbody>
+</table>
+<p><strong>POST: Example</strong></p>
+<div class="accordion"  id="setpoint-example" >
+<div class="accordion-group" >
+<div class="accordion-heading" >
+<a class="accordion-toggle" data-toggle="collapse" data-parent="#setpoint-example" href="#setpoint-example-json" markdown="1">
+<strong>Example Request</strong>
+</a>
+</div>
+<div id="setpoint-example-json"  class="accordion-body collapse" >
+<div class="accordion-inner" >
+
+<pre><code>PUT http://www.mydog.com/api/devices/ThermostaticRadiatorValve_1/commands/setTemperatureAt
+
+-- REQUEST-BODY: --
+
+{
+    &quot;value&quot;:&quot;20 C&quot;
+}
+</code></pre>
+
+<p></div>
+</div>
+</div>
+</div>
+</div>
+<div class="span3" >
+<div class="well" ></p>
+
+<h4 id="resourceinformation">Resource Information</h4>
+
+<table>
+<colgroup>
+<col style="text-align:left;"/>
+<col style="text-align:left;"/>
+</colgroup>
+
+<thead>
+<tr>
+	<th style="text-align:left;" colspan="2"></th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+	<td style="text-align:left;">Authentication</td>
+	<td style="text-align:left;"><strong>Requires app key</strong></td>
+</tr>
+<tr>
+	<td style="text-align:left;">Response Format</td>
+	<td style="text-align:left;"><strong>json</strong></td>
+</tr>
+<tr>
+	<td style="text-align:left;">HTTP Methods</td>
+	<td style="text-align:left;"><strong>PUT</strong></td>
+</tr>
+<tr>
+	<td style="text-align:left;">Resource family</td>
+	<td style="text-align:left;"><strong>device</strong></td>
+</tr>
+<tr>
+	<td style="text-align:left;">Response Object</td>
+	<td style="text-align:left;"><strong>String</strong></td>
+</tr>
+<tr>
+	<td style="text-align:left;">API Version</td>
+	<td style="text-align:left;"><strong>v1.0</strong></td>
+</tr>
+</tbody>
+</table>
+<p></div>
+</div>
+</div></p>
+<div class="row-fluid" >
+<div class="span3" ></div>
+<div class="span9" >
+
+<hr />
+
+<p></div>
+</div></p>
 <div class="row-fluid" >
 <div class="span3" ></div>
 <div class="span6" >
@@ -2049,7 +2541,6 @@ If the command brings the device in same state in which the device is, no differ
 </tr>
 </tbody>
 </table>
-
 <p></div>
 <div class="span3" >
 <div class="well" ></p>
@@ -2095,20 +2586,21 @@ If the command brings the device in same state in which the device is, no differ
 </tr>
 </tbody>
 </table>
+<p></div>
 </div>
-</div>
-</div>
+</div></p>
 <div class="row-fluid" >
 <div class="span3" ></div>
 <div class="span9" >
 
 <hr />
 
-<h3 id="environmentapi">Environment API</h3>
+<h2 id="environmentapi">Environment API</h2>
 
 <hr />
-</div>
-</div>
+
+<p></div>
+</div></p>
 <div class="row-fluid" >
 <div class="span3" ></div>
 <div class="span6" >
@@ -2142,7 +2634,6 @@ If the command brings the device in same state in which the device is, no differ
 </tr>
 </tbody>
 </table>
-
 <p><strong>Example Request</strong></p>
 
 <pre><code>GET http://www.mydog.com/api/environment
@@ -2241,12 +2732,12 @@ If the command brings the device in same state in which the device is, no differ
         &lt;/dhc:buildingEnvironment&gt;
     &lt;/dhc:dogHomeConfiguration&gt;
 </code></pre>
-</div>
-</div>
-</div>
-</div>
 
 <p></div>
+</div>
+</div>
+</div>
+</div>
 <div class="span3" >
 <div class="well" ></p>
 
@@ -2291,16 +2782,17 @@ If the command brings the device in same state in which the device is, no differ
 </tr>
 </tbody>
 </table>
+<p></div>
 </div>
-</div>
-</div>
+</div></p>
 <div class="row-fluid" >
 <div class="span3" ></div>
 <div class="span9" >
 
 <hr />
-</div>
-</div>
+
+<p></div>
+</div></p>
 <div class="row-fluid" >
 <div class="span3" ></div>
 <div class="span6" >
@@ -2338,7 +2830,6 @@ If the command brings the device in same state in which the device is, no differ
 </tr>
 </tbody>
 </table>
-
 <p><strong>GET: Example</strong></p>
 
 <pre><code>GET http://www.mydog.com/api/environment/flats
@@ -2392,10 +2883,11 @@ If the command brings the device in same state in which the device is, no differ
 ]
 }
 </code></pre>
+
+<p></div>
 </div>
 </div>
-</div>
-</div>
+</div></p>
 
 <p><strong>POST: Example</strong>
 <div class="accordion"  id="add-flat-example" >
@@ -2481,16 +2973,17 @@ If the command brings the device in same state in which the device is, no differ
 </tr>
 </tbody>
 </table>
+<p></div>
 </div>
-</div>
-</div>
+</div></p>
 <div class="row-fluid" >
 <div class="span3" ></div>
 <div class="span9" >
 
 <hr />
-</div>
-</div>
+
+<p></div>
+</div></p>
 <div class="row-fluid" >
 <div class="span3" ></div>
 <div class="span6" >
@@ -2528,7 +3021,6 @@ If the command brings the device in same state in which the device is, no differ
 </tr>
 </tbody>
 </table>
-
 <p><strong>GET: Example</strong></p>
 
 <pre><code>GET http://www.mydog.com/api/environment/flats/flat
@@ -2561,10 +3053,11 @@ If the command brings the device in same state in which the device is, no differ
     ]
 }
 </code></pre>
+
+<p></div>
 </div>
 </div>
-</div>
-</div>
+</div></p>
 
 <p><strong>PUT: Example</strong>
 <div class="accordion"  id="update-flat-example" >
@@ -2650,16 +3143,17 @@ If the command brings the device in same state in which the device is, no differ
 </tr>
 </tbody>
 </table>
+<p></div>
 </div>
-</div>
-</div>
+</div></p>
 <div class="row-fluid" >
 <div class="span3" ></div>
 <div class="span9" >
 
 <hr />
-</div>
-</div>
+
+<p></div>
+</div></p>
 <div class="row-fluid" >
 <div class="span3" ></div>
 <div class="span6" >
@@ -2697,7 +3191,6 @@ If the command brings the device in same state in which the device is, no differ
 </tr>
 </tbody>
 </table>
-
 <p><strong>GET: Example</strong></p>
 
 <pre><code>GET http://www.mydog.com/api/environment/flats/flat/rooms
@@ -2727,10 +3220,11 @@ If the command brings the device in same state in which the device is, no differ
 ]
 }
 </code></pre>
+
+<p></div>
 </div>
 </div>
-</div>
-</div>
+</div></p>
 
 <p><strong>POST: Example</strong>
 <div class="accordion"  id="add-room-in-flat-example" >
@@ -2804,16 +3298,17 @@ If the command brings the device in same state in which the device is, no differ
 </tr>
 </tbody>
 </table>
+<p></div>
 </div>
-</div>
-</div>
+</div></p>
 <div class="row-fluid" >
 <div class="span3" ></div>
 <div class="span9" >
 
 <hr />
-</div>
-</div>
+
+<p></div>
+</div></p>
 <div class="row-fluid" >
 <div class="span3" ></div>
 <div class="span6" >
@@ -2851,7 +3346,6 @@ If the command brings the device in same state in which the device is, no differ
 </tr>
 </tbody>
 </table>
-
 <p><strong>GET: Example</strong></p>
 
 <pre><code>GET http://www.mydog.com/api/environment/flats/flat/rooms/kitchen
@@ -2872,10 +3366,11 @@ If the command brings the device in same state in which the device is, no differ
     &quot;description&quot; : &quot;The best room in the house&quot;
 }
 </code></pre>
+
+<p></div>
 </div>
 </div>
-</div>
-</div>
+</div></p>
 
 <p><strong>PUT: Example</strong>
 <div class="accordion"  id="update-single-room-in-flat-example" >
@@ -2949,20 +3444,21 @@ If the command brings the device in same state in which the device is, no differ
 </tr>
 </tbody>
 </table>
+<p></div>
 </div>
-</div>
-</div>
+</div></p>
 <div class="row-fluid" >
 <div class="span3" ></div>
 <div class="span9" >
 
 <hr />
 
-<h3 id="rulesapi">Rules API</h3>
+<h2 id="rulesapi">Rules API</h2>
 
 <hr />
-</div>
-</div>
+
+<p></div>
+</div></p>
 <div class="row-fluid" >
 <div class="span3" ></div>
 <div class="span6" >
@@ -3002,7 +3498,6 @@ If the command brings the device in same state in which the device is, no differ
 </tr>
 </tbody>
 </table>
-
 <p><strong>GET: Example</strong></p>
 
 <pre><code>GET http://www.mydog.com/api/rules
@@ -3070,10 +3565,11 @@ If the command brings the device in same state in which the device is, no differ
     &lt;/dogrules:rule&gt;
 &lt;/dogrules:ruleList&gt;
 </code></pre>
+
+<p></div>
 </div>
 </div>
-</div>
-</div>
+</div></p>
 
 <p><strong>POST: Example</strong>
 <div class="accordion"  id="add-rule-example" >
@@ -3159,16 +3655,17 @@ If the command brings the device in same state in which the device is, no differ
 </tr>
 </tbody>
 </table>
+<p></div>
 </div>
-</div>
-</div>
+</div></p>
 <div class="row-fluid" >
 <div class="span3" ></div>
 <div class="span9" >
 
 <hr />
-</div>
-</div>
+
+<p></div>
+</div></p>
 <div class="row-fluid" >
 <div class="span3" ></div>
 <div class="span6" >
@@ -3212,7 +3709,6 @@ If the command brings the device in same state in which the device is, no differ
 </tr>
 </tbody>
 </table>
-
 <p><strong>GET: Example</strong></p>
 
 <pre><code>GET http://www.mydog.com/api/rules/onToOn
@@ -3265,10 +3761,11 @@ If the command brings the device in same state in which the device is, no differ
     &lt;/dogrules:rule&gt;
 &lt;/dogrules:ruleList&gt;
 </code></pre>
+
+<p></div>
 </div>
 </div>
-</div>
-</div>
+</div></p>
 
 <p><strong>PUT: Example</strong>
 <div class="accordion"  id="update-rule-example" >
@@ -3373,22 +3870,22 @@ If the command brings the device in same state in which the device is, no differ
 </tr>
 </tbody>
 </table>
+<p></div>
 </div>
-</div>
-</div>
+</div></p>
 <div class="row-fluid" >
 <div class="span3" ></div>
 <div class="span9" >
 
 <hr />
-</div>
-</div>
-</div>
 
 <p></div>
+</div></p>
+
+<p></div>
+</div>
 <script src="./js/jquery.js"></script>
 <script src="./js/bootstrap.js"></script>
 <script src="./js/ajax.js"></script></p>
-
 </body>
 </html>
