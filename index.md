@@ -1635,7 +1635,7 @@ Sets the Weekly Schedule for the Thermostatic Vlave identified by {device-id}
 | PUT |Set the new weekly schedule for the Thermostatic Valve identified by {device-id}, the previous schedule is discarded.|
 | POST |*(Deprecated)* Set the new weekly schedule for the Thermostatic Valve identified by {device-id}, the previous schedule is discarded.|
 
-**POST: Example**
+**PUT: Example**
 
 <div class="accordion" id="weekly-schedule-example" markdown="1">
 <div class="accordion-group" markdown="1">
@@ -1798,7 +1798,7 @@ Sets the Daily Schedule for the Thermostatic Valve identified by {device-id}
 | PUT |Set the new daily schedule for the Thermostatic Valve identified by {device-id}, the previous schedule is discarded.|
 | POST |*(Deprecated)* Set the new daily schedule for the Thermostatic Valve identified by {device-id}, the previous schedule is discarded.|
 
-**POST: Example**
+**PUT: Example**
 
 <div class="accordion" id="daily-schedule-example" markdown="1">
 <div class="accordion-group" markdown="1">
@@ -1879,7 +1879,7 @@ Sets the Temperature setPoint for the Thermostatic Valve identified by {device-i
 | PUT |Set the new temperature setPoint for the Thermostatic Valve identified by {device-id}, the previous schedule is discarded.|
 | POST |*(Deprecated)* Set the new temperature setPoint for the Thermostatic Valve identified by {device-id}, the previous schedule is discarded.|
 
-**POST: Example**
+**PUT: Example**
 
 <div class="accordion" id="setpoint-example" markdown="1">
 <div class="accordion-group" markdown="1">
