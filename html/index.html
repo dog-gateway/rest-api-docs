@@ -253,7 +253,7 @@ To select the desired response type (JSON or XML), the <code>Accept</code> heade
 
 <h4 id="aiddevicesaresourcedevices"><a id="devices"></a> Resource /devices</h4>
 
-<p><em>Updated on Mon, 2013&#8211;11&#8211;04</em>
+<p><em>Updated on Mon, 2014&#8211;01&#8211;22</em>
 <span class="label label-info pull-right">API version 1.0</span></p>
 
 <p>Represents domotic devices handled by Dog and &#8220;controllable&#8221; by applications using this API.</p>
@@ -303,8 +303,7 @@ To select the desired response type (JSON or XML), the <code>Accept</code> heade
     &quot;domoticSystem&quot; : &quot;ZWave&quot;,
     &quot;class&quot; : &quot;ZWaveGateway&quot;,
     &quot;controlFunctionality&quot; : [ {
-      &quot;commands&quot; : {
-        &quot;command&quot; : [ {
+       &quot;commands&quot; : [ {
           &quot;param&quot; : [ {
             &quot;name&quot; : &quot;realCommandName&quot;,
             &quot;value&quot; : &quot;associate&quot;
@@ -320,16 +319,14 @@ To select the desired response type (JSON or XML), the <code>Accept</code> heade
           &quot;name&quot; : &quot;DisassociateCommand_zwave-gateway&quot;,
           &quot;id&quot; : &quot;DisassociateCommand_zwave-gateway&quot;,
           &quot;class&quot; : &quot;DisassociateCommand&quot;
-        } ]
-      },
+        } ],
       &quot;class&quot; : &quot;AssociateFunctionality&quot;
     } ]
   }, {
     &quot;description&quot; : &quot;A MainsPowerOutlet instance named MainsPowerOutlet_ZW1&quot;,
     &quot;isIn&quot; : &quot;demo_room&quot;,
     &quot;controlFunctionality&quot; : [ {
-      &quot;commands&quot; : {
-        &quot;command&quot; : [ {
+       &quot;commands&quot; : [ {
           &quot;param&quot; : [ {
             &quot;name&quot; : &quot;realCommandName&quot;,
             &quot;value&quot; : &quot;off&quot;
@@ -345,13 +342,11 @@ To select the desired response type (JSON or XML), the <code>Accept</code> heade
           &quot;name&quot; : &quot;OnCommand_Lamp_Holder&quot;,
           &quot;id&quot; : &quot;OnCommand_Lamp_Holder&quot;,
           &quot;class&quot; : &quot;OnCommand&quot;
-        } ]
-      },
+        } ],
       &quot;class&quot; : &quot;OnOffFunctionality&quot;
     } ],
     &quot;notificationFunctionality&quot; : [ {
-      &quot;notifications&quot; : {
-        &quot;notification&quot; : [ {
+       &quot;notification&quot; : [ {
           &quot;param&quot; : [ {
             &quot;name&quot; : &quot;notificationName&quot;,
             &quot;value&quot; : &quot;stateChanged&quot;
@@ -362,20 +357,17 @@ To select the desired response type (JSON or XML), the <code>Accept</code> heade
           } ],
           &quot;id&quot; : &quot;StateChangeNotification_Lamp_Holder&quot;,
           &quot;class&quot; : &quot;StateChangeNotification&quot;
-        } ]
-      },
+        } ],
       &quot;class&quot; : &quot;StateChangeNotificationFunctionality&quot;
     } ],
     &quot;state&quot; : [ {
-      &quot;statevalues&quot; : {
-        &quot;statevalue&quot; : [ {
+       &quot;statevalues&quot; : [ {
           &quot;name&quot; : &quot;off&quot;,
           &quot;class&quot; : &quot;OffStateValue&quot;
         }, {
           &quot;name&quot; : &quot;on&quot;,
           &quot;class&quot; : &quot;OnStateValue&quot;
-        } ]
-      },
+        } ],
       &quot;class&quot; : &quot;OnOffState&quot;
     } ],
     &quot;id&quot; : &quot;Lamp_Holder&quot;,
@@ -1016,7 +1008,7 @@ To select the desired response type (JSON or XML), the <code>Accept</code> heade
 
 <h4 id="aidsingledevicearesourcedevicesdevice-id"><a id="singleDevice"></a> Resource /devices/{device-id}</h4>
 
-<p><em>Updated on Thu, 2013&#8211;11&#8211;11</em>
+<p><em>Updated on Thu, 2014&#8211;01&#8211;22</em>
 <span class="label label-info pull-right">API version 1.0</span></p>
 
 <p>Represents a single domotic device handled by Dog, identified by a unique <em>device-id</em> (currently encoded in the <em>id</em> attribute for the XML response to the <a href="#devices">GET /devices</a> request),
@@ -1062,8 +1054,7 @@ and &#8220;controllable&#8221; by applications using this API. </p>
     &quot;description&quot; : &quot;A MainsPowerOutlet instance named MainsPowerOutlet_ZW1&quot;,
     &quot;isIn&quot; : &quot;demo_room&quot;,
     &quot;controlFunctionality&quot; : [ {
-      &quot;commands&quot; : {
-        &quot;command&quot; : [ {
+       &quot;commands&quot; : [ {
           &quot;param&quot; : [ {
             &quot;name&quot; : &quot;realCommandName&quot;,
             &quot;value&quot; : &quot;off&quot;
@@ -1079,13 +1070,11 @@ and &#8220;controllable&#8221; by applications using this API. </p>
           &quot;name&quot; : &quot;OnCommand_Lamp_Holder&quot;,
           &quot;id&quot; : &quot;OnCommand_Lamp_Holder&quot;,
           &quot;class&quot; : &quot;OnCommand&quot;
-        } ]
-      },
+        } ],
       &quot;class&quot; : &quot;OnOffFunctionality&quot;
     } ],
     &quot;notificationFunctionality&quot; : [ {
-      &quot;notifications&quot; : {
-        &quot;notification&quot; : [ {
+       &quot;notifications&quot; : [ {
           &quot;param&quot; : [ {
             &quot;name&quot; : &quot;notificationName&quot;,
             &quot;value&quot; : &quot;stateChanged&quot;
@@ -1096,20 +1085,17 @@ and &#8220;controllable&#8221; by applications using this API. </p>
           } ],
           &quot;id&quot; : &quot;StateChangeNotification_Lamp_Holder&quot;,
           &quot;class&quot; : &quot;StateChangeNotification&quot;
-        } ]
-      },
+        } ],
       &quot;class&quot; : &quot;StateChangeNotificationFunctionality&quot;
     } ],
     &quot;state&quot; : [ {
-      &quot;statevalues&quot; : {
-        &quot;statevalue&quot; : [ {
+       &quot;statevalues&quot; : [ {
           &quot;name&quot; : &quot;off&quot;,
           &quot;class&quot; : &quot;OffStateValue&quot;
         }, {
           &quot;name&quot; : &quot;on&quot;,
           &quot;class&quot; : &quot;OnStateValue&quot;
-        } ]
-      },
+        } ],
       &quot;class&quot; : &quot;OnOffState&quot;
     } ],
     &quot;id&quot; : &quot;Lamp_Holder&quot;,
@@ -1443,7 +1429,7 @@ and &#8220;controllable&#8221; by applications using this API. </p>
 
 <h4 id="aidstatusaresourcedevicesstatus"><a id="status"></a> Resource /devices/status</h4>
 
-<p><em>Updated on Mon, 2013&#8211;11&#8211;04</em> <span class="label label-info pull-right">API version 1.0</span></p>
+<p><em>Updated on Mon, 2014&#8211;01&#8211;22</em> <span class="label label-info pull-right">API version 1.0</span></p>
 
 <p>Represents the status of devices registered in the Dog gateway runtime, i.e., defined in the Dog <a href="#devicesConfiguration">configuration</a> and successfully registered within the gateway runtime.</p>
 
@@ -1485,9 +1471,8 @@ and &#8220;controllable&#8221; by applications using this API. </p>
 <div class="accordion-inner" >
 
 <pre><code>{
-  &quot;devices&quot; : [ {
+  &quot;devicesStatus&quot; : [ {
     &quot;active&quot; : true,
-    &quot;description&quot; : &quot;A \&quot;MeteringPowerOutlet\&quot; instance named MeteringPowerOutlet&quot;,
     &quot;id&quot; : &quot;MeteringPowerOutlet&quot;,
     &quot;status&quot; : {
       &quot;SinglePhaseActiveEnergyState&quot; : [ {
@@ -1502,7 +1487,6 @@ and &#8220;controllable&#8221; by applications using this API. </p>
     }
   }, {
     &quot;active&quot; : true,
-    &quot;description&quot; : &quot;The ZWave X gateway&quot;,
     &quot;id&quot; : &quot;zwave-gateway&quot;,
     &quot;status&quot; : {
       &quot;DeviceAssociationState&quot; : [ {
@@ -1511,7 +1495,6 @@ and &#8220;controllable&#8221; by applications using this API. </p>
     }
   }, {
     &quot;active&quot; : true,
-    &quot;description&quot; : &quot;A \&quot;MeteringPowerOutlet\&quot; instance named SmartEnergySwitch&quot;,
     &quot;id&quot; : &quot;SmartEnergySwitch&quot;,
     &quot;status&quot; : {
       &quot;SinglePhaseActiveEnergyState&quot; : [ {
@@ -1526,7 +1509,6 @@ and &#8220;controllable&#8221; by applications using this API. </p>
     }
   }, {
     &quot;active&quot; : true,
-    &quot;description&quot; : &quot;Danfoss Thermostatic Radiator Valve&quot;,
     &quot;id&quot; : &quot;ThermostaticRadiatorValve_1&quot;,
     &quot;status&quot; : {
       &quot;ClimateScheduleState&quot; : [ {
@@ -1613,7 +1595,6 @@ and &#8220;controllable&#8221; by applications using this API. </p>
     }
   }, {
     &quot;active&quot; : true,
-    &quot;description&quot; : &quot;A \&quot;TemperatureAndHumiditySensor\&quot; instance named TempAndHumidity_Temperature_and_Humidity_sensor&quot;,
     &quot;id&quot; : &quot;Temperature_and_Humidity_sensor&quot;,
     &quot;status&quot; : {
       &quot;TemperatureState&quot; : [ {
@@ -1625,7 +1606,6 @@ and &#8220;controllable&#8221; by applications using this API. </p>
     }
   }, {
     &quot;active&quot; : true,
-    &quot;description&quot; : &quot;A DoorWindowSensor instance named DoorWindowSensor_ZW5&quot;,
     &quot;id&quot; : &quot;ZW_DoorWindowSensor_Vision_ZD202EU&quot;,
     &quot;status&quot; : {
       &quot;OpenCloseState&quot; : [ {
@@ -1634,7 +1614,6 @@ and &#8220;controllable&#8221; by applications using this API. </p>
     }
   }, {
     &quot;active&quot; : true,
-    &quot;description&quot; : &quot;A \&quot;MeteringPowerOutlet\&quot; instance named SmartEnergySwitch&quot;,
     &quot;id&quot; : &quot;AEOTEC_SmartSwitch_G2&quot;,
     &quot;status&quot; : {
       &quot;SinglePhaseActiveEnergyState&quot; : [ {
@@ -1649,7 +1628,6 @@ and &#8220;controllable&#8221; by applications using this API. </p>
     }
   }, {
     &quot;active&quot; : true,
-    &quot;description&quot; : &quot;A MainsPowerOutlet instance named MainsPowerOutlet_ZW1&quot;,
     &quot;id&quot; : &quot;Lamp_Holder&quot;,
     &quot;status&quot; : {
       &quot;OnOffState&quot; : [ {
@@ -1658,7 +1636,6 @@ and &#8220;controllable&#8221; by applications using this API. </p>
     }
   }, {
     &quot;active&quot; : true,
-    &quot;description&quot; : &quot;New Device of type MeteringPowerOutlet&quot;,
     &quot;id&quot; : &quot;MeteringPowerOutlet_20&quot;,
     &quot;status&quot; : {
       &quot;SinglePhaseActiveEnergyState&quot; : [ {
@@ -1673,7 +1650,6 @@ and &#8220;controllable&#8221; by applications using this API. </p>
     }
   }, {
     &quot;active&quot; : true,
-    &quot;description&quot; : &quot;The Aeon Labs Home Energy Meter&quot;,
     &quot;id&quot; : &quot;AEON_HEM&quot;,
     &quot;status&quot; : {
       &quot;SinglePhaseActiveEnergyState&quot; : [ {
@@ -1685,7 +1661,6 @@ and &#8220;controllable&#8221; by applications using this API. </p>
     }
   }, {
     &quot;active&quot; : true,
-    &quot;description&quot; : &quot;A MovementSensor instance named MovementSensor_ZW6&quot;,
     &quot;id&quot; : &quot;ZP3102EU&quot;,
     &quot;status&quot; : {
       &quot;MovementState&quot; : [ {
@@ -1772,7 +1747,7 @@ and &#8220;controllable&#8221; by applications using this API. </p>
 
 <h4 id="aidstatus-singlearesourcedevicesdevice-idstatus"><a id="status-single"></a> Resource /devices/{device-id}/status</h4>
 
-<p><em>Updated on Thu, 2013&#8211;11&#8211;04</em>
+<p><em>Updated on Thu, 2014&#8211;01&#8211;22</em>
 <span class="label label-info pull-right">API version 1.0</span></p>
 
 <p>Represents the status of the device identified by the given <em>device-id</em> and registered in the Dog gateway runtime, i.e., defined in the Dog <a href="#devicesConfiguration">configuration</a> and successfully registered within the gateway runtime.</p>
@@ -1816,7 +1791,6 @@ and &#8220;controllable&#8221; by applications using this API. </p>
 
 <pre><code>    {
         &quot;active&quot; : true,
-        &quot;description&quot; : &quot;A \&quot;MeteringPowerOutlet\&quot; instance named MeteringPowerOutlet&quot;,
         &quot;id&quot; : &quot;MeteringPowerOutlet&quot;,
         &quot;status&quot; : {
           &quot;SinglePhaseActiveEnergyState&quot; : [ {

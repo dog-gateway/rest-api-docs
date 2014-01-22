@@ -144,7 +144,7 @@ To select the desired response type (JSON or XML), the `Accept` header must be u
 
 #### <a id="devices"></a> Resource /devices ####
 
-*Updated on Mon, 2013-11-04*
+*Updated on Mon, 2014-01-22*
 <span class="label label-info pull-right">API version 1.0</span>
 
 Represents domotic devices handled by Dog and "controllable" by applications using this API.
@@ -177,8 +177,7 @@ Represents domotic devices handled by Dog and "controllable" by applications usi
 	    "domoticSystem" : "ZWave",
 	    "class" : "ZWaveGateway",
 	    "controlFunctionality" : [ {
-	      "commands" : {
-	        "command" : [ {
+	       "commands" : [ {
 	          "param" : [ {
 	            "name" : "realCommandName",
 	            "value" : "associate"
@@ -194,16 +193,14 @@ Represents domotic devices handled by Dog and "controllable" by applications usi
 	          "name" : "DisassociateCommand_zwave-gateway",
 	          "id" : "DisassociateCommand_zwave-gateway",
 	          "class" : "DisassociateCommand"
-	        } ]
-	      },
+	        } ],
 	      "class" : "AssociateFunctionality"
 	    } ]
 	  }, {
 	    "description" : "A MainsPowerOutlet instance named MainsPowerOutlet_ZW1",
 	    "isIn" : "demo_room",
 	    "controlFunctionality" : [ {
-	      "commands" : {
-	        "command" : [ {
+	       "commands" : [ {
 	          "param" : [ {
 	            "name" : "realCommandName",
 	            "value" : "off"
@@ -219,13 +216,11 @@ Represents domotic devices handled by Dog and "controllable" by applications usi
 	          "name" : "OnCommand_Lamp_Holder",
 	          "id" : "OnCommand_Lamp_Holder",
 	          "class" : "OnCommand"
-	        } ]
-	      },
+	        } ],
 	      "class" : "OnOffFunctionality"
 	    } ],
 	    "notificationFunctionality" : [ {
-	      "notifications" : {
-	        "notification" : [ {
+	       "notification" : [ {
 	          "param" : [ {
 	            "name" : "notificationName",
 	            "value" : "stateChanged"
@@ -236,20 +231,17 @@ Represents domotic devices handled by Dog and "controllable" by applications usi
 	          } ],
 	          "id" : "StateChangeNotification_Lamp_Holder",
 	          "class" : "StateChangeNotification"
-	        } ]
-	      },
+	        } ],
 	      "class" : "StateChangeNotificationFunctionality"
 	    } ],
 	    "state" : [ {
-	      "statevalues" : {
-	        "statevalue" : [ {
+	       "statevalues" : [ {
 	          "name" : "off",
 	          "class" : "OffStateValue"
 	        }, {
 	          "name" : "on",
 	          "class" : "OnStateValue"
-	        } ]
-	      },
+	        } ],
 	      "class" : "OnOffState"
 	    } ],
 	    "id" : "Lamp_Holder",
@@ -863,7 +855,7 @@ Represents domotic devices handled by Dog and "controllable" by applications usi
 
 #### <a id="singleDevice"></a> Resource /devices/{device-id} ####
 
-*Updated on Thu, 2013-11-11*
+*Updated on Thu, 2014-01-22*
 <span class="label label-info pull-right">API version 1.0</span>
 
 Represents a single domotic device handled by Dog, identified by a unique *device-id* (currently encoded in the *id* attribute for the XML response to the [GET /devices](#devices) request),
@@ -893,8 +885,7 @@ and "controllable" by applications using this API.
 	    "description" : "A MainsPowerOutlet instance named MainsPowerOutlet_ZW1",
 	    "isIn" : "demo_room",
 	    "controlFunctionality" : [ {
-	      "commands" : {
-	        "command" : [ {
+	       "commands" : [ {
 	          "param" : [ {
 	            "name" : "realCommandName",
 	            "value" : "off"
@@ -910,13 +901,11 @@ and "controllable" by applications using this API.
 	          "name" : "OnCommand_Lamp_Holder",
 	          "id" : "OnCommand_Lamp_Holder",
 	          "class" : "OnCommand"
-	        } ]
-	      },
+	        } ],
 	      "class" : "OnOffFunctionality"
 	    } ],
 	    "notificationFunctionality" : [ {
-	      "notifications" : {
-	        "notification" : [ {
+	       "notifications" : [ {
 	          "param" : [ {
 	            "name" : "notificationName",
 	            "value" : "stateChanged"
@@ -927,20 +916,17 @@ and "controllable" by applications using this API.
 	          } ],
 	          "id" : "StateChangeNotification_Lamp_Holder",
 	          "class" : "StateChangeNotification"
-	        } ]
-	      },
+	        } ],
 	      "class" : "StateChangeNotificationFunctionality"
 	    } ],
 	    "state" : [ {
-	      "statevalues" : {
-	        "statevalue" : [ {
+	       "statevalues" : [ {
 	          "name" : "off",
 	          "class" : "OffStateValue"
 	        }, {
 	          "name" : "on",
 	          "class" : "OnStateValue"
-	        } ]
-	      },
+	        } ],
 	      "class" : "OnOffState"
 	    } ],
 	    "id" : "Lamp_Holder",
@@ -1151,7 +1137,7 @@ Updates the description (i.e., the long name) of a single domotic device handled
 
 #### <a id="status"></a> Resource /devices/status ####
 
-*Updated on Mon, 2013-11-04* <span class="label label-info pull-right">API version 1.0</span>
+*Updated on Mon, 2014-01-22* <span class="label label-info pull-right">API version 1.0</span>
 
 Represents the status of devices registered in the Dog gateway runtime, i.e., defined in the Dog [configuration](#devicesConfiguration) and successfully registered within the gateway runtime.
 
@@ -1176,9 +1162,8 @@ Represents the status of devices registered in the Dog gateway runtime, i.e., de
 <div class="accordion-inner" markdown="1">
 
     {
-      "devices" : [ {
+      "devicesStatus" : [ {
         "active" : true,
-        "description" : "A \"MeteringPowerOutlet\" instance named MeteringPowerOutlet",
         "id" : "MeteringPowerOutlet",
         "status" : {
           "SinglePhaseActiveEnergyState" : [ {
@@ -1193,7 +1178,6 @@ Represents the status of devices registered in the Dog gateway runtime, i.e., de
         }
       }, {
         "active" : true,
-        "description" : "The ZWave X gateway",
         "id" : "zwave-gateway",
         "status" : {
           "DeviceAssociationState" : [ {
@@ -1202,7 +1186,6 @@ Represents the status of devices registered in the Dog gateway runtime, i.e., de
         }
       }, {
         "active" : true,
-        "description" : "A \"MeteringPowerOutlet\" instance named SmartEnergySwitch",
         "id" : "SmartEnergySwitch",
         "status" : {
           "SinglePhaseActiveEnergyState" : [ {
@@ -1217,7 +1200,6 @@ Represents the status of devices registered in the Dog gateway runtime, i.e., de
         }
       }, {
         "active" : true,
-        "description" : "Danfoss Thermostatic Radiator Valve",
         "id" : "ThermostaticRadiatorValve_1",
         "status" : {
           "ClimateScheduleState" : [ {
@@ -1304,7 +1286,6 @@ Represents the status of devices registered in the Dog gateway runtime, i.e., de
         }
       }, {
         "active" : true,
-        "description" : "A \"TemperatureAndHumiditySensor\" instance named TempAndHumidity_Temperature_and_Humidity_sensor",
         "id" : "Temperature_and_Humidity_sensor",
         "status" : {
           "TemperatureState" : [ {
@@ -1316,7 +1297,6 @@ Represents the status of devices registered in the Dog gateway runtime, i.e., de
         }
       }, {
         "active" : true,
-        "description" : "A DoorWindowSensor instance named DoorWindowSensor_ZW5",
         "id" : "ZW_DoorWindowSensor_Vision_ZD202EU",
         "status" : {
           "OpenCloseState" : [ {
@@ -1325,7 +1305,6 @@ Represents the status of devices registered in the Dog gateway runtime, i.e., de
         }
       }, {
         "active" : true,
-        "description" : "A \"MeteringPowerOutlet\" instance named SmartEnergySwitch",
         "id" : "AEOTEC_SmartSwitch_G2",
         "status" : {
           "SinglePhaseActiveEnergyState" : [ {
@@ -1340,7 +1319,6 @@ Represents the status of devices registered in the Dog gateway runtime, i.e., de
         }
       }, {
         "active" : true,
-        "description" : "A MainsPowerOutlet instance named MainsPowerOutlet_ZW1",
         "id" : "Lamp_Holder",
         "status" : {
           "OnOffState" : [ {
@@ -1349,7 +1327,6 @@ Represents the status of devices registered in the Dog gateway runtime, i.e., de
         }
       }, {
         "active" : true,
-        "description" : "New Device of type MeteringPowerOutlet",
         "id" : "MeteringPowerOutlet_20",
         "status" : {
           "SinglePhaseActiveEnergyState" : [ {
@@ -1364,7 +1341,6 @@ Represents the status of devices registered in the Dog gateway runtime, i.e., de
         }
       }, {
         "active" : true,
-        "description" : "The Aeon Labs Home Energy Meter",
         "id" : "AEON_HEM",
         "status" : {
           "SinglePhaseActiveEnergyState" : [ {
@@ -1376,7 +1352,6 @@ Represents the status of devices registered in the Dog gateway runtime, i.e., de
         }
       }, {
         "active" : true,
-        "description" : "A MovementSensor instance named MovementSensor_ZW6",
         "id" : "ZP3102EU",
         "status" : {
           "MovementState" : [ {
@@ -1434,7 +1409,7 @@ Represents the status of devices registered in the Dog gateway runtime, i.e., de
 
 #### <a id="status-single"></a> Resource /devices/{device-id}/status ####
 
-*Updated on Thu, 2013-11-04*
+*Updated on Thu, 2014-01-22*
 <span class="label label-info pull-right">API version 1.0</span>
 
 Represents the status of the device identified by the given *device-id* and registered in the Dog gateway runtime, i.e., defined in the Dog [configuration](#devicesConfiguration) and successfully registered within the gateway runtime.
@@ -1461,7 +1436,6 @@ Represents the status of the device identified by the given *device-id* and regi
 
 		{
 			"active" : true,
-	        "description" : "A \"MeteringPowerOutlet\" instance named MeteringPowerOutlet",
 	        "id" : "MeteringPowerOutlet",
 	        "status" : {
 	          "SinglePhaseActiveEnergyState" : [ {
