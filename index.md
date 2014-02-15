@@ -107,7 +107,7 @@ APIs allow to:
 	* manage system updates;
 	* troubleshoot problems.
 
-All API access is currently over HTTP, and accessed from `http://<dog-address>/api/`.
+All API access is currently over HTTP, and accessed from `http://<dog-address>/api/v1/`.
 To select the desired response type (JSON or XML), the `Accept` header must be used in the request.
 
 #### Function summary ####
