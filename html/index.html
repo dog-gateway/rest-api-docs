@@ -159,8 +159,10 @@ Rules API
 </ul></li>
 </ul>
 
-<p>All API access is currently over HTTP, and accessed from <code>http://&lt;dog-address&gt;/api/v1/</code>.
-To select the desired response type (JSON or XML), the <code>Accept</code> header must be used in the request.</p>
+<p>All API access is currently over HTTP, and accessed from <code>http://&lt;dog-address&gt;/api/v1/</code>.</p>
+
+<p>To select the desired response type (JSON or XML), the <code>Accept</code> header must be used in the request.
+In the same way, a proper <code>Content-Type</code> <em>must</em> be always present for <code>PUT</code> and <code>POST</code> requests.</p>
 
 <h4 id="functionsummary">Function summary</h4>
 
@@ -283,7 +285,7 @@ To select the desired response type (JSON or XML), the <code>Accept</code> heade
 
 <p><strong>Example Request</strong></p>
 
-<pre><code>GET http://www.mydog.com/api/devices
+<pre><code>GET http://www.mydog.com/api/v1/devices
 </code></pre>
 <div class="accordion"  id="devices-example" >
 <div class="accordion-group" >
@@ -1039,7 +1041,7 @@ and &#8220;controllable&#8221; by applications using this API. </p>
 
 <p><strong>GET: Example</strong></p>
 
-<p>GET http://www.mydog.com/api/devices/Lamp_Holder</p>
+<p>GET http://www.mydog.com/api/v1/devices/Lamp_Holder</p>
 <div class="accordion"  id="devices-single-example" >
 <div class="accordion-group" >
 <div class="accordion-heading" >
@@ -1248,7 +1250,7 @@ and &#8220;controllable&#8221; by applications using this API. </p>
 <div id="location-update-example-json"  class="accordion-body collapse" >
 <div class="accordion-inner" >
 
-<pre><code>PUT http://www.mydog.com/api/devices/Lamp_Holder/location
+<pre><code>PUT http://www.mydog.com/api/v1/devices/Lamp_Holder/location
 
 -- REQUEST-BODY: --
 
@@ -1354,7 +1356,7 @@ and &#8220;controllable&#8221; by applications using this API. </p>
 <div id="description-update-example-json"  class="accordion-body collapse" >
 <div class="accordion-inner" >
 
-<pre><code>PUT http://www.mydog.com/api/devices/Lamp_Holder/description
+<pre><code>PUT http://www.mydog.com/api/v1/devices/Lamp_Holder/description
 
 -- REQUEST-BODY: --
 
@@ -1458,7 +1460,7 @@ and &#8220;controllable&#8221; by applications using this API. </p>
 
 <p><strong>Example Request</strong></p>
 
-<pre><code>GET http://www.mydog.com/api/devices/status
+<pre><code>GET http://www.mydog.com/api/v1/devices/status
 </code></pre>
 <div class="accordion"  id="devices-status-example" >
 <div class="accordion-group" >
@@ -1777,7 +1779,7 @@ and &#8220;controllable&#8221; by applications using this API. </p>
 
 <p><strong>Example Request</strong></p>
 
-<pre><code>GET http://www.mydog.com/api/devices/MeteringPowerOutlet/status
+<pre><code>GET http://www.mydog.com/api/v1/devices/MeteringPowerOutlet/status
 </code></pre>
 <div class="accordion"  id="single-device-status-example" >
 <div class="accordion-group" >
@@ -1882,10 +1884,13 @@ and &#8220;controllable&#8221; by applications using this API. </p>
 
 <h4 id="aidcommandaresourcedevicesdevice-idcommandscommand-name"><a id="command"></a> Resource /devices/{device-id}/commands/{command-name}</h4>
 
-<p><em>Updated on Fri, 2013&#8211;09&#8211;06</em> <span class="label label-info pull-right">API version 1.0</span></p>
+<p><em>Updated on Fri, 2014&#8211;05&#8211;06</em> <span class="label label-info pull-right">API version 1.0</span></p>
 
-<p>Represents a command, identified by a <em>command-name</em>, to be sent to the device identified by the given <em>device-id</em>.
-Commands are idempotent: the same command always results in the same behavior of the selected device.
+<p>Represents a command, identified by a <em>command-name</em>, to be sent to the device identified by the given <em>device-id</em>.</p>
+
+<p>The <em>command-name</em> is the value associated to the <code>realCommandName</code> parameter present in the device description (see the <a href="#devices">\devices</a> resource).</p>
+
+<p>Commands are idempotent: the same command always results in the same behavior of the selected device.
 If the command brings the device in same state in which the device is, no differences will be appreciable. </p>
 
 <p><em>URL:</em> /devices/{device-id}/commands/{command-name}</p>
@@ -1925,12 +1930,18 @@ If the command brings the device in same state in which the device is, no differ
 <div class="accordion-inner" >
 (simple command)
 
-<pre><code>PUT http://www.mydog.com/api/devices/MainsPowerOutlet_p12_kitchen/commands/on
+<pre><code>PUT http://www.mydog.com/api/v1/devices/MainsPowerOutlet_p12_kitchen/commands/on
+
+-- REQUEST-BODY: --
+
+{
+    // empty request body
+}
 </code></pre>
 
 <p>(command with parameters)</p>
 
-<pre><code>PUT http://www.mydog.com/api/devices/DimmerLamp_l4_livingroom/commands/set
+<pre><code>PUT http://www.mydog.com/api/v1/devices/DimmerLamp_l4_livingroom/commands/set
 
 -- REQUEST-BODY: --
 
@@ -1941,7 +1952,7 @@ If the command brings the device in same state in which the device is, no differ
 
 <p>(deprecated) </p>
 
-<pre><code>POST http://www.mydog.com/api/devices/MainsPowerOutlet_p12_kitchen/commands/off
+<pre><code>POST http://www.mydog.com/api/v1/devices/MainsPowerOutlet_p12_kitchen/commands/off
 </code></pre>
 </div>
 </div>
@@ -2071,7 +2082,7 @@ If the command brings the device in same state in which the device is, no differ
 <div id="weekly-schedule-example-json"  class="accordion-body collapse" >
 <div class="accordion-inner" >
 
-<pre><code>PUT http://www.mydog.com/api/devices/ThermostaticRadiatorValve_1/commands/setClimateSchedule
+<pre><code>PUT http://www.mydog.com/api/v1/devices/ThermostaticRadiatorValve_1/commands/setClimateSchedule
 
 -- REQUEST-BODY: --
 
@@ -2282,7 +2293,7 @@ If the command brings the device in same state in which the device is, no differ
 <div id="daily-schedule-example-json"  class="accordion-body collapse" >
 <div class="accordion-inner" >
 
-<pre><code>PUT http://www.mydog.com/api/devices/ThermostaticRadiatorValve_1/commands/setDailyClimateSchedule
+<pre><code>PUT http://www.mydog.com/api/v1/devices/ThermostaticRadiatorValve_1/commands/setDailyClimateSchedule
 
 -- REQUEST-BODY: --
 
@@ -2411,7 +2422,7 @@ If the command brings the device in same state in which the device is, no differ
 <div id="setpoint-example-json"  class="accordion-body collapse" >
 <div class="accordion-inner" >
 
-<pre><code>PUT http://www.mydog.com/api/devices/ThermostaticRadiatorValve_1/commands/setTemperatureAt
+<pre><code>PUT http://www.mydog.com/api/v1/devices/ThermostaticRadiatorValve_1/commands/setTemperatureAt
 
 -- REQUEST-BODY: --
 
@@ -2609,7 +2620,7 @@ If the command brings the device in same state in which the device is, no differ
 
 <p><strong>Example Request</strong></p>
 
-<pre><code>GET http://www.mydog.com/api/environment
+<pre><code>GET http://www.mydog.com/api/v1/environment
 </code></pre>
 <div class="accordion"  id="environment-example" >
 <div class="accordion-group" >
@@ -2805,7 +2816,7 @@ If the command brings the device in same state in which the device is, no differ
 
 <p><strong>GET: Example</strong></p>
 
-<pre><code>GET http://www.mydog.com/api/environment/flats
+<pre><code>GET http://www.mydog.com/api/v1/environment/flats
 </code></pre>
 <div class="accordion"  id="flats-example" >
 <div class="accordion-group" >
@@ -2872,7 +2883,7 @@ If the command brings the device in same state in which the device is, no differ
 <div id="add-flat-example-json"  class="accordion-body collapse" >
 <div class="accordion-inner" ></p>
 
-<pre><code>POST http://www.mydog.com/api/environment/flats
+<pre><code>POST http://www.mydog.com/api/v1/environment/flats
 
 -- REQUEST-BODY: --
 
@@ -2995,7 +3006,7 @@ If the command brings the device in same state in which the device is, no differ
 
 <p><strong>GET: Example</strong></p>
 
-<pre><code>GET http://www.mydog.com/api/environment/flats/flat
+<pre><code>GET http://www.mydog.com/api/v1/environment/flats/flat
 </code></pre>
 <div class="accordion"  id="single-flat-example" >
 <div class="accordion-group" >
@@ -3041,7 +3052,7 @@ If the command brings the device in same state in which the device is, no differ
 <div id="update-flat-example-json"  class="accordion-body collapse" >
 <div class="accordion-inner" ></p>
 
-<pre><code>PUT http://www.mydog.com/api/environment/flats/flat
+<pre><code>PUT http://www.mydog.com/api/v1/environment/flats/flat
 
 -- REQUEST-BODY: --
 
@@ -3164,7 +3175,7 @@ If the command brings the device in same state in which the device is, no differ
 
 <p><strong>GET: Example</strong></p>
 
-<pre><code>GET http://www.mydog.com/api/environment/flats/flat/rooms
+<pre><code>GET http://www.mydog.com/api/v1/environment/flats/flat/rooms
 </code></pre>
 <div class="accordion"  id="rooms-in-flat-example" >
 <div class="accordion-group" >
@@ -3207,7 +3218,7 @@ If the command brings the device in same state in which the device is, no differ
 <div id="add-room-in-flat-example-json"  class="accordion-body collapse" >
 <div class="accordion-inner" ></p>
 
-<pre><code>POST http://www.mydog.com/api/environment/flats/flat/rooms
+<pre><code>POST http://www.mydog.com/api/v1/environment/flats/flat/rooms
 
 -- REQUEST-BODY: --
 
@@ -3318,7 +3329,7 @@ If the command brings the device in same state in which the device is, no differ
 
 <p><strong>GET: Example</strong></p>
 
-<pre><code>GET http://www.mydog.com/api/environment/flats/flat/rooms/kitchen
+<pre><code>GET http://www.mydog.com/api/v1/environment/flats/flat/rooms/kitchen
 </code></pre>
 <div class="accordion"  id="single-room-in-flat-example" >
 <div class="accordion-group" >
@@ -3352,7 +3363,7 @@ If the command brings the device in same state in which the device is, no differ
 <div id="update-single-room-in-flat-example-json"  class="accordion-body collapse" >
 <div class="accordion-inner" ></p>
 
-<pre><code>PUT http://www.mydog.com/api/environment/flats/flat/rooms/kitchen
+<pre><code>PUT http://www.mydog.com/api/v1/environment/flats/flat/rooms/kitchen
 
 -- REQUEST-BODY: --
 
@@ -3469,7 +3480,7 @@ If the command brings the device in same state in which the device is, no differ
 
 <p><strong>GET: Example</strong></p>
 
-<pre><code>GET http://www.mydog.com/api/rules
+<pre><code>GET http://www.mydog.com/api/v1/rules
 </code></pre>
 <div class="accordion"  id="rules-example" >
 <div class="accordion-group" >
@@ -3550,7 +3561,7 @@ If the command brings the device in same state in which the device is, no differ
 <div id="add-rule-example-xml"  class="accordion-body collapse" >
 <div class="accordion-inner" ></p>
 
-<pre><code>POST http://www.mydog.com/api/rules/
+<pre><code>POST http://www.mydog.com/api/v1/rules/
 
 -- REQUEST-BODY: --
 
@@ -3679,7 +3690,7 @@ If the command brings the device in same state in which the device is, no differ
 
 <p><strong>GET: Example</strong></p>
 
-<pre><code>GET http://www.mydog.com/api/rules/onToOn
+<pre><code>GET http://www.mydog.com/api/v1/rules/onToOn
 </code></pre>
 <div class="accordion"  id="single-rule-example" >
 <div class="accordion-group" >
@@ -3745,7 +3756,7 @@ If the command brings the device in same state in which the device is, no differ
 <div id="update-rule-example-json"  class="accordion-body collapse" >
 <div class="accordion-inner" ></p>
 
-<pre><code>PUT http://www.mydog.com/api/rules/consumptionToHigh
+<pre><code>PUT http://www.mydog.com/api/v1/rules/consumptionToHigh
 
 -- REQUEST-BODY: --
 
@@ -3784,7 +3795,7 @@ If the command brings the device in same state in which the device is, no differ
 <div id="remove-rule-example-json"  class="accordion-body collapse" >
 <div class="accordion-inner" ></p>
 
-<pre><code>DELETE http://www.mydog.com/api/rules/onToOn
+<pre><code>DELETE http://www.mydog.com/api/v1/rules/onToOn
 </code></pre>
 
 <p></div>
