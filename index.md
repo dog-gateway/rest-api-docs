@@ -93,8 +93,8 @@ APIs allow to:
 	* add or update the set of devices controlled through the gateway;
 	* update the [location](#device-location) and the [description](#device-description) of a device controlled through the gateway;
 * manage information about the environment
-	* [insert](#rooms-in-flat), [update](#single-room-in-flat) or delete rooms;
-	* [insert](#flats), [update](#single-flat), or delete flats;
+	* [insert](#rooms-in-flat), [update or delete](#single-room-in-flat) rooms;
+	* [insert](#flats), [update or delete](#single-flat) flats;
 * manage rules and automation scenarios
 	* [insert](#rules), [update, or delete](#single-rule) automation rules;
 	* insert, update, or delete scenarios;
@@ -2260,7 +2260,7 @@ Represents all the flats present in the environment (i.e., int the building).
 
 #### <a id="single-flat"></a> Resource /environment/flats/{flat-id} ####
 
-*Updated on Thu, 2013-11-10*
+*Updated on Thu, 2014-05-07*
 <span class="label label-info pull-right">API version 1.0</span>
 
 Represents a specific flat present in the environment (i.e., in the building). 
@@ -2271,6 +2271,7 @@ Represents a specific flat present in the environment (i.e., in the building).
 |:-----|:----------|
 | GET | Returns the details of the flat identified by the given *flat-id*. |
 | PUT | Update the flat identified by the given *flat-id*. |
+| DELETE | Delete the flat identified by the given *flat-id*. |
 
 **GET: Example**
 
@@ -2341,6 +2342,24 @@ Represents a specific flat present in the environment (i.e., in the building).
 			}
 		]
 	}
+</div>
+</div>
+</div>
+</div>
+
+**DELETE: Example**
+<div class="accordion" id="remove-flat-example" markdown="1">
+<div class="accordion-group" markdown="1">
+<div class="accordion-heading" markdown="1">
+<a class="accordion-toggle" data-toggle="collapse" data-parent="#remove-flat-example" href="#remove-flat-example-json" markdown="1">
+**Example Request**
+</a>
+</div>
+<div id="remove-flat-example-json" class="accordion-body collapse" markdown="1">
+<div class="accordion-inner" markdown="1">
+
+	DELETE http://www.mydog.com/api/v1/environment/flats/flat
+	
 </div>
 </div>
 </div>
@@ -2486,7 +2505,7 @@ Represents all the rooms present in a given flat.
 
 #### <a id="single-room-in-flat"></a> Resource /environment/flats/{flat-id}/rooms/{room-id} ####
 
-*Updated on Thu, 2013-11-10*
+*Updated on Thu, 2014-05-07*
 <span class="label label-info pull-right">API version 1.0</span>
 
 Represents a specific room in the flat identified by the given *flat-id*. 
@@ -2497,6 +2516,7 @@ Represents a specific room in the flat identified by the given *flat-id*.
 |:-----|:----------|
 | GET | Returns the details of the room identified by the given *room-id* and located in the given flat. |
 | PUT | Update the room identified by the given *room-id* and located in the given flat. |
+| DELETE | Delete the room identified by the given *room-id* and located in the given flat. |
 
 **GET: Example**
 
@@ -2543,6 +2563,24 @@ Represents a specific room in the flat identified by the given *flat-id*.
 		"class" : "Kitchen",
 		"description" : "The room I love"
 	}
+</div>
+</div>
+</div>
+</div>
+
+**DELETE: Example**
+<div class="accordion" id="remove-single-room-in-flat-example" markdown="1">
+<div class="accordion-group" markdown="1">
+<div class="accordion-heading" markdown="1">
+<a class="accordion-toggle" data-toggle="collapse" data-parent="#remove-single-room-in-flat-example" href="#remove-single-room-in-flat-example-json" markdown="1">
+**Example Request**
+</a>
+</div>
+<div id="remove-single-room-in-flat-example-json" class="accordion-body collapse" markdown="1">
+<div class="accordion-inner" markdown="1">
+
+	DELETE http://www.mydog.com/api/v1/environment/flats/flat/rooms/kitchen
+	
 </div>
 </div>
 </div>

@@ -134,8 +134,8 @@ Rules API
 <li>manage information about the environment
 
 <ul>
-<li><a href="#rooms-in-flat">insert</a>, <a href="#single-room-in-flat">update</a> or delete rooms;</li>
-<li><a href="#flats">insert</a>, <a href="#single-flat">update</a>, or delete flats;</li>
+<li><a href="#rooms-in-flat">insert</a>, <a href="#single-room-in-flat">update or delete</a> rooms;</li>
+<li><a href="#flats">insert</a>, <a href="#single-flat">update or delete</a> flats;</li>
 </ul></li>
 <li>manage rules and automation scenarios
 
@@ -2972,7 +2972,7 @@ If the command brings the device in same state in which the device is, no differ
 
 <h4 id="aidsingle-flataresourceenvironmentflatsflat-id"><a id="single-flat"></a> Resource /environment/flats/{flat-id}</h4>
 
-<p><em>Updated on Thu, 2013&#8211;11&#8211;10</em>
+<p><em>Updated on Thu, 2014&#8211;05&#8211;07</em>
 <span class="label label-info pull-right">API version 1.0</span></p>
 
 <p>Represents a specific flat present in the environment (i.e., in the building). </p>
@@ -3000,6 +3000,10 @@ If the command brings the device in same state in which the device is, no differ
 <tr>
 	<td style="text-align:left;">PUT</td>
 	<td style="text-align:left;">Update the flat identified by the given <em>flat-id</em>.</td>
+</tr>
+<tr>
+	<td style="text-align:left;">DELETE</td>
+	<td style="text-align:left;">Delete the flat identified by the given <em>flat-id</em>.</td>
 </tr>
 </tbody>
 </table>
@@ -3073,6 +3077,25 @@ If the command brings the device in same state in which the device is, no differ
         }
     ]
 }
+</code></pre>
+
+<p></div>
+</div>
+</div>
+</div></p>
+
+<p><strong>DELETE: Example</strong>
+<div class="accordion"  id="remove-flat-example" >
+<div class="accordion-group" >
+<div class="accordion-heading" >
+<a class="accordion-toggle" data-toggle="collapse" data-parent="#remove-flat-example" href="#remove-flat-example-json" markdown="1">
+<strong>Example Request</strong>
+</a>
+</div>
+<div id="remove-flat-example-json"  class="accordion-body collapse" >
+<div class="accordion-inner" ></p>
+
+<pre><code>DELETE http://www.mydog.com/api/v1/environment/flats/flat
 </code></pre>
 
 <p></div>
@@ -3295,7 +3318,7 @@ If the command brings the device in same state in which the device is, no differ
 
 <h4 id="aidsingle-room-in-flataresourceenvironmentflatsflat-idroomsroom-id"><a id="single-room-in-flat"></a> Resource /environment/flats/{flat-id}/rooms/{room-id}</h4>
 
-<p><em>Updated on Thu, 2013&#8211;11&#8211;10</em>
+<p><em>Updated on Thu, 2014&#8211;05&#8211;07</em>
 <span class="label label-info pull-right">API version 1.0</span></p>
 
 <p>Represents a specific room in the flat identified by the given <em>flat-id</em>. </p>
@@ -3323,6 +3346,10 @@ If the command brings the device in same state in which the device is, no differ
 <tr>
 	<td style="text-align:left;">PUT</td>
 	<td style="text-align:left;">Update the room identified by the given <em>room-id</em> and located in the given flat.</td>
+</tr>
+<tr>
+	<td style="text-align:left;">DELETE</td>
+	<td style="text-align:left;">Delete the room identified by the given <em>room-id</em> and located in the given flat.</td>
 </tr>
 </tbody>
 </table>
@@ -3372,6 +3399,25 @@ If the command brings the device in same state in which the device is, no differ
     &quot;class&quot; : &quot;Kitchen&quot;,
     &quot;description&quot; : &quot;The room I love&quot;
 }
+</code></pre>
+
+<p></div>
+</div>
+</div>
+</div></p>
+
+<p><strong>DELETE: Example</strong>
+<div class="accordion"  id="remove-single-room-in-flat-example" >
+<div class="accordion-group" >
+<div class="accordion-heading" >
+<a class="accordion-toggle" data-toggle="collapse" data-parent="#remove-single-room-in-flat-example" href="#remove-single-room-in-flat-example-json" markdown="1">
+<strong>Example Request</strong>
+</a>
+</div>
+<div id="remove-single-room-in-flat-example-json"  class="accordion-body collapse" >
+<div class="accordion-inner" ></p>
+
+<pre><code>DELETE http://www.mydog.com/api/v1/environment/flats/flat/rooms/kitchen
 </code></pre>
 
 <p></div>
