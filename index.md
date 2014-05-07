@@ -2260,7 +2260,7 @@ Represents all the flats present in the environment (i.e., int the building).
 
 #### <a id="single-flat"></a> Resource /environment/flats/{flat-id} ####
 
-*Updated on Thu, 2014-05-07*
+*Updated on Wed, 2014-05-07*
 <span class="label label-info pull-right">API version 1.0</span>
 
 Represents a specific flat present in the environment (i.e., in the building). 
@@ -2505,7 +2505,7 @@ Represents all the rooms present in a given flat.
 
 #### <a id="single-room-in-flat"></a> Resource /environment/flats/{flat-id}/rooms/{room-id} ####
 
-*Updated on Thu, 2014-05-07*
+*Updated on Wed, 2014-05-07*
 <span class="label label-info pull-right">API version 1.0</span>
 
 Represents a specific room in the flat identified by the given *flat-id*. 
