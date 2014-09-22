@@ -193,6 +193,9 @@
 
 
     <complexType name="statevalue">
+    	<sequence>
+    		<element name="param" type="dhc:configparam" maxOccurs="unbounded" minOccurs="0"></element>
+    	</sequence>
     	<attribute name="class" type="string" use="required"></attribute>
     	<attribute name="name" type="string" use="optional"></attribute>
     </complexType>
